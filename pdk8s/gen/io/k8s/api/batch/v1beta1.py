@@ -16,19 +16,22 @@ from . import v1 as v1_1
 
 class CronJobStatus(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     active: Optional[List[v1.ObjectReference]] = Field(
         None, description="A list of pointers to currently running jobs."
     )
-    lastScheduleTime: Optional[v1_1.Time] = Field(
+    last_schedule_time: Optional[v1_1.Time] = Field(
         None,
+        alias="lastScheduleTime",
         description="Information when was the last time the job was successfully scheduled.",
     )
 
 
 class JobTemplateSpec(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
     metadata: Optional[v1.ObjectMeta] = Field(
@@ -43,30 +46,36 @@ class JobTemplateSpec(pdk8s.model.NamedModel):
 
 class CronJobSpec(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    concurrencyPolicy: Optional[str] = Field(
+    concurrency_policy: Optional[str] = Field(
         None,
+        alias="concurrencyPolicy",
         description='Specifies how to treat concurrent executions of a Job. Valid values are: - "Allow" (default): allows CronJobs to run concurrently; - "Forbid": forbids concurrent runs, skipping next run if previous run hasn\'t finished yet; - "Replace": cancels currently running job and replaces it with a new one',
     )
-    failedJobsHistoryLimit: Optional[int] = Field(
+    failed_jobs_history_limit: Optional[int] = Field(
         None,
+        alias="failedJobsHistoryLimit",
         description="The number of failed finished jobs to retain. This is a pointer to distinguish between explicit zero and not specified. Defaults to 1.",
     )
-    jobTemplate: JobTemplateSpec = Field(
+    job_template: JobTemplateSpec = Field(
         ...,
+        alias="jobTemplate",
         description="Specifies the job that will be created when executing a CronJob.",
     )
     schedule: str = Field(
         ...,
         description="The schedule in Cron format, see https://en.wikipedia.org/wiki/Cron.",
     )
-    startingDeadlineSeconds: Optional[int] = Field(
+    starting_deadline_seconds: Optional[int] = Field(
         None,
+        alias="startingDeadlineSeconds",
         description="Optional deadline in seconds for starting the job if it misses scheduled time for any reason.  Missed jobs executions will be counted as failed ones.",
     )
-    successfulJobsHistoryLimit: Optional[int] = Field(
+    successful_jobs_history_limit: Optional[int] = Field(
         None,
+        alias="successfulJobsHistoryLimit",
         description="The number of successful finished jobs to retain. This is a pointer to distinguish between explicit zero and not specified. Defaults to 3.",
     )
     suspend: Optional[bool] = Field(
@@ -77,10 +86,12 @@ class CronJobSpec(BaseModel):
 
 class CronJob(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1beta1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     kind: Optional[Kind59] = Field(
@@ -99,10 +110,12 @@ class CronJob(pdk8s.model.NamedModel):
 
 class CronJobList(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1beta1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     items: List[CronJob] = Field(..., description="items is the list of CronJobs.")

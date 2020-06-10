@@ -15,20 +15,24 @@ from ..core import v1
 
 class Overhead(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    podFixed: Optional[Dict[str, Any]] = Field(
+    pod_fixed: Optional[Dict[str, Any]] = Field(
         None,
+        alias="podFixed",
         description="PodFixed represents the fixed resource overhead associated with running a pod.",
     )
 
 
 class Scheduling(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    nodeSelector: Optional[Dict[str, Any]] = Field(
+    node_selector: Optional[Dict[str, Any]] = Field(
         None,
+        alias="nodeSelector",
         description="nodeSelector lists labels that must be present on nodes that support this RuntimeClass. Pods using this RuntimeClass can only be scheduled to a node matched by this selector. The RuntimeClass nodeSelector is merged with a pod's existing nodeSelector. Any conflicts will cause the pod to be rejected in admission.",
     )
     tolerations: Optional[List[v1.Toleration]] = Field(
@@ -39,14 +43,16 @@ class Scheduling(BaseModel):
 
 class RuntimeClassSpec(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     overhead: Optional[Overhead] = Field(
         None,
         description="Overhead represents the resource overhead associated with running a pod for a given RuntimeClass. For more details, see https://git.k8s.io/enhancements/keps/sig-node/20190226-pod-overhead.md This field is alpha-level as of Kubernetes v1.15, and is only honored by servers that enable the PodOverhead feature.",
     )
-    runtimeHandler: str = Field(
+    runtime_handler: str = Field(
         ...,
+        alias="runtimeHandler",
         description='RuntimeHandler specifies the underlying runtime and configuration that the CRI implementation will use to handle pods of this class. The possible values are specific to the node & CRI configuration.  It is assumed that all handlers are available on every node, and handlers of the same name are equivalent on every node. For example, a handler called "runc" might specify that the runc OCI runtime (using native Linux containers) will be used to run the containers in a pod. The RuntimeHandler must conform to the DNS Label (RFC 1123) requirements and is immutable.',
     )
     scheduling: Optional[Scheduling] = Field(
@@ -57,10 +63,12 @@ class RuntimeClassSpec(BaseModel):
 
 class RuntimeClass(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1alpha1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     kind: Optional[Kind124] = Field(
@@ -79,10 +87,12 @@ class RuntimeClass(pdk8s.model.NamedModel):
 
 class RuntimeClassList(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1alpha1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     items: List[RuntimeClass] = Field(

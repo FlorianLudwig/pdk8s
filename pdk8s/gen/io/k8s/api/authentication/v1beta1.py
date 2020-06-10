@@ -14,6 +14,7 @@ from ...apimachinery.pkg.apis.meta import v1
 
 class TokenReviewSpec(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     audiences: Optional[List[str]] = Field(
@@ -25,6 +26,7 @@ class TokenReviewSpec(BaseModel):
 
 class UserInfo(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     extra: Optional[Dict[str, Any]] = Field(
@@ -45,6 +47,7 @@ class UserInfo(BaseModel):
 
 class TokenReviewStatus(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     audiences: Optional[List[str]] = Field(
@@ -65,10 +68,12 @@ class TokenReviewStatus(BaseModel):
 
 class TokenReview(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1beta1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     kind: Optional[Kind41] = Field(

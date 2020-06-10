@@ -14,9 +14,12 @@ from ...apimachinery.pkg.apis.meta import v1
 
 class BoundObjectReference(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    apiVersion: Optional[str] = Field("v1", description="API version of the referent.")
+    api_version: Optional[str] = Field(
+        "v1", alias="apiVersion", description="API version of the referent."
+    )
     kind: Optional[str] = Field(
         None, description="Kind of the referent. Valid kinds are 'Pod' and 'Secret'."
     )
@@ -26,24 +29,28 @@ class BoundObjectReference(BaseModel):
 
 class TokenRequestSpec(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     audiences: List[str] = Field(
         ...,
         description="Audiences are the intendend audiences of the token. A recipient of a token must identitfy themself with an identifier in the list of audiences of the token, and otherwise should reject the token. A token issued for multiple audiences may be used to authenticate against any of the audiences listed but implies a high degree of trust between the target audiences.",
     )
-    boundObjectRef: Optional[BoundObjectReference] = Field(
+    bound_object_ref: Optional[BoundObjectReference] = Field(
         None,
+        alias="boundObjectRef",
         description="BoundObjectRef is a reference to an object that the token will be bound to. The token will only be valid for as long as the bound object exists. NOTE: The API server's TokenReview endpoint will validate the BoundObjectRef, but other audiences may not. Keep ExpirationSeconds small if you want prompt revocation.",
     )
-    expirationSeconds: Optional[int] = Field(
+    expiration_seconds: Optional[int] = Field(
         None,
+        alias="expirationSeconds",
         description="ExpirationSeconds is the requested duration of validity of the request. The token issuer may return a token with a different validity duration so a client needs to check the 'expiration' field in a response.",
     )
 
 
 class TokenReviewSpec(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     audiences: Optional[List[str]] = Field(
@@ -55,6 +62,7 @@ class TokenReviewSpec(BaseModel):
 
 class UserInfo(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     extra: Optional[Dict[str, Any]] = Field(
@@ -75,10 +83,12 @@ class UserInfo(BaseModel):
 
 class TokenRequestStatus(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    expirationTimestamp: v1.Time = Field(
+    expiration_timestamp: v1.Time = Field(
         ...,
+        alias="expirationTimestamp",
         description="ExpirationTimestamp is the time of expiration of the returned token.",
     )
     token: str = Field(..., description="Token is the opaque bearer token.")
@@ -86,6 +96,7 @@ class TokenRequestStatus(BaseModel):
 
 class TokenReviewStatus(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     audiences: Optional[List[str]] = Field(
@@ -106,10 +117,12 @@ class TokenReviewStatus(BaseModel):
 
 class TokenRequest(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     kind: Optional[Kind39] = Field(
@@ -122,10 +135,12 @@ class TokenRequest(pdk8s.model.NamedModel):
 
 class TokenReview(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     kind: Optional[Kind40] = Field(

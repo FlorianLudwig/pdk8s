@@ -14,10 +14,12 @@ from .....apimachinery.pkg.apis.meta import v1
 
 class CustomResourceColumnDefinition(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    JSONPath: str = Field(
+    json_path: str = Field(
         ...,
+        alias="JSONPath",
         description="JSONPath is a simple JSON path (i.e. with array notation) which is evaluated against each custom resource to produce the value for this column.",
     )
     description: Optional[str] = Field(
@@ -40,6 +42,7 @@ class CustomResourceColumnDefinition(BaseModel):
 
 class CustomResourceDefinitionNames(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     categories: Optional[List[str]] = Field(
@@ -50,16 +53,18 @@ class CustomResourceDefinitionNames(BaseModel):
         ...,
         description="kind is the serialized kind of the resource. It is normally CamelCase and singular. Custom resource instances will use this value as the `kind` attribute in API calls.",
     )
-    listKind: Optional[str] = Field(
+    list_kind: Optional[str] = Field(
         None,
+        alias="listKind",
         description='listKind is the serialized kind of the list for this resource. Defaults to "`kind`List".',
     )
     plural: str = Field(
         ...,
         description="plural is the plural name of the resource to serve. The custom resources are served under `/apis/<group>/<version>/.../<plural>`. Must match the name of the CustomResourceDefinition (in the form `<names.plural>.<group>`). Must be all lowercase.",
     )
-    shortNames: Optional[List[str]] = Field(
+    short_names: Optional[List[str]] = Field(
         None,
+        alias="shortNames",
         description="shortNames are short names for the resource, exposed in API discovery documents, and used by clients to support invocations like `kubectl get <shortname>`. It must be all lowercase.",
     )
     singular: Optional[str] = Field(
@@ -70,18 +75,22 @@ class CustomResourceDefinitionNames(BaseModel):
 
 class CustomResourceSubresourceScale(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    labelSelectorPath: Optional[str] = Field(
+    label_selector_path: Optional[str] = Field(
         None,
+        alias="labelSelectorPath",
         description="labelSelectorPath defines the JSON path inside of a custom resource that corresponds to Scale `status.selector`. Only JSON paths without the array notation are allowed. Must be a JSON Path under `.status` or `.spec`. Must be set to work with HorizontalPodAutoscaler. The field pointed by this JSON path must be a string field (not a complex selector struct) which contains a serialized label selector in string form. More info: https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions#scale-subresource If there is no value under the given path in the custom resource, the `status.selector` value in the `/scale` subresource will default to the empty string.",
     )
-    specReplicasPath: str = Field(
+    spec_replicas_path: str = Field(
         ...,
+        alias="specReplicasPath",
         description="specReplicasPath defines the JSON path inside of a custom resource that corresponds to Scale `spec.replicas`. Only JSON paths without the array notation are allowed. Must be a JSON Path under `.spec`. If there is no value under the given path in the custom resource, the `/scale` subresource will return an error on GET.",
     )
-    statusReplicasPath: str = Field(
+    status_replicas_path: str = Field(
         ...,
+        alias="statusReplicasPath",
         description="statusReplicasPath defines the JSON path inside of a custom resource that corresponds to Scale `status.replicas`. Only JSON paths without the array notation are allowed. Must be a JSON Path under `.status`. If there is no value under the given path in the custom resource, the `status.replicas` value in the `/scale` subresource will default to 0.",
     )
 
@@ -90,11 +99,13 @@ class CustomResourceSubresourceStatus(BaseModel):
     pass
 
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
 
 class CustomResourceSubresources(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     scale: Optional[CustomResourceSubresourceScale] = Field(
@@ -105,6 +116,7 @@ class CustomResourceSubresources(BaseModel):
 
 class ExternalDocumentation(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     description: Optional[str] = None
@@ -129,6 +141,7 @@ class JSONSchemaPropsOrStringArray(BaseModel):
 
 class ServiceReference(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     name: str = Field(..., description="name is the name of the service. Required")
@@ -147,10 +160,12 @@ class ServiceReference(BaseModel):
 
 class WebhookClientConfig(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    caBundle: Optional[str] = Field(
+    ca_bundle: Optional[str] = Field(
         None,
+        alias="caBundle",
         description="caBundle is a PEM encoded CA bundle which will be used to validate the webhook's server certificate. If unspecified, system trust roots on the apiserver are used.",
     )
     service: Optional[ServiceReference] = Field(
@@ -165,28 +180,33 @@ class WebhookClientConfig(BaseModel):
 
 class CustomResourceConversion(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    conversionReviewVersions: Optional[List[str]] = Field(
+    conversion_review_versions: Optional[List[str]] = Field(
         None,
+        alias="conversionReviewVersions",
         description='conversionReviewVersions is an ordered list of preferred `ConversionReview` versions the Webhook expects. The API server will use the first version in the list which it supports. If none of the versions specified in this list are supported by API server, conversion will fail for the custom resource. If a persisted Webhook configuration specifies allowed versions and does not include any versions known to the API Server, calls to the webhook will fail. Defaults to `["v1beta1"]`.',
     )
     strategy: str = Field(
         ...,
         description="strategy specifies how custom resources are converted between versions. Allowed values are: - `None`: The converter only change the apiVersion and would not touch any other field in the custom resource. - `Webhook`: API Server will call to an external webhook to do the conversion. Additional information\n  is needed for this option. This requires spec.preserveUnknownFields to be false, and spec.conversion.webhookClientConfig to be set.",
     )
-    webhookClientConfig: Optional[WebhookClientConfig] = Field(
+    webhook_client_config: Optional[WebhookClientConfig] = Field(
         None,
+        alias="webhookClientConfig",
         description="webhookClientConfig is the instructions for how to call the webhook if strategy is `Webhook`. Required when `strategy` is set to `Webhook`.",
     )
 
 
 class CustomResourceDefinitionCondition(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    lastTransitionTime: Optional[v1.Time] = Field(
+    last_transition_time: Optional[v1.Time] = Field(
         None,
+        alias="lastTransitionTime",
         description="lastTransitionTime last time the condition transitioned from one status to another.",
     )
     message: Optional[str] = Field(
@@ -205,32 +225,40 @@ class CustomResourceDefinitionCondition(BaseModel):
 
 class CustomResourceDefinitionStatus(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    acceptedNames: CustomResourceDefinitionNames = Field(
+    accepted_names: CustomResourceDefinitionNames = Field(
         ...,
+        alias="acceptedNames",
         description="acceptedNames are the names that are actually being used to serve discovery. They may be different than the names in spec.",
     )
     conditions: Optional[List[CustomResourceDefinitionCondition]] = Field(
         None,
         description="conditions indicate state for particular aspects of a CustomResourceDefinition",
     )
-    storedVersions: List[str] = Field(
+    stored_versions: List[str] = Field(
         ...,
+        alias="storedVersions",
         description="storedVersions lists all versions of CustomResources that were ever persisted. Tracking these versions allows a migration path for stored versions in etcd. The field is mutable so a migration controller can finish a migration to another version (ensuring no old objects are left in storage), and then remove the rest of the versions from this list. Versions may not be removed from `spec.versions` while they exist in this list.",
     )
 
 
 class JSONSchemaProps(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     _ref: Optional[str] = Field(None, alias="$ref")
     _schema: Optional[str] = Field(None, alias="$schema")
-    additionalItems: Optional[JSONSchemaPropsOrBool] = None
-    additionalProperties: Optional[JSONSchemaPropsOrBool] = None
-    allOf: Optional[List[JSONSchemaProps]] = None
-    anyOf: Optional[List[JSONSchemaProps]] = None
+    additional_items: Optional[JSONSchemaPropsOrBool] = Field(
+        None, alias="additionalItems"
+    )
+    additional_properties: Optional[JSONSchemaPropsOrBool] = Field(
+        None, alias="additionalProperties"
+    )
+    all_of: Optional[List[JSONSchemaProps]] = Field(None, alias="allOf")
+    any_of: Optional[List[JSONSchemaProps]] = Field(None, alias="anyOf")
     default: Optional[JSON] = Field(
         None,
         description="default is a default value for undefined object fields. Defaulting is a beta feature under the CustomResourceDefaulting feature gate. CustomResourceDefinitions with defaults must be created using the v1 (or newer) CustomResourceDefinition API.",
@@ -240,31 +268,33 @@ class JSONSchemaProps(BaseModel):
     description: Optional[str] = None
     enum: Optional[List[JSON]] = None
     example: Optional[JSON] = None
-    exclusiveMaximum: Optional[bool] = None
-    exclusiveMinimum: Optional[bool] = None
-    externalDocs: Optional[ExternalDocumentation] = None
+    exclusive_maximum: Optional[bool] = Field(None, alias="exclusiveMaximum")
+    exclusive_minimum: Optional[bool] = Field(None, alias="exclusiveMinimum")
+    external_docs: Optional[ExternalDocumentation] = Field(None, alias="externalDocs")
     format: Optional[str] = None
     id: Optional[str] = None
     items: Optional[JSONSchemaPropsOrArray] = None
-    maxItems: Optional[int] = None
-    maxLength: Optional[int] = None
-    maxProperties: Optional[int] = None
+    max_items: Optional[int] = Field(None, alias="maxItems")
+    max_length: Optional[int] = Field(None, alias="maxLength")
+    max_properties: Optional[int] = Field(None, alias="maxProperties")
     maximum: Optional[float] = None
-    minItems: Optional[int] = None
-    minLength: Optional[int] = None
-    minProperties: Optional[int] = None
+    min_items: Optional[int] = Field(None, alias="minItems")
+    min_length: Optional[int] = Field(None, alias="minLength")
+    min_properties: Optional[int] = Field(None, alias="minProperties")
     minimum: Optional[float] = None
-    multipleOf: Optional[float] = None
+    multiple_of: Optional[float] = Field(None, alias="multipleOf")
     not_: Optional[JSONSchemaProps] = Field(None, alias="not")
     nullable: Optional[bool] = None
-    oneOf: Optional[List[JSONSchemaProps]] = None
+    one_of: Optional[List[JSONSchemaProps]] = Field(None, alias="oneOf")
     pattern: Optional[str] = None
-    patternProperties: Optional[Dict[str, Any]] = None
+    pattern_properties: Optional[Dict[str, Any]] = Field(
+        None, alias="patternProperties"
+    )
     properties: Optional[Dict[str, Any]] = None
     required: Optional[List[str]] = None
     title: Optional[str] = None
     type: Optional[str] = None
-    uniqueItems: Optional[bool] = None
+    unique_items: Optional[bool] = Field(None, alias="uniqueItems")
     x_kubernetes_embedded_resource: Optional[bool] = Field(
         None,
         alias="x-kubernetes-embedded-resource",
@@ -294,20 +324,24 @@ class JSONSchemaProps(BaseModel):
 
 class CustomResourceValidation(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    openAPIV3Schema: Optional[JSONSchemaProps] = Field(
+    open_apiv3_schema: Optional[JSONSchemaProps] = Field(
         None,
+        alias="openAPIV3Schema",
         description="openAPIV3Schema is the OpenAPI v3 schema to use for validation and pruning.",
     )
 
 
 class CustomResourceDefinitionVersion(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    additionalPrinterColumns: Optional[List[CustomResourceColumnDefinition]] = Field(
+    additional_printer_columns: Optional[List[CustomResourceColumnDefinition]] = Field(
         None,
+        alias="additionalPrinterColumns",
         description="additionalPrinterColumns specifies additional columns returned in Table output. See https://kubernetes.io/docs/reference/using-api/api-concepts/#receiving-resources-as-tables for details. Top-level and per-version columns are mutually exclusive. Per-version columns must not all be set to identical values (top-level columns should be used instead). If no top-level or per-version columns are specified, a single column displaying the age of the custom resource is used.",
     )
     name: str = Field(
@@ -334,10 +368,12 @@ class CustomResourceDefinitionVersion(BaseModel):
 
 class CustomResourceDefinitionSpec(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    additionalPrinterColumns: Optional[List[CustomResourceColumnDefinition]] = Field(
+    additional_printer_columns: Optional[List[CustomResourceColumnDefinition]] = Field(
         None,
+        alias="additionalPrinterColumns",
         description="additionalPrinterColumns specifies additional columns returned in Table output. See https://kubernetes.io/docs/reference/using-api/api-concepts/#receiving-resources-as-tables for details. If present, this field configures columns for all versions. Top-level and per-version columns are mutually exclusive. If no top-level or per-version columns are specified, a single column displaying the age of the custom resource is used.",
     )
     conversion: Optional[CustomResourceConversion] = Field(
@@ -351,8 +387,9 @@ class CustomResourceDefinitionSpec(BaseModel):
         ...,
         description="names specify the resource and kind names for the custom resource.",
     )
-    preserveUnknownFields: Optional[bool] = Field(
+    preserve_unknown_fields: Optional[bool] = Field(
         None,
+        alias="preserveUnknownFields",
         description="preserveUnknownFields indicates that object fields which are not specified in the OpenAPI schema should be preserved when persisting to storage. apiVersion, kind, metadata and known fields inside metadata are always preserved. If false, schemas must be defined for all versions. Defaults to true in v1beta for backwards compatibility. Deprecated: will be required to be false in v1. Preservation of unknown fields can be specified in the validation schema using the `x-kubernetes-preserve-unknown-fields: true` extension. See https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/#pruning-versus-preserving-unknown-fields for details.",
     )
     scope: str = Field(
@@ -379,10 +416,12 @@ class CustomResourceDefinitionSpec(BaseModel):
 
 class CustomResourceDefinition(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1beta1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     kind: Optional[Kind181] = Field(
@@ -397,10 +436,12 @@ class CustomResourceDefinition(pdk8s.model.NamedModel):
 
 class CustomResourceDefinitionList(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1beta1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     items: List[CustomResourceDefinition] = Field(

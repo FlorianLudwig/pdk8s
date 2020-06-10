@@ -15,6 +15,7 @@ from ..core import v1
 
 class VolumeError(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     message: Optional[str] = Field(
@@ -26,18 +27,22 @@ class VolumeError(BaseModel):
 
 class StorageClass(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    allowVolumeExpansion: Optional[bool] = Field(
+    allow_volume_expansion: Optional[bool] = Field(
         None,
+        alias="allowVolumeExpansion",
         description="AllowVolumeExpansion shows whether the storage class allow volume expand",
     )
-    allowedTopologies: Optional[List[v1.TopologySelectorTerm]] = Field(
+    allowed_topologies: Optional[List[v1.TopologySelectorTerm]] = Field(
         None,
+        alias="allowedTopologies",
         description="Restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature.",
     )
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     kind: Optional[Kind165] = Field(
@@ -48,8 +53,9 @@ class StorageClass(pdk8s.model.NamedModel):
         None,
         description="Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
     )
-    mountOptions: Optional[List[str]] = Field(
+    mount_options: Optional[List[str]] = Field(
         None,
+        alias="mountOptions",
         description='Dynamically provisioned PersistentVolumes of this storage class are created with these mountOptions, e.g. ["ro", "soft"]. Not validated - mount of the PVs will simply fail if one is invalid.',
     )
     parameters: Optional[Dict[str, Any]] = Field(
@@ -59,22 +65,26 @@ class StorageClass(pdk8s.model.NamedModel):
     provisioner: str = Field(
         ..., description="Provisioner indicates the type of the provisioner."
     )
-    reclaimPolicy: Optional[str] = Field(
+    reclaim_policy: Optional[str] = Field(
         None,
+        alias="reclaimPolicy",
         description="Dynamically provisioned PersistentVolumes of this storage class are created with this reclaimPolicy. Defaults to Delete.",
     )
-    volumeBindingMode: Optional[str] = Field(
+    volume_binding_mode: Optional[str] = Field(
         None,
+        alias="volumeBindingMode",
         description="VolumeBindingMode indicates how PersistentVolumeClaims should be provisioned and bound.  When unset, VolumeBindingImmediate is used. This field is only honored by servers that enable the VolumeScheduling feature.",
     )
 
 
 class StorageClassList(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     items: List[StorageClass] = Field(
@@ -92,27 +102,34 @@ class StorageClassList(pdk8s.model.NamedModel):
 
 class VolumeAttachmentSource(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    inlineVolumeSpec: Optional[v1.PersistentVolumeSpec] = Field(
+    inline_volume_spec: Optional[v1.PersistentVolumeSpec] = Field(
         None,
+        alias="inlineVolumeSpec",
         description="inlineVolumeSpec contains all the information necessary to attach a persistent volume defined by a pod's inline VolumeSource. This field is populated only for the CSIMigration feature. It contains translated fields from a pod's inline VolumeSource to a PersistentVolumeSpec. This field is alpha-level and is only honored by servers that enabled the CSIMigration feature.",
     )
-    persistentVolumeName: Optional[str] = Field(
-        None, description="Name of the persistent volume to attach."
+    persistent_volume_name: Optional[str] = Field(
+        None,
+        alias="persistentVolumeName",
+        description="Name of the persistent volume to attach.",
     )
 
 
 class VolumeAttachmentSpec(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     attacher: str = Field(
         ...,
         description="Attacher indicates the name of the volume driver that MUST handle this request. This is the name returned by GetPluginName().",
     )
-    nodeName: str = Field(
-        ..., description="The node that the volume should be attached to."
+    node_name: str = Field(
+        ...,
+        alias="nodeName",
+        description="The node that the volume should be attached to.",
     )
     source: VolumeAttachmentSource = Field(
         ..., description="Source represents the volume that should be attached."
@@ -121,32 +138,38 @@ class VolumeAttachmentSpec(BaseModel):
 
 class VolumeAttachmentStatus(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    attachError: Optional[VolumeError] = Field(
+    attach_error: Optional[VolumeError] = Field(
         None,
+        alias="attachError",
         description="The last error encountered during attach operation, if any. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.",
     )
     attached: bool = Field(
         ...,
         description="Indicates the volume is successfully attached. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.",
     )
-    attachmentMetadata: Optional[Dict[str, Any]] = Field(
+    attachment_metadata: Optional[Dict[str, Any]] = Field(
         None,
+        alias="attachmentMetadata",
         description="Upon successful attach, this field is populated with any information returned by the attach operation that must be passed into subsequent WaitForAttach or Mount calls. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.",
     )
-    detachError: Optional[VolumeError] = Field(
+    detach_error: Optional[VolumeError] = Field(
         None,
+        alias="detachError",
         description="The last error encountered during detach operation, if any. This field must only be set by the entity completing the detach operation, i.e. the external-attacher.",
     )
 
 
 class VolumeAttachment(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     kind: Optional[Kind167] = Field(
@@ -165,10 +188,12 @@ class VolumeAttachment(pdk8s.model.NamedModel):
 
 class VolumeAttachmentList(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     items: List[VolumeAttachment] = Field(

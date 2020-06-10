@@ -15,22 +15,25 @@ from ..core import v1
 
 class PodPresetSpec(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     env: Optional[List[v1.EnvVar]] = Field(
         None,
         description="Env defines the collection of EnvVar to inject into containers.",
     )
-    envFrom: Optional[List[v1.EnvFromSource]] = Field(
+    env_from: Optional[List[v1.EnvFromSource]] = Field(
         None,
+        alias="envFrom",
         description="EnvFrom defines the collection of EnvFromSource to inject into containers.",
     )
     selector: Optional[v1_1.LabelSelector] = Field(
         None,
         description="Selector is a label query over a set of resources, in this case pods. Required.",
     )
-    volumeMounts: Optional[List[v1.VolumeMount]] = Field(
+    volume_mounts: Optional[List[v1.VolumeMount]] = Field(
         None,
+        alias="volumeMounts",
         description="VolumeMounts defines the collection of VolumeMount to inject into containers.",
     )
     volumes: Optional[List[v1.Volume]] = Field(
@@ -41,10 +44,12 @@ class PodPresetSpec(BaseModel):
 
 class PodPreset(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1alpha1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     kind: Optional[Kind163] = Field(
@@ -57,10 +62,12 @@ class PodPreset(pdk8s.model.NamedModel):
 
 class PodPresetList(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1alpha1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     items: List[PodPreset] = Field(

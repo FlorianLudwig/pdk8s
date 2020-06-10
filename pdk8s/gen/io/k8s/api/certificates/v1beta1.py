@@ -14,6 +14,7 @@ from ...apimachinery.pkg.apis.meta import v1
 
 class CertificateSigningRequestSpec(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     extra: Optional[Dict[str, Any]] = Field(
@@ -41,10 +42,13 @@ class CertificateSigningRequestSpec(BaseModel):
 
 class CertificateSigningRequestCondition(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    lastUpdateTime: Optional[v1.Time] = Field(
-        None, description="timestamp for the last update to this condition"
+    last_update_time: Optional[v1.Time] = Field(
+        None,
+        alias="lastUpdateTime",
+        description="timestamp for the last update to this condition",
     )
     message: Optional[str] = Field(
         None, description="human readable message with details about the request state"
@@ -59,6 +63,7 @@ class CertificateSigningRequestCondition(BaseModel):
 
 class CertificateSigningRequestStatus(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     certificate: Optional[str] = Field(
@@ -73,10 +78,12 @@ class CertificateSigningRequestStatus(BaseModel):
 
 class CertificateSigningRequest(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1beta1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     kind: Optional[Kind63] = Field(
@@ -92,10 +99,12 @@ class CertificateSigningRequest(pdk8s.model.NamedModel):
 
 class CertificateSigningRequestList(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1beta1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     items: List[CertificateSigningRequest]

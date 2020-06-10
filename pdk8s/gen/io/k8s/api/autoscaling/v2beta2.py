@@ -15,10 +15,11 @@ from ...apimachinery.pkg.apis.meta import v1
 
 class CrossVersionObjectReference(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    apiVersion: Optional[str] = Field(
-        "v2beta2", description="API version of the referent"
+    api_version: Optional[str] = Field(
+        "v2beta2", alias="apiVersion", description="API version of the referent"
     )
     kind: str = Field(
         ...,
@@ -32,10 +33,12 @@ class CrossVersionObjectReference(BaseModel):
 
 class HorizontalPodAutoscalerCondition(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    lastTransitionTime: Optional[v1.Time] = Field(
+    last_transition_time: Optional[v1.Time] = Field(
         None,
+        alias="lastTransitionTime",
         description="lastTransitionTime is the last time the condition transitioned from one status to another",
     )
     message: Optional[str] = Field(
@@ -50,14 +53,17 @@ class HorizontalPodAutoscalerCondition(BaseModel):
 
 class MetricTarget(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    averageUtilization: Optional[int] = Field(
+    average_utilization: Optional[int] = Field(
         None,
+        alias="averageUtilization",
         description="averageUtilization is the target value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods. Currently only valid for Resource metric source type",
     )
-    averageValue: Optional[resource.Quantity] = Field(
+    average_value: Optional[resource.Quantity] = Field(
         None,
+        alias="averageValue",
         description="averageValue is the target value of the average of the metric across all relevant pods (as a quantity)",
     )
     type: str = Field(
@@ -71,14 +77,17 @@ class MetricTarget(BaseModel):
 
 class MetricValueStatus(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    averageUtilization: Optional[int] = Field(
+    average_utilization: Optional[int] = Field(
         None,
+        alias="averageUtilization",
         description="currentAverageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.",
     )
-    averageValue: Optional[resource.Quantity] = Field(
+    average_value: Optional[resource.Quantity] = Field(
         None,
+        alias="averageValue",
         description="averageValue is the current value of the average of the metric across all relevant pods (as a quantity)",
     )
     value: Optional[resource.Quantity] = Field(
@@ -88,6 +97,7 @@ class MetricValueStatus(BaseModel):
 
 class ResourceMetricSource(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     name: str = Field(..., description="name is the name of the resource in question.")
@@ -98,6 +108,7 @@ class ResourceMetricSource(BaseModel):
 
 class ResourceMetricStatus(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     current: MetricValueStatus = Field(
@@ -108,6 +119,7 @@ class ResourceMetricStatus(BaseModel):
 
 class MetricIdentifier(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     name: str = Field(..., description="name is the name of the given metric")
@@ -119,9 +131,10 @@ class MetricIdentifier(BaseModel):
 
 class ObjectMetricSource(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    describedObject: CrossVersionObjectReference
+    described_object: CrossVersionObjectReference = Field(..., alias="describedObject")
     metric: MetricIdentifier = Field(
         ..., description="metric identifies the target metric by name and selector"
     )
@@ -132,12 +145,13 @@ class ObjectMetricSource(BaseModel):
 
 class ObjectMetricStatus(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     current: MetricValueStatus = Field(
         ..., description="current contains the current value for the given metric"
     )
-    describedObject: CrossVersionObjectReference
+    described_object: CrossVersionObjectReference = Field(..., alias="describedObject")
     metric: MetricIdentifier = Field(
         ..., description="metric identifies the target metric by name and selector"
     )
@@ -145,6 +159,7 @@ class ObjectMetricStatus(BaseModel):
 
 class PodsMetricSource(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     metric: MetricIdentifier = Field(
@@ -157,6 +172,7 @@ class PodsMetricSource(BaseModel):
 
 class PodsMetricStatus(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     current: MetricValueStatus = Field(
@@ -169,6 +185,7 @@ class PodsMetricStatus(BaseModel):
 
 class ExternalMetricSource(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     metric: MetricIdentifier = Field(
@@ -181,6 +198,7 @@ class ExternalMetricSource(BaseModel):
 
 class ExternalMetricStatus(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     current: MetricValueStatus = Field(
@@ -193,6 +211,7 @@ class ExternalMetricStatus(BaseModel):
 
 class MetricSpec(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     external: Optional[ExternalMetricSource] = Field(
@@ -219,6 +238,7 @@ class MetricSpec(BaseModel):
 
 class MetricStatus(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     external: Optional[ExternalMetricStatus] = Field(
@@ -245,62 +265,74 @@ class MetricStatus(BaseModel):
 
 class HorizontalPodAutoscalerSpec(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    maxReplicas: int = Field(
+    max_replicas: int = Field(
         ...,
+        alias="maxReplicas",
         description="maxReplicas is the upper limit for the number of replicas to which the autoscaler can scale up. It cannot be less that minReplicas.",
     )
     metrics: Optional[List[MetricSpec]] = Field(
         None,
         description="metrics contains the specifications for which to use to calculate the desired replica count (the maximum replica count across all metrics will be used).  The desired replica count is calculated multiplying the ratio between the target value and the current value by the current number of pods.  Ergo, metrics used must decrease as the pod count is increased, and vice-versa.  See the individual metric source types for more information about how each type of metric must respond. If not set, the default metric will be set to 80% average CPU utilization.",
     )
-    minReplicas: Optional[int] = Field(
+    min_replicas: Optional[int] = Field(
         None,
+        alias="minReplicas",
         description="minReplicas is the lower limit for the number of replicas to which the autoscaler can scale down.  It defaults to 1 pod.  minReplicas is allowed to be 0 if the alpha feature gate HPAScaleToZero is enabled and at least one Object or External metric is configured.  Scaling is active as long as at least one metric value is available.",
     )
-    scaleTargetRef: CrossVersionObjectReference = Field(
+    scale_target_ref: CrossVersionObjectReference = Field(
         ...,
+        alias="scaleTargetRef",
         description="scaleTargetRef points to the target resource to scale, and is used to the pods for which metrics should be collected, as well as to actually change the replica count.",
     )
 
 
 class HorizontalPodAutoscalerStatus(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     conditions: List[HorizontalPodAutoscalerCondition] = Field(
         ...,
         description="conditions is the set of conditions required for this autoscaler to scale its target, and indicates whether or not those conditions are met.",
     )
-    currentMetrics: Optional[List[MetricStatus]] = Field(
+    current_metrics: Optional[List[MetricStatus]] = Field(
         None,
+        alias="currentMetrics",
         description="currentMetrics is the last read state of the metrics used by this autoscaler.",
     )
-    currentReplicas: int = Field(
+    current_replicas: int = Field(
         ...,
+        alias="currentReplicas",
         description="currentReplicas is current number of replicas of pods managed by this autoscaler, as last seen by the autoscaler.",
     )
-    desiredReplicas: int = Field(
+    desired_replicas: int = Field(
         ...,
+        alias="desiredReplicas",
         description="desiredReplicas is the desired number of replicas of pods managed by this autoscaler, as last calculated by the autoscaler.",
     )
-    lastScaleTime: Optional[v1.Time] = Field(
+    last_scale_time: Optional[v1.Time] = Field(
         None,
+        alias="lastScaleTime",
         description="lastScaleTime is the last time the HorizontalPodAutoscaler scaled the number of pods, used by the autoscaler to control how often the number of pods is changed.",
     )
-    observedGeneration: Optional[int] = Field(
+    observed_generation: Optional[int] = Field(
         None,
+        alias="observedGeneration",
         description="observedGeneration is the most recent generation observed by this autoscaler.",
     )
 
 
 class HorizontalPodAutoscaler(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v2beta2",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     kind: Optional[Kind55] = Field(
@@ -319,10 +351,12 @@ class HorizontalPodAutoscaler(pdk8s.model.NamedModel):
 
 class HorizontalPodAutoscalerList(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v2beta2",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     items: List[HorizontalPodAutoscaler] = Field(

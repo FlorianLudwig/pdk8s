@@ -14,35 +14,44 @@ from ...apimachinery.pkg.apis.meta import v1
 
 class LeaseSpec(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    acquireTime: Optional[v1.MicroTime] = Field(
-        None, description="acquireTime is a time when the current lease was acquired."
-    )
-    holderIdentity: Optional[str] = Field(
+    acquire_time: Optional[v1.MicroTime] = Field(
         None,
+        alias="acquireTime",
+        description="acquireTime is a time when the current lease was acquired.",
+    )
+    holder_identity: Optional[str] = Field(
+        None,
+        alias="holderIdentity",
         description="holderIdentity contains the identity of the holder of a current lease.",
     )
-    leaseDurationSeconds: Optional[int] = Field(
+    lease_duration_seconds: Optional[int] = Field(
         None,
+        alias="leaseDurationSeconds",
         description="leaseDurationSeconds is a duration that candidates for a lease need to wait to force acquire it. This is measure against time of last observed RenewTime.",
     )
-    leaseTransitions: Optional[int] = Field(
+    lease_transitions: Optional[int] = Field(
         None,
+        alias="leaseTransitions",
         description="leaseTransitions is the number of transitions of a lease between holders.",
     )
-    renewTime: Optional[v1.MicroTime] = Field(
+    renew_time: Optional[v1.MicroTime] = Field(
         None,
+        alias="renewTime",
         description="renewTime is a time when the current holder of a lease has last updated the lease.",
     )
 
 
 class Lease(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1beta1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     kind: Optional[Kind67] = Field(
@@ -61,10 +70,12 @@ class Lease(pdk8s.model.NamedModel):
 
 class LeaseList(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1beta1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     items: List[Lease] = Field(..., description="Items is a list of schema objects.")

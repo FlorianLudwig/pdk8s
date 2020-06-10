@@ -14,10 +14,12 @@ from .....apimachinery.pkg.apis.meta import v1
 
 class APIServiceCondition(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    lastTransitionTime: Optional[v1.Time] = Field(
+    last_transition_time: Optional[v1.Time] = Field(
         None,
+        alias="lastTransitionTime",
         description="Last time the condition transitioned from one status to another.",
     )
     message: Optional[str] = Field(
@@ -33,6 +35,7 @@ class APIServiceCondition(BaseModel):
 
 class APIServiceStatus(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     conditions: Optional[List[APIServiceCondition]] = Field(
@@ -42,6 +45,7 @@ class APIServiceStatus(BaseModel):
 
 class ServiceReference(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     name: Optional[str] = Field(None, description="Name is the name of the service")
@@ -56,21 +60,25 @@ class ServiceReference(BaseModel):
 
 class APIServiceSpec(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    caBundle: Optional[str] = Field(
+    ca_bundle: Optional[str] = Field(
         None,
+        alias="caBundle",
         description="CABundle is a PEM encoded CA bundle which will be used to validate an API server's serving certificate. If unspecified, system trust roots on the apiserver are used.",
     )
     group: Optional[str] = Field(
         None, description="Group is the API group name this server hosts"
     )
-    groupPriorityMinimum: int = Field(
+    group_priority_minimum: int = Field(
         ...,
+        alias="groupPriorityMinimum",
         description="GroupPriorityMininum is the priority this group should have at least. Higher priority means that the group is preferred by clients over lower priority ones. Note that other versions of this group might specify even higher GroupPriorityMininum values such that the whole group gets a higher priority. The primary sort is based on GroupPriorityMinimum, ordered highest number to lowest (20 before 10). The secondary sort is based on the alphabetical comparison of the name of the object.  (v1.bar before v1.foo) We'd recommend something like: *.k8s.io (except extensions) at 18000 and PaaSes (OpenShift, Deis) are recommended to be in the 2000s",
     )
-    insecureSkipTLSVerify: Optional[bool] = Field(
+    insecure_skip_tls_verify: Optional[bool] = Field(
         None,
+        alias="insecureSkipTLSVerify",
         description="InsecureSkipTLSVerify disables TLS certificate verification when communicating with this server. This is strongly discouraged.  You should use the CABundle instead.",
     )
     service: ServiceReference = Field(
@@ -81,18 +89,21 @@ class APIServiceSpec(BaseModel):
         None,
         description='Version is the API version this server hosts.  For example, "v1"',
     )
-    versionPriority: int = Field(
+    version_priority: int = Field(
         ...,
+        alias="versionPriority",
         description='VersionPriority controls the ordering of this API version inside of its group.  Must be greater than zero. The primary sort is based on VersionPriority, ordered highest to lowest (20 before 10). Since it\'s inside of a group, the number can be small, probably in the 10s. In case of equal version priorities, the version string will be used to compute the order inside a group. If the version string is "kube-like", it will sort above non "kube-like" version strings, which are ordered lexicographically. "Kube-like" versions start with a "v", then are followed by a number (the major version), then optionally the string "alpha" or "beta" and another number (the minor version). These are sorted first by GA > beta > alpha (where GA is a version with no suffix such as beta or alpha), and then by comparing major version, then minor version. An example sorted list of versions: v10, v2, v1, v11beta2, v10beta3, v3beta1, v12alpha1, v11alpha2, foo1, foo10.',
     )
 
 
 class APIService(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     kind: Optional[Kind189] = Field(
@@ -108,10 +119,12 @@ class APIService(pdk8s.model.NamedModel):
 
 class APIServiceList(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     items: List[APIService]

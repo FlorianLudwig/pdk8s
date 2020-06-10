@@ -16,42 +16,52 @@ from ..core import v1
 
 class IngressStatus(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    loadBalancer: Optional[v1.LoadBalancerStatus] = Field(
+    load_balancer: Optional[v1.LoadBalancerStatus] = Field(
         None,
+        alias="loadBalancer",
         description="LoadBalancer contains the current status of the load-balancer.",
     )
 
 
 class IngressTLS(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     hosts: Optional[List[str]] = Field(
         None,
         description="Hosts are a list of hosts included in the TLS certificate. The values in this list must match the name/s used in the tlsSecret. Defaults to the wildcard host setting for the loadbalancer controller fulfilling this Ingress, if left unspecified.",
     )
-    secretName: Optional[str] = Field(
+    secret_name: Optional[str] = Field(
         None,
+        alias="secretName",
         description='SecretName is the name of the secret used to terminate SSL traffic on 443. Field is left optional to allow SSL routing based on SNI hostname alone. If the SNI host in a listener conflicts with the "Host" header field used by an IngressRule, the SNI host is used for termination and value of the Host header is used for routing.',
     )
 
 
 class IngressBackend(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    serviceName: str = Field(
-        ..., description="Specifies the name of the referenced service."
+    service_name: str = Field(
+        ...,
+        alias="serviceName",
+        description="Specifies the name of the referenced service.",
     )
-    servicePort: intstr.IntOrString = Field(
-        ..., description="Specifies the port of the referenced service."
+    service_port: intstr.IntOrString = Field(
+        ...,
+        alias="servicePort",
+        description="Specifies the port of the referenced service.",
     )
 
 
 class HTTPIngressPath(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     backend: IngressBackend = Field(
@@ -66,6 +76,7 @@ class HTTPIngressPath(BaseModel):
 
 class HTTPIngressRuleValue(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     paths: List[HTTPIngressPath] = Field(
@@ -75,6 +86,7 @@ class HTTPIngressRuleValue(BaseModel):
 
 class IngressRule(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     host: Optional[str] = Field(
@@ -86,6 +98,7 @@ class IngressRule(BaseModel):
 
 class IngressSpec(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     backend: Optional[IngressBackend] = Field(
@@ -104,10 +117,12 @@ class IngressSpec(BaseModel):
 
 class Ingress(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1beta1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     kind: Optional[Kind122] = Field(
@@ -126,10 +141,12 @@ class Ingress(pdk8s.model.NamedModel):
 
 class IngressList(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1beta1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     items: List[Ingress] = Field(..., description="Items is the list of Ingress.")

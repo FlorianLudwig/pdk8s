@@ -15,14 +15,16 @@ from ..core import v1 as v1_1
 
 class EventSeries(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     count: int = Field(
         ...,
         description="Number of occurrences in this series up to the last heartbeat time",
     )
-    lastObservedTime: v1.MicroTime = Field(
+    last_observed_time: v1.MicroTime = Field(
         ...,
+        alias="lastObservedTime",
         description="Time when last Event from the series was seen before last heartbeat.",
     )
     state: str = Field(
@@ -33,34 +35,42 @@ class EventSeries(BaseModel):
 
 class Event(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
     action: Optional[str] = Field(
         None,
         description="What action was taken/failed regarding to the regarding object.",
     )
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1beta1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
-    deprecatedCount: Optional[int] = Field(
+    deprecated_count: Optional[int] = Field(
         None,
+        alias="deprecatedCount",
         description="Deprecated field assuring backward compatibility with core.v1 Event type",
     )
-    deprecatedFirstTimestamp: Optional[v1.Time] = Field(
+    deprecated_first_timestamp: Optional[v1.Time] = Field(
         None,
+        alias="deprecatedFirstTimestamp",
         description="Deprecated field assuring backward compatibility with core.v1 Event type",
     )
-    deprecatedLastTimestamp: Optional[v1.Time] = Field(
+    deprecated_last_timestamp: Optional[v1.Time] = Field(
         None,
+        alias="deprecatedLastTimestamp",
         description="Deprecated field assuring backward compatibility with core.v1 Event type",
     )
-    deprecatedSource: Optional[v1_1.EventSource] = Field(
+    deprecated_source: Optional[v1_1.EventSource] = Field(
         None,
+        alias="deprecatedSource",
         description="Deprecated field assuring backward compatibility with core.v1 Event type",
     )
-    eventTime: v1.MicroTime = Field(
-        ..., description="Required. Time when this Event was first observed."
+    event_time: v1.MicroTime = Field(
+        ...,
+        alias="eventTime",
+        description="Required. Time when this Event was first observed.",
     )
     kind: Optional[Kind104] = Field(
         "Event",
@@ -80,12 +90,15 @@ class Event(pdk8s.model.NamedModel):
         None,
         description="Optional secondary object for more complex actions. E.g. when regarding object triggers a creation or deletion of related object.",
     )
-    reportingController: Optional[str] = Field(
+    reporting_controller: Optional[str] = Field(
         None,
+        alias="reportingController",
         description="Name of the controller that emitted this Event, e.g. `kubernetes.io/kubelet`.",
     )
-    reportingInstance: Optional[str] = Field(
-        None, description="ID of the controller instance, e.g. `kubelet-xyzf`."
+    reporting_instance: Optional[str] = Field(
+        None,
+        alias="reportingInstance",
+        description="ID of the controller instance, e.g. `kubelet-xyzf`.",
     )
     series: Optional[EventSeries] = Field(
         None,
@@ -99,10 +112,12 @@ class Event(pdk8s.model.NamedModel):
 
 class EventList(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1beta1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     items: List[Event] = Field(..., description="Items is a list of schema objects.")

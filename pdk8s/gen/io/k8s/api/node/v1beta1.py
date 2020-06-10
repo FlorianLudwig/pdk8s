@@ -15,20 +15,24 @@ from ..core import v1
 
 class Overhead(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    podFixed: Optional[Dict[str, Any]] = Field(
+    pod_fixed: Optional[Dict[str, Any]] = Field(
         None,
+        alias="podFixed",
         description="PodFixed represents the fixed resource overhead associated with running a pod.",
     )
 
 
 class Scheduling(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    nodeSelector: Optional[Dict[str, Any]] = Field(
+    node_selector: Optional[Dict[str, Any]] = Field(
         None,
+        alias="nodeSelector",
         description="nodeSelector lists labels that must be present on nodes that support this RuntimeClass. Pods using this RuntimeClass can only be scheduled to a node matched by this selector. The RuntimeClass nodeSelector is merged with a pod's existing nodeSelector. Any conflicts will cause the pod to be rejected in admission.",
     )
     tolerations: Optional[List[v1.Toleration]] = Field(
@@ -39,10 +43,12 @@ class Scheduling(BaseModel):
 
 class RuntimeClass(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1beta1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     handler: str = Field(
@@ -69,10 +75,12 @@ class RuntimeClass(pdk8s.model.NamedModel):
 
 class RuntimeClassList(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1beta1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     items: List[RuntimeClass] = Field(

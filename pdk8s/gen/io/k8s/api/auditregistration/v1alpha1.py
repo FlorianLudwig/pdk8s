@@ -14,6 +14,7 @@ from ...apimachinery.pkg.apis.meta import v1
 
 class Policy(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     level: str = Field(
@@ -27,6 +28,7 @@ class Policy(BaseModel):
 
 class ServiceReference(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     name: str = Field(..., description="`name` is the name of the service. Required")
@@ -45,10 +47,12 @@ class ServiceReference(BaseModel):
 
 class WebhookClientConfig(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    caBundle: Optional[str] = Field(
+    ca_bundle: Optional[str] = Field(
         None,
+        alias="caBundle",
         description="`caBundle` is a PEM encoded CA bundle which will be used to validate the webhook's server certificate. If unspecified, system trust roots on the apiserver are used.",
     )
     service: Optional[ServiceReference] = Field(
@@ -63,6 +67,7 @@ class WebhookClientConfig(BaseModel):
 
 class WebhookThrottleConfig(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     burst: Optional[int] = Field(
@@ -77,10 +82,12 @@ class WebhookThrottleConfig(BaseModel):
 
 class Webhook(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    clientConfig: WebhookClientConfig = Field(
+    client_config: WebhookClientConfig = Field(
         ...,
+        alias="clientConfig",
         description="ClientConfig holds the connection parameters for the webhook required",
     )
     throttle: Optional[WebhookThrottleConfig] = Field(
@@ -90,6 +97,7 @@ class Webhook(BaseModel):
 
 class AuditSinkSpec(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     policy: Policy = Field(
@@ -101,10 +109,12 @@ class AuditSinkSpec(BaseModel):
 
 class AuditSink(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1alpha1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     kind: Optional[Kind37] = Field(
@@ -119,10 +129,12 @@ class AuditSink(pdk8s.model.NamedModel):
 
 class AuditSinkList(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1alpha1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     items: List[AuditSink] = Field(..., description="List of audit configurations.")

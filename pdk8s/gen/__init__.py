@@ -13,772 +13,772 @@ class Model(BaseModel):
 
 
 class Kind(Enum):
-    MutatingWebhookConfiguration = "MutatingWebhookConfiguration"
+    mutating_webhook_configuration = "MutatingWebhookConfiguration"
 
 
 class Kind1(Enum):
-    MutatingWebhookConfigurationList = "MutatingWebhookConfigurationList"
+    mutating_webhook_configuration_list = "MutatingWebhookConfigurationList"
 
 
 class Kind2(Enum):
-    ValidatingWebhookConfiguration = "ValidatingWebhookConfiguration"
+    validating_webhook_configuration = "ValidatingWebhookConfiguration"
 
 
 class Kind3(Enum):
-    ValidatingWebhookConfigurationList = "ValidatingWebhookConfigurationList"
+    validating_webhook_configuration_list = "ValidatingWebhookConfigurationList"
 
 
 class Kind4(Enum):
-    MutatingWebhookConfiguration = "MutatingWebhookConfiguration"
+    mutating_webhook_configuration = "MutatingWebhookConfiguration"
 
 
 class Kind5(Enum):
-    MutatingWebhookConfigurationList = "MutatingWebhookConfigurationList"
+    mutating_webhook_configuration_list = "MutatingWebhookConfigurationList"
 
 
 class Kind6(Enum):
-    ValidatingWebhookConfiguration = "ValidatingWebhookConfiguration"
+    validating_webhook_configuration = "ValidatingWebhookConfiguration"
 
 
 class Kind7(Enum):
-    ValidatingWebhookConfigurationList = "ValidatingWebhookConfigurationList"
+    validating_webhook_configuration_list = "ValidatingWebhookConfigurationList"
 
 
 class Kind8(Enum):
-    ControllerRevision = "ControllerRevision"
+    controller_revision = "ControllerRevision"
 
 
 class Kind9(Enum):
-    ControllerRevisionList = "ControllerRevisionList"
+    controller_revision_list = "ControllerRevisionList"
 
 
 class Kind10(Enum):
-    DaemonSet = "DaemonSet"
+    daemon_set = "DaemonSet"
 
 
 class Kind11(Enum):
-    DaemonSetList = "DaemonSetList"
+    daemon_set_list = "DaemonSetList"
 
 
 class Kind12(Enum):
-    Deployment = "Deployment"
+    deployment = "Deployment"
 
 
 class Kind13(Enum):
-    DeploymentList = "DeploymentList"
+    deployment_list = "DeploymentList"
 
 
 class Kind14(Enum):
-    ReplicaSet = "ReplicaSet"
+    replica_set = "ReplicaSet"
 
 
 class Kind15(Enum):
-    ReplicaSetList = "ReplicaSetList"
+    replica_set_list = "ReplicaSetList"
 
 
 class Kind16(Enum):
-    StatefulSet = "StatefulSet"
+    stateful_set = "StatefulSet"
 
 
 class Kind17(Enum):
-    StatefulSetList = "StatefulSetList"
+    stateful_set_list = "StatefulSetList"
 
 
 class Kind18(Enum):
-    ControllerRevision = "ControllerRevision"
+    controller_revision = "ControllerRevision"
 
 
 class Kind19(Enum):
-    ControllerRevisionList = "ControllerRevisionList"
+    controller_revision_list = "ControllerRevisionList"
 
 
 class Kind20(Enum):
-    Deployment = "Deployment"
+    deployment = "Deployment"
 
 
 class Kind21(Enum):
-    DeploymentList = "DeploymentList"
+    deployment_list = "DeploymentList"
 
 
 class Kind22(Enum):
-    DeploymentRollback = "DeploymentRollback"
+    deployment_rollback = "DeploymentRollback"
 
 
 class Kind23(Enum):
-    Scale = "Scale"
+    scale = "Scale"
 
 
 class Kind24(Enum):
-    StatefulSet = "StatefulSet"
+    stateful_set = "StatefulSet"
 
 
 class Kind25(Enum):
-    StatefulSetList = "StatefulSetList"
+    stateful_set_list = "StatefulSetList"
 
 
 class Kind26(Enum):
-    ControllerRevision = "ControllerRevision"
+    controller_revision = "ControllerRevision"
 
 
 class Kind27(Enum):
-    ControllerRevisionList = "ControllerRevisionList"
+    controller_revision_list = "ControllerRevisionList"
 
 
 class Kind28(Enum):
-    DaemonSet = "DaemonSet"
+    daemon_set = "DaemonSet"
 
 
 class Kind29(Enum):
-    DaemonSetList = "DaemonSetList"
+    daemon_set_list = "DaemonSetList"
 
 
 class Kind30(Enum):
-    Deployment = "Deployment"
+    deployment = "Deployment"
 
 
 class Kind31(Enum):
-    DeploymentList = "DeploymentList"
+    deployment_list = "DeploymentList"
 
 
 class Kind32(Enum):
-    ReplicaSet = "ReplicaSet"
+    replica_set = "ReplicaSet"
 
 
 class Kind33(Enum):
-    ReplicaSetList = "ReplicaSetList"
+    replica_set_list = "ReplicaSetList"
 
 
 class Kind34(Enum):
-    Scale = "Scale"
+    scale = "Scale"
 
 
 class Kind35(Enum):
-    StatefulSet = "StatefulSet"
+    stateful_set = "StatefulSet"
 
 
 class Kind36(Enum):
-    StatefulSetList = "StatefulSetList"
+    stateful_set_list = "StatefulSetList"
 
 
 class Kind37(Enum):
-    AuditSink = "AuditSink"
+    audit_sink = "AuditSink"
 
 
 class Kind38(Enum):
-    AuditSinkList = "AuditSinkList"
+    audit_sink_list = "AuditSinkList"
 
 
 class Kind39(Enum):
-    TokenRequest = "TokenRequest"
+    token_request = "TokenRequest"
 
 
 class Kind40(Enum):
-    TokenReview = "TokenReview"
+    token_review = "TokenReview"
 
 
 class Kind41(Enum):
-    TokenReview = "TokenReview"
+    token_review = "TokenReview"
 
 
 class Kind42(Enum):
-    LocalSubjectAccessReview = "LocalSubjectAccessReview"
+    local_subject_access_review = "LocalSubjectAccessReview"
 
 
 class Kind43(Enum):
-    SelfSubjectAccessReview = "SelfSubjectAccessReview"
+    self_subject_access_review = "SelfSubjectAccessReview"
 
 
 class Kind44(Enum):
-    SelfSubjectRulesReview = "SelfSubjectRulesReview"
+    self_subject_rules_review = "SelfSubjectRulesReview"
 
 
 class Kind45(Enum):
-    SubjectAccessReview = "SubjectAccessReview"
+    subject_access_review = "SubjectAccessReview"
 
 
 class Kind46(Enum):
-    LocalSubjectAccessReview = "LocalSubjectAccessReview"
+    local_subject_access_review = "LocalSubjectAccessReview"
 
 
 class Kind47(Enum):
-    SelfSubjectAccessReview = "SelfSubjectAccessReview"
+    self_subject_access_review = "SelfSubjectAccessReview"
 
 
 class Kind48(Enum):
-    SelfSubjectRulesReview = "SelfSubjectRulesReview"
+    self_subject_rules_review = "SelfSubjectRulesReview"
 
 
 class Kind49(Enum):
-    SubjectAccessReview = "SubjectAccessReview"
+    subject_access_review = "SubjectAccessReview"
 
 
 class Kind50(Enum):
-    HorizontalPodAutoscaler = "HorizontalPodAutoscaler"
+    horizontal_pod_autoscaler = "HorizontalPodAutoscaler"
 
 
 class Kind51(Enum):
-    HorizontalPodAutoscalerList = "HorizontalPodAutoscalerList"
+    horizontal_pod_autoscaler_list = "HorizontalPodAutoscalerList"
 
 
 class Kind52(Enum):
-    Scale = "Scale"
+    scale = "Scale"
 
 
 class Kind53(Enum):
-    HorizontalPodAutoscaler = "HorizontalPodAutoscaler"
+    horizontal_pod_autoscaler = "HorizontalPodAutoscaler"
 
 
 class Kind54(Enum):
-    HorizontalPodAutoscalerList = "HorizontalPodAutoscalerList"
+    horizontal_pod_autoscaler_list = "HorizontalPodAutoscalerList"
 
 
 class Kind55(Enum):
-    HorizontalPodAutoscaler = "HorizontalPodAutoscaler"
+    horizontal_pod_autoscaler = "HorizontalPodAutoscaler"
 
 
 class Kind56(Enum):
-    HorizontalPodAutoscalerList = "HorizontalPodAutoscalerList"
+    horizontal_pod_autoscaler_list = "HorizontalPodAutoscalerList"
 
 
 class Kind57(Enum):
-    Job = "Job"
+    job = "Job"
 
 
 class Kind58(Enum):
-    JobList = "JobList"
+    job_list = "JobList"
 
 
 class Kind59(Enum):
-    CronJob = "CronJob"
+    cron_job = "CronJob"
 
 
 class Kind60(Enum):
-    CronJobList = "CronJobList"
+    cron_job_list = "CronJobList"
 
 
 class Kind61(Enum):
-    CronJob = "CronJob"
+    cron_job = "CronJob"
 
 
 class Kind62(Enum):
-    CronJobList = "CronJobList"
+    cron_job_list = "CronJobList"
 
 
 class Kind63(Enum):
-    CertificateSigningRequest = "CertificateSigningRequest"
+    certificate_signing_request = "CertificateSigningRequest"
 
 
 class Kind64(Enum):
-    CertificateSigningRequestList = "CertificateSigningRequestList"
+    certificate_signing_request_list = "CertificateSigningRequestList"
 
 
 class Kind65(Enum):
-    Lease = "Lease"
+    lease = "Lease"
 
 
 class Kind66(Enum):
-    LeaseList = "LeaseList"
+    lease_list = "LeaseList"
 
 
 class Kind67(Enum):
-    Lease = "Lease"
+    lease = "Lease"
 
 
 class Kind68(Enum):
-    LeaseList = "LeaseList"
+    lease_list = "LeaseList"
 
 
 class Kind69(Enum):
-    Binding = "Binding"
+    binding = "Binding"
 
 
 class Kind70(Enum):
-    ComponentStatus = "ComponentStatus"
+    component_status = "ComponentStatus"
 
 
 class Kind71(Enum):
-    ComponentStatusList = "ComponentStatusList"
+    component_status_list = "ComponentStatusList"
 
 
 class Kind72(Enum):
-    ConfigMap = "ConfigMap"
+    config_map = "ConfigMap"
 
 
 class Kind73(Enum):
-    ConfigMapList = "ConfigMapList"
+    config_map_list = "ConfigMapList"
 
 
 class Kind74(Enum):
-    Endpoints = "Endpoints"
+    endpoints = "Endpoints"
 
 
 class Kind75(Enum):
-    EndpointsList = "EndpointsList"
+    endpoints_list = "EndpointsList"
 
 
 class Kind76(Enum):
-    Event = "Event"
+    event = "Event"
 
 
 class Kind77(Enum):
-    EventList = "EventList"
+    event_list = "EventList"
 
 
 class Kind78(Enum):
-    LimitRange = "LimitRange"
+    limit_range = "LimitRange"
 
 
 class Kind79(Enum):
-    LimitRangeList = "LimitRangeList"
+    limit_range_list = "LimitRangeList"
 
 
 class Kind80(Enum):
-    Namespace = "Namespace"
+    namespace = "Namespace"
 
 
 class Kind81(Enum):
-    NamespaceList = "NamespaceList"
+    namespace_list = "NamespaceList"
 
 
 class Kind82(Enum):
-    Node = "Node"
+    node = "Node"
 
 
 class Kind83(Enum):
-    NodeList = "NodeList"
+    node_list = "NodeList"
 
 
 class Kind84(Enum):
-    PersistentVolume = "PersistentVolume"
+    persistent_volume = "PersistentVolume"
 
 
 class Kind85(Enum):
-    PersistentVolumeClaim = "PersistentVolumeClaim"
+    persistent_volume_claim = "PersistentVolumeClaim"
 
 
 class Kind86(Enum):
-    PersistentVolumeClaimList = "PersistentVolumeClaimList"
+    persistent_volume_claim_list = "PersistentVolumeClaimList"
 
 
 class Kind87(Enum):
-    PersistentVolumeList = "PersistentVolumeList"
+    persistent_volume_list = "PersistentVolumeList"
 
 
 class Kind88(Enum):
-    Pod = "Pod"
+    pod = "Pod"
 
 
 class Kind89(Enum):
-    PodList = "PodList"
+    pod_list = "PodList"
 
 
 class Kind90(Enum):
-    PodTemplate = "PodTemplate"
+    pod_template = "PodTemplate"
 
 
 class Kind91(Enum):
-    PodTemplateList = "PodTemplateList"
+    pod_template_list = "PodTemplateList"
 
 
 class Kind92(Enum):
-    ReplicationController = "ReplicationController"
+    replication_controller = "ReplicationController"
 
 
 class Kind93(Enum):
-    ReplicationControllerList = "ReplicationControllerList"
+    replication_controller_list = "ReplicationControllerList"
 
 
 class Kind94(Enum):
-    ResourceQuota = "ResourceQuota"
+    resource_quota = "ResourceQuota"
 
 
 class Kind95(Enum):
-    ResourceQuotaList = "ResourceQuotaList"
+    resource_quota_list = "ResourceQuotaList"
 
 
 class Kind96(Enum):
-    Secret = "Secret"
+    secret = "Secret"
 
 
 class Kind97(Enum):
-    SecretList = "SecretList"
+    secret_list = "SecretList"
 
 
 class Kind98(Enum):
-    Service = "Service"
+    service = "Service"
 
 
 class Kind99(Enum):
-    ServiceAccount = "ServiceAccount"
+    service_account = "ServiceAccount"
 
 
 class Kind100(Enum):
-    ServiceAccountList = "ServiceAccountList"
+    service_account_list = "ServiceAccountList"
 
 
 class Kind101(Enum):
-    ServiceList = "ServiceList"
+    service_list = "ServiceList"
 
 
 class Kind102(Enum):
-    EndpointSlice = "EndpointSlice"
+    endpoint_slice = "EndpointSlice"
 
 
 class Kind103(Enum):
-    EndpointSliceList = "EndpointSliceList"
+    endpoint_slice_list = "EndpointSliceList"
 
 
 class Kind104(Enum):
-    Event = "Event"
+    event = "Event"
 
 
 class Kind105(Enum):
-    EventList = "EventList"
+    event_list = "EventList"
 
 
 class Kind106(Enum):
-    DaemonSet = "DaemonSet"
+    daemon_set = "DaemonSet"
 
 
 class Kind107(Enum):
-    DaemonSetList = "DaemonSetList"
+    daemon_set_list = "DaemonSetList"
 
 
 class Kind108(Enum):
-    Deployment = "Deployment"
+    deployment = "Deployment"
 
 
 class Kind109(Enum):
-    DeploymentList = "DeploymentList"
+    deployment_list = "DeploymentList"
 
 
 class Kind110(Enum):
-    DeploymentRollback = "DeploymentRollback"
+    deployment_rollback = "DeploymentRollback"
 
 
 class Kind111(Enum):
-    Ingress = "Ingress"
+    ingress = "Ingress"
 
 
 class Kind112(Enum):
-    IngressList = "IngressList"
+    ingress_list = "IngressList"
 
 
 class Kind113(Enum):
-    NetworkPolicy = "NetworkPolicy"
+    network_policy = "NetworkPolicy"
 
 
 class Kind114(Enum):
-    NetworkPolicyList = "NetworkPolicyList"
+    network_policy_list = "NetworkPolicyList"
 
 
 class Kind115(Enum):
-    PodSecurityPolicy = "PodSecurityPolicy"
+    pod_security_policy = "PodSecurityPolicy"
 
 
 class Kind116(Enum):
-    PodSecurityPolicyList = "PodSecurityPolicyList"
+    pod_security_policy_list = "PodSecurityPolicyList"
 
 
 class Kind117(Enum):
-    ReplicaSet = "ReplicaSet"
+    replica_set = "ReplicaSet"
 
 
 class Kind118(Enum):
-    ReplicaSetList = "ReplicaSetList"
+    replica_set_list = "ReplicaSetList"
 
 
 class Kind119(Enum):
-    Scale = "Scale"
+    scale = "Scale"
 
 
 class Kind120(Enum):
-    NetworkPolicy = "NetworkPolicy"
+    network_policy = "NetworkPolicy"
 
 
 class Kind121(Enum):
-    NetworkPolicyList = "NetworkPolicyList"
+    network_policy_list = "NetworkPolicyList"
 
 
 class Kind122(Enum):
-    Ingress = "Ingress"
+    ingress = "Ingress"
 
 
 class Kind123(Enum):
-    IngressList = "IngressList"
+    ingress_list = "IngressList"
 
 
 class Kind124(Enum):
-    RuntimeClass = "RuntimeClass"
+    runtime_class = "RuntimeClass"
 
 
 class Kind125(Enum):
-    RuntimeClassList = "RuntimeClassList"
+    runtime_class_list = "RuntimeClassList"
 
 
 class Kind126(Enum):
-    RuntimeClass = "RuntimeClass"
+    runtime_class = "RuntimeClass"
 
 
 class Kind127(Enum):
-    RuntimeClassList = "RuntimeClassList"
+    runtime_class_list = "RuntimeClassList"
 
 
 class Kind128(Enum):
-    Eviction = "Eviction"
+    eviction = "Eviction"
 
 
 class Kind129(Enum):
-    PodDisruptionBudget = "PodDisruptionBudget"
+    pod_disruption_budget = "PodDisruptionBudget"
 
 
 class Kind130(Enum):
-    PodDisruptionBudgetList = "PodDisruptionBudgetList"
+    pod_disruption_budget_list = "PodDisruptionBudgetList"
 
 
 class Kind131(Enum):
-    PodSecurityPolicy = "PodSecurityPolicy"
+    pod_security_policy = "PodSecurityPolicy"
 
 
 class Kind132(Enum):
-    PodSecurityPolicyList = "PodSecurityPolicyList"
+    pod_security_policy_list = "PodSecurityPolicyList"
 
 
 class Kind133(Enum):
-    ClusterRole = "ClusterRole"
+    cluster_role = "ClusterRole"
 
 
 class Kind134(Enum):
-    ClusterRoleBinding = "ClusterRoleBinding"
+    cluster_role_binding = "ClusterRoleBinding"
 
 
 class Kind135(Enum):
-    ClusterRoleBindingList = "ClusterRoleBindingList"
+    cluster_role_binding_list = "ClusterRoleBindingList"
 
 
 class Kind136(Enum):
-    ClusterRoleList = "ClusterRoleList"
+    cluster_role_list = "ClusterRoleList"
 
 
 class Kind137(Enum):
-    Role = "Role"
+    role = "Role"
 
 
 class Kind138(Enum):
-    RoleBinding = "RoleBinding"
+    role_binding = "RoleBinding"
 
 
 class Kind139(Enum):
-    RoleBindingList = "RoleBindingList"
+    role_binding_list = "RoleBindingList"
 
 
 class Kind140(Enum):
-    RoleList = "RoleList"
+    role_list = "RoleList"
 
 
 class Kind141(Enum):
-    ClusterRole = "ClusterRole"
+    cluster_role = "ClusterRole"
 
 
 class Kind142(Enum):
-    ClusterRoleBinding = "ClusterRoleBinding"
+    cluster_role_binding = "ClusterRoleBinding"
 
 
 class Kind143(Enum):
-    ClusterRoleBindingList = "ClusterRoleBindingList"
+    cluster_role_binding_list = "ClusterRoleBindingList"
 
 
 class Kind144(Enum):
-    ClusterRoleList = "ClusterRoleList"
+    cluster_role_list = "ClusterRoleList"
 
 
 class Kind145(Enum):
-    Role = "Role"
+    role = "Role"
 
 
 class Kind146(Enum):
-    RoleBinding = "RoleBinding"
+    role_binding = "RoleBinding"
 
 
 class Kind147(Enum):
-    RoleBindingList = "RoleBindingList"
+    role_binding_list = "RoleBindingList"
 
 
 class Kind148(Enum):
-    RoleList = "RoleList"
+    role_list = "RoleList"
 
 
 class Kind149(Enum):
-    ClusterRole = "ClusterRole"
+    cluster_role = "ClusterRole"
 
 
 class Kind150(Enum):
-    ClusterRoleBinding = "ClusterRoleBinding"
+    cluster_role_binding = "ClusterRoleBinding"
 
 
 class Kind151(Enum):
-    ClusterRoleBindingList = "ClusterRoleBindingList"
+    cluster_role_binding_list = "ClusterRoleBindingList"
 
 
 class Kind152(Enum):
-    ClusterRoleList = "ClusterRoleList"
+    cluster_role_list = "ClusterRoleList"
 
 
 class Kind153(Enum):
-    Role = "Role"
+    role = "Role"
 
 
 class Kind154(Enum):
-    RoleBinding = "RoleBinding"
+    role_binding = "RoleBinding"
 
 
 class Kind155(Enum):
-    RoleBindingList = "RoleBindingList"
+    role_binding_list = "RoleBindingList"
 
 
 class Kind156(Enum):
-    RoleList = "RoleList"
+    role_list = "RoleList"
 
 
 class Kind157(Enum):
-    PriorityClass = "PriorityClass"
+    priority_class = "PriorityClass"
 
 
 class Kind158(Enum):
-    PriorityClassList = "PriorityClassList"
+    priority_class_list = "PriorityClassList"
 
 
 class Kind159(Enum):
-    PriorityClass = "PriorityClass"
+    priority_class = "PriorityClass"
 
 
 class Kind160(Enum):
-    PriorityClassList = "PriorityClassList"
+    priority_class_list = "PriorityClassList"
 
 
 class Kind161(Enum):
-    PriorityClass = "PriorityClass"
+    priority_class = "PriorityClass"
 
 
 class Kind162(Enum):
-    PriorityClassList = "PriorityClassList"
+    priority_class_list = "PriorityClassList"
 
 
 class Kind163(Enum):
-    PodPreset = "PodPreset"
+    pod_preset = "PodPreset"
 
 
 class Kind164(Enum):
-    PodPresetList = "PodPresetList"
+    pod_preset_list = "PodPresetList"
 
 
 class Kind165(Enum):
-    StorageClass = "StorageClass"
+    storage_class = "StorageClass"
 
 
 class Kind166(Enum):
-    StorageClassList = "StorageClassList"
+    storage_class_list = "StorageClassList"
 
 
 class Kind167(Enum):
-    VolumeAttachment = "VolumeAttachment"
+    volume_attachment = "VolumeAttachment"
 
 
 class Kind168(Enum):
-    VolumeAttachmentList = "VolumeAttachmentList"
+    volume_attachment_list = "VolumeAttachmentList"
 
 
 class Kind169(Enum):
-    VolumeAttachment = "VolumeAttachment"
+    volume_attachment = "VolumeAttachment"
 
 
 class Kind170(Enum):
-    VolumeAttachmentList = "VolumeAttachmentList"
+    volume_attachment_list = "VolumeAttachmentList"
 
 
 class Kind171(Enum):
-    CSIDriver = "CSIDriver"
+    csi_driver = "CSIDriver"
 
 
 class Kind172(Enum):
-    CSIDriverList = "CSIDriverList"
+    csi_driver_list = "CSIDriverList"
 
 
 class Kind173(Enum):
-    CSINode = "CSINode"
+    csi_node = "CSINode"
 
 
 class Kind174(Enum):
-    CSINodeList = "CSINodeList"
+    csi_node_list = "CSINodeList"
 
 
 class Kind175(Enum):
-    StorageClass = "StorageClass"
+    storage_class = "StorageClass"
 
 
 class Kind176(Enum):
-    StorageClassList = "StorageClassList"
+    storage_class_list = "StorageClassList"
 
 
 class Kind177(Enum):
-    VolumeAttachment = "VolumeAttachment"
+    volume_attachment = "VolumeAttachment"
 
 
 class Kind178(Enum):
-    VolumeAttachmentList = "VolumeAttachmentList"
+    volume_attachment_list = "VolumeAttachmentList"
 
 
 class Kind179(Enum):
-    CustomResourceDefinition = "CustomResourceDefinition"
+    custom_resource_definition = "CustomResourceDefinition"
 
 
 class Kind180(Enum):
-    CustomResourceDefinitionList = "CustomResourceDefinitionList"
+    custom_resource_definition_list = "CustomResourceDefinitionList"
 
 
 class Kind181(Enum):
-    CustomResourceDefinition = "CustomResourceDefinition"
+    custom_resource_definition = "CustomResourceDefinition"
 
 
 class Kind182(Enum):
-    CustomResourceDefinitionList = "CustomResourceDefinitionList"
+    custom_resource_definition_list = "CustomResourceDefinitionList"
 
 
 class Kind183(Enum):
-    APIGroup = "APIGroup"
+    api_group = "APIGroup"
 
 
 class Kind184(Enum):
-    APIGroupList = "APIGroupList"
+    api_group_list = "APIGroupList"
 
 
 class Kind185(Enum):
-    APIResourceList = "APIResourceList"
+    api_resource_list = "APIResourceList"
 
 
 class Kind186(Enum):
-    APIVersions = "APIVersions"
+    api_versions = "APIVersions"
 
 
 class Kind187(Enum):
-    DeleteOptions = "DeleteOptions"
+    delete_options = "DeleteOptions"
 
 
 class Kind188(Enum):
-    Status = "Status"
+    status = "Status"
 
 
 class Kind189(Enum):
-    APIService = "APIService"
+    api_service = "APIService"
 
 
 class Kind190(Enum):
-    APIServiceList = "APIServiceList"
+    api_service_list = "APIServiceList"
 
 
 class Kind191(Enum):
-    APIService = "APIService"
+    api_service = "APIService"
 
 
 class Kind192(Enum):
-    APIServiceList = "APIServiceList"
+    api_service_list = "APIServiceList"

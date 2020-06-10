@@ -14,18 +14,22 @@ from ...apimachinery.pkg.apis.meta import v1
 
 class PolicyRule(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    apiGroups: Optional[List[str]] = Field(
+    api_groups: Optional[List[str]] = Field(
         None,
+        alias="apiGroups",
         description="APIGroups is the name of the APIGroup that contains the resources.  If multiple API groups are specified, any action requested against one of the enumerated resources in any API group will be allowed.",
     )
-    nonResourceURLs: Optional[List[str]] = Field(
+    non_resource_ur_ls: Optional[List[str]] = Field(
         None,
+        alias="nonResourceURLs",
         description='NonResourceURLs is a set of partial urls that a user should have access to.  *s are allowed, but only as the full, final step in the path Since non-resource URLs are not namespaced, this field is only applicable for ClusterRoles referenced from a ClusterRoleBinding. Rules can either apply to API resources (such as "pods" or "secrets") or non-resource URL paths (such as "/api"),  but not both.',
     )
-    resourceNames: Optional[List[str]] = Field(
+    resource_names: Optional[List[str]] = Field(
         None,
+        alias="resourceNames",
         description="ResourceNames is an optional white list of names that the rule applies to.  An empty set means that everything is allowed.",
     )
     resources: Optional[List[str]] = Field(
@@ -40,10 +44,13 @@ class PolicyRule(BaseModel):
 
 class RoleRef(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    apiGroup: str = Field(
-        ..., description="APIGroup is the group for the resource being referenced"
+    api_group: str = Field(
+        ...,
+        alias="apiGroup",
+        description="APIGroup is the group for the resource being referenced",
     )
     kind: str = Field(..., description="Kind is the type of resource being referenced")
     name: str = Field(..., description="Name is the name of resource being referenced")
@@ -51,10 +58,12 @@ class RoleRef(BaseModel):
 
 class Subject(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    apiGroup: Optional[str] = Field(
+    api_group: Optional[str] = Field(
         None,
+        alias="apiGroup",
         description='APIGroup holds the API group of the referenced subject. Defaults to "" for ServiceAccount subjects. Defaults to "rbac.authorization.k8s.io" for User and Group subjects.',
     )
     kind: str = Field(
@@ -70,24 +79,29 @@ class Subject(BaseModel):
 
 class AggregationRule(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    clusterRoleSelectors: Optional[List[v1.LabelSelector]] = Field(
+    cluster_role_selectors: Optional[List[v1.LabelSelector]] = Field(
         None,
+        alias="clusterRoleSelectors",
         description="ClusterRoleSelectors holds a list of selectors which will be used to find ClusterRoles and create the rules. If any of the selectors match, then the ClusterRole's permissions will be added",
     )
 
 
 class ClusterRole(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    aggregationRule: Optional[AggregationRule] = Field(
+    aggregation_rule: Optional[AggregationRule] = Field(
         None,
+        alias="aggregationRule",
         description="AggregationRule is an optional field that describes how to build the Rules for this ClusterRole. If AggregationRule is set, then the Rules are controller managed and direct changes to Rules will be stomped by the controller.",
     )
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1beta1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     kind: Optional[Kind149] = Field(
@@ -104,10 +118,12 @@ class ClusterRole(pdk8s.model.NamedModel):
 
 class ClusterRoleBinding(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1beta1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     kind: Optional[Kind150] = Field(
@@ -117,8 +133,9 @@ class ClusterRoleBinding(pdk8s.model.NamedModel):
     metadata: Optional[v1.ObjectMeta] = Field(
         None, description="Standard object's metadata."
     )
-    roleRef: RoleRef = Field(
+    role_ref: RoleRef = Field(
         ...,
+        alias="roleRef",
         description="RoleRef can only reference a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error.",
     )
     subjects: Optional[List[Subject]] = Field(
@@ -129,10 +146,12 @@ class ClusterRoleBinding(pdk8s.model.NamedModel):
 
 class ClusterRoleBindingList(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1beta1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     items: List[ClusterRoleBinding] = Field(
@@ -149,10 +168,12 @@ class ClusterRoleBindingList(pdk8s.model.NamedModel):
 
 class ClusterRoleList(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1beta1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     items: List[ClusterRole] = Field(..., description="Items is a list of ClusterRoles")
@@ -167,10 +188,12 @@ class ClusterRoleList(pdk8s.model.NamedModel):
 
 class Role(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1beta1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     kind: Optional[Kind153] = Field(
@@ -187,10 +210,12 @@ class Role(pdk8s.model.NamedModel):
 
 class RoleBinding(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1beta1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     kind: Optional[Kind154] = Field(
@@ -200,8 +225,9 @@ class RoleBinding(pdk8s.model.NamedModel):
     metadata: Optional[v1.ObjectMeta] = Field(
         None, description="Standard object's metadata."
     )
-    roleRef: RoleRef = Field(
+    role_ref: RoleRef = Field(
         ...,
+        alias="roleRef",
         description="RoleRef can reference a Role in the current namespace or a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error.",
     )
     subjects: Optional[List[Subject]] = Field(
@@ -212,10 +238,12 @@ class RoleBinding(pdk8s.model.NamedModel):
 
 class RoleBindingList(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1beta1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     items: List[RoleBinding] = Field(..., description="Items is a list of RoleBindings")
@@ -230,10 +258,12 @@ class RoleBindingList(pdk8s.model.NamedModel):
 
 class RoleList(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1beta1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     items: List[Role] = Field(..., description="Items is a list of Roles")

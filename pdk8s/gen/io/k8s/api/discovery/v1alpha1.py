@@ -15,6 +15,7 @@ from ..core import v1
 
 class EndpointConditions(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     ready: Optional[bool] = Field(
@@ -25,6 +26,7 @@ class EndpointConditions(BaseModel):
 
 class EndpointPort(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     name: Optional[str] = Field(
@@ -43,6 +45,7 @@ class EndpointPort(BaseModel):
 
 class Endpoint(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     addresses: List[str] = Field(
@@ -57,8 +60,9 @@ class Endpoint(BaseModel):
         None,
         description="hostname of this endpoint. This field may be used by consumers of endpoints to distinguish endpoints from each other (e.g. in DNS names). Multiple endpoints which use the same hostname should be considered fungible (e.g. multiple A values in DNS). Must pass DNS Label (RFC 1123) validation.",
     )
-    targetRef: Optional[v1.ObjectReference] = Field(
+    target_ref: Optional[v1.ObjectReference] = Field(
         None,
+        alias="targetRef",
         description="targetRef is a reference to a Kubernetes object that represents this endpoint.",
     )
     topology: Optional[Dict[str, Any]] = Field(
@@ -69,14 +73,17 @@ class Endpoint(BaseModel):
 
 class EndpointSlice(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    addressType: Optional[str] = Field(
+    address_type: Optional[str] = Field(
         None,
+        alias="addressType",
         description="addressType specifies the type of address carried by this EndpointSlice. All addresses in this slice must be the same type. Default is IP",
     )
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1alpha1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     endpoints: List[Endpoint] = Field(
@@ -98,10 +105,12 @@ class EndpointSlice(pdk8s.model.NamedModel):
 
 class EndpointSliceList(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1alpha1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     items: List[EndpointSlice] = Field(..., description="List of endpoint slices")

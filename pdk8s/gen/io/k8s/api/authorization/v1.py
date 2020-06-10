@@ -14,6 +14,7 @@ from ...apimachinery.pkg.apis.meta import v1
 
 class NonResourceAttributes(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     path: Optional[str] = Field(None, description="Path is the URL path of the request")
@@ -22,10 +23,12 @@ class NonResourceAttributes(BaseModel):
 
 class NonResourceRule(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    nonResourceURLs: Optional[List[str]] = Field(
+    non_resource_ur_ls: Optional[List[str]] = Field(
         None,
+        alias="nonResourceURLs",
         description='NonResourceURLs is a set of partial urls that a user should have access to.  *s are allowed, but only as the full, final step in the path.  "*" means all.',
     )
     verbs: List[str] = Field(
@@ -36,6 +39,7 @@ class NonResourceRule(BaseModel):
 
 class ResourceAttributes(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     group: Optional[str] = Field(
@@ -68,14 +72,17 @@ class ResourceAttributes(BaseModel):
 
 class ResourceRule(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    apiGroups: Optional[List[str]] = Field(
+    api_groups: Optional[List[str]] = Field(
         None,
+        alias="apiGroups",
         description='APIGroups is the name of the APIGroup that contains the resources.  If multiple API groups are specified, any action requested against one of the enumerated resources in any API group will be allowed.  "*" means all.',
     )
-    resourceNames: Optional[List[str]] = Field(
+    resource_names: Optional[List[str]] = Field(
         None,
+        alias="resourceNames",
         description='ResourceNames is an optional white list of names that the rule applies to.  An empty set means that everything is allowed.  "*" means all.',
     )
     resources: Optional[List[str]] = Field(
@@ -90,20 +97,24 @@ class ResourceRule(BaseModel):
 
 class SelfSubjectAccessReviewSpec(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    nonResourceAttributes: Optional[NonResourceAttributes] = Field(
+    non_resource_attributes: Optional[NonResourceAttributes] = Field(
         None,
+        alias="nonResourceAttributes",
         description="NonResourceAttributes describes information for a non-resource access request",
     )
-    resourceAttributes: Optional[ResourceAttributes] = Field(
+    resource_attributes: Optional[ResourceAttributes] = Field(
         None,
+        alias="resourceAttributes",
         description="ResourceAuthorizationAttributes describes information for a resource access request",
     )
 
 
 class SelfSubjectRulesReviewSpec(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     namespace: Optional[str] = Field(
@@ -113,6 +124,7 @@ class SelfSubjectRulesReviewSpec(BaseModel):
 
 class SubjectAccessReviewSpec(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     extra: Optional[Dict[str, Any]] = Field(
@@ -122,12 +134,14 @@ class SubjectAccessReviewSpec(BaseModel):
     groups: Optional[List[str]] = Field(
         None, description="Groups is the groups you're testing for."
     )
-    nonResourceAttributes: Optional[NonResourceAttributes] = Field(
+    non_resource_attributes: Optional[NonResourceAttributes] = Field(
         None,
+        alias="nonResourceAttributes",
         description="NonResourceAttributes describes information for a non-resource access request",
     )
-    resourceAttributes: Optional[ResourceAttributes] = Field(
+    resource_attributes: Optional[ResourceAttributes] = Field(
         None,
+        alias="resourceAttributes",
         description="ResourceAuthorizationAttributes describes information for a resource access request",
     )
     uid: Optional[str] = Field(
@@ -141,6 +155,7 @@ class SubjectAccessReviewSpec(BaseModel):
 
 class SubjectAccessReviewStatus(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
     allowed: bool = Field(
@@ -151,8 +166,9 @@ class SubjectAccessReviewStatus(BaseModel):
         None,
         description="Denied is optional. True if the action would be denied, otherwise false. If both allowed is false and denied is false, then the authorizer has no opinion on whether to authorize the action. Denied may not be true if Allowed is true.",
     )
-    evaluationError: Optional[str] = Field(
+    evaluation_error: Optional[str] = Field(
         None,
+        alias="evaluationError",
         description="EvaluationError is an indication that some error occurred during the authorization check. It is entirely possible to get an error and be able to continue determine authorization status in spite of it. For instance, RBAC can be missing a role, but enough roles are still present and bound to reason about the request.",
     )
     reason: Optional[str] = Field(
@@ -163,32 +179,38 @@ class SubjectAccessReviewStatus(BaseModel):
 
 class SubjectRulesReviewStatus(BaseModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "forbid"
 
-    evaluationError: Optional[str] = Field(
+    evaluation_error: Optional[str] = Field(
         None,
+        alias="evaluationError",
         description="EvaluationError can appear in combination with Rules. It indicates an error occurred during rule evaluation, such as an authorizer that doesn't support rule evaluation, and that ResourceRules and/or NonResourceRules may be incomplete.",
     )
     incomplete: bool = Field(
         ...,
         description="Incomplete is true when the rules returned by this call are incomplete. This is most commonly encountered when an authorizer, such as an external authorizer, doesn't support rules evaluation.",
     )
-    nonResourceRules: List[NonResourceRule] = Field(
+    non_resource_rules: List[NonResourceRule] = Field(
         ...,
+        alias="nonResourceRules",
         description="NonResourceRules is the list of actions the subject is allowed to perform on non-resources. The list ordering isn't significant, may contain duplicates, and possibly be incomplete.",
     )
-    resourceRules: List[ResourceRule] = Field(
+    resource_rules: List[ResourceRule] = Field(
         ...,
+        alias="resourceRules",
         description="ResourceRules is the list of actions the subject is allowed to perform on resources. The list ordering isn't significant, may contain duplicates, and possibly be incomplete.",
     )
 
 
 class LocalSubjectAccessReview(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     kind: Optional[Kind42] = Field(
@@ -204,10 +226,12 @@ class LocalSubjectAccessReview(pdk8s.model.NamedModel):
 
 class SelfSubjectAccessReview(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     kind: Optional[Kind43] = Field(
@@ -223,10 +247,12 @@ class SelfSubjectAccessReview(pdk8s.model.NamedModel):
 
 class SelfSubjectRulesReview(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     kind: Optional[Kind44] = Field(
@@ -241,10 +267,12 @@ class SelfSubjectRulesReview(pdk8s.model.NamedModel):
 
 class SubjectAccessReview(pdk8s.model.NamedModel):
     class Config:
+        allow_population_by_field_name = True
         extra = "allow"
 
-    apiVersion: Optional[str] = Field(
+    api_version: Optional[str] = Field(
         "v1",
+        alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     kind: Optional[Kind45] = Field(
