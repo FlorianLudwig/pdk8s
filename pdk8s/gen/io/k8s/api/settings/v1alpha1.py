@@ -6,6 +6,8 @@ from typing import List, Optional
 
 from pydantic import BaseModel, Field
 
+import pdk8s.model
+
 from ..... import Kind163, Kind164
 from ...apimachinery.pkg.apis.meta import v1 as v1_1
 from ..core import v1
@@ -37,9 +39,9 @@ class PodPresetSpec(BaseModel):
     )
 
 
-class PodPreset(BaseModel):
+class PodPreset(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1alpha1",
@@ -53,9 +55,9 @@ class PodPreset(BaseModel):
     spec: Optional[PodPresetSpec] = None
 
 
-class PodPresetList(BaseModel):
+class PodPresetList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1alpha1",

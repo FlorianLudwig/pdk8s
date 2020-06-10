@@ -6,6 +6,8 @@ from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
+import pdk8s.model
+
 from ..... import (
     Kind106,
     Kind107,
@@ -680,9 +682,9 @@ class NetworkPolicyPeer(BaseModel):
     )
 
 
-class PodSecurityPolicy(BaseModel):
+class PodSecurityPolicy(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -701,9 +703,9 @@ class PodSecurityPolicy(BaseModel):
     )
 
 
-class PodSecurityPolicyList(BaseModel):
+class PodSecurityPolicyList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -722,9 +724,9 @@ class PodSecurityPolicyList(BaseModel):
     )
 
 
-class Scale(BaseModel):
+class Scale(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -748,9 +750,9 @@ class Scale(BaseModel):
     )
 
 
-class Ingress(BaseModel):
+class Ingress(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -774,9 +776,9 @@ class Ingress(BaseModel):
     )
 
 
-class IngressList(BaseModel):
+class IngressList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -844,9 +846,9 @@ class NetworkPolicySpec(BaseModel):
     )
 
 
-class NetworkPolicy(BaseModel):
+class NetworkPolicy(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -866,9 +868,9 @@ class NetworkPolicy(BaseModel):
     )
 
 
-class NetworkPolicyList(BaseModel):
+class NetworkPolicyList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -980,9 +982,9 @@ class ReplicaSetSpec(BaseModel):
     )
 
 
-class DaemonSet(BaseModel):
+class DaemonSet(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -1006,9 +1008,9 @@ class DaemonSet(BaseModel):
     )
 
 
-class DaemonSetList(BaseModel):
+class DaemonSetList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -1025,9 +1027,9 @@ class DaemonSetList(BaseModel):
     )
 
 
-class Deployment(BaseModel):
+class Deployment(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -1048,9 +1050,9 @@ class Deployment(BaseModel):
     )
 
 
-class DeploymentList(BaseModel):
+class DeploymentList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -1066,9 +1068,9 @@ class DeploymentList(BaseModel):
     metadata: Optional[v1.ListMeta] = Field(None, description="Standard list metadata.")
 
 
-class ReplicaSet(BaseModel):
+class ReplicaSet(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -1092,9 +1094,9 @@ class ReplicaSet(BaseModel):
     )
 
 
-class ReplicaSetList(BaseModel):
+class ReplicaSetList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",

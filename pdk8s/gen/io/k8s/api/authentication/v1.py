@@ -6,6 +6,8 @@ from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
+import pdk8s.model
+
 from ..... import Kind39, Kind40
 from ...apimachinery.pkg.apis.meta import v1
 
@@ -102,9 +104,9 @@ class TokenReviewStatus(BaseModel):
     )
 
 
-class TokenRequest(BaseModel):
+class TokenRequest(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",
@@ -119,9 +121,9 @@ class TokenRequest(BaseModel):
     status: Optional[TokenRequestStatus] = None
 
 
-class TokenReview(BaseModel):
+class TokenReview(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",

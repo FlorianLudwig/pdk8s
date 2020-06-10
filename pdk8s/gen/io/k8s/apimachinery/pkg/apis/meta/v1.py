@@ -7,6 +7,8 @@ from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
+import pdk8s.model
+
 from ....... import Kind183, Kind184, Kind185, Kind186, Kind187, Kind188
 from ... import runtime
 
@@ -459,9 +461,9 @@ class ObjectMeta(BaseModel):
     )
 
 
-class Status(BaseModel):
+class Status(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",

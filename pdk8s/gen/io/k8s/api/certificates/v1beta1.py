@@ -6,6 +6,8 @@ from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
+import pdk8s.model
+
 from ..... import Kind63, Kind64
 from ...apimachinery.pkg.apis.meta import v1
 
@@ -69,9 +71,9 @@ class CertificateSigningRequestStatus(BaseModel):
     )
 
 
-class CertificateSigningRequest(BaseModel):
+class CertificateSigningRequest(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -91,9 +93,9 @@ class CertificateSigningRequest(BaseModel):
     )
 
 
-class CertificateSigningRequestList(BaseModel):
+class CertificateSigningRequestList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",

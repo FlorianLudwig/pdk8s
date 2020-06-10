@@ -6,6 +6,8 @@ from typing import List, Optional
 
 from pydantic import BaseModel, Field
 
+import pdk8s.model
+
 from ..... import Kind37, Kind38
 from ...apimachinery.pkg.apis.meta import v1
 
@@ -97,9 +99,9 @@ class AuditSinkSpec(BaseModel):
     webhook: Webhook = Field(..., description="Webhook to send events required")
 
 
-class AuditSink(BaseModel):
+class AuditSink(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1alpha1",
@@ -115,9 +117,9 @@ class AuditSink(BaseModel):
     )
 
 
-class AuditSinkList(BaseModel):
+class AuditSinkList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1alpha1",

@@ -6,6 +6,8 @@ from typing import List, Optional
 
 from pydantic import BaseModel, Field
 
+import pdk8s.model
+
 from ..... import Kind57, Kind58
 from ...apimachinery.pkg.apis.meta import v1
 from ..core import v1 as v1_1
@@ -99,9 +101,9 @@ class JobSpec(BaseModel):
     )
 
 
-class Job(BaseModel):
+class Job(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",
@@ -125,9 +127,9 @@ class Job(BaseModel):
     )
 
 
-class JobList(BaseModel):
+class JobList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",

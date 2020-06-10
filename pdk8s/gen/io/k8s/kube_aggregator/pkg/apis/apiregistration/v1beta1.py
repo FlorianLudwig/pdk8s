@@ -6,6 +6,8 @@ from typing import List, Optional
 
 from pydantic import BaseModel, Field
 
+import pdk8s.model
+
 from ....... import Kind191, Kind192
 from .....apimachinery.pkg.apis.meta import v1
 
@@ -89,9 +91,9 @@ class APIServiceSpec(BaseModel):
     )
 
 
-class APIService(BaseModel):
+class APIService(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -111,9 +113,9 @@ class APIService(BaseModel):
     )
 
 
-class APIServiceList(BaseModel):
+class APIServiceList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",

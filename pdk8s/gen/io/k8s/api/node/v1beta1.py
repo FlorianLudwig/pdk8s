@@ -6,6 +6,8 @@ from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
+import pdk8s.model
+
 from ..... import Kind126, Kind127
 from ...apimachinery.pkg.apis.meta import v1
 from ..core import v1
@@ -35,9 +37,9 @@ class Scheduling(BaseModel):
     )
 
 
-class RuntimeClass(BaseModel):
+class RuntimeClass(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -65,9 +67,9 @@ class RuntimeClass(BaseModel):
     )
 
 
-class RuntimeClassList(BaseModel):
+class RuntimeClassList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",

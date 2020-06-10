@@ -6,6 +6,8 @@ from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
+import pdk8s.model
+
 from ..... import Kind128, Kind129, Kind130, Kind131, Kind132
 from ...apimachinery.pkg.apis.meta import v1
 from ...apimachinery.pkg.util import intstr
@@ -266,9 +268,9 @@ class PodSecurityPolicySpec(BaseModel):
     )
 
 
-class Eviction(BaseModel):
+class Eviction(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -304,9 +306,9 @@ class PodDisruptionBudgetSpec(BaseModel):
     )
 
 
-class PodSecurityPolicy(BaseModel):
+class PodSecurityPolicy(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -325,9 +327,9 @@ class PodSecurityPolicy(BaseModel):
     )
 
 
-class PodSecurityPolicyList(BaseModel):
+class PodSecurityPolicyList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -346,9 +348,9 @@ class PodSecurityPolicyList(BaseModel):
     )
 
 
-class PodDisruptionBudget(BaseModel):
+class PodDisruptionBudget(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -368,9 +370,9 @@ class PodDisruptionBudget(BaseModel):
     )
 
 
-class PodDisruptionBudgetList(BaseModel):
+class PodDisruptionBudgetList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",

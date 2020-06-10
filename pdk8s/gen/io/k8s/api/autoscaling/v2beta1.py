@@ -6,6 +6,8 @@ from typing import List, Optional
 
 from pydantic import BaseModel, Field
 
+import pdk8s.model
+
 from ..... import Kind53, Kind54
 from ...apimachinery.pkg.api import resource
 from ...apimachinery.pkg.apis.meta import v1
@@ -308,9 +310,9 @@ class HorizontalPodAutoscalerStatus(BaseModel):
     )
 
 
-class HorizontalPodAutoscaler(BaseModel):
+class HorizontalPodAutoscaler(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v2beta1",
@@ -333,9 +335,9 @@ class HorizontalPodAutoscaler(BaseModel):
     )
 
 
-class HorizontalPodAutoscalerList(BaseModel):
+class HorizontalPodAutoscalerList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v2beta1",

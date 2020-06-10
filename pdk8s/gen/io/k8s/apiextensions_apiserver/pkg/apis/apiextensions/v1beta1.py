@@ -6,6 +6,8 @@ from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
+import pdk8s.model
+
 from ....... import Kind181, Kind182
 from .....apimachinery.pkg.apis.meta import v1
 
@@ -383,9 +385,9 @@ class CustomResourceDefinitionSpec(BaseModel):
     )
 
 
-class CustomResourceDefinition(BaseModel):
+class CustomResourceDefinition(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -405,9 +407,9 @@ class CustomResourceDefinition(BaseModel):
     )
 
 
-class CustomResourceDefinitionList(BaseModel):
+class CustomResourceDefinitionList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",

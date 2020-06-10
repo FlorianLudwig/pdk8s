@@ -6,6 +6,8 @@ from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
+import pdk8s.model
+
 from ..... import (
     Kind69,
     Kind70,
@@ -2387,9 +2389,9 @@ class VolumeNodeAffinity(BaseModel):
     )
 
 
-class Binding(BaseModel):
+class Binding(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",
@@ -2409,9 +2411,9 @@ class Binding(BaseModel):
     )
 
 
-class ComponentStatus(BaseModel):
+class ComponentStatus(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",
@@ -2430,9 +2432,9 @@ class ComponentStatus(BaseModel):
     )
 
 
-class ComponentStatusList(BaseModel):
+class ComponentStatusList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",
@@ -2451,9 +2453,9 @@ class ComponentStatusList(BaseModel):
     )
 
 
-class ConfigMap(BaseModel):
+class ConfigMap(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",
@@ -2477,9 +2479,9 @@ class ConfigMap(BaseModel):
     )
 
 
-class ConfigMapList(BaseModel):
+class ConfigMapList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",
@@ -2582,9 +2584,9 @@ class DownwardAPIVolumeSource(BaseModel):
     )
 
 
-class Endpoints(BaseModel):
+class Endpoints(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",
@@ -2604,9 +2606,9 @@ class Endpoints(BaseModel):
     )
 
 
-class EndpointsList(BaseModel):
+class EndpointsList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",
@@ -2643,9 +2645,9 @@ class EnvVarSource(BaseModel):
     )
 
 
-class Event(BaseModel):
+class Event(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     action: Optional[str] = Field(
         None,
@@ -2712,9 +2714,9 @@ class Event(BaseModel):
     )
 
 
-class EventList(BaseModel):
+class EventList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",
@@ -2762,9 +2764,9 @@ class Lifecycle(BaseModel):
     )
 
 
-class LimitRange(BaseModel):
+class LimitRange(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",
@@ -2784,9 +2786,9 @@ class LimitRange(BaseModel):
     )
 
 
-class LimitRangeList(BaseModel):
+class LimitRangeList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",
@@ -2806,9 +2808,9 @@ class LimitRangeList(BaseModel):
     )
 
 
-class Namespace(BaseModel):
+class Namespace(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",
@@ -2832,9 +2834,9 @@ class Namespace(BaseModel):
     )
 
 
-class NamespaceList(BaseModel):
+class NamespaceList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",
@@ -3191,9 +3193,9 @@ class ResourceQuotaSpec(BaseModel):
     )
 
 
-class Secret(BaseModel):
+class Secret(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",
@@ -3220,9 +3222,9 @@ class Secret(BaseModel):
     )
 
 
-class SecretList(BaseModel):
+class SecretList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",
@@ -3242,9 +3244,9 @@ class SecretList(BaseModel):
     )
 
 
-class Service(BaseModel):
+class Service(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",
@@ -3268,9 +3270,9 @@ class Service(BaseModel):
     )
 
 
-class ServiceAccount(BaseModel):
+class ServiceAccount(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",
@@ -3298,9 +3300,9 @@ class ServiceAccount(BaseModel):
     )
 
 
-class ServiceAccountList(BaseModel):
+class ServiceAccountList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",
@@ -3320,9 +3322,9 @@ class ServiceAccountList(BaseModel):
     )
 
 
-class ServiceList(BaseModel):
+class ServiceList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",
@@ -3493,9 +3495,9 @@ class EphemeralContainer(BaseModel):
     )
 
 
-class Node(BaseModel):
+class Node(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",
@@ -3519,9 +3521,9 @@ class Node(BaseModel):
     )
 
 
-class NodeList(BaseModel):
+class NodeList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",
@@ -3538,9 +3540,9 @@ class NodeList(BaseModel):
     )
 
 
-class PersistentVolume(BaseModel):
+class PersistentVolume(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",
@@ -3564,9 +3566,9 @@ class PersistentVolume(BaseModel):
     )
 
 
-class PersistentVolumeClaim(BaseModel):
+class PersistentVolumeClaim(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",
@@ -3590,9 +3592,9 @@ class PersistentVolumeClaim(BaseModel):
     )
 
 
-class PersistentVolumeClaimList(BaseModel):
+class PersistentVolumeClaimList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",
@@ -3612,9 +3614,9 @@ class PersistentVolumeClaimList(BaseModel):
     )
 
 
-class PersistentVolumeList(BaseModel):
+class PersistentVolumeList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",
@@ -3670,9 +3672,9 @@ class PodAntiAffinity(BaseModel):
     )
 
 
-class ResourceQuota(BaseModel):
+class ResourceQuota(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",
@@ -3696,9 +3698,9 @@ class ResourceQuota(BaseModel):
     )
 
 
-class ResourceQuotaList(BaseModel):
+class ResourceQuotaList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",
@@ -4120,9 +4122,9 @@ class PodSpec(BaseModel):
     )
 
 
-class PodTemplateSpec(BaseModel):
+class PodTemplateSpec(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     metadata: Optional[v1.ObjectMeta] = Field(
         None,
@@ -4156,9 +4158,9 @@ class ReplicationControllerSpec(BaseModel):
     )
 
 
-class Pod(BaseModel):
+class Pod(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",
@@ -4182,9 +4184,9 @@ class Pod(BaseModel):
     )
 
 
-class PodList(BaseModel):
+class PodList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",
@@ -4204,9 +4206,9 @@ class PodList(BaseModel):
     )
 
 
-class PodTemplate(BaseModel):
+class PodTemplate(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",
@@ -4226,9 +4228,9 @@ class PodTemplate(BaseModel):
     )
 
 
-class PodTemplateList(BaseModel):
+class PodTemplateList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",
@@ -4245,9 +4247,9 @@ class PodTemplateList(BaseModel):
     )
 
 
-class ReplicationController(BaseModel):
+class ReplicationController(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",
@@ -4271,9 +4273,9 @@ class ReplicationController(BaseModel):
     )
 
 
-class ReplicationControllerList(BaseModel):
+class ReplicationControllerList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",

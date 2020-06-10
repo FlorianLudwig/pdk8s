@@ -6,6 +6,8 @@ from typing import List, Optional
 
 from pydantic import BaseModel, Field
 
+import pdk8s.model
+
 from ..... import Kind122, Kind123
 from ...apimachinery.pkg.apis.meta import v1
 from ...apimachinery.pkg.util import intstr
@@ -100,9 +102,9 @@ class IngressSpec(BaseModel):
     )
 
 
-class Ingress(BaseModel):
+class Ingress(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -126,9 +128,9 @@ class Ingress(BaseModel):
     )
 
 
-class IngressList(BaseModel):
+class IngressList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",

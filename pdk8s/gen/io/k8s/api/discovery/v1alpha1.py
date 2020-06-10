@@ -6,6 +6,8 @@ from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
+import pdk8s.model
+
 from ..... import Kind102, Kind103
 from ...apimachinery.pkg.apis.meta import v1
 from ..core import v1
@@ -65,9 +67,9 @@ class Endpoint(BaseModel):
     )
 
 
-class EndpointSlice(BaseModel):
+class EndpointSlice(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     addressType: Optional[str] = Field(
         None,
@@ -94,9 +96,9 @@ class EndpointSlice(BaseModel):
     )
 
 
-class EndpointSliceList(BaseModel):
+class EndpointSliceList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1alpha1",

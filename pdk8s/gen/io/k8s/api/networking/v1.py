@@ -6,6 +6,8 @@ from typing import List, Optional
 
 from pydantic import BaseModel, Field
 
+import pdk8s.model
+
 from ..... import Kind120, Kind121
 from ...apimachinery.pkg.apis.meta import v1
 from ...apimachinery.pkg.util import intstr
@@ -109,9 +111,9 @@ class NetworkPolicySpec(BaseModel):
     )
 
 
-class NetworkPolicy(BaseModel):
+class NetworkPolicy(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",
@@ -131,9 +133,9 @@ class NetworkPolicy(BaseModel):
     )
 
 
-class NetworkPolicyList(BaseModel):
+class NetworkPolicyList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",

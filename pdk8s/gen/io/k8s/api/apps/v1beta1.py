@@ -6,6 +6,8 @@ from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
+import pdk8s.model
+
 from ..... import Kind18, Kind19, Kind20, Kind21, Kind22, Kind23, Kind24, Kind25
 from ...apimachinery.pkg import runtime
 from ...apimachinery.pkg.apis.meta import v1
@@ -232,9 +234,9 @@ class StatefulSetStatus(BaseModel):
     )
 
 
-class ControllerRevision(BaseModel):
+class ControllerRevision(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -257,9 +259,9 @@ class ControllerRevision(BaseModel):
     )
 
 
-class ControllerRevisionList(BaseModel):
+class ControllerRevisionList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -292,9 +294,9 @@ class DeploymentStrategy(BaseModel):
     )
 
 
-class Scale(BaseModel):
+class Scale(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -396,9 +398,9 @@ class StatefulSetSpec(BaseModel):
     )
 
 
-class Deployment(BaseModel):
+class Deployment(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -419,9 +421,9 @@ class Deployment(BaseModel):
     )
 
 
-class DeploymentList(BaseModel):
+class DeploymentList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -437,9 +439,9 @@ class DeploymentList(BaseModel):
     metadata: Optional[v1.ListMeta] = Field(None, description="Standard list metadata.")
 
 
-class StatefulSet(BaseModel):
+class StatefulSet(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -459,9 +461,9 @@ class StatefulSet(BaseModel):
     )
 
 
-class StatefulSetList(BaseModel):
+class StatefulSetList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",

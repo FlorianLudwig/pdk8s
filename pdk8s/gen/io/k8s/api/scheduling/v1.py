@@ -6,13 +6,15 @@ from typing import List, Optional
 
 from pydantic import BaseModel, Field
 
+import pdk8s.model
+
 from ..... import Kind157, Kind158
 from ...apimachinery.pkg.apis.meta import v1
 
 
-class PriorityClass(BaseModel):
+class PriorityClass(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",
@@ -44,9 +46,9 @@ class PriorityClass(BaseModel):
     )
 
 
-class PriorityClassList(BaseModel):
+class PriorityClassList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",

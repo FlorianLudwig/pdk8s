@@ -6,6 +6,8 @@ from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
+import pdk8s.model
+
 from ..... import Kind171, Kind172, Kind173, Kind174, Kind175, Kind176, Kind177, Kind178
 from ...apimachinery.pkg.apis.meta import v1 as v1_1
 from ..core import v1
@@ -82,9 +84,9 @@ class VolumeError(BaseModel):
     time: Optional[v1.Time] = Field(None, description="Time the error was encountered.")
 
 
-class CSIDriver(BaseModel):
+class CSIDriver(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -101,9 +103,9 @@ class CSIDriver(BaseModel):
     spec: CSIDriverSpec = Field(..., description="Specification of the CSI Driver.")
 
 
-class CSIDriverList(BaseModel):
+class CSIDriverList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -120,9 +122,9 @@ class CSIDriverList(BaseModel):
     )
 
 
-class CSINode(BaseModel):
+class CSINode(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -138,9 +140,9 @@ class CSINode(BaseModel):
     spec: CSINodeSpec = Field(..., description="spec is the specification of CSINode")
 
 
-class CSINodeList(BaseModel):
+class CSINodeList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -157,9 +159,9 @@ class CSINodeList(BaseModel):
     )
 
 
-class StorageClass(BaseModel):
+class StorageClass(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     allowVolumeExpansion: Optional[bool] = Field(
         None,
@@ -202,9 +204,9 @@ class StorageClass(BaseModel):
     )
 
 
-class StorageClassList(BaseModel):
+class StorageClassList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -274,9 +276,9 @@ class VolumeAttachmentStatus(BaseModel):
     )
 
 
-class VolumeAttachment(BaseModel):
+class VolumeAttachment(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -300,9 +302,9 @@ class VolumeAttachment(BaseModel):
     )
 
 
-class VolumeAttachmentList(BaseModel):
+class VolumeAttachmentList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",

@@ -6,6 +6,8 @@ from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
+import pdk8s.model
+
 from ..... import Kind169, Kind170
 from ...apimachinery.pkg.apis.meta import v1
 from ..core import v1
@@ -73,9 +75,9 @@ class VolumeAttachmentStatus(BaseModel):
     )
 
 
-class VolumeAttachment(BaseModel):
+class VolumeAttachment(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1alpha1",
@@ -99,9 +101,9 @@ class VolumeAttachment(BaseModel):
     )
 
 
-class VolumeAttachmentList(BaseModel):
+class VolumeAttachmentList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1alpha1",

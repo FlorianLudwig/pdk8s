@@ -6,6 +6,8 @@ from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
+import pdk8s.model
+
 from ..... import Kind46, Kind47, Kind48, Kind49
 from ...apimachinery.pkg.apis.meta import v1
 
@@ -181,9 +183,9 @@ class SubjectRulesReviewStatus(BaseModel):
     )
 
 
-class LocalSubjectAccessReview(BaseModel):
+class LocalSubjectAccessReview(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -204,9 +206,9 @@ class LocalSubjectAccessReview(BaseModel):
     )
 
 
-class SelfSubjectAccessReview(BaseModel):
+class SelfSubjectAccessReview(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -227,9 +229,9 @@ class SelfSubjectAccessReview(BaseModel):
     )
 
 
-class SelfSubjectRulesReview(BaseModel):
+class SelfSubjectRulesReview(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -249,9 +251,9 @@ class SelfSubjectRulesReview(BaseModel):
     )
 
 
-class SubjectAccessReview(BaseModel):
+class SubjectAccessReview(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",

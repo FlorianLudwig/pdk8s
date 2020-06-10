@@ -6,6 +6,8 @@ from typing import List, Optional
 
 from pydantic import BaseModel, Field
 
+import pdk8s.model
+
 from ..... import Kind141, Kind142, Kind143, Kind144, Kind145, Kind146, Kind147, Kind148
 from ...apimachinery.pkg.apis.meta import v1
 
@@ -76,9 +78,9 @@ class AggregationRule(BaseModel):
     )
 
 
-class ClusterRole(BaseModel):
+class ClusterRole(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     aggregationRule: Optional[AggregationRule] = Field(
         None,
@@ -100,9 +102,9 @@ class ClusterRole(BaseModel):
     )
 
 
-class ClusterRoleBinding(BaseModel):
+class ClusterRoleBinding(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1alpha1",
@@ -125,9 +127,9 @@ class ClusterRoleBinding(BaseModel):
     )
 
 
-class ClusterRoleBindingList(BaseModel):
+class ClusterRoleBindingList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1alpha1",
@@ -145,9 +147,9 @@ class ClusterRoleBindingList(BaseModel):
     )
 
 
-class ClusterRoleList(BaseModel):
+class ClusterRoleList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1alpha1",
@@ -163,9 +165,9 @@ class ClusterRoleList(BaseModel):
     )
 
 
-class Role(BaseModel):
+class Role(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1alpha1",
@@ -183,9 +185,9 @@ class Role(BaseModel):
     )
 
 
-class RoleBinding(BaseModel):
+class RoleBinding(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1alpha1",
@@ -208,9 +210,9 @@ class RoleBinding(BaseModel):
     )
 
 
-class RoleBindingList(BaseModel):
+class RoleBindingList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1alpha1",
@@ -226,9 +228,9 @@ class RoleBindingList(BaseModel):
     )
 
 
-class RoleList(BaseModel):
+class RoleList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1alpha1",

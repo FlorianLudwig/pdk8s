@@ -6,6 +6,8 @@ from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
+import pdk8s.model
+
 from ..... import Kind165, Kind166, Kind167, Kind168
 from ...apimachinery.pkg.apis.meta import v1 as v1_1
 from ..core import v1
@@ -22,9 +24,9 @@ class VolumeError(BaseModel):
     time: Optional[v1.Time] = Field(None, description="Time the error was encountered.")
 
 
-class StorageClass(BaseModel):
+class StorageClass(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     allowVolumeExpansion: Optional[bool] = Field(
         None,
@@ -67,9 +69,9 @@ class StorageClass(BaseModel):
     )
 
 
-class StorageClassList(BaseModel):
+class StorageClassList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",
@@ -139,9 +141,9 @@ class VolumeAttachmentStatus(BaseModel):
     )
 
 
-class VolumeAttachment(BaseModel):
+class VolumeAttachment(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",
@@ -165,9 +167,9 @@ class VolumeAttachment(BaseModel):
     )
 
 
-class VolumeAttachmentList(BaseModel):
+class VolumeAttachmentList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1",

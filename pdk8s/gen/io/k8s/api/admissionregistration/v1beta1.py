@@ -6,6 +6,8 @@ from typing import List, Optional
 
 from pydantic import BaseModel, Field
 
+import pdk8s.model
+
 from ..... import Kind4, Kind5, Kind6, Kind7
 from ...apimachinery.pkg.apis.meta import v1
 
@@ -122,9 +124,9 @@ class MutatingWebhook(BaseModel):
     )
 
 
-class MutatingWebhookConfiguration(BaseModel):
+class MutatingWebhookConfiguration(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -144,9 +146,9 @@ class MutatingWebhookConfiguration(BaseModel):
     )
 
 
-class MutatingWebhookConfigurationList(BaseModel):
+class MutatingWebhookConfigurationList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -211,9 +213,9 @@ class ValidatingWebhook(BaseModel):
     )
 
 
-class ValidatingWebhookConfiguration(BaseModel):
+class ValidatingWebhookConfiguration(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
@@ -233,9 +235,9 @@ class ValidatingWebhookConfiguration(BaseModel):
     )
 
 
-class ValidatingWebhookConfigurationList(BaseModel):
+class ValidatingWebhookConfigurationList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",

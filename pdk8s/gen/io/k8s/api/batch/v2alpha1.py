@@ -6,6 +6,8 @@ from typing import List, Optional
 
 from pydantic import BaseModel, Field
 
+import pdk8s.model
+
 from ..... import Kind61, Kind62
 from ...apimachinery.pkg.apis.meta import v1 as v1_1
 from ..core import v1
@@ -25,9 +27,9 @@ class CronJobStatus(BaseModel):
     )
 
 
-class JobTemplateSpec(BaseModel):
+class JobTemplateSpec(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     metadata: Optional[v1.ObjectMeta] = Field(
         None,
@@ -73,9 +75,9 @@ class CronJobSpec(BaseModel):
     )
 
 
-class CronJob(BaseModel):
+class CronJob(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v2alpha1",
@@ -99,9 +101,9 @@ class CronJob(BaseModel):
     )
 
 
-class CronJobList(BaseModel):
+class CronJobList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v2alpha1",

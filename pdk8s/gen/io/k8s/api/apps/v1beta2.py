@@ -6,6 +6,8 @@ from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
+import pdk8s.model
+
 from ..... import (
     Kind26,
     Kind27,
@@ -339,9 +341,9 @@ class StatefulSetStatus(BaseModel):
     )
 
 
-class ControllerRevision(BaseModel):
+class ControllerRevision(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta2",
@@ -364,9 +366,9 @@ class ControllerRevision(BaseModel):
     )
 
 
-class ControllerRevisionList(BaseModel):
+class ControllerRevisionList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta2",
@@ -413,9 +415,9 @@ class DeploymentStrategy(BaseModel):
     )
 
 
-class Scale(BaseModel):
+class Scale(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta2",
@@ -561,9 +563,9 @@ class StatefulSetSpec(BaseModel):
     )
 
 
-class DaemonSet(BaseModel):
+class DaemonSet(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta2",
@@ -587,9 +589,9 @@ class DaemonSet(BaseModel):
     )
 
 
-class DaemonSetList(BaseModel):
+class DaemonSetList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta2",
@@ -606,9 +608,9 @@ class DaemonSetList(BaseModel):
     )
 
 
-class Deployment(BaseModel):
+class Deployment(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta2",
@@ -629,9 +631,9 @@ class Deployment(BaseModel):
     )
 
 
-class DeploymentList(BaseModel):
+class DeploymentList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta2",
@@ -647,9 +649,9 @@ class DeploymentList(BaseModel):
     metadata: Optional[v1.ListMeta] = Field(None, description="Standard list metadata.")
 
 
-class ReplicaSet(BaseModel):
+class ReplicaSet(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta2",
@@ -673,9 +675,9 @@ class ReplicaSet(BaseModel):
     )
 
 
-class ReplicaSetList(BaseModel):
+class ReplicaSetList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta2",
@@ -695,9 +697,9 @@ class ReplicaSetList(BaseModel):
     )
 
 
-class StatefulSet(BaseModel):
+class StatefulSet(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta2",
@@ -717,9 +719,9 @@ class StatefulSet(BaseModel):
     )
 
 
-class StatefulSetList(BaseModel):
+class StatefulSetList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta2",

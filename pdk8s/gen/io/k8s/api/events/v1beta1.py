@@ -6,6 +6,8 @@ from typing import List, Optional
 
 from pydantic import BaseModel, Field
 
+import pdk8s.model
+
 from ..... import Kind104, Kind105
 from ...apimachinery.pkg.apis.meta import v1
 from ..core import v1 as v1_1
@@ -29,9 +31,9 @@ class EventSeries(BaseModel):
     )
 
 
-class Event(BaseModel):
+class Event(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     action: Optional[str] = Field(
         None,
@@ -95,9 +97,9 @@ class Event(BaseModel):
     )
 
 
-class EventList(BaseModel):
+class EventList(pdk8s.model.NamedModel):
     class Config:
-        extra = "forbid"
+        extra = "allow"
 
     apiVersion: Optional[str] = Field(
         "v1beta1",
