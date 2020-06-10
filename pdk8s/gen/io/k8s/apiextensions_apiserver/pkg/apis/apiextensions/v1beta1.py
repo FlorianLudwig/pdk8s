@@ -13,23 +13,23 @@ from .....apimachinery.pkg.apis.meta import v1
 class CustomResourceColumnDefinition(BaseModel):
     JSONPath: str = Field(
         ...,
-        description='JSONPath is a simple JSON path (i.e. with array notation) which is evaluated against each custom resource to produce the value for this column.',
+        description="JSONPath is a simple JSON path (i.e. with array notation) which is evaluated against each custom resource to produce the value for this column.",
     )
     description: Optional[str] = Field(
-        None, description='description is a human readable description of this column.'
+        None, description="description is a human readable description of this column."
     )
     format: Optional[str] = Field(
         None,
         description="format is an optional OpenAPI type definition for this column. The 'name' format is applied to the primary identifier column to assist in clients identifying column is the resource name. See https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-types for details.",
     )
-    name: str = Field(..., description='name is a human readable name for the column.')
+    name: str = Field(..., description="name is a human readable name for the column.")
     priority: Optional[int] = Field(
         None,
-        description='priority is an integer defining the relative importance of this column compared to others. Lower numbers are considered higher priority. Columns that may be omitted in limited space scenarios should be given a priority greater than 0.',
+        description="priority is an integer defining the relative importance of this column compared to others. Lower numbers are considered higher priority. Columns that may be omitted in limited space scenarios should be given a priority greater than 0.",
     )
     type: str = Field(
         ...,
-        description='type is an OpenAPI type definition for this column. See https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-types for details.',
+        description="type is an OpenAPI type definition for this column. See https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-types for details.",
     )
 
 
@@ -40,7 +40,7 @@ class CustomResourceDefinitionNames(BaseModel):
     )
     kind: str = Field(
         ...,
-        description='kind is the serialized kind of the resource. It is normally CamelCase and singular. Custom resource instances will use this value as the `kind` attribute in API calls.',
+        description="kind is the serialized kind of the resource. It is normally CamelCase and singular. Custom resource instances will use this value as the `kind` attribute in API calls.",
     )
     listKind: Optional[str] = Field(
         None,
@@ -48,30 +48,30 @@ class CustomResourceDefinitionNames(BaseModel):
     )
     plural: str = Field(
         ...,
-        description='plural is the plural name of the resource to serve. The custom resources are served under `/apis/<group>/<version>/.../<plural>`. Must match the name of the CustomResourceDefinition (in the form `<names.plural>.<group>`). Must be all lowercase.',
+        description="plural is the plural name of the resource to serve. The custom resources are served under `/apis/<group>/<version>/.../<plural>`. Must match the name of the CustomResourceDefinition (in the form `<names.plural>.<group>`). Must be all lowercase.",
     )
     shortNames: Optional[List[str]] = Field(
         None,
-        description='shortNames are short names for the resource, exposed in API discovery documents, and used by clients to support invocations like `kubectl get <shortname>`. It must be all lowercase.',
+        description="shortNames are short names for the resource, exposed in API discovery documents, and used by clients to support invocations like `kubectl get <shortname>`. It must be all lowercase.",
     )
     singular: Optional[str] = Field(
         None,
-        description='singular is the singular name of the resource. It must be all lowercase. Defaults to lowercased `kind`.',
+        description="singular is the singular name of the resource. It must be all lowercase. Defaults to lowercased `kind`.",
     )
 
 
 class CustomResourceSubresourceScale(BaseModel):
     labelSelectorPath: Optional[str] = Field(
         None,
-        description='labelSelectorPath defines the JSON path inside of a custom resource that corresponds to Scale `status.selector`. Only JSON paths without the array notation are allowed. Must be a JSON Path under `.status` or `.spec`. Must be set to work with HorizontalPodAutoscaler. The field pointed by this JSON path must be a string field (not a complex selector struct) which contains a serialized label selector in string form. More info: https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions#scale-subresource If there is no value under the given path in the custom resource, the `status.selector` value in the `/scale` subresource will default to the empty string.',
+        description="labelSelectorPath defines the JSON path inside of a custom resource that corresponds to Scale `status.selector`. Only JSON paths without the array notation are allowed. Must be a JSON Path under `.status` or `.spec`. Must be set to work with HorizontalPodAutoscaler. The field pointed by this JSON path must be a string field (not a complex selector struct) which contains a serialized label selector in string form. More info: https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions#scale-subresource If there is no value under the given path in the custom resource, the `status.selector` value in the `/scale` subresource will default to the empty string.",
     )
     specReplicasPath: str = Field(
         ...,
-        description='specReplicasPath defines the JSON path inside of a custom resource that corresponds to Scale `spec.replicas`. Only JSON paths without the array notation are allowed. Must be a JSON Path under `.spec`. If there is no value under the given path in the custom resource, the `/scale` subresource will return an error on GET.',
+        description="specReplicasPath defines the JSON path inside of a custom resource that corresponds to Scale `spec.replicas`. Only JSON paths without the array notation are allowed. Must be a JSON Path under `.spec`. If there is no value under the given path in the custom resource, the `/scale` subresource will return an error on GET.",
     )
     statusReplicasPath: str = Field(
         ...,
-        description='statusReplicasPath defines the JSON path inside of a custom resource that corresponds to Scale `status.replicas`. Only JSON paths without the array notation are allowed. Must be a JSON Path under `.status`. If there is no value under the given path in the custom resource, the `status.replicas` value in the `/scale` subresource will default to 0.',
+        description="statusReplicasPath defines the JSON path inside of a custom resource that corresponds to Scale `status.replicas`. Only JSON paths without the array notation are allowed. Must be a JSON Path under `.status`. If there is no value under the given path in the custom resource, the `status.replicas` value in the `/scale` subresource will default to 0.",
     )
 
 
@@ -82,11 +82,11 @@ class CustomResourceSubresourceStatus(BaseModel):
 class CustomResourceSubresources(BaseModel):
     scale: Optional[CustomResourceSubresourceScale] = Field(
         None,
-        description='scale indicates the custom resource should serve a `/scale` subresource that returns an `autoscaling/v1` Scale object.',
+        description="scale indicates the custom resource should serve a `/scale` subresource that returns an `autoscaling/v1` Scale object.",
     )
     status: Optional[CustomResourceSubresourceStatus] = Field(
         None,
-        description='status indicates the custom resource should serve a `/status` subresource. When enabled: 1. requests to the custom resource primary endpoint ignore changes to the `status` stanza of the object. 2. requests to the custom resource `/status` subresource ignore changes to anything other than the `status` stanza of the object.',
+        description="status indicates the custom resource should serve a `/status` subresource. When enabled: 1. requests to the custom resource primary endpoint ignore changes to the `status` stanza of the object. 2. requests to the custom resource `/status` subresource ignore changes to anything other than the `status` stanza of the object.",
     )
 
 
@@ -112,17 +112,17 @@ class JSONSchemaPropsOrStringArray(BaseModel):
 
 
 class ServiceReference(BaseModel):
-    name: str = Field(..., description='name is the name of the service. Required')
+    name: str = Field(..., description="name is the name of the service. Required")
     namespace: str = Field(
-        ..., description='namespace is the namespace of the service. Required'
+        ..., description="namespace is the namespace of the service. Required"
     )
     path: Optional[str] = Field(
         None,
-        description='path is an optional URL path at which the webhook will be contacted.',
+        description="path is an optional URL path at which the webhook will be contacted.",
     )
     port: Optional[int] = Field(
         None,
-        description='port is an optional service port at which the webhook will be contacted. `port` should be a valid port number (1-65535, inclusive). Defaults to 443 for backward compatibility.',
+        description="port is an optional service port at which the webhook will be contacted. `port` should be a valid port number (1-65535, inclusive). Defaults to 443 for backward compatibility.",
     )
 
 
@@ -133,7 +133,7 @@ class WebhookClientConfig(BaseModel):
     )
     service: Optional[ServiceReference] = Field(
         None,
-        description='service is a reference to the service for this webhook. Either service or url must be specified.\n\nIf the webhook is running within the cluster, then you should use `service`.',
+        description="service is a reference to the service for this webhook. Either service or url must be specified.\n\nIf the webhook is running within the cluster, then you should use `service`.",
     )
     url: Optional[str] = Field(
         None,
@@ -148,22 +148,22 @@ class CustomResourceConversion(BaseModel):
     )
     strategy: str = Field(
         ...,
-        description='strategy specifies how custom resources are converted between versions. Allowed values are: - `None`: The converter only change the apiVersion and would not touch any other field in the custom resource. - `Webhook`: API Server will call to an external webhook to do the conversion. Additional information\n  is needed for this option. This requires spec.preserveUnknownFields to be false, and spec.conversion.webhookClientConfig to be set.',
+        description="strategy specifies how custom resources are converted between versions. Allowed values are: - `None`: The converter only change the apiVersion and would not touch any other field in the custom resource. - `Webhook`: API Server will call to an external webhook to do the conversion. Additional information\n  is needed for this option. This requires spec.preserveUnknownFields to be false, and spec.conversion.webhookClientConfig to be set.",
     )
     webhookClientConfig: Optional[WebhookClientConfig] = Field(
         None,
-        description='webhookClientConfig is the instructions for how to call the webhook if strategy is `Webhook`. Required when `strategy` is set to `Webhook`.',
+        description="webhookClientConfig is the instructions for how to call the webhook if strategy is `Webhook`. Required when `strategy` is set to `Webhook`.",
     )
 
 
 class CustomResourceDefinitionCondition(BaseModel):
     lastTransitionTime: Optional[v1.Time] = Field(
         None,
-        description='lastTransitionTime last time the condition transitioned from one status to another.',
+        description="lastTransitionTime last time the condition transitioned from one status to another.",
     )
     message: Optional[str] = Field(
         None,
-        description='message is a human-readable message indicating details about last transition.',
+        description="message is a human-readable message indicating details about last transition.",
     )
     reason: Optional[str] = Field(
         None,
@@ -171,39 +171,39 @@ class CustomResourceDefinitionCondition(BaseModel):
     )
     status: str = Field(
         ...,
-        description='status is the status of the condition. Can be True, False, Unknown.',
+        description="status is the status of the condition. Can be True, False, Unknown.",
     )
     type: str = Field(
         ...,
-        description='type is the type of the condition. Types include Established, NamesAccepted and Terminating.',
+        description="type is the type of the condition. Types include Established, NamesAccepted and Terminating.",
     )
 
 
 class CustomResourceDefinitionStatus(BaseModel):
     acceptedNames: CustomResourceDefinitionNames = Field(
         ...,
-        description='acceptedNames are the names that are actually being used to serve discovery. They may be different than the names in spec.',
+        description="acceptedNames are the names that are actually being used to serve discovery. They may be different than the names in spec.",
     )
     conditions: Optional[List[CustomResourceDefinitionCondition]] = Field(
         None,
-        description='conditions indicate state for particular aspects of a CustomResourceDefinition',
+        description="conditions indicate state for particular aspects of a CustomResourceDefinition",
     )
     storedVersions: List[str] = Field(
         ...,
-        description='storedVersions lists all versions of CustomResources that were ever persisted. Tracking these versions allows a migration path for stored versions in etcd. The field is mutable so a migration controller can finish a migration to another version (ensuring no old objects are left in storage), and then remove the rest of the versions from this list. Versions may not be removed from `spec.versions` while they exist in this list.',
+        description="storedVersions lists all versions of CustomResources that were ever persisted. Tracking these versions allows a migration path for stored versions in etcd. The field is mutable so a migration controller can finish a migration to another version (ensuring no old objects are left in storage), and then remove the rest of the versions from this list. Versions may not be removed from `spec.versions` while they exist in this list.",
     )
 
 
 class JSONSchemaProps(BaseModel):
-    _ref: Optional[str] = Field(None, alias='$ref')
-    _schema: Optional[str] = Field(None, alias='$schema')
+    _ref: Optional[str] = Field(None, alias="$ref")
+    _schema: Optional[str] = Field(None, alias="$schema")
     additionalItems: Optional[JSONSchemaPropsOrBool] = None
     additionalProperties: Optional[JSONSchemaPropsOrBool] = None
     allOf: Optional[List[JSONSchemaProps]] = None
     anyOf: Optional[List[JSONSchemaProps]] = None
     default: Optional[JSON] = Field(
         None,
-        description='default is a default value for undefined object fields. Defaulting is a beta feature under the CustomResourceDefaulting feature gate. CustomResourceDefinitions with defaults must be created using the v1 (or newer) CustomResourceDefinition API.',
+        description="default is a default value for undefined object fields. Defaulting is a beta feature under the CustomResourceDefaulting feature gate. CustomResourceDefinitions with defaults must be created using the v1 (or newer) CustomResourceDefinition API.",
     )
     definitions: Optional[Dict[str, Any]] = None
     dependencies: Optional[Dict[str, Any]] = None
@@ -225,7 +225,7 @@ class JSONSchemaProps(BaseModel):
     minProperties: Optional[int] = None
     minimum: Optional[float] = None
     multipleOf: Optional[float] = None
-    not_: Optional[JSONSchemaProps] = Field(None, alias='not')
+    not_: Optional[JSONSchemaProps] = Field(None, alias="not")
     nullable: Optional[bool] = None
     oneOf: Optional[List[JSONSchemaProps]] = None
     pattern: Optional[str] = None
@@ -237,100 +237,100 @@ class JSONSchemaProps(BaseModel):
     uniqueItems: Optional[bool] = None
     x_kubernetes_embedded_resource: Optional[bool] = Field(
         None,
-        alias='x-kubernetes-embedded-resource',
-        description='x-kubernetes-embedded-resource defines that the value is an embedded Kubernetes runtime.Object, with TypeMeta and ObjectMeta. The type must be object. It is allowed to further restrict the embedded object. kind, apiVersion and metadata are validated automatically. x-kubernetes-preserve-unknown-fields is allowed to be true, but does not have to be if the object is fully specified (up to kind, apiVersion, metadata).',
+        alias="x-kubernetes-embedded-resource",
+        description="x-kubernetes-embedded-resource defines that the value is an embedded Kubernetes runtime.Object, with TypeMeta and ObjectMeta. The type must be object. It is allowed to further restrict the embedded object. kind, apiVersion and metadata are validated automatically. x-kubernetes-preserve-unknown-fields is allowed to be true, but does not have to be if the object is fully specified (up to kind, apiVersion, metadata).",
     )
     x_kubernetes_int_or_string: Optional[bool] = Field(
         None,
-        alias='x-kubernetes-int-or-string',
-        description='x-kubernetes-int-or-string specifies that this value is either an integer or a string. If this is true, an empty type is allowed and type as child of anyOf is permitted if following one of the following patterns:\n\n1) anyOf:\n   - type: integer\n   - type: string\n2) allOf:\n   - anyOf:\n     - type: integer\n     - type: string\n   - ... zero or more',
+        alias="x-kubernetes-int-or-string",
+        description="x-kubernetes-int-or-string specifies that this value is either an integer or a string. If this is true, an empty type is allowed and type as child of anyOf is permitted if following one of the following patterns:\n\n1) anyOf:\n   - type: integer\n   - type: string\n2) allOf:\n   - anyOf:\n     - type: integer\n     - type: string\n   - ... zero or more",
     )
     x_kubernetes_list_map_keys: Optional[List[str]] = Field(
         None,
-        alias='x-kubernetes-list-map-keys',
+        alias="x-kubernetes-list-map-keys",
         description='x-kubernetes-list-map-keys annotates an array with the x-kubernetes-list-type `map` by specifying the keys used as the index of the map.\n\nThis tag MUST only be used on lists that have the "x-kubernetes-list-type" extension set to "map". Also, the values specified for this attribute must be a scalar typed field of the child structure (no nesting is supported).',
     )
     x_kubernetes_list_type: Optional[str] = Field(
         None,
-        alias='x-kubernetes-list-type',
-        description='x-kubernetes-list-type annotates an array to further describe its topology. This extension must only be used on lists and may have 3 possible values:\n\n1) `atomic`: the list is treated as a single entity, like a scalar.\n     Atomic lists will be entirely replaced when updated. This extension\n     may be used on any type of list (struct, scalar, ...).\n2) `set`:\n     Sets are lists that must not have multiple items with the same value. Each\n     value must be a scalar, an object with x-kubernetes-map-type `atomic` or an\n     array with x-kubernetes-list-type `atomic`.\n3) `map`:\n     These lists are like maps in that their elements have a non-index key\n     used to identify them. Order is preserved upon merge. The map tag\n     must only be used on a list with elements of type object.\nDefaults to atomic for arrays.',
+        alias="x-kubernetes-list-type",
+        description="x-kubernetes-list-type annotates an array to further describe its topology. This extension must only be used on lists and may have 3 possible values:\n\n1) `atomic`: the list is treated as a single entity, like a scalar.\n     Atomic lists will be entirely replaced when updated. This extension\n     may be used on any type of list (struct, scalar, ...).\n2) `set`:\n     Sets are lists that must not have multiple items with the same value. Each\n     value must be a scalar, an object with x-kubernetes-map-type `atomic` or an\n     array with x-kubernetes-list-type `atomic`.\n3) `map`:\n     These lists are like maps in that their elements have a non-index key\n     used to identify them. Order is preserved upon merge. The map tag\n     must only be used on a list with elements of type object.\nDefaults to atomic for arrays.",
     )
     x_kubernetes_preserve_unknown_fields: Optional[bool] = Field(
         None,
-        alias='x-kubernetes-preserve-unknown-fields',
-        description='x-kubernetes-preserve-unknown-fields stops the API server decoding step from pruning fields which are not specified in the validation schema. This affects fields recursively, but switches back to normal pruning behaviour if nested properties or additionalProperties are specified in the schema. This can either be true or undefined. False is forbidden.',
+        alias="x-kubernetes-preserve-unknown-fields",
+        description="x-kubernetes-preserve-unknown-fields stops the API server decoding step from pruning fields which are not specified in the validation schema. This affects fields recursively, but switches back to normal pruning behaviour if nested properties or additionalProperties are specified in the schema. This can either be true or undefined. False is forbidden.",
     )
 
 
 class CustomResourceValidation(BaseModel):
     openAPIV3Schema: Optional[JSONSchemaProps] = Field(
         None,
-        description='openAPIV3Schema is the OpenAPI v3 schema to use for validation and pruning.',
+        description="openAPIV3Schema is the OpenAPI v3 schema to use for validation and pruning.",
     )
 
 
 class CustomResourceDefinitionVersion(BaseModel):
     additionalPrinterColumns: Optional[List[CustomResourceColumnDefinition]] = Field(
         None,
-        description='additionalPrinterColumns specifies additional columns returned in Table output. See https://kubernetes.io/docs/reference/using-api/api-concepts/#receiving-resources-as-tables for details. Top-level and per-version columns are mutually exclusive. Per-version columns must not all be set to identical values (top-level columns should be used instead). If no top-level or per-version columns are specified, a single column displaying the age of the custom resource is used.',
+        description="additionalPrinterColumns specifies additional columns returned in Table output. See https://kubernetes.io/docs/reference/using-api/api-concepts/#receiving-resources-as-tables for details. Top-level and per-version columns are mutually exclusive. Per-version columns must not all be set to identical values (top-level columns should be used instead). If no top-level or per-version columns are specified, a single column displaying the age of the custom resource is used.",
     )
     name: str = Field(
         ...,
-        description='name is the version name, e.g. “v1”, “v2beta1”, etc. The custom resources are served under this version at `/apis/<group>/<version>/...` if `served` is true.',
+        description="name is the version name, e.g. “v1”, “v2beta1”, etc. The custom resources are served under this version at `/apis/<group>/<version>/...` if `served` is true.",
     )
     schema: Optional[CustomResourceValidation] = Field(
         None,
-        description='schema describes the schema used for validation and pruning of this version of the custom resource. Top-level and per-version schemas are mutually exclusive. Per-version schemas must not all be set to identical values (top-level validation schema should be used instead).',
+        description="schema describes the schema used for validation and pruning of this version of the custom resource. Top-level and per-version schemas are mutually exclusive. Per-version schemas must not all be set to identical values (top-level validation schema should be used instead).",
     )
     served: bool = Field(
         ...,
-        description='served is a flag enabling/disabling this version from being served via REST APIs',
+        description="served is a flag enabling/disabling this version from being served via REST APIs",
     )
     storage: bool = Field(
         ...,
-        description='storage indicates this version should be used when persisting custom resources to storage. There must be exactly one version with storage=true.',
+        description="storage indicates this version should be used when persisting custom resources to storage. There must be exactly one version with storage=true.",
     )
     subresources: Optional[CustomResourceSubresources] = Field(
         None,
-        description='subresources specify what subresources this version of the defined custom resource have. Top-level and per-version subresources are mutually exclusive. Per-version subresources must not all be set to identical values (top-level subresources should be used instead).',
+        description="subresources specify what subresources this version of the defined custom resource have. Top-level and per-version subresources are mutually exclusive. Per-version subresources must not all be set to identical values (top-level subresources should be used instead).",
     )
 
 
 class CustomResourceDefinitionSpec(BaseModel):
     additionalPrinterColumns: Optional[List[CustomResourceColumnDefinition]] = Field(
         None,
-        description='additionalPrinterColumns specifies additional columns returned in Table output. See https://kubernetes.io/docs/reference/using-api/api-concepts/#receiving-resources-as-tables for details. If present, this field configures columns for all versions. Top-level and per-version columns are mutually exclusive. If no top-level or per-version columns are specified, a single column displaying the age of the custom resource is used.',
+        description="additionalPrinterColumns specifies additional columns returned in Table output. See https://kubernetes.io/docs/reference/using-api/api-concepts/#receiving-resources-as-tables for details. If present, this field configures columns for all versions. Top-level and per-version columns are mutually exclusive. If no top-level or per-version columns are specified, a single column displaying the age of the custom resource is used.",
     )
     conversion: Optional[CustomResourceConversion] = Field(
-        None, description='conversion defines conversion settings for the CRD.'
+        None, description="conversion defines conversion settings for the CRD."
     )
     group: str = Field(
         ...,
-        description='group is the API group of the defined custom resource. The custom resources are served under `/apis/<group>/...`. Must match the name of the CustomResourceDefinition (in the form `<names.plural>.<group>`).',
+        description="group is the API group of the defined custom resource. The custom resources are served under `/apis/<group>/...`. Must match the name of the CustomResourceDefinition (in the form `<names.plural>.<group>`).",
     )
     names: CustomResourceDefinitionNames = Field(
         ...,
-        description='names specify the resource and kind names for the custom resource.',
+        description="names specify the resource and kind names for the custom resource.",
     )
     preserveUnknownFields: Optional[bool] = Field(
         None,
-        description='preserveUnknownFields indicates that object fields which are not specified in the OpenAPI schema should be preserved when persisting to storage. apiVersion, kind, metadata and known fields inside metadata are always preserved. If false, schemas must be defined for all versions. Defaults to true in v1beta for backwards compatibility. Deprecated: will be required to be false in v1. Preservation of unknown fields can be specified in the validation schema using the `x-kubernetes-preserve-unknown-fields: true` extension. See https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/#pruning-versus-preserving-unknown-fields for details.',
+        description="preserveUnknownFields indicates that object fields which are not specified in the OpenAPI schema should be preserved when persisting to storage. apiVersion, kind, metadata and known fields inside metadata are always preserved. If false, schemas must be defined for all versions. Defaults to true in v1beta for backwards compatibility. Deprecated: will be required to be false in v1. Preservation of unknown fields can be specified in the validation schema using the `x-kubernetes-preserve-unknown-fields: true` extension. See https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/#pruning-versus-preserving-unknown-fields for details.",
     )
     scope: str = Field(
         ...,
-        description='scope indicates whether the defined custom resource is cluster- or namespace-scoped. Allowed values are `Cluster` and `Namespaced`. Default is `Namespaced`.',
+        description="scope indicates whether the defined custom resource is cluster- or namespace-scoped. Allowed values are `Cluster` and `Namespaced`. Default is `Namespaced`.",
     )
     subresources: Optional[CustomResourceSubresources] = Field(
         None,
-        description='subresources specify what subresources the defined custom resource has. If present, this field configures subresources for all versions. Top-level and per-version subresources are mutually exclusive.',
+        description="subresources specify what subresources the defined custom resource has. If present, this field configures subresources for all versions. Top-level and per-version subresources are mutually exclusive.",
     )
     validation: Optional[CustomResourceValidation] = Field(
         None,
-        description='validation describes the schema used for validation and pruning of the custom resource. If present, this validation schema is used to validate all versions. Top-level and per-version schemas are mutually exclusive.',
+        description="validation describes the schema used for validation and pruning of the custom resource. If present, this validation schema is used to validate all versions. Top-level and per-version schemas are mutually exclusive.",
     )
     version: Optional[str] = Field(
         None,
-        description='version is the API version of the defined custom resource. The custom resources are served under `/apis/<group>/<version>/...`. Must match the name of the first item in the `versions` list if `version` and `versions` are both specified. Optional if `versions` is specified. Deprecated: use `versions` instead.',
+        description="version is the API version of the defined custom resource. The custom resources are served under `/apis/<group>/<version>/...`. Must match the name of the first item in the `versions` list if `version` and `versions` are both specified. Optional if `versions` is specified. Deprecated: use `versions` instead.",
     )
     versions: Optional[List[CustomResourceDefinitionVersion]] = Field(
         None,
@@ -340,34 +340,34 @@ class CustomResourceDefinitionSpec(BaseModel):
 
 class CustomResourceDefinition(BaseModel):
     apiVersion: Optional[str] = Field(
-        'v1beta1',
-        description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
+        "v1beta1",
+        description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     kind: Optional[Kind181] = Field(
-        'CustomResourceDefinition',
-        description='Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
+        "CustomResourceDefinition",
+        description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
     metadata: Optional[v1.ObjectMeta] = None
     spec: CustomResourceDefinitionSpec = Field(
-        ..., description='spec describes how the user wants the resources to appear'
+        ..., description="spec describes how the user wants the resources to appear"
     )
     status: Optional[CustomResourceDefinitionStatus] = Field(
         None,
-        description='status indicates the actual state of the CustomResourceDefinition',
+        description="status indicates the actual state of the CustomResourceDefinition",
     )
 
 
 class CustomResourceDefinitionList(BaseModel):
     apiVersion: Optional[str] = Field(
-        'v1beta1',
-        description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
+        "v1beta1",
+        description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     items: List[CustomResourceDefinition] = Field(
-        ..., description='items list individual CustomResourceDefinition objects'
+        ..., description="items list individual CustomResourceDefinition objects"
     )
     kind: Optional[Kind182] = Field(
-        'CustomResourceDefinitionList',
-        description='Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
+        "CustomResourceDefinitionList",
+        description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
     metadata: Optional[v1.ListMeta] = None
 

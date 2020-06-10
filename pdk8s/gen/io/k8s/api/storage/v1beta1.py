@@ -14,7 +14,7 @@ from ..core import v1
 class CSIDriverSpec(BaseModel):
     attachRequired: Optional[bool] = Field(
         None,
-        description='attachRequired indicates this CSI volume driver requires an attach operation (because it implements the CSI ControllerPublishVolume() method), and that the Kubernetes attach detach controller should call the attach volume interface which checks the volumeattachment status and waits until the volume is attached before proceeding to mounting. The CSI external-attacher coordinates with CSI volume driver and updates the volumeattachment status when the attach operation is complete. If the CSIDriverRegistry feature gate is enabled and the value is specified to false, the attach operation will be skipped. Otherwise the attach operation will be called.',
+        description="attachRequired indicates this CSI volume driver requires an attach operation (because it implements the CSI ControllerPublishVolume() method), and that the Kubernetes attach detach controller should call the attach volume interface which checks the volumeattachment status and waits until the volume is attached before proceeding to mounting. The CSI external-attacher coordinates with CSI volume driver and updates the volumeattachment status when the attach operation is complete. If the CSIDriverRegistry feature gate is enabled and the value is specified to false, the attach operation will be skipped. Otherwise the attach operation will be called.",
     )
     podInfoOnMount: Optional[bool] = Field(
         None,
@@ -29,18 +29,18 @@ class CSIDriverSpec(BaseModel):
 class VolumeNodeResources(BaseModel):
     count: Optional[int] = Field(
         None,
-        description='Maximum number of unique volumes managed by the CSI driver that can be used on a node. A volume that is both attached and mounted on a node is considered to be used once, not twice. The same rule applies for a unique volume that is shared among multiple pods on the same node. If this field is nil, then the supported number of volumes on this node is unbounded.',
+        description="Maximum number of unique volumes managed by the CSI driver that can be used on a node. A volume that is both attached and mounted on a node is considered to be used once, not twice. The same rule applies for a unique volume that is shared among multiple pods on the same node. If this field is nil, then the supported number of volumes on this node is unbounded.",
     )
 
 
 class CSINodeDriver(BaseModel):
     allocatable: Optional[VolumeNodeResources] = Field(
         None,
-        description='allocatable represents the volume resources of a node that are available for scheduling.',
+        description="allocatable represents the volume resources of a node that are available for scheduling.",
     )
     name: str = Field(
         ...,
-        description='This is the name of the CSI driver that this object refers to. This MUST be the same name returned by the CSI GetPluginName() call for that driver.',
+        description="This is the name of the CSI driver that this object refers to. This MUST be the same name returned by the CSI GetPluginName() call for that driver.",
     )
     nodeID: str = Field(
         ...,
@@ -55,97 +55,97 @@ class CSINodeDriver(BaseModel):
 class CSINodeSpec(BaseModel):
     drivers: List[CSINodeDriver] = Field(
         ...,
-        description='drivers is a list of information of all CSI Drivers existing on a node. If all drivers in the list are uninstalled, this can become empty.',
+        description="drivers is a list of information of all CSI Drivers existing on a node. If all drivers in the list are uninstalled, this can become empty.",
     )
 
 
 class VolumeError(BaseModel):
     message: Optional[str] = Field(
         None,
-        description='String detailing the error encountered during Attach or Detach operation. This string may be logged, so it should not contain sensitive information.',
+        description="String detailing the error encountered during Attach or Detach operation. This string may be logged, so it should not contain sensitive information.",
     )
-    time: Optional[v1.Time] = Field(None, description='Time the error was encountered.')
+    time: Optional[v1.Time] = Field(None, description="Time the error was encountered.")
 
 
 class CSIDriver(BaseModel):
     apiVersion: Optional[str] = Field(
-        'v1beta1',
-        description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
+        "v1beta1",
+        description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     kind: Optional[Kind171] = Field(
-        'CSIDriver',
-        description='Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
+        "CSIDriver",
+        description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
     metadata: Optional[v1.ObjectMeta] = Field(
         None,
-        description='Standard object metadata. metadata.Name indicates the name of the CSI driver that this object refers to; it MUST be the same name returned by the CSI GetPluginName() call for that driver. The driver name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), dots (.), and alphanumerics between. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata',
+        description="Standard object metadata. metadata.Name indicates the name of the CSI driver that this object refers to; it MUST be the same name returned by the CSI GetPluginName() call for that driver. The driver name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), dots (.), and alphanumerics between. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
     )
-    spec: CSIDriverSpec = Field(..., description='Specification of the CSI Driver.')
+    spec: CSIDriverSpec = Field(..., description="Specification of the CSI Driver.")
 
 
 class CSIDriverList(BaseModel):
     apiVersion: Optional[str] = Field(
-        'v1beta1',
-        description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
+        "v1beta1",
+        description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
-    items: List[CSIDriver] = Field(..., description='items is the list of CSIDriver')
+    items: List[CSIDriver] = Field(..., description="items is the list of CSIDriver")
     kind: Optional[Kind172] = Field(
-        'CSIDriverList',
-        description='Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
+        "CSIDriverList",
+        description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
     metadata: Optional[v1.ListMeta] = Field(
         None,
-        description='Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata',
+        description="Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
     )
 
 
 class CSINode(BaseModel):
     apiVersion: Optional[str] = Field(
-        'v1beta1',
-        description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
+        "v1beta1",
+        description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     kind: Optional[Kind173] = Field(
-        'CSINode',
-        description='Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
+        "CSINode",
+        description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
     metadata: Optional[v1.ObjectMeta] = Field(
-        None, description='metadata.name must be the Kubernetes node name.'
+        None, description="metadata.name must be the Kubernetes node name."
     )
-    spec: CSINodeSpec = Field(..., description='spec is the specification of CSINode')
+    spec: CSINodeSpec = Field(..., description="spec is the specification of CSINode")
 
 
 class CSINodeList(BaseModel):
     apiVersion: Optional[str] = Field(
-        'v1beta1',
-        description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
+        "v1beta1",
+        description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
-    items: List[CSINode] = Field(..., description='items is the list of CSINode')
+    items: List[CSINode] = Field(..., description="items is the list of CSINode")
     kind: Optional[Kind174] = Field(
-        'CSINodeList',
-        description='Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
+        "CSINodeList",
+        description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
     metadata: Optional[v1.ListMeta] = Field(
         None,
-        description='Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata',
+        description="Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
     )
 
 
 class StorageClass(BaseModel):
     allowVolumeExpansion: Optional[bool] = Field(
         None,
-        description='AllowVolumeExpansion shows whether the storage class allow volume expand',
+        description="AllowVolumeExpansion shows whether the storage class allow volume expand",
     )
     allowedTopologies: Optional[List[v1.TopologySelectorTerm]] = Field(
         None,
-        description='Restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature.',
+        description="Restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature.",
     )
     apiVersion: Optional[str] = Field(
-        'v1beta1',
-        description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
+        "v1beta1",
+        description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     kind: Optional[Kind175] = Field(
-        'StorageClass',
-        description='Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
+        "StorageClass",
+        description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
     metadata: Optional[v1_1.ObjectMeta] = Field(
         None,
@@ -157,36 +157,36 @@ class StorageClass(BaseModel):
     )
     parameters: Optional[Dict[str, Any]] = Field(
         None,
-        description='Parameters holds the parameters for the provisioner that should create volumes of this storage class.',
+        description="Parameters holds the parameters for the provisioner that should create volumes of this storage class.",
     )
     provisioner: str = Field(
-        ..., description='Provisioner indicates the type of the provisioner.'
+        ..., description="Provisioner indicates the type of the provisioner."
     )
     reclaimPolicy: Optional[str] = Field(
         None,
-        description='Dynamically provisioned PersistentVolumes of this storage class are created with this reclaimPolicy. Defaults to Delete.',
+        description="Dynamically provisioned PersistentVolumes of this storage class are created with this reclaimPolicy. Defaults to Delete.",
     )
     volumeBindingMode: Optional[str] = Field(
         None,
-        description='VolumeBindingMode indicates how PersistentVolumeClaims should be provisioned and bound.  When unset, VolumeBindingImmediate is used. This field is only honored by servers that enable the VolumeScheduling feature.',
+        description="VolumeBindingMode indicates how PersistentVolumeClaims should be provisioned and bound.  When unset, VolumeBindingImmediate is used. This field is only honored by servers that enable the VolumeScheduling feature.",
     )
 
 
 class StorageClassList(BaseModel):
     apiVersion: Optional[str] = Field(
-        'v1beta1',
-        description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
+        "v1beta1",
+        description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     items: List[StorageClass] = Field(
-        ..., description='Items is the list of StorageClasses'
+        ..., description="Items is the list of StorageClasses"
     )
     kind: Optional[Kind176] = Field(
-        'StorageClassList',
-        description='Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
+        "StorageClassList",
+        description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
     metadata: Optional[v1.ListMeta] = Field(
         None,
-        description='Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata',
+        description="Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
     )
 
 
@@ -196,78 +196,78 @@ class VolumeAttachmentSource(BaseModel):
         description="inlineVolumeSpec contains all the information necessary to attach a persistent volume defined by a pod's inline VolumeSource. This field is populated only for the CSIMigration feature. It contains translated fields from a pod's inline VolumeSource to a PersistentVolumeSpec. This field is alpha-level and is only honored by servers that enabled the CSIMigration feature.",
     )
     persistentVolumeName: Optional[str] = Field(
-        None, description='Name of the persistent volume to attach.'
+        None, description="Name of the persistent volume to attach."
     )
 
 
 class VolumeAttachmentSpec(BaseModel):
     attacher: str = Field(
         ...,
-        description='Attacher indicates the name of the volume driver that MUST handle this request. This is the name returned by GetPluginName().',
+        description="Attacher indicates the name of the volume driver that MUST handle this request. This is the name returned by GetPluginName().",
     )
     nodeName: str = Field(
-        ..., description='The node that the volume should be attached to.'
+        ..., description="The node that the volume should be attached to."
     )
     source: VolumeAttachmentSource = Field(
-        ..., description='Source represents the volume that should be attached.'
+        ..., description="Source represents the volume that should be attached."
     )
 
 
 class VolumeAttachmentStatus(BaseModel):
     attachError: Optional[VolumeError] = Field(
         None,
-        description='The last error encountered during attach operation, if any. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.',
+        description="The last error encountered during attach operation, if any. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.",
     )
     attached: bool = Field(
         ...,
-        description='Indicates the volume is successfully attached. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.',
+        description="Indicates the volume is successfully attached. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.",
     )
     attachmentMetadata: Optional[Dict[str, Any]] = Field(
         None,
-        description='Upon successful attach, this field is populated with any information returned by the attach operation that must be passed into subsequent WaitForAttach or Mount calls. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.',
+        description="Upon successful attach, this field is populated with any information returned by the attach operation that must be passed into subsequent WaitForAttach or Mount calls. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.",
     )
     detachError: Optional[VolumeError] = Field(
         None,
-        description='The last error encountered during detach operation, if any. This field must only be set by the entity completing the detach operation, i.e. the external-attacher.',
+        description="The last error encountered during detach operation, if any. This field must only be set by the entity completing the detach operation, i.e. the external-attacher.",
     )
 
 
 class VolumeAttachment(BaseModel):
     apiVersion: Optional[str] = Field(
-        'v1beta1',
-        description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
+        "v1beta1",
+        description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     kind: Optional[Kind177] = Field(
-        'VolumeAttachment',
-        description='Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
+        "VolumeAttachment",
+        description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
     metadata: Optional[v1.ObjectMeta] = Field(
         None,
-        description='Standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata',
+        description="Standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
     )
     spec: VolumeAttachmentSpec = Field(
         ...,
-        description='Specification of the desired attach/detach volume behavior. Populated by the Kubernetes system.',
+        description="Specification of the desired attach/detach volume behavior. Populated by the Kubernetes system.",
     )
     status: Optional[VolumeAttachmentStatus] = Field(
         None,
-        description='Status of the VolumeAttachment request. Populated by the entity completing the attach or detach operation, i.e. the external-attacher.',
+        description="Status of the VolumeAttachment request. Populated by the entity completing the attach or detach operation, i.e. the external-attacher.",
     )
 
 
 class VolumeAttachmentList(BaseModel):
     apiVersion: Optional[str] = Field(
-        'v1beta1',
-        description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
+        "v1beta1",
+        description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     items: List[VolumeAttachment] = Field(
-        ..., description='Items is the list of VolumeAttachments'
+        ..., description="Items is the list of VolumeAttachments"
     )
     kind: Optional[Kind178] = Field(
-        'VolumeAttachmentList',
-        description='Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
+        "VolumeAttachmentList",
+        description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
     metadata: Optional[v1.ListMeta] = Field(
         None,
-        description='Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata',
+        description="Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
     )

@@ -14,7 +14,7 @@ from ..core import v1
 class Overhead(BaseModel):
     podFixed: Optional[Dict[str, Any]] = Field(
         None,
-        description='PodFixed represents the fixed resource overhead associated with running a pod.',
+        description="PodFixed represents the fixed resource overhead associated with running a pod.",
     )
 
 
@@ -25,14 +25,14 @@ class Scheduling(BaseModel):
     )
     tolerations: Optional[List[v1.Toleration]] = Field(
         None,
-        description='tolerations are appended (excluding duplicates) to pods running with this RuntimeClass during admission, effectively unioning the set of nodes tolerated by the pod and the RuntimeClass.',
+        description="tolerations are appended (excluding duplicates) to pods running with this RuntimeClass during admission, effectively unioning the set of nodes tolerated by the pod and the RuntimeClass.",
     )
 
 
 class RuntimeClassSpec(BaseModel):
     overhead: Optional[Overhead] = Field(
         None,
-        description='Overhead represents the resource overhead associated with running a pod for a given RuntimeClass. For more details, see https://git.k8s.io/enhancements/keps/sig-node/20190226-pod-overhead.md This field is alpha-level as of Kubernetes v1.15, and is only honored by servers that enable the PodOverhead feature.',
+        description="Overhead represents the resource overhead associated with running a pod for a given RuntimeClass. For more details, see https://git.k8s.io/enhancements/keps/sig-node/20190226-pod-overhead.md This field is alpha-level as of Kubernetes v1.15, and is only honored by servers that enable the PodOverhead feature.",
     )
     runtimeHandler: str = Field(
         ...,
@@ -40,42 +40,42 @@ class RuntimeClassSpec(BaseModel):
     )
     scheduling: Optional[Scheduling] = Field(
         None,
-        description='Scheduling holds the scheduling constraints to ensure that pods running with this RuntimeClass are scheduled to nodes that support it. If scheduling is nil, this RuntimeClass is assumed to be supported by all nodes.',
+        description="Scheduling holds the scheduling constraints to ensure that pods running with this RuntimeClass are scheduled to nodes that support it. If scheduling is nil, this RuntimeClass is assumed to be supported by all nodes.",
     )
 
 
 class RuntimeClass(BaseModel):
     apiVersion: Optional[str] = Field(
-        'v1alpha1',
-        description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
+        "v1alpha1",
+        description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     kind: Optional[Kind124] = Field(
-        'RuntimeClass',
-        description='Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
+        "RuntimeClass",
+        description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
     metadata: Optional[v1.ObjectMeta] = Field(
         None,
-        description='More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata',
+        description="More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
     )
     spec: RuntimeClassSpec = Field(
         ...,
-        description='Specification of the RuntimeClass More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
+        description="Specification of the RuntimeClass More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
     )
 
 
 class RuntimeClassList(BaseModel):
     apiVersion: Optional[str] = Field(
-        'v1alpha1',
-        description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
+        "v1alpha1",
+        description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     items: List[RuntimeClass] = Field(
-        ..., description='Items is a list of schema objects.'
+        ..., description="Items is a list of schema objects."
     )
     kind: Optional[Kind125] = Field(
-        'RuntimeClassList',
-        description='Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
+        "RuntimeClassList",
+        description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
     metadata: Optional[v1.ListMeta] = Field(
         None,
-        description='Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata',
+        description="Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
     )

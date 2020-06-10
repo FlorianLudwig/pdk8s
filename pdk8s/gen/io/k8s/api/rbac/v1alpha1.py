@@ -13,7 +13,7 @@ from ...apimachinery.pkg.apis.meta import v1
 class PolicyRule(BaseModel):
     apiGroups: Optional[List[str]] = Field(
         None,
-        description='APIGroups is the name of the APIGroup that contains the resources.  If multiple API groups are specified, any action requested against one of the enumerated resources in any API group will be allowed.',
+        description="APIGroups is the name of the APIGroup that contains the resources.  If multiple API groups are specified, any action requested against one of the enumerated resources in any API group will be allowed.",
     )
     nonResourceURLs: Optional[List[str]] = Field(
         None,
@@ -21,36 +21,36 @@ class PolicyRule(BaseModel):
     )
     resourceNames: Optional[List[str]] = Field(
         None,
-        description='ResourceNames is an optional white list of names that the rule applies to.  An empty set means that everything is allowed.',
+        description="ResourceNames is an optional white list of names that the rule applies to.  An empty set means that everything is allowed.",
     )
     resources: Optional[List[str]] = Field(
         None,
-        description='Resources is a list of resources this rule applies to.  ResourceAll represents all resources.',
+        description="Resources is a list of resources this rule applies to.  ResourceAll represents all resources.",
     )
     verbs: List[str] = Field(
         ...,
-        description='Verbs is a list of Verbs that apply to ALL the ResourceKinds and AttributeRestrictions contained in this rule.  VerbAll represents all kinds.',
+        description="Verbs is a list of Verbs that apply to ALL the ResourceKinds and AttributeRestrictions contained in this rule.  VerbAll represents all kinds.",
     )
 
 
 class RoleRef(BaseModel):
     apiGroup: str = Field(
-        ..., description='APIGroup is the group for the resource being referenced'
+        ..., description="APIGroup is the group for the resource being referenced"
     )
-    kind: str = Field(..., description='Kind is the type of resource being referenced')
-    name: str = Field(..., description='Name is the name of resource being referenced')
+    kind: str = Field(..., description="Kind is the type of resource being referenced")
+    name: str = Field(..., description="Name is the name of resource being referenced")
 
 
 class Subject(BaseModel):
     apiVersion: Optional[str] = Field(
-        'v1alpha1',
+        "v1alpha1",
         description='APIVersion holds the API group and version of the referenced subject. Defaults to "v1" for ServiceAccount subjects. Defaults to "rbac.authorization.k8s.io/v1alpha1" for User and Group subjects.',
     )
     kind: str = Field(
         ...,
         description='Kind of object being referenced. Values defined by this API group are "User", "Group", and "ServiceAccount". If the Authorizer does not recognized the kind value, the Authorizer should report an error.',
     )
-    name: str = Field(..., description='Name of the object being referenced.')
+    name: str = Field(..., description="Name of the object being referenced.")
     namespace: Optional[str] = Field(
         None,
         description='Namespace of the referenced object.  If the object kind is non-namespace, such as "User" or "Group", and this value is not empty the Authorizer should report an error.',
@@ -67,57 +67,57 @@ class AggregationRule(BaseModel):
 class ClusterRole(BaseModel):
     aggregationRule: Optional[AggregationRule] = Field(
         None,
-        description='AggregationRule is an optional field that describes how to build the Rules for this ClusterRole. If AggregationRule is set, then the Rules are controller managed and direct changes to Rules will be stomped by the controller.',
+        description="AggregationRule is an optional field that describes how to build the Rules for this ClusterRole. If AggregationRule is set, then the Rules are controller managed and direct changes to Rules will be stomped by the controller.",
     )
     apiVersion: Optional[str] = Field(
-        'v1alpha1',
-        description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
+        "v1alpha1",
+        description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     kind: Optional[Kind141] = Field(
-        'ClusterRole',
-        description='Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
+        "ClusterRole",
+        description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
     metadata: Optional[v1.ObjectMeta] = Field(
         None, description="Standard object's metadata."
     )
     rules: Optional[List[PolicyRule]] = Field(
-        None, description='Rules holds all the PolicyRules for this ClusterRole'
+        None, description="Rules holds all the PolicyRules for this ClusterRole"
     )
 
 
 class ClusterRoleBinding(BaseModel):
     apiVersion: Optional[str] = Field(
-        'v1alpha1',
-        description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
+        "v1alpha1",
+        description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     kind: Optional[Kind142] = Field(
-        'ClusterRoleBinding',
-        description='Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
+        "ClusterRoleBinding",
+        description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
     metadata: Optional[v1.ObjectMeta] = Field(
         None, description="Standard object's metadata."
     )
     roleRef: RoleRef = Field(
         ...,
-        description='RoleRef can only reference a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error.',
+        description="RoleRef can only reference a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error.",
     )
     subjects: Optional[List[Subject]] = Field(
         None,
-        description='Subjects holds references to the objects the role applies to.',
+        description="Subjects holds references to the objects the role applies to.",
     )
 
 
 class ClusterRoleBindingList(BaseModel):
     apiVersion: Optional[str] = Field(
-        'v1alpha1',
-        description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
+        "v1alpha1",
+        description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     items: List[ClusterRoleBinding] = Field(
-        ..., description='Items is a list of ClusterRoleBindings'
+        ..., description="Items is a list of ClusterRoleBindings"
     )
     kind: Optional[Kind143] = Field(
-        'ClusterRoleBindingList',
-        description='Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
+        "ClusterRoleBindingList",
+        description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
     metadata: Optional[v1.ListMeta] = Field(
         None, description="Standard object's metadata."
@@ -126,13 +126,13 @@ class ClusterRoleBindingList(BaseModel):
 
 class ClusterRoleList(BaseModel):
     apiVersion: Optional[str] = Field(
-        'v1alpha1',
-        description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
+        "v1alpha1",
+        description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
-    items: List[ClusterRole] = Field(..., description='Items is a list of ClusterRoles')
+    items: List[ClusterRole] = Field(..., description="Items is a list of ClusterRoles")
     kind: Optional[Kind144] = Field(
-        'ClusterRoleList',
-        description='Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
+        "ClusterRoleList",
+        description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
     metadata: Optional[v1.ListMeta] = Field(
         None, description="Standard object's metadata."
@@ -141,52 +141,52 @@ class ClusterRoleList(BaseModel):
 
 class Role(BaseModel):
     apiVersion: Optional[str] = Field(
-        'v1alpha1',
-        description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
+        "v1alpha1",
+        description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     kind: Optional[Kind145] = Field(
-        'Role',
-        description='Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
+        "Role",
+        description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
     metadata: Optional[v1.ObjectMeta] = Field(
         None, description="Standard object's metadata."
     )
     rules: Optional[List[PolicyRule]] = Field(
-        None, description='Rules holds all the PolicyRules for this Role'
+        None, description="Rules holds all the PolicyRules for this Role"
     )
 
 
 class RoleBinding(BaseModel):
     apiVersion: Optional[str] = Field(
-        'v1alpha1',
-        description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
+        "v1alpha1",
+        description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     kind: Optional[Kind146] = Field(
-        'RoleBinding',
-        description='Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
+        "RoleBinding",
+        description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
     metadata: Optional[v1.ObjectMeta] = Field(
         None, description="Standard object's metadata."
     )
     roleRef: RoleRef = Field(
         ...,
-        description='RoleRef can reference a Role in the current namespace or a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error.',
+        description="RoleRef can reference a Role in the current namespace or a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error.",
     )
     subjects: Optional[List[Subject]] = Field(
         None,
-        description='Subjects holds references to the objects the role applies to.',
+        description="Subjects holds references to the objects the role applies to.",
     )
 
 
 class RoleBindingList(BaseModel):
     apiVersion: Optional[str] = Field(
-        'v1alpha1',
-        description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
+        "v1alpha1",
+        description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
-    items: List[RoleBinding] = Field(..., description='Items is a list of RoleBindings')
+    items: List[RoleBinding] = Field(..., description="Items is a list of RoleBindings")
     kind: Optional[Kind147] = Field(
-        'RoleBindingList',
-        description='Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
+        "RoleBindingList",
+        description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
     metadata: Optional[v1.ListMeta] = Field(
         None, description="Standard object's metadata."
@@ -195,13 +195,13 @@ class RoleBindingList(BaseModel):
 
 class RoleList(BaseModel):
     apiVersion: Optional[str] = Field(
-        'v1alpha1',
-        description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
+        "v1alpha1",
+        description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
-    items: List[Role] = Field(..., description='Items is a list of Roles')
+    items: List[Role] = Field(..., description="Items is a list of Roles")
     kind: Optional[Kind148] = Field(
-        'RoleList',
-        description='Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
+        "RoleList",
+        description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
     metadata: Optional[v1.ListMeta] = Field(
         None, description="Standard object's metadata."

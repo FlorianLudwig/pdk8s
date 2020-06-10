@@ -13,772 +13,772 @@ class Model(BaseModel):
 
 
 class Kind(Enum):
-    MutatingWebhookConfiguration = 'MutatingWebhookConfiguration'
+    MutatingWebhookConfiguration = "MutatingWebhookConfiguration"
 
 
 class Kind1(Enum):
-    MutatingWebhookConfigurationList = 'MutatingWebhookConfigurationList'
+    MutatingWebhookConfigurationList = "MutatingWebhookConfigurationList"
 
 
 class Kind2(Enum):
-    ValidatingWebhookConfiguration = 'ValidatingWebhookConfiguration'
+    ValidatingWebhookConfiguration = "ValidatingWebhookConfiguration"
 
 
 class Kind3(Enum):
-    ValidatingWebhookConfigurationList = 'ValidatingWebhookConfigurationList'
+    ValidatingWebhookConfigurationList = "ValidatingWebhookConfigurationList"
 
 
 class Kind4(Enum):
-    MutatingWebhookConfiguration = 'MutatingWebhookConfiguration'
+    MutatingWebhookConfiguration = "MutatingWebhookConfiguration"
 
 
 class Kind5(Enum):
-    MutatingWebhookConfigurationList = 'MutatingWebhookConfigurationList'
+    MutatingWebhookConfigurationList = "MutatingWebhookConfigurationList"
 
 
 class Kind6(Enum):
-    ValidatingWebhookConfiguration = 'ValidatingWebhookConfiguration'
+    ValidatingWebhookConfiguration = "ValidatingWebhookConfiguration"
 
 
 class Kind7(Enum):
-    ValidatingWebhookConfigurationList = 'ValidatingWebhookConfigurationList'
+    ValidatingWebhookConfigurationList = "ValidatingWebhookConfigurationList"
 
 
 class Kind8(Enum):
-    ControllerRevision = 'ControllerRevision'
+    ControllerRevision = "ControllerRevision"
 
 
 class Kind9(Enum):
-    ControllerRevisionList = 'ControllerRevisionList'
+    ControllerRevisionList = "ControllerRevisionList"
 
 
 class Kind10(Enum):
-    DaemonSet = 'DaemonSet'
+    DaemonSet = "DaemonSet"
 
 
 class Kind11(Enum):
-    DaemonSetList = 'DaemonSetList'
+    DaemonSetList = "DaemonSetList"
 
 
 class Kind12(Enum):
-    Deployment = 'Deployment'
+    Deployment = "Deployment"
 
 
 class Kind13(Enum):
-    DeploymentList = 'DeploymentList'
+    DeploymentList = "DeploymentList"
 
 
 class Kind14(Enum):
-    ReplicaSet = 'ReplicaSet'
+    ReplicaSet = "ReplicaSet"
 
 
 class Kind15(Enum):
-    ReplicaSetList = 'ReplicaSetList'
+    ReplicaSetList = "ReplicaSetList"
 
 
 class Kind16(Enum):
-    StatefulSet = 'StatefulSet'
+    StatefulSet = "StatefulSet"
 
 
 class Kind17(Enum):
-    StatefulSetList = 'StatefulSetList'
+    StatefulSetList = "StatefulSetList"
 
 
 class Kind18(Enum):
-    ControllerRevision = 'ControllerRevision'
+    ControllerRevision = "ControllerRevision"
 
 
 class Kind19(Enum):
-    ControllerRevisionList = 'ControllerRevisionList'
+    ControllerRevisionList = "ControllerRevisionList"
 
 
 class Kind20(Enum):
-    Deployment = 'Deployment'
+    Deployment = "Deployment"
 
 
 class Kind21(Enum):
-    DeploymentList = 'DeploymentList'
+    DeploymentList = "DeploymentList"
 
 
 class Kind22(Enum):
-    DeploymentRollback = 'DeploymentRollback'
+    DeploymentRollback = "DeploymentRollback"
 
 
 class Kind23(Enum):
-    Scale = 'Scale'
+    Scale = "Scale"
 
 
 class Kind24(Enum):
-    StatefulSet = 'StatefulSet'
+    StatefulSet = "StatefulSet"
 
 
 class Kind25(Enum):
-    StatefulSetList = 'StatefulSetList'
+    StatefulSetList = "StatefulSetList"
 
 
 class Kind26(Enum):
-    ControllerRevision = 'ControllerRevision'
+    ControllerRevision = "ControllerRevision"
 
 
 class Kind27(Enum):
-    ControllerRevisionList = 'ControllerRevisionList'
+    ControllerRevisionList = "ControllerRevisionList"
 
 
 class Kind28(Enum):
-    DaemonSet = 'DaemonSet'
+    DaemonSet = "DaemonSet"
 
 
 class Kind29(Enum):
-    DaemonSetList = 'DaemonSetList'
+    DaemonSetList = "DaemonSetList"
 
 
 class Kind30(Enum):
-    Deployment = 'Deployment'
+    Deployment = "Deployment"
 
 
 class Kind31(Enum):
-    DeploymentList = 'DeploymentList'
+    DeploymentList = "DeploymentList"
 
 
 class Kind32(Enum):
-    ReplicaSet = 'ReplicaSet'
+    ReplicaSet = "ReplicaSet"
 
 
 class Kind33(Enum):
-    ReplicaSetList = 'ReplicaSetList'
+    ReplicaSetList = "ReplicaSetList"
 
 
 class Kind34(Enum):
-    Scale = 'Scale'
+    Scale = "Scale"
 
 
 class Kind35(Enum):
-    StatefulSet = 'StatefulSet'
+    StatefulSet = "StatefulSet"
 
 
 class Kind36(Enum):
-    StatefulSetList = 'StatefulSetList'
+    StatefulSetList = "StatefulSetList"
 
 
 class Kind37(Enum):
-    AuditSink = 'AuditSink'
+    AuditSink = "AuditSink"
 
 
 class Kind38(Enum):
-    AuditSinkList = 'AuditSinkList'
+    AuditSinkList = "AuditSinkList"
 
 
 class Kind39(Enum):
-    TokenRequest = 'TokenRequest'
+    TokenRequest = "TokenRequest"
 
 
 class Kind40(Enum):
-    TokenReview = 'TokenReview'
+    TokenReview = "TokenReview"
 
 
 class Kind41(Enum):
-    TokenReview = 'TokenReview'
+    TokenReview = "TokenReview"
 
 
 class Kind42(Enum):
-    LocalSubjectAccessReview = 'LocalSubjectAccessReview'
+    LocalSubjectAccessReview = "LocalSubjectAccessReview"
 
 
 class Kind43(Enum):
-    SelfSubjectAccessReview = 'SelfSubjectAccessReview'
+    SelfSubjectAccessReview = "SelfSubjectAccessReview"
 
 
 class Kind44(Enum):
-    SelfSubjectRulesReview = 'SelfSubjectRulesReview'
+    SelfSubjectRulesReview = "SelfSubjectRulesReview"
 
 
 class Kind45(Enum):
-    SubjectAccessReview = 'SubjectAccessReview'
+    SubjectAccessReview = "SubjectAccessReview"
 
 
 class Kind46(Enum):
-    LocalSubjectAccessReview = 'LocalSubjectAccessReview'
+    LocalSubjectAccessReview = "LocalSubjectAccessReview"
 
 
 class Kind47(Enum):
-    SelfSubjectAccessReview = 'SelfSubjectAccessReview'
+    SelfSubjectAccessReview = "SelfSubjectAccessReview"
 
 
 class Kind48(Enum):
-    SelfSubjectRulesReview = 'SelfSubjectRulesReview'
+    SelfSubjectRulesReview = "SelfSubjectRulesReview"
 
 
 class Kind49(Enum):
-    SubjectAccessReview = 'SubjectAccessReview'
+    SubjectAccessReview = "SubjectAccessReview"
 
 
 class Kind50(Enum):
-    HorizontalPodAutoscaler = 'HorizontalPodAutoscaler'
+    HorizontalPodAutoscaler = "HorizontalPodAutoscaler"
 
 
 class Kind51(Enum):
-    HorizontalPodAutoscalerList = 'HorizontalPodAutoscalerList'
+    HorizontalPodAutoscalerList = "HorizontalPodAutoscalerList"
 
 
 class Kind52(Enum):
-    Scale = 'Scale'
+    Scale = "Scale"
 
 
 class Kind53(Enum):
-    HorizontalPodAutoscaler = 'HorizontalPodAutoscaler'
+    HorizontalPodAutoscaler = "HorizontalPodAutoscaler"
 
 
 class Kind54(Enum):
-    HorizontalPodAutoscalerList = 'HorizontalPodAutoscalerList'
+    HorizontalPodAutoscalerList = "HorizontalPodAutoscalerList"
 
 
 class Kind55(Enum):
-    HorizontalPodAutoscaler = 'HorizontalPodAutoscaler'
+    HorizontalPodAutoscaler = "HorizontalPodAutoscaler"
 
 
 class Kind56(Enum):
-    HorizontalPodAutoscalerList = 'HorizontalPodAutoscalerList'
+    HorizontalPodAutoscalerList = "HorizontalPodAutoscalerList"
 
 
 class Kind57(Enum):
-    Job = 'Job'
+    Job = "Job"
 
 
 class Kind58(Enum):
-    JobList = 'JobList'
+    JobList = "JobList"
 
 
 class Kind59(Enum):
-    CronJob = 'CronJob'
+    CronJob = "CronJob"
 
 
 class Kind60(Enum):
-    CronJobList = 'CronJobList'
+    CronJobList = "CronJobList"
 
 
 class Kind61(Enum):
-    CronJob = 'CronJob'
+    CronJob = "CronJob"
 
 
 class Kind62(Enum):
-    CronJobList = 'CronJobList'
+    CronJobList = "CronJobList"
 
 
 class Kind63(Enum):
-    CertificateSigningRequest = 'CertificateSigningRequest'
+    CertificateSigningRequest = "CertificateSigningRequest"
 
 
 class Kind64(Enum):
-    CertificateSigningRequestList = 'CertificateSigningRequestList'
+    CertificateSigningRequestList = "CertificateSigningRequestList"
 
 
 class Kind65(Enum):
-    Lease = 'Lease'
+    Lease = "Lease"
 
 
 class Kind66(Enum):
-    LeaseList = 'LeaseList'
+    LeaseList = "LeaseList"
 
 
 class Kind67(Enum):
-    Lease = 'Lease'
+    Lease = "Lease"
 
 
 class Kind68(Enum):
-    LeaseList = 'LeaseList'
+    LeaseList = "LeaseList"
 
 
 class Kind69(Enum):
-    Binding = 'Binding'
+    Binding = "Binding"
 
 
 class Kind70(Enum):
-    ComponentStatus = 'ComponentStatus'
+    ComponentStatus = "ComponentStatus"
 
 
 class Kind71(Enum):
-    ComponentStatusList = 'ComponentStatusList'
+    ComponentStatusList = "ComponentStatusList"
 
 
 class Kind72(Enum):
-    ConfigMap = 'ConfigMap'
+    ConfigMap = "ConfigMap"
 
 
 class Kind73(Enum):
-    ConfigMapList = 'ConfigMapList'
+    ConfigMapList = "ConfigMapList"
 
 
 class Kind74(Enum):
-    Endpoints = 'Endpoints'
+    Endpoints = "Endpoints"
 
 
 class Kind75(Enum):
-    EndpointsList = 'EndpointsList'
+    EndpointsList = "EndpointsList"
 
 
 class Kind76(Enum):
-    Event = 'Event'
+    Event = "Event"
 
 
 class Kind77(Enum):
-    EventList = 'EventList'
+    EventList = "EventList"
 
 
 class Kind78(Enum):
-    LimitRange = 'LimitRange'
+    LimitRange = "LimitRange"
 
 
 class Kind79(Enum):
-    LimitRangeList = 'LimitRangeList'
+    LimitRangeList = "LimitRangeList"
 
 
 class Kind80(Enum):
-    Namespace = 'Namespace'
+    Namespace = "Namespace"
 
 
 class Kind81(Enum):
-    NamespaceList = 'NamespaceList'
+    NamespaceList = "NamespaceList"
 
 
 class Kind82(Enum):
-    Node = 'Node'
+    Node = "Node"
 
 
 class Kind83(Enum):
-    NodeList = 'NodeList'
+    NodeList = "NodeList"
 
 
 class Kind84(Enum):
-    PersistentVolume = 'PersistentVolume'
+    PersistentVolume = "PersistentVolume"
 
 
 class Kind85(Enum):
-    PersistentVolumeClaim = 'PersistentVolumeClaim'
+    PersistentVolumeClaim = "PersistentVolumeClaim"
 
 
 class Kind86(Enum):
-    PersistentVolumeClaimList = 'PersistentVolumeClaimList'
+    PersistentVolumeClaimList = "PersistentVolumeClaimList"
 
 
 class Kind87(Enum):
-    PersistentVolumeList = 'PersistentVolumeList'
+    PersistentVolumeList = "PersistentVolumeList"
 
 
 class Kind88(Enum):
-    Pod = 'Pod'
+    Pod = "Pod"
 
 
 class Kind89(Enum):
-    PodList = 'PodList'
+    PodList = "PodList"
 
 
 class Kind90(Enum):
-    PodTemplate = 'PodTemplate'
+    PodTemplate = "PodTemplate"
 
 
 class Kind91(Enum):
-    PodTemplateList = 'PodTemplateList'
+    PodTemplateList = "PodTemplateList"
 
 
 class Kind92(Enum):
-    ReplicationController = 'ReplicationController'
+    ReplicationController = "ReplicationController"
 
 
 class Kind93(Enum):
-    ReplicationControllerList = 'ReplicationControllerList'
+    ReplicationControllerList = "ReplicationControllerList"
 
 
 class Kind94(Enum):
-    ResourceQuota = 'ResourceQuota'
+    ResourceQuota = "ResourceQuota"
 
 
 class Kind95(Enum):
-    ResourceQuotaList = 'ResourceQuotaList'
+    ResourceQuotaList = "ResourceQuotaList"
 
 
 class Kind96(Enum):
-    Secret = 'Secret'
+    Secret = "Secret"
 
 
 class Kind97(Enum):
-    SecretList = 'SecretList'
+    SecretList = "SecretList"
 
 
 class Kind98(Enum):
-    Service = 'Service'
+    Service = "Service"
 
 
 class Kind99(Enum):
-    ServiceAccount = 'ServiceAccount'
+    ServiceAccount = "ServiceAccount"
 
 
 class Kind100(Enum):
-    ServiceAccountList = 'ServiceAccountList'
+    ServiceAccountList = "ServiceAccountList"
 
 
 class Kind101(Enum):
-    ServiceList = 'ServiceList'
+    ServiceList = "ServiceList"
 
 
 class Kind102(Enum):
-    EndpointSlice = 'EndpointSlice'
+    EndpointSlice = "EndpointSlice"
 
 
 class Kind103(Enum):
-    EndpointSliceList = 'EndpointSliceList'
+    EndpointSliceList = "EndpointSliceList"
 
 
 class Kind104(Enum):
-    Event = 'Event'
+    Event = "Event"
 
 
 class Kind105(Enum):
-    EventList = 'EventList'
+    EventList = "EventList"
 
 
 class Kind106(Enum):
-    DaemonSet = 'DaemonSet'
+    DaemonSet = "DaemonSet"
 
 
 class Kind107(Enum):
-    DaemonSetList = 'DaemonSetList'
+    DaemonSetList = "DaemonSetList"
 
 
 class Kind108(Enum):
-    Deployment = 'Deployment'
+    Deployment = "Deployment"
 
 
 class Kind109(Enum):
-    DeploymentList = 'DeploymentList'
+    DeploymentList = "DeploymentList"
 
 
 class Kind110(Enum):
-    DeploymentRollback = 'DeploymentRollback'
+    DeploymentRollback = "DeploymentRollback"
 
 
 class Kind111(Enum):
-    Ingress = 'Ingress'
+    Ingress = "Ingress"
 
 
 class Kind112(Enum):
-    IngressList = 'IngressList'
+    IngressList = "IngressList"
 
 
 class Kind113(Enum):
-    NetworkPolicy = 'NetworkPolicy'
+    NetworkPolicy = "NetworkPolicy"
 
 
 class Kind114(Enum):
-    NetworkPolicyList = 'NetworkPolicyList'
+    NetworkPolicyList = "NetworkPolicyList"
 
 
 class Kind115(Enum):
-    PodSecurityPolicy = 'PodSecurityPolicy'
+    PodSecurityPolicy = "PodSecurityPolicy"
 
 
 class Kind116(Enum):
-    PodSecurityPolicyList = 'PodSecurityPolicyList'
+    PodSecurityPolicyList = "PodSecurityPolicyList"
 
 
 class Kind117(Enum):
-    ReplicaSet = 'ReplicaSet'
+    ReplicaSet = "ReplicaSet"
 
 
 class Kind118(Enum):
-    ReplicaSetList = 'ReplicaSetList'
+    ReplicaSetList = "ReplicaSetList"
 
 
 class Kind119(Enum):
-    Scale = 'Scale'
+    Scale = "Scale"
 
 
 class Kind120(Enum):
-    NetworkPolicy = 'NetworkPolicy'
+    NetworkPolicy = "NetworkPolicy"
 
 
 class Kind121(Enum):
-    NetworkPolicyList = 'NetworkPolicyList'
+    NetworkPolicyList = "NetworkPolicyList"
 
 
 class Kind122(Enum):
-    Ingress = 'Ingress'
+    Ingress = "Ingress"
 
 
 class Kind123(Enum):
-    IngressList = 'IngressList'
+    IngressList = "IngressList"
 
 
 class Kind124(Enum):
-    RuntimeClass = 'RuntimeClass'
+    RuntimeClass = "RuntimeClass"
 
 
 class Kind125(Enum):
-    RuntimeClassList = 'RuntimeClassList'
+    RuntimeClassList = "RuntimeClassList"
 
 
 class Kind126(Enum):
-    RuntimeClass = 'RuntimeClass'
+    RuntimeClass = "RuntimeClass"
 
 
 class Kind127(Enum):
-    RuntimeClassList = 'RuntimeClassList'
+    RuntimeClassList = "RuntimeClassList"
 
 
 class Kind128(Enum):
-    Eviction = 'Eviction'
+    Eviction = "Eviction"
 
 
 class Kind129(Enum):
-    PodDisruptionBudget = 'PodDisruptionBudget'
+    PodDisruptionBudget = "PodDisruptionBudget"
 
 
 class Kind130(Enum):
-    PodDisruptionBudgetList = 'PodDisruptionBudgetList'
+    PodDisruptionBudgetList = "PodDisruptionBudgetList"
 
 
 class Kind131(Enum):
-    PodSecurityPolicy = 'PodSecurityPolicy'
+    PodSecurityPolicy = "PodSecurityPolicy"
 
 
 class Kind132(Enum):
-    PodSecurityPolicyList = 'PodSecurityPolicyList'
+    PodSecurityPolicyList = "PodSecurityPolicyList"
 
 
 class Kind133(Enum):
-    ClusterRole = 'ClusterRole'
+    ClusterRole = "ClusterRole"
 
 
 class Kind134(Enum):
-    ClusterRoleBinding = 'ClusterRoleBinding'
+    ClusterRoleBinding = "ClusterRoleBinding"
 
 
 class Kind135(Enum):
-    ClusterRoleBindingList = 'ClusterRoleBindingList'
+    ClusterRoleBindingList = "ClusterRoleBindingList"
 
 
 class Kind136(Enum):
-    ClusterRoleList = 'ClusterRoleList'
+    ClusterRoleList = "ClusterRoleList"
 
 
 class Kind137(Enum):
-    Role = 'Role'
+    Role = "Role"
 
 
 class Kind138(Enum):
-    RoleBinding = 'RoleBinding'
+    RoleBinding = "RoleBinding"
 
 
 class Kind139(Enum):
-    RoleBindingList = 'RoleBindingList'
+    RoleBindingList = "RoleBindingList"
 
 
 class Kind140(Enum):
-    RoleList = 'RoleList'
+    RoleList = "RoleList"
 
 
 class Kind141(Enum):
-    ClusterRole = 'ClusterRole'
+    ClusterRole = "ClusterRole"
 
 
 class Kind142(Enum):
-    ClusterRoleBinding = 'ClusterRoleBinding'
+    ClusterRoleBinding = "ClusterRoleBinding"
 
 
 class Kind143(Enum):
-    ClusterRoleBindingList = 'ClusterRoleBindingList'
+    ClusterRoleBindingList = "ClusterRoleBindingList"
 
 
 class Kind144(Enum):
-    ClusterRoleList = 'ClusterRoleList'
+    ClusterRoleList = "ClusterRoleList"
 
 
 class Kind145(Enum):
-    Role = 'Role'
+    Role = "Role"
 
 
 class Kind146(Enum):
-    RoleBinding = 'RoleBinding'
+    RoleBinding = "RoleBinding"
 
 
 class Kind147(Enum):
-    RoleBindingList = 'RoleBindingList'
+    RoleBindingList = "RoleBindingList"
 
 
 class Kind148(Enum):
-    RoleList = 'RoleList'
+    RoleList = "RoleList"
 
 
 class Kind149(Enum):
-    ClusterRole = 'ClusterRole'
+    ClusterRole = "ClusterRole"
 
 
 class Kind150(Enum):
-    ClusterRoleBinding = 'ClusterRoleBinding'
+    ClusterRoleBinding = "ClusterRoleBinding"
 
 
 class Kind151(Enum):
-    ClusterRoleBindingList = 'ClusterRoleBindingList'
+    ClusterRoleBindingList = "ClusterRoleBindingList"
 
 
 class Kind152(Enum):
-    ClusterRoleList = 'ClusterRoleList'
+    ClusterRoleList = "ClusterRoleList"
 
 
 class Kind153(Enum):
-    Role = 'Role'
+    Role = "Role"
 
 
 class Kind154(Enum):
-    RoleBinding = 'RoleBinding'
+    RoleBinding = "RoleBinding"
 
 
 class Kind155(Enum):
-    RoleBindingList = 'RoleBindingList'
+    RoleBindingList = "RoleBindingList"
 
 
 class Kind156(Enum):
-    RoleList = 'RoleList'
+    RoleList = "RoleList"
 
 
 class Kind157(Enum):
-    PriorityClass = 'PriorityClass'
+    PriorityClass = "PriorityClass"
 
 
 class Kind158(Enum):
-    PriorityClassList = 'PriorityClassList'
+    PriorityClassList = "PriorityClassList"
 
 
 class Kind159(Enum):
-    PriorityClass = 'PriorityClass'
+    PriorityClass = "PriorityClass"
 
 
 class Kind160(Enum):
-    PriorityClassList = 'PriorityClassList'
+    PriorityClassList = "PriorityClassList"
 
 
 class Kind161(Enum):
-    PriorityClass = 'PriorityClass'
+    PriorityClass = "PriorityClass"
 
 
 class Kind162(Enum):
-    PriorityClassList = 'PriorityClassList'
+    PriorityClassList = "PriorityClassList"
 
 
 class Kind163(Enum):
-    PodPreset = 'PodPreset'
+    PodPreset = "PodPreset"
 
 
 class Kind164(Enum):
-    PodPresetList = 'PodPresetList'
+    PodPresetList = "PodPresetList"
 
 
 class Kind165(Enum):
-    StorageClass = 'StorageClass'
+    StorageClass = "StorageClass"
 
 
 class Kind166(Enum):
-    StorageClassList = 'StorageClassList'
+    StorageClassList = "StorageClassList"
 
 
 class Kind167(Enum):
-    VolumeAttachment = 'VolumeAttachment'
+    VolumeAttachment = "VolumeAttachment"
 
 
 class Kind168(Enum):
-    VolumeAttachmentList = 'VolumeAttachmentList'
+    VolumeAttachmentList = "VolumeAttachmentList"
 
 
 class Kind169(Enum):
-    VolumeAttachment = 'VolumeAttachment'
+    VolumeAttachment = "VolumeAttachment"
 
 
 class Kind170(Enum):
-    VolumeAttachmentList = 'VolumeAttachmentList'
+    VolumeAttachmentList = "VolumeAttachmentList"
 
 
 class Kind171(Enum):
-    CSIDriver = 'CSIDriver'
+    CSIDriver = "CSIDriver"
 
 
 class Kind172(Enum):
-    CSIDriverList = 'CSIDriverList'
+    CSIDriverList = "CSIDriverList"
 
 
 class Kind173(Enum):
-    CSINode = 'CSINode'
+    CSINode = "CSINode"
 
 
 class Kind174(Enum):
-    CSINodeList = 'CSINodeList'
+    CSINodeList = "CSINodeList"
 
 
 class Kind175(Enum):
-    StorageClass = 'StorageClass'
+    StorageClass = "StorageClass"
 
 
 class Kind176(Enum):
-    StorageClassList = 'StorageClassList'
+    StorageClassList = "StorageClassList"
 
 
 class Kind177(Enum):
-    VolumeAttachment = 'VolumeAttachment'
+    VolumeAttachment = "VolumeAttachment"
 
 
 class Kind178(Enum):
-    VolumeAttachmentList = 'VolumeAttachmentList'
+    VolumeAttachmentList = "VolumeAttachmentList"
 
 
 class Kind179(Enum):
-    CustomResourceDefinition = 'CustomResourceDefinition'
+    CustomResourceDefinition = "CustomResourceDefinition"
 
 
 class Kind180(Enum):
-    CustomResourceDefinitionList = 'CustomResourceDefinitionList'
+    CustomResourceDefinitionList = "CustomResourceDefinitionList"
 
 
 class Kind181(Enum):
-    CustomResourceDefinition = 'CustomResourceDefinition'
+    CustomResourceDefinition = "CustomResourceDefinition"
 
 
 class Kind182(Enum):
-    CustomResourceDefinitionList = 'CustomResourceDefinitionList'
+    CustomResourceDefinitionList = "CustomResourceDefinitionList"
 
 
 class Kind183(Enum):
-    APIGroup = 'APIGroup'
+    APIGroup = "APIGroup"
 
 
 class Kind184(Enum):
-    APIGroupList = 'APIGroupList'
+    APIGroupList = "APIGroupList"
 
 
 class Kind185(Enum):
-    APIResourceList = 'APIResourceList'
+    APIResourceList = "APIResourceList"
 
 
 class Kind186(Enum):
-    APIVersions = 'APIVersions'
+    APIVersions = "APIVersions"
 
 
 class Kind187(Enum):
-    DeleteOptions = 'DeleteOptions'
+    DeleteOptions = "DeleteOptions"
 
 
 class Kind188(Enum):
-    Status = 'Status'
+    Status = "Status"
 
 
 class Kind189(Enum):
-    APIService = 'APIService'
+    APIService = "APIService"
 
 
 class Kind190(Enum):
-    APIServiceList = 'APIServiceList'
+    APIServiceList = "APIServiceList"
 
 
 class Kind191(Enum):
-    APIService = 'APIService'
+    APIService = "APIService"
 
 
 class Kind192(Enum):
-    APIServiceList = 'APIServiceList'
+    APIServiceList = "APIServiceList"

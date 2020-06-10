@@ -14,11 +14,11 @@ from . import v1 as v1_1
 
 class CronJobStatus(BaseModel):
     active: Optional[List[v1.ObjectReference]] = Field(
-        None, description='A list of pointers to currently running jobs.'
+        None, description="A list of pointers to currently running jobs."
     )
     lastScheduleTime: Optional[v1_1.Time] = Field(
         None,
-        description='Information when was the last time the job was successfully scheduled.',
+        description="Information when was the last time the job was successfully scheduled.",
     )
 
 
@@ -29,7 +29,7 @@ class JobTemplateSpec(BaseModel):
     )
     spec: Optional[v1_1.JobSpec] = Field(
         None,
-        description='Specification of the desired behavior of the job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
+        description="Specification of the desired behavior of the job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
     )
 
 
@@ -40,38 +40,38 @@ class CronJobSpec(BaseModel):
     )
     failedJobsHistoryLimit: Optional[int] = Field(
         None,
-        description='The number of failed finished jobs to retain. This is a pointer to distinguish between explicit zero and not specified.',
+        description="The number of failed finished jobs to retain. This is a pointer to distinguish between explicit zero and not specified.",
     )
     jobTemplate: JobTemplateSpec = Field(
         ...,
-        description='Specifies the job that will be created when executing a CronJob.',
+        description="Specifies the job that will be created when executing a CronJob.",
     )
     schedule: str = Field(
         ...,
-        description='The schedule in Cron format, see https://en.wikipedia.org/wiki/Cron.',
+        description="The schedule in Cron format, see https://en.wikipedia.org/wiki/Cron.",
     )
     startingDeadlineSeconds: Optional[int] = Field(
         None,
-        description='Optional deadline in seconds for starting the job if it misses scheduled time for any reason.  Missed jobs executions will be counted as failed ones.',
+        description="Optional deadline in seconds for starting the job if it misses scheduled time for any reason.  Missed jobs executions will be counted as failed ones.",
     )
     successfulJobsHistoryLimit: Optional[int] = Field(
         None,
-        description='The number of successful finished jobs to retain. This is a pointer to distinguish between explicit zero and not specified.',
+        description="The number of successful finished jobs to retain. This is a pointer to distinguish between explicit zero and not specified.",
     )
     suspend: Optional[bool] = Field(
         None,
-        description='This flag tells the controller to suspend subsequent executions, it does not apply to already started executions.  Defaults to false.',
+        description="This flag tells the controller to suspend subsequent executions, it does not apply to already started executions.  Defaults to false.",
     )
 
 
 class CronJob(BaseModel):
     apiVersion: Optional[str] = Field(
-        'v2alpha1',
-        description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
+        "v2alpha1",
+        description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     kind: Optional[Kind61] = Field(
-        'CronJob',
-        description='Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
+        "CronJob",
+        description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
     metadata: Optional[v1.ObjectMeta] = Field(
         None,
@@ -79,25 +79,25 @@ class CronJob(BaseModel):
     )
     spec: Optional[CronJobSpec] = Field(
         None,
-        description='Specification of the desired behavior of a cron job, including the schedule. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
+        description="Specification of the desired behavior of a cron job, including the schedule. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
     )
     status: Optional[CronJobStatus] = Field(
         None,
-        description='Current status of a cron job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
+        description="Current status of a cron job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
     )
 
 
 class CronJobList(BaseModel):
     apiVersion: Optional[str] = Field(
-        'v2alpha1',
-        description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
+        "v2alpha1",
+        description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
-    items: List[CronJob] = Field(..., description='items is the list of CronJobs.')
+    items: List[CronJob] = Field(..., description="items is the list of CronJobs.")
     kind: Optional[Kind62] = Field(
-        'CronJobList',
-        description='Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
+        "CronJobList",
+        description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
     metadata: Optional[v1.ListMeta] = Field(
         None,
-        description='Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata',
+        description="Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
     )

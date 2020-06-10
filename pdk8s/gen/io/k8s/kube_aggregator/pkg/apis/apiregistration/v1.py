@@ -13,11 +13,11 @@ from .....apimachinery.pkg.apis.meta import v1
 class APIServiceCondition(BaseModel):
     lastTransitionTime: Optional[v1.Time] = Field(
         None,
-        description='Last time the condition transitioned from one status to another.',
+        description="Last time the condition transitioned from one status to another.",
     )
     message: Optional[str] = Field(
         None,
-        description='Human-readable message indicating details about last transition.',
+        description="Human-readable message indicating details about last transition.",
     )
     reason: Optional[str] = Field(
         None,
@@ -25,25 +25,25 @@ class APIServiceCondition(BaseModel):
     )
     status: str = Field(
         ...,
-        description='Status is the status of the condition. Can be True, False, Unknown.',
+        description="Status is the status of the condition. Can be True, False, Unknown.",
     )
-    type: str = Field(..., description='Type is the type of the condition.')
+    type: str = Field(..., description="Type is the type of the condition.")
 
 
 class APIServiceStatus(BaseModel):
     conditions: Optional[List[APIServiceCondition]] = Field(
-        None, description='Current service state of apiService.'
+        None, description="Current service state of apiService."
     )
 
 
 class ServiceReference(BaseModel):
-    name: Optional[str] = Field(None, description='Name is the name of the service')
+    name: Optional[str] = Field(None, description="Name is the name of the service")
     namespace: Optional[str] = Field(
-        None, description='Namespace is the namespace of the service'
+        None, description="Namespace is the namespace of the service"
     )
     port: Optional[int] = Field(
         None,
-        description='If specified, the port on the service that hosting webhook. Default to 443 for backward compatibility. `port` should be a valid port number (1-65535, inclusive).',
+        description="If specified, the port on the service that hosting webhook. Default to 443 for backward compatibility. `port` should be a valid port number (1-65535, inclusive).",
     )
 
 
@@ -53,7 +53,7 @@ class APIServiceSpec(BaseModel):
         description="CABundle is a PEM encoded CA bundle which will be used to validate an API server's serving certificate. If unspecified, system trust roots on the apiserver are used.",
     )
     group: Optional[str] = Field(
-        None, description='Group is the API group name this server hosts'
+        None, description="Group is the API group name this server hosts"
     )
     groupPriorityMinimum: int = Field(
         ...,
@@ -61,11 +61,11 @@ class APIServiceSpec(BaseModel):
     )
     insecureSkipTLSVerify: Optional[bool] = Field(
         None,
-        description='InsecureSkipTLSVerify disables TLS certificate verification when communicating with this server. This is strongly discouraged.  You should use the CABundle instead.',
+        description="InsecureSkipTLSVerify disables TLS certificate verification when communicating with this server. This is strongly discouraged.  You should use the CABundle instead.",
     )
     service: ServiceReference = Field(
         ...,
-        description='Service is a reference to the service for this API server.  It must communicate on port 443 If the Service is nil, that means the handling for the API groupversion is handled locally on this server. The call will simply delegate to the normal handler chain to be fulfilled.',
+        description="Service is a reference to the service for this API server.  It must communicate on port 443 If the Service is nil, that means the handling for the API groupversion is handled locally on this server. The call will simply delegate to the normal handler chain to be fulfilled.",
     )
     version: Optional[str] = Field(
         None,
@@ -79,31 +79,31 @@ class APIServiceSpec(BaseModel):
 
 class APIService(BaseModel):
     apiVersion: Optional[str] = Field(
-        'v1',
-        description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
+        "v1",
+        description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     kind: Optional[Kind189] = Field(
-        'APIService',
-        description='Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
+        "APIService",
+        description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
     metadata: Optional[v1.ObjectMeta] = None
     spec: Optional[APIServiceSpec] = Field(
         None,
-        description='Spec contains information for locating and communicating with a server',
+        description="Spec contains information for locating and communicating with a server",
     )
     status: Optional[APIServiceStatus] = Field(
-        None, description='Status contains derived information about an API server'
+        None, description="Status contains derived information about an API server"
     )
 
 
 class APIServiceList(BaseModel):
     apiVersion: Optional[str] = Field(
-        'v1',
-        description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
+        "v1",
+        description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     items: List[APIService]
     kind: Optional[Kind190] = Field(
-        'APIServiceList',
-        description='Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
+        "APIServiceList",
+        description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
     metadata: Optional[v1.ListMeta] = None

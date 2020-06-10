@@ -15,14 +15,14 @@ from ..core import v1
 class IngressStatus(BaseModel):
     loadBalancer: Optional[v1.LoadBalancerStatus] = Field(
         None,
-        description='LoadBalancer contains the current status of the load-balancer.',
+        description="LoadBalancer contains the current status of the load-balancer.",
     )
 
 
 class IngressTLS(BaseModel):
     hosts: Optional[List[str]] = Field(
         None,
-        description='Hosts are a list of hosts included in the TLS certificate. The values in this list must match the name/s used in the tlsSecret. Defaults to the wildcard host setting for the loadbalancer controller fulfilling this Ingress, if left unspecified.',
+        description="Hosts are a list of hosts included in the TLS certificate. The values in this list must match the name/s used in the tlsSecret. Defaults to the wildcard host setting for the loadbalancer controller fulfilling this Ingress, if left unspecified.",
     )
     secretName: Optional[str] = Field(
         None,
@@ -32,27 +32,27 @@ class IngressTLS(BaseModel):
 
 class IngressBackend(BaseModel):
     serviceName: str = Field(
-        ..., description='Specifies the name of the referenced service.'
+        ..., description="Specifies the name of the referenced service."
     )
     servicePort: intstr.IntOrString = Field(
-        ..., description='Specifies the port of the referenced service.'
+        ..., description="Specifies the port of the referenced service."
     )
 
 
 class HTTPIngressPath(BaseModel):
     backend: IngressBackend = Field(
         ...,
-        description='Backend defines the referenced service endpoint to which the traffic will be forwarded to.',
+        description="Backend defines the referenced service endpoint to which the traffic will be forwarded to.",
     )
     path: Optional[str] = Field(
         None,
-        description='Path is an extended POSIX regex as defined by IEEE Std 1003.1, (i.e this follows the egrep/unix syntax, not the perl syntax) matched against the path of an incoming request. Currently it can contain characters disallowed from the conventional "path" part of a URL as defined by RFC 3986. Paths must begin with a \'/\'. If unspecified, the path defaults to a catch all sending traffic to the backend.',
+        description="Path is an extended POSIX regex as defined by IEEE Std 1003.1, (i.e this follows the egrep/unix syntax, not the perl syntax) matched against the path of an incoming request. Currently it can contain characters disallowed from the conventional \"path\" part of a URL as defined by RFC 3986. Paths must begin with a '/'. If unspecified, the path defaults to a catch all sending traffic to the backend.",
     )
 
 
 class HTTPIngressRuleValue(BaseModel):
     paths: List[HTTPIngressPath] = Field(
-        ..., description='A collection of paths that map requests to backends.'
+        ..., description="A collection of paths that map requests to backends."
     )
 
 
@@ -71,22 +71,22 @@ class IngressSpec(BaseModel):
     )
     rules: Optional[List[IngressRule]] = Field(
         None,
-        description='A list of host rules used to configure the Ingress. If unspecified, or no rule matches, all traffic is sent to the default backend.',
+        description="A list of host rules used to configure the Ingress. If unspecified, or no rule matches, all traffic is sent to the default backend.",
     )
     tls: Optional[List[IngressTLS]] = Field(
         None,
-        description='TLS configuration. Currently the Ingress only supports a single TLS port, 443. If multiple members of this list specify different hosts, they will be multiplexed on the same port according to the hostname specified through the SNI TLS extension, if the ingress controller fulfilling the ingress supports SNI.',
+        description="TLS configuration. Currently the Ingress only supports a single TLS port, 443. If multiple members of this list specify different hosts, they will be multiplexed on the same port according to the hostname specified through the SNI TLS extension, if the ingress controller fulfilling the ingress supports SNI.",
     )
 
 
 class Ingress(BaseModel):
     apiVersion: Optional[str] = Field(
-        'v1beta1',
-        description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
+        "v1beta1",
+        description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     kind: Optional[Kind122] = Field(
-        'Ingress',
-        description='Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
+        "Ingress",
+        description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
     metadata: Optional[v1.ObjectMeta] = Field(
         None,
@@ -94,23 +94,23 @@ class Ingress(BaseModel):
     )
     spec: Optional[IngressSpec] = Field(
         None,
-        description='Spec is the desired state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
+        description="Spec is the desired state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
     )
     status: Optional[IngressStatus] = Field(
         None,
-        description='Status is the current state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
+        description="Status is the current state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
     )
 
 
 class IngressList(BaseModel):
     apiVersion: Optional[str] = Field(
-        'v1beta1',
-        description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
+        "v1beta1",
+        description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
-    items: List[Ingress] = Field(..., description='Items is the list of Ingress.')
+    items: List[Ingress] = Field(..., description="Items is the list of Ingress.")
     kind: Optional[Kind123] = Field(
-        'IngressList',
-        description='Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
+        "IngressList",
+        description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
     metadata: Optional[v1.ListMeta] = Field(
         None,

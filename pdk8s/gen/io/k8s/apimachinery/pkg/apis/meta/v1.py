@@ -24,48 +24,48 @@ class APIResource(BaseModel):
         ...,
         description="kind is the kind for the resource (e.g. 'Foo' is the kind for a resource 'foo')",
     )
-    name: str = Field(..., description='name is the plural name of the resource.')
+    name: str = Field(..., description="name is the plural name of the resource.")
     namespaced: bool = Field(
-        ..., description='namespaced indicates if a resource is namespaced or not.'
+        ..., description="namespaced indicates if a resource is namespaced or not."
     )
     shortNames: Optional[List[str]] = Field(
         None,
-        description='shortNames is a list of suggested short names of the resource.',
+        description="shortNames is a list of suggested short names of the resource.",
     )
     singularName: str = Field(
         ...,
-        description='singularName is the singular name of the resource.  This allows clients to handle plural and singular opaquely. The singularName is more correct for reporting status on a single item and both singular and plural are allowed from the kubectl CLI interface.',
+        description="singularName is the singular name of the resource.  This allows clients to handle plural and singular opaquely. The singularName is more correct for reporting status on a single item and both singular and plural are allowed from the kubectl CLI interface.",
     )
     storageVersionHash: Optional[str] = Field(
         None,
-        description='The hash value of the storage version, the version this resource is converted to when written to the data store. Value must be treated as opaque by clients. Only equality comparison on the value is valid. This is an alpha feature and may change or be removed in the future. The field is populated by the apiserver only if the StorageVersionHash feature gate is enabled. This field will remain optional even if it graduates.',
+        description="The hash value of the storage version, the version this resource is converted to when written to the data store. Value must be treated as opaque by clients. Only equality comparison on the value is valid. This is an alpha feature and may change or be removed in the future. The field is populated by the apiserver only if the StorageVersionHash feature gate is enabled. This field will remain optional even if it graduates.",
     )
     verbs: List[str] = Field(
         ...,
-        description='verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy)',
+        description="verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy)",
     )
     version: Optional[str] = Field(
         None,
-        description='version is the preferred version of the resource.  Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource\'s group)".',
+        description="version is the preferred version of the resource.  Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource's group)\".",
     )
 
 
 class APIResourceList(BaseModel):
     apiVersion: Optional[str] = Field(
-        'v1',
-        description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
+        "v1",
+        description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     groupVersion: str = Field(
         ...,
-        description='groupVersion is the group and version this APIResourceList is for.',
+        description="groupVersion is the group and version this APIResourceList is for.",
     )
     kind: Optional[Kind185] = Field(
-        'APIResourceList',
-        description='Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
+        "APIResourceList",
+        description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
     resources: List[APIResource] = Field(
         ...,
-        description='resources contains the name of the resources and if they are namespaced.',
+        description="resources contains the name of the resources and if they are namespaced.",
     )
 
 
@@ -86,7 +86,7 @@ class GroupVersionForDiscovery(BaseModel):
 
 class LabelSelectorRequirement(BaseModel):
     key: str = Field(
-        ..., description='key is the label key that the selector applies to.'
+        ..., description="key is the label key that the selector applies to."
     )
     operator: str = Field(
         ...,
@@ -94,19 +94,19 @@ class LabelSelectorRequirement(BaseModel):
     )
     values: Optional[List[str]] = Field(
         None,
-        description='values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.',
+        description="values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.",
     )
 
 
 class ListMeta(BaseModel):
     continue_: Optional[str] = Field(
         None,
-        alias='continue',
-        description='continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message.',
+        alias="continue",
+        description="continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message.",
     )
     remainingItemCount: Optional[int] = Field(
         None,
-        description='remainingItemCount is the number of subsequent items in the list which are not included in this list response. If the list request contained label or field selectors, then the number of remaining items is unknown and the field will be left unset and omitted during serialization. If the list is complete (either because it is not chunking or because this is the last chunk), then there are no more remaining items and this field will be left unset and omitted during serialization. Servers older than v1.15 do not set this field. The intended use of the remainingItemCount is *estimating* the size of a collection. Clients should not rely on the remainingItemCount to be set or to be exact.',
+        description="remainingItemCount is the number of subsequent items in the list which are not included in this list response. If the list request contained label or field selectors, then the number of remaining items is unknown and the field will be left unset and omitted during serialization. If the list is complete (either because it is not chunking or because this is the last chunk), then there are no more remaining items and this field will be left unset and omitted during serialization. Servers older than v1.15 do not set this field. The intended use of the remainingItemCount is *estimating* the size of a collection. Clients should not rely on the remainingItemCount to be set or to be exact.",
     )
     resourceVersion: Optional[str] = Field(
         None,
@@ -114,7 +114,7 @@ class ListMeta(BaseModel):
     )
     selfLink: Optional[str] = Field(
         None,
-        description='selfLink is a URL representing this object. Populated by the system. Read-only.\n\nDEPRECATED Kubernetes will stop propagating this field in 1.20 release and the field is planned to be removed in 1.21 release.',
+        description="selfLink is a URL representing this object. Populated by the system. Read-only.\n\nDEPRECATED Kubernetes will stop propagating this field in 1.20 release and the field is planned to be removed in 1.21 release.",
     )
 
 
@@ -123,25 +123,25 @@ class MicroTime(BaseModel):
 
 
 class OwnerReference(BaseModel):
-    apiVersion: str = Field(..., description='API version of the referent.')
+    apiVersion: str = Field(..., description="API version of the referent.")
     blockOwnerDeletion: Optional[bool] = Field(
         None,
         description='If true, AND if the owner has the "foregroundDeletion" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. Defaults to false. To set this field, a user needs "delete" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned.',
     )
     controller: Optional[bool] = Field(
-        None, description='If true, this reference points to the managing controller.'
+        None, description="If true, this reference points to the managing controller."
     )
     kind: str = Field(
         ...,
-        description='Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
+        description="Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
     name: str = Field(
         ...,
-        description='Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names',
+        description="Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names",
     )
     uid: str = Field(
         ...,
-        description='UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
+        description="UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids",
     )
 
 
@@ -151,19 +151,19 @@ class Patch(BaseModel):
 
 class Preconditions(BaseModel):
     resourceVersion: Optional[str] = Field(
-        None, description='Specifies the target ResourceVersion'
+        None, description="Specifies the target ResourceVersion"
     )
-    uid: Optional[str] = Field(None, description='Specifies the target UID.')
+    uid: Optional[str] = Field(None, description="Specifies the target UID.")
 
 
 class ServerAddressByClientCIDR(BaseModel):
     clientCIDR: str = Field(
         ...,
-        description='The CIDR with which clients can match their IP to figure out the server address that they should use.',
+        description="The CIDR with which clients can match their IP to figure out the server address that they should use.",
     )
     serverAddress: str = Field(
         ...,
-        description='Address of this server, suitable for a client that matches the above CIDR. This can be a hostname, hostname:port, IP or IP:port.',
+        description="Address of this server, suitable for a client that matches the above CIDR. This can be a hostname, hostname:port, IP or IP:port.",
     )
 
 
@@ -174,38 +174,38 @@ class StatusCause(BaseModel):
     )
     message: Optional[str] = Field(
         None,
-        description='A human-readable description of the cause of the error.  This field may be presented as-is to a reader.',
+        description="A human-readable description of the cause of the error.  This field may be presented as-is to a reader.",
     )
     reason: Optional[str] = Field(
         None,
-        description='A machine-readable description of the cause of the error. If this value is empty there is no information available.',
+        description="A machine-readable description of the cause of the error. If this value is empty there is no information available.",
     )
 
 
 class StatusDetails(BaseModel):
     causes: Optional[List[StatusCause]] = Field(
         None,
-        description='The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes.',
+        description="The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes.",
     )
     group: Optional[str] = Field(
         None,
-        description='The group attribute of the resource associated with the status StatusReason.',
+        description="The group attribute of the resource associated with the status StatusReason.",
     )
     kind: Optional[str] = Field(
         None,
-        description='The kind attribute of the resource associated with the status StatusReason. On some operations may differ from the requested resource Kind. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
+        description="The kind attribute of the resource associated with the status StatusReason. On some operations may differ from the requested resource Kind. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
     name: Optional[str] = Field(
         None,
-        description='The name attribute of the resource associated with the status StatusReason (when there is a single name which can be described).',
+        description="The name attribute of the resource associated with the status StatusReason (when there is a single name which can be described).",
     )
     retryAfterSeconds: Optional[int] = Field(
         None,
-        description='If specified, the time in seconds before the operation should be retried. Some errors may indicate the client must take an alternate action - for those errors this field may indicate how long to wait before taking the alternate action.',
+        description="If specified, the time in seconds before the operation should be retried. Some errors may indicate the client must take an alternate action - for those errors this field may indicate how long to wait before taking the alternate action.",
     )
     uid: Optional[str] = Field(
         None,
-        description='UID of the resource. (when there is a single resource which can be described). More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
+        description="UID of the resource. (when there is a single resource which can be described). More info: http://kubernetes.io/docs/user-guide/identifiers#uids",
     )
 
 
@@ -215,73 +215,73 @@ class Time(BaseModel):
 
 class APIGroup(BaseModel):
     apiVersion: Optional[str] = Field(
-        'v1',
-        description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
+        "v1",
+        description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     kind: Optional[Kind183] = Field(
-        'APIGroup',
-        description='Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
+        "APIGroup",
+        description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
-    name: str = Field(..., description='name is the name of the group.')
+    name: str = Field(..., description="name is the name of the group.")
     preferredVersion: Optional[GroupVersionForDiscovery] = Field(
         None,
-        description='preferredVersion is the version preferred by the API server, which probably is the storage version.',
+        description="preferredVersion is the version preferred by the API server, which probably is the storage version.",
     )
     serverAddressByClientCIDRs: Optional[List[ServerAddressByClientCIDR]] = Field(
         None,
-        description='a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP.',
+        description="a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP.",
     )
     versions: List[GroupVersionForDiscovery] = Field(
-        ..., description='versions are the versions supported in this group.'
+        ..., description="versions are the versions supported in this group."
     )
 
 
 class APIGroupList(BaseModel):
     apiVersion: Optional[str] = Field(
-        'v1',
-        description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
+        "v1",
+        description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
-    groups: List[APIGroup] = Field(..., description='groups is a list of APIGroup.')
+    groups: List[APIGroup] = Field(..., description="groups is a list of APIGroup.")
     kind: Optional[Kind184] = Field(
-        'APIGroupList',
-        description='Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
+        "APIGroupList",
+        description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
 
 
 class APIVersions(BaseModel):
     apiVersion: Optional[str] = Field(
-        'v1',
-        description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
+        "v1",
+        description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     kind: Optional[Kind186] = Field(
-        'APIVersions',
-        description='Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
+        "APIVersions",
+        description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
     serverAddressByClientCIDRs: List[ServerAddressByClientCIDR] = Field(
         ...,
-        description='a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP.',
+        description="a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP.",
     )
     versions: List[str] = Field(
-        ..., description='versions are the api versions that are available.'
+        ..., description="versions are the api versions that are available."
     )
 
 
 class DeleteOptions(BaseModel):
     apiVersion: Optional[str] = Field(
-        'v1',
-        description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
+        "v1",
+        description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     dryRun: Optional[List[str]] = Field(
         None,
-        description='When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed',
+        description="When present, indicates that modifications should not be persisted. An invalid or unrecognized dryRun directive will result in an error response and no further processing of the request. Valid values are: - All: all dry run stages will be processed",
     )
     gracePeriodSeconds: Optional[int] = Field(
         None,
-        description='The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.',
+        description="The duration in seconds before the object should be deleted. Value must be non-negative integer. The value zero indicates delete immediately. If this value is nil, the default grace period for the specified type will be used. Defaults to a per object value if not specified. zero means delete immediately.",
     )
     kind: Optional[Kind187] = Field(
-        'DeleteOptions',
-        description='Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
+        "DeleteOptions",
+        description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
     orphanDependents: Optional[bool] = Field(
         None,
@@ -289,7 +289,7 @@ class DeleteOptions(BaseModel):
     )
     preconditions: Optional[Preconditions] = Field(
         None,
-        description='Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned.',
+        description="Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned.",
     )
     propagationPolicy: Optional[str] = Field(
         None,
@@ -300,7 +300,7 @@ class DeleteOptions(BaseModel):
 class LabelSelector(BaseModel):
     matchExpressions: Optional[List[LabelSelectorRequirement]] = Field(
         None,
-        description='matchExpressions is a list of label selector requirements. The requirements are ANDed.',
+        description="matchExpressions is a list of label selector requirements. The requirements are ANDed.",
     )
     matchLabels: Optional[Dict[str, Any]] = Field(
         None,
@@ -310,7 +310,7 @@ class LabelSelector(BaseModel):
 
 class ManagedFieldsEntry(BaseModel):
     apiVersion: Optional[str] = Field(
-        'v1',
+        "v1",
         description='APIVersion defines the version of this resource that this field set applies to. The format is "group/version" just like the top-level APIVersion field. It is necessary to track the version of a field set because it cannot be automatically converted.',
     )
     fieldsType: Optional[str] = Field(
@@ -323,7 +323,7 @@ class ManagedFieldsEntry(BaseModel):
     )
     manager: Optional[str] = Field(
         None,
-        description='Manager is an identifier of the workflow managing these fields.',
+        description="Manager is an identifier of the workflow managing these fields.",
     )
     operation: Optional[str] = Field(
         None,
@@ -338,47 +338,47 @@ class ManagedFieldsEntry(BaseModel):
 class ObjectMeta(BaseModel):
     annotations: Optional[Dict[str, Any]] = Field(
         None,
-        description='Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations',
+        description="Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations",
     )
     clusterName: Optional[str] = Field(
         None,
-        description='The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.',
+        description="The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.",
     )
     creationTimestamp: Optional[Time] = Field(
         None,
-        description='CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC.\n\nPopulated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata',
+        description="CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC.\n\nPopulated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
     )
     deletionGracePeriodSeconds: Optional[int] = Field(
         None,
-        description='Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.',
+        description="Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.",
     )
     deletionTimestamp: Optional[Time] = Field(
         None,
-        description='DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested.\n\nPopulated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata',
+        description="DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested.\n\nPopulated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
     )
     finalizers: Optional[List[str]] = Field(
         None,
-        description='Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed.',
+        description="Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed.",
     )
     generateName: Optional[str] = Field(
         None,
-        description='GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server.\n\nIf this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header).\n\nApplied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#idempotency',
+        description="GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server.\n\nIf this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header).\n\nApplied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#idempotency",
     )
     generation: Optional[int] = Field(
         None,
-        description='A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.',
+        description="A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.",
     )
     labels: Optional[Dict[str, Any]] = Field(
         None,
-        description='Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels',
+        description="Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels",
     )
     managedFields: Optional[List[ManagedFieldsEntry]] = Field(
         None,
-        description='ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn\'t need to set or understand this field. A workflow can be the user\'s name, a controller\'s name, or the name of a specific apply path like "ci-cd". The set of fields is always in the version that the workflow used when modifying the object.',
+        description="ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like \"ci-cd\". The set of fields is always in the version that the workflow used when modifying the object.",
     )
     name: Optional[str] = Field(
         None,
-        description='Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names',
+        description="Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names",
     )
     namespace: Optional[str] = Field(
         None,
@@ -386,45 +386,45 @@ class ObjectMeta(BaseModel):
     )
     ownerReferences: Optional[List[OwnerReference]] = Field(
         None,
-        description='List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.',
+        description="List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.",
     )
     resourceVersion: Optional[str] = Field(
         None,
-        description='An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources.\n\nPopulated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency',
+        description="An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources.\n\nPopulated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency",
     )
     selfLink: Optional[str] = Field(
         None,
-        description='SelfLink is a URL representing this object. Populated by the system. Read-only.\n\nDEPRECATED Kubernetes will stop propagating this field in 1.20 release and the field is planned to be removed in 1.21 release.',
+        description="SelfLink is a URL representing this object. Populated by the system. Read-only.\n\nDEPRECATED Kubernetes will stop propagating this field in 1.20 release and the field is planned to be removed in 1.21 release.",
     )
     uid: Optional[str] = Field(
         None,
-        description='UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids',
+        description="UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids",
     )
 
 
 class Status(BaseModel):
     apiVersion: Optional[str] = Field(
-        'v1',
-        description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
+        "v1",
+        description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
     code: Optional[int] = Field(
-        None, description='Suggested HTTP return code for this status, 0 if not set.'
+        None, description="Suggested HTTP return code for this status, 0 if not set."
     )
     details: Optional[StatusDetails] = Field(
         None,
-        description='Extended data associated with the reason.  Each reason may define its own extended details. This field is optional and the data returned is not guaranteed to conform to any schema except that defined by the reason type.',
+        description="Extended data associated with the reason.  Each reason may define its own extended details. This field is optional and the data returned is not guaranteed to conform to any schema except that defined by the reason type.",
     )
     kind: Optional[Kind188] = Field(
-        'Status',
-        description='Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
+        "Status",
+        description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
     message: Optional[str] = Field(
         None,
-        description='A human-readable description of the status of this operation.',
+        description="A human-readable description of the status of this operation.",
     )
     metadata: Optional[ListMeta] = Field(
         None,
-        description='Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds',
+        description="Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
     reason: Optional[str] = Field(
         None,
@@ -439,6 +439,6 @@ class Status(BaseModel):
 class WatchEvent(BaseModel):
     object: runtime.RawExtension = Field(
         ...,
-        description='Object is:\n * If Type is Added or Modified: the new state of the object.\n * If Type is Deleted: the state of the object immediately before deletion.\n * If Type is Error: *Status is recommended; other types may make sense\n   depending on context.',
+        description="Object is:\n * If Type is Added or Modified: the new state of the object.\n * If Type is Deleted: the state of the object immediately before deletion.\n * If Type is Error: *Status is recommended; other types may make sense\n   depending on context.",
     )
     type: str
