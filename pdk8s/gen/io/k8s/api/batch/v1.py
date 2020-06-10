@@ -12,6 +12,9 @@ from ..core import v1 as v1_1
 
 
 class JobCondition(BaseModel):
+    class Config:
+        extra = "forbid"
+
     lastProbeTime: Optional[v1.Time] = Field(
         None, description="Last time the condition was checked."
     )
@@ -32,6 +35,9 @@ class JobCondition(BaseModel):
 
 
 class JobStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     active: Optional[int] = Field(
         None, description="The number of actively running pods."
     )
@@ -56,6 +62,9 @@ class JobStatus(BaseModel):
 
 
 class JobSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     activeDeadlineSeconds: Optional[int] = Field(
         None,
         description="Specifies the duration in seconds relative to the startTime that the job may be active before the system tries to terminate it; value must be positive integer",
@@ -91,6 +100,9 @@ class JobSpec(BaseModel):
 
 
 class Job(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -114,6 +126,9 @@ class Job(BaseModel):
 
 
 class JobList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",

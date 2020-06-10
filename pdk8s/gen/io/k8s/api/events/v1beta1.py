@@ -12,6 +12,9 @@ from ..core import v1 as v1_1
 
 
 class EventSeries(BaseModel):
+    class Config:
+        extra = "forbid"
+
     count: int = Field(
         ...,
         description="Number of occurrences in this series up to the last heartbeat time",
@@ -27,6 +30,9 @@ class EventSeries(BaseModel):
 
 
 class Event(BaseModel):
+    class Config:
+        extra = "forbid"
+
     action: Optional[str] = Field(
         None,
         description="What action was taken/failed regarding to the regarding object.",
@@ -90,6 +96,9 @@ class Event(BaseModel):
 
 
 class EventList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",

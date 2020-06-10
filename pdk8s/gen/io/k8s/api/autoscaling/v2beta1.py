@@ -12,6 +12,9 @@ from ...apimachinery.pkg.apis.meta import v1
 
 
 class CrossVersionObjectReference(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v2beta1", description="API version of the referent"
     )
@@ -26,6 +29,9 @@ class CrossVersionObjectReference(BaseModel):
 
 
 class HorizontalPodAutoscalerCondition(BaseModel):
+    class Config:
+        extra = "forbid"
+
     lastTransitionTime: Optional[v1.Time] = Field(
         None,
         description="lastTransitionTime is the last time the condition transitioned from one status to another",
@@ -44,6 +50,9 @@ class HorizontalPodAutoscalerCondition(BaseModel):
 
 
 class ResourceMetricSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     name: str = Field(..., description="name is the name of the resource in question.")
     targetAverageUtilization: Optional[int] = Field(
         None,
@@ -56,6 +65,9 @@ class ResourceMetricSource(BaseModel):
 
 
 class ResourceMetricStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     currentAverageUtilization: Optional[int] = Field(
         None,
         description="currentAverageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.  It will only be present if `targetAverageValue` was set in the corresponding metric specification.",
@@ -68,6 +80,9 @@ class ResourceMetricStatus(BaseModel):
 
 
 class ExternalMetricSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     metricName: str = Field(
         ..., description="metricName is the name of the metric in question."
     )
@@ -86,6 +101,9 @@ class ExternalMetricSource(BaseModel):
 
 
 class ExternalMetricStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     currentAverageValue: Optional[resource.Quantity] = Field(
         None,
         description="currentAverageValue is the current value of metric averaged over autoscaled pods.",
@@ -105,6 +123,9 @@ class ExternalMetricStatus(BaseModel):
 
 
 class ObjectMetricSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     averageValue: Optional[resource.Quantity] = Field(
         None,
         description="averageValue is the target value of the average of the metric across all relevant pods (as a quantity)",
@@ -126,6 +147,9 @@ class ObjectMetricSource(BaseModel):
 
 
 class ObjectMetricStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     averageValue: Optional[resource.Quantity] = Field(
         None,
         description="averageValue is the current value of the average of the metric across all relevant pods (as a quantity)",
@@ -147,6 +171,9 @@ class ObjectMetricStatus(BaseModel):
 
 
 class PodsMetricSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     metricName: str = Field(
         ..., description="metricName is the name of the metric in question"
     )
@@ -161,6 +188,9 @@ class PodsMetricSource(BaseModel):
 
 
 class PodsMetricStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     currentAverageValue: resource.Quantity = Field(
         ...,
         description="currentAverageValue is the current value of the average of the metric across all relevant pods (as a quantity)",
@@ -175,6 +205,9 @@ class PodsMetricStatus(BaseModel):
 
 
 class MetricSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     external: Optional[ExternalMetricSource] = Field(
         None,
         description="external refers to a global metric that is not associated with any Kubernetes object. It allows autoscaling based on information coming from components running outside of cluster (for example length of queue in cloud messaging service, or QPS from loadbalancer running outside of cluster).",
@@ -198,6 +231,9 @@ class MetricSpec(BaseModel):
 
 
 class MetricStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     external: Optional[ExternalMetricStatus] = Field(
         None,
         description="external refers to a global metric that is not associated with any Kubernetes object. It allows autoscaling based on information coming from components running outside of cluster (for example length of queue in cloud messaging service, or QPS from loadbalancer running outside of cluster).",
@@ -221,6 +257,9 @@ class MetricStatus(BaseModel):
 
 
 class HorizontalPodAutoscalerSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     maxReplicas: int = Field(
         ...,
         description="maxReplicas is the upper limit for the number of replicas to which the autoscaler can scale up. It cannot be less that minReplicas.",
@@ -240,6 +279,9 @@ class HorizontalPodAutoscalerSpec(BaseModel):
 
 
 class HorizontalPodAutoscalerStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     conditions: List[HorizontalPodAutoscalerCondition] = Field(
         ...,
         description="conditions is the set of conditions required for this autoscaler to scale its target, and indicates whether or not those conditions are met.",
@@ -267,6 +309,9 @@ class HorizontalPodAutoscalerStatus(BaseModel):
 
 
 class HorizontalPodAutoscaler(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v2beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -289,6 +334,9 @@ class HorizontalPodAutoscaler(BaseModel):
 
 
 class HorizontalPodAutoscalerList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v2beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",

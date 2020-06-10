@@ -13,14 +13,23 @@ from ..core import v1
 
 
 class AllowedCSIDriver(BaseModel):
+    class Config:
+        extra = "forbid"
+
     name: str = Field(..., description="Name is the registered name of the CSI driver")
 
 
 class AllowedFlexVolume(BaseModel):
+    class Config:
+        extra = "forbid"
+
     driver: str = Field(..., description="driver is the name of the Flexvolume driver.")
 
 
 class AllowedHostPath(BaseModel):
+    class Config:
+        extra = "forbid"
+
     pathPrefix: Optional[str] = Field(
         None,
         description="pathPrefix is the path prefix that the host volume must match. It does not support `*`. Trailing slashes are trimmed when validating the path prefix with a host path.\n\nExamples: `/foo` would allow `/foo`, `/foo/` and `/foo/bar` `/foo` would not allow `/food` or `/etc/foo`",
@@ -32,16 +41,25 @@ class AllowedHostPath(BaseModel):
 
 
 class HostPortRange(BaseModel):
+    class Config:
+        extra = "forbid"
+
     max: int = Field(..., description="max is the end of the range, inclusive.")
     min: int = Field(..., description="min is the start of the range, inclusive.")
 
 
 class IDRange(BaseModel):
+    class Config:
+        extra = "forbid"
+
     max: int = Field(..., description="max is the end of the range, inclusive.")
     min: int = Field(..., description="min is the start of the range, inclusive.")
 
 
 class PodDisruptionBudgetStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     currentHealthy: int = Field(..., description="current number of healthy pods")
     desiredHealthy: int = Field(
         ..., description="minimum desired number of healthy pods"
@@ -63,6 +81,9 @@ class PodDisruptionBudgetStatus(BaseModel):
 
 
 class RunAsGroupStrategyOptions(BaseModel):
+    class Config:
+        extra = "forbid"
+
     ranges: Optional[List[IDRange]] = Field(
         None,
         description="ranges are the allowed ranges of gids that may be used. If you would like to force a single gid then supply a single range with the same start and end. Required for MustRunAs.",
@@ -74,6 +95,9 @@ class RunAsGroupStrategyOptions(BaseModel):
 
 
 class RunAsUserStrategyOptions(BaseModel):
+    class Config:
+        extra = "forbid"
+
     ranges: Optional[List[IDRange]] = Field(
         None,
         description="ranges are the allowed ranges of uids that may be used. If you would like to force a single uid then supply a single range with the same start and end. Required for MustRunAs.",
@@ -85,6 +109,9 @@ class RunAsUserStrategyOptions(BaseModel):
 
 
 class RuntimeClassStrategyOptions(BaseModel):
+    class Config:
+        extra = "forbid"
+
     allowedRuntimeClassNames: List[str] = Field(
         ...,
         description='allowedRuntimeClassNames is a whitelist of RuntimeClass names that may be specified on a pod. A value of "*" means that any RuntimeClass name is allowed, and must be the only item in the list. An empty list requires the RuntimeClassName field to be unset.',
@@ -96,6 +123,9 @@ class RuntimeClassStrategyOptions(BaseModel):
 
 
 class SELinuxStrategyOptions(BaseModel):
+    class Config:
+        extra = "forbid"
+
     rule: str = Field(
         ...,
         description="rule is the strategy that will dictate the allowable labels that may be set.",
@@ -107,6 +137,9 @@ class SELinuxStrategyOptions(BaseModel):
 
 
 class SupplementalGroupsStrategyOptions(BaseModel):
+    class Config:
+        extra = "forbid"
+
     ranges: Optional[List[IDRange]] = Field(
         None,
         description="ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end. Required for MustRunAs.",
@@ -118,6 +151,9 @@ class SupplementalGroupsStrategyOptions(BaseModel):
 
 
 class FSGroupStrategyOptions(BaseModel):
+    class Config:
+        extra = "forbid"
+
     ranges: Optional[List[IDRange]] = Field(
         None,
         description="ranges are the allowed ranges of fs groups.  If you would like to force a single fs group then supply a single range with the same start and end. Required for MustRunAs.",
@@ -129,6 +165,9 @@ class FSGroupStrategyOptions(BaseModel):
 
 
 class PodSecurityPolicySpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     allowPrivilegeEscalation: Optional[bool] = Field(
         None,
         description="allowPrivilegeEscalation determines if a pod can request to allow privilege escalation. If unspecified, defaults to true.",
@@ -228,6 +267,9 @@ class PodSecurityPolicySpec(BaseModel):
 
 
 class Eviction(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -245,6 +287,9 @@ class Eviction(BaseModel):
 
 
 class PodDisruptionBudgetSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     maxUnavailable: Optional[intstr.IntOrString] = Field(
         None,
         description='An eviction is allowed if at most "maxUnavailable" pods selected by "selector" are unavailable after the eviction, i.e. even in absence of the evicted pod. For example, one can prevent all voluntary evictions by specifying 0. This is a mutually exclusive setting with "minAvailable".',
@@ -260,6 +305,9 @@ class PodDisruptionBudgetSpec(BaseModel):
 
 
 class PodSecurityPolicy(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -278,6 +326,9 @@ class PodSecurityPolicy(BaseModel):
 
 
 class PodSecurityPolicyList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -296,6 +347,9 @@ class PodSecurityPolicyList(BaseModel):
 
 
 class PodDisruptionBudget(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -315,6 +369,9 @@ class PodDisruptionBudget(BaseModel):
 
 
 class PodDisruptionBudgetList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",

@@ -7,3 +7,6 @@ from pydantic import BaseModel
 
 class RawExtension(BaseModel):
     pass
+
+    class Config:
+        extra = "forbid"

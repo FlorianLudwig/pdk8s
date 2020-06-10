@@ -12,6 +12,9 @@ from ..core import v1
 
 
 class PodPresetSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     env: Optional[List[v1.EnvVar]] = Field(
         None,
         description="Env defines the collection of EnvVar to inject into containers.",
@@ -35,6 +38,9 @@ class PodPresetSpec(BaseModel):
 
 
 class PodPreset(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1alpha1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -48,6 +54,9 @@ class PodPreset(BaseModel):
 
 
 class PodPresetList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1alpha1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",

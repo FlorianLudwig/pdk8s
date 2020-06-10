@@ -47,6 +47,9 @@ from ...apimachinery.pkg.util import intstr
 
 
 class AWSElasticBlockStoreVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     fsType: Optional[str] = Field(
         None,
         description='Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore',
@@ -66,6 +69,9 @@ class AWSElasticBlockStoreVolumeSource(BaseModel):
 
 
 class AttachedVolume(BaseModel):
+    class Config:
+        extra = "forbid"
+
     devicePath: str = Field(
         ...,
         description="DevicePath represents the device path where the volume should be available",
@@ -74,6 +80,9 @@ class AttachedVolume(BaseModel):
 
 
 class AzureDiskVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     cachingMode: Optional[str] = Field(
         None, description="Host Caching mode: None, Read Only, Read Write."
     )
@@ -96,6 +105,9 @@ class AzureDiskVolumeSource(BaseModel):
 
 
 class AzureFilePersistentVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     readOnly: Optional[bool] = Field(
         None,
         description="Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.",
@@ -112,6 +124,9 @@ class AzureFilePersistentVolumeSource(BaseModel):
 
 
 class AzureFileVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     readOnly: Optional[bool] = Field(
         None,
         description="Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.",
@@ -124,11 +139,17 @@ class AzureFileVolumeSource(BaseModel):
 
 
 class Capabilities(BaseModel):
+    class Config:
+        extra = "forbid"
+
     add: Optional[List[str]] = Field(None, description="Added capabilities")
     drop: Optional[List[str]] = Field(None, description="Removed capabilities")
 
 
 class ClientIPConfig(BaseModel):
+    class Config:
+        extra = "forbid"
+
     timeoutSeconds: Optional[int] = Field(
         None,
         description='timeoutSeconds specifies the seconds of ClientIP type session sticky time. The value must be >0 && <=86400(for 1 day) if ServiceAffinity == "ClientIP". Default value is 10800(for 3 hours).',
@@ -136,6 +157,9 @@ class ClientIPConfig(BaseModel):
 
 
 class ComponentCondition(BaseModel):
+    class Config:
+        extra = "forbid"
+
     error: Optional[str] = Field(
         None,
         description="Condition error code for a component. For example, a health check error code.",
@@ -154,6 +178,9 @@ class ComponentCondition(BaseModel):
 
 
 class ConfigMapEnvSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     name: Optional[str] = Field(
         None,
         description="Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
@@ -164,6 +191,9 @@ class ConfigMapEnvSource(BaseModel):
 
 
 class ConfigMapKeySelector(BaseModel):
+    class Config:
+        extra = "forbid"
+
     key: str = Field(..., description="The key to select.")
     name: Optional[str] = Field(
         None,
@@ -175,6 +205,9 @@ class ConfigMapKeySelector(BaseModel):
 
 
 class ConfigMapNodeConfigSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     kubeletConfigKey: str = Field(
         ...,
         description="KubeletConfigKey declares which key of the referenced ConfigMap corresponds to the KubeletConfiguration structure This field is required in all cases.",
@@ -198,6 +231,9 @@ class ConfigMapNodeConfigSource(BaseModel):
 
 
 class ContainerImage(BaseModel):
+    class Config:
+        extra = "forbid"
+
     names: List[str] = Field(
         ...,
         description='Names by which this image is known. e.g. ["k8s.gcr.io/hyperkube:v1.0.7", "dockerhub.io/google_containers/hyperkube:v1.0.7"]',
@@ -208,6 +244,9 @@ class ContainerImage(BaseModel):
 
 
 class ContainerPort(BaseModel):
+    class Config:
+        extra = "forbid"
+
     containerPort: int = Field(
         ...,
         description="Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.",
@@ -230,6 +269,9 @@ class ContainerPort(BaseModel):
 
 
 class ContainerStateWaiting(BaseModel):
+    class Config:
+        extra = "forbid"
+
     message: Optional[str] = Field(
         None, description="Message regarding why the container is not yet running."
     )
@@ -239,10 +281,16 @@ class ContainerStateWaiting(BaseModel):
 
 
 class DaemonEndpoint(BaseModel):
+    class Config:
+        extra = "forbid"
+
     Port: int = Field(..., description="Port number of the given endpoint.")
 
 
 class EndpointPort(BaseModel):
+    class Config:
+        extra = "forbid"
+
     name: Optional[str] = Field(
         None,
         description="The name of this port.  This must match the 'name' field in the corresponding ServicePort. Must be a DNS_LABEL. Optional only if one port is defined.",
@@ -255,6 +303,9 @@ class EndpointPort(BaseModel):
 
 
 class EventSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     component: Optional[str] = Field(
         None, description="Component from which the event is generated."
     )
@@ -264,6 +315,9 @@ class EventSource(BaseModel):
 
 
 class ExecAction(BaseModel):
+    class Config:
+        extra = "forbid"
+
     command: Optional[List[str]] = Field(
         None,
         description="Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.",
@@ -271,6 +325,9 @@ class ExecAction(BaseModel):
 
 
 class FCVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     fsType: Optional[str] = Field(
         None,
         description='Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.',
@@ -290,6 +347,9 @@ class FCVolumeSource(BaseModel):
 
 
 class FlockerVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     datasetName: Optional[str] = Field(
         None,
         description="Name of the dataset stored as metadata -> name on the dataset for Flocker should be considered as deprecated",
@@ -301,6 +361,9 @@ class FlockerVolumeSource(BaseModel):
 
 
 class GCEPersistentDiskVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     fsType: Optional[str] = Field(
         None,
         description='Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk',
@@ -320,6 +383,9 @@ class GCEPersistentDiskVolumeSource(BaseModel):
 
 
 class GitRepoVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     directory: Optional[str] = Field(
         None,
         description="Target directory name. Must not contain or start with '..'.  If '.' is supplied, the volume directory will be the git repository.  Otherwise, if specified, the volume will contain the git repository in the subdirectory with the given name.",
@@ -331,6 +397,9 @@ class GitRepoVolumeSource(BaseModel):
 
 
 class GlusterfsPersistentVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     endpoints: str = Field(
         ...,
         description="EndpointsName is the endpoint name that details Glusterfs topology. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod",
@@ -350,6 +419,9 @@ class GlusterfsPersistentVolumeSource(BaseModel):
 
 
 class GlusterfsVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     endpoints: str = Field(
         ...,
         description="EndpointsName is the endpoint name that details Glusterfs topology. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod",
@@ -365,11 +437,17 @@ class GlusterfsVolumeSource(BaseModel):
 
 
 class HTTPHeader(BaseModel):
+    class Config:
+        extra = "forbid"
+
     name: str = Field(..., description="The header field name")
     value: str = Field(..., description="The header field value")
 
 
 class HostAlias(BaseModel):
+    class Config:
+        extra = "forbid"
+
     hostnames: Optional[List[str]] = Field(
         None, description="Hostnames for the above IP address."
     )
@@ -377,6 +455,9 @@ class HostAlias(BaseModel):
 
 
 class HostPathVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     path: str = Field(
         ...,
         description="Path of the directory on the host. If the path is a symlink, it will follow the link to the real path. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath",
@@ -388,6 +469,9 @@ class HostPathVolumeSource(BaseModel):
 
 
 class KeyToPath(BaseModel):
+    class Config:
+        extra = "forbid"
+
     key: str = Field(..., description="The key to project.")
     mode: Optional[int] = Field(
         None,
@@ -400,6 +484,9 @@ class KeyToPath(BaseModel):
 
 
 class LimitRangeItem(BaseModel):
+    class Config:
+        extra = "forbid"
+
     default: Optional[Dict[str, Any]] = Field(
         None,
         description="Default resource requirement limit value by resource name if resource limit is omitted.",
@@ -424,6 +511,9 @@ class LimitRangeItem(BaseModel):
 
 
 class LimitRangeSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     limits: List[LimitRangeItem] = Field(
         ...,
         description="Limits is the list of LimitRangeItem objects that are enforced.",
@@ -431,6 +521,9 @@ class LimitRangeSpec(BaseModel):
 
 
 class LoadBalancerIngress(BaseModel):
+    class Config:
+        extra = "forbid"
+
     hostname: Optional[str] = Field(
         None,
         description="Hostname is set for load-balancer ingress points that are DNS based (typically AWS load-balancers)",
@@ -442,6 +535,9 @@ class LoadBalancerIngress(BaseModel):
 
 
 class LoadBalancerStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     ingress: Optional[List[LoadBalancerIngress]] = Field(
         None,
         description="Ingress is a list containing ingress points for the load-balancer. Traffic intended for the service should be sent to these ingress points.",
@@ -449,6 +545,9 @@ class LoadBalancerStatus(BaseModel):
 
 
 class LocalObjectReference(BaseModel):
+    class Config:
+        extra = "forbid"
+
     name: Optional[str] = Field(
         None,
         description="Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
@@ -456,6 +555,9 @@ class LocalObjectReference(BaseModel):
 
 
 class LocalVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     fsType: Optional[str] = Field(
         None,
         description='Filesystem type to mount. It applies only when the Path is a block device. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". The default value is to auto-select a fileystem if unspecified.',
@@ -467,6 +569,9 @@ class LocalVolumeSource(BaseModel):
 
 
 class NFSVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     path: str = Field(
         ...,
         description="Path that is exported by the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs",
@@ -482,6 +587,9 @@ class NFSVolumeSource(BaseModel):
 
 
 class NamespaceSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     finalizers: Optional[List[str]] = Field(
         None,
         description="Finalizers is an opaque list of values that must be empty to permanently remove object from storage. More info: https://kubernetes.io/docs/tasks/administer-cluster/namespaces/",
@@ -489,6 +597,9 @@ class NamespaceSpec(BaseModel):
 
 
 class NodeAddress(BaseModel):
+    class Config:
+        extra = "forbid"
+
     address: str = Field(..., description="The node address.")
     type: str = Field(
         ..., description="Node address type, one of Hostname, ExternalIP or InternalIP."
@@ -496,12 +607,18 @@ class NodeAddress(BaseModel):
 
 
 class NodeConfigSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     configMap: Optional[ConfigMapNodeConfigSource] = Field(
         None, description="ConfigMap is a reference to a Node's ConfigMap"
     )
 
 
 class NodeConfigStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     active: Optional[NodeConfigSource] = Field(
         None,
         description="Active reports the checkpointed config the node is actively using. Active will represent either the current version of the Assigned config, or the current LastKnownGood config, depending on whether attempting to use the Assigned config results in an error.",
@@ -521,12 +638,18 @@ class NodeConfigStatus(BaseModel):
 
 
 class NodeDaemonEndpoints(BaseModel):
+    class Config:
+        extra = "forbid"
+
     kubeletEndpoint: Optional[DaemonEndpoint] = Field(
         None, description="Endpoint on which Kubelet is listening."
     )
 
 
 class NodeSelectorRequirement(BaseModel):
+    class Config:
+        extra = "forbid"
+
     key: str = Field(..., description="The label key that the selector applies to.")
     operator: str = Field(
         ...,
@@ -539,6 +662,9 @@ class NodeSelectorRequirement(BaseModel):
 
 
 class NodeSelectorTerm(BaseModel):
+    class Config:
+        extra = "forbid"
+
     matchExpressions: Optional[List[NodeSelectorRequirement]] = Field(
         None, description="A list of node selector requirements by node's labels."
     )
@@ -548,6 +674,9 @@ class NodeSelectorTerm(BaseModel):
 
 
 class NodeSystemInfo(BaseModel):
+    class Config:
+        extra = "forbid"
+
     architecture: str = Field(..., description="The Architecture reported by the node")
     bootID: str = Field(..., description="Boot ID reported by the node.")
     containerRuntimeVersion: str = Field(
@@ -582,6 +711,9 @@ class NodeSystemInfo(BaseModel):
 
 
 class ObjectFieldSelector(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description='Version of the schema the FieldPath is written in terms of, defaults to "v1".',
@@ -592,6 +724,9 @@ class ObjectFieldSelector(BaseModel):
 
 
 class ObjectReference(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field("v1", description="API version of the referent.")
     fieldPath: Optional[str] = Field(
         None,
@@ -620,6 +755,9 @@ class ObjectReference(BaseModel):
 
 
 class PersistentVolumeClaimVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     claimName: str = Field(
         ...,
         description="ClaimName is the name of a PersistentVolumeClaim in the same namespace as the pod using this volume. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims",
@@ -631,6 +769,9 @@ class PersistentVolumeClaimVolumeSource(BaseModel):
 
 
 class PersistentVolumeStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     message: Optional[str] = Field(
         None,
         description="A human-readable message indicating details about why the volume is in this state.",
@@ -646,6 +787,9 @@ class PersistentVolumeStatus(BaseModel):
 
 
 class PhotonPersistentDiskVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     fsType: Optional[str] = Field(
         None,
         description='Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.',
@@ -656,17 +800,26 @@ class PhotonPersistentDiskVolumeSource(BaseModel):
 
 
 class PodDNSConfigOption(BaseModel):
+    class Config:
+        extra = "forbid"
+
     name: Optional[str] = Field(None, description="Required.")
     value: Optional[str] = None
 
 
 class PodIP(BaseModel):
+    class Config:
+        extra = "forbid"
+
     ip: Optional[str] = Field(
         None, description="ip is an IP address (IPv4 or IPv6) assigned to the pod"
     )
 
 
 class PodReadinessGate(BaseModel):
+    class Config:
+        extra = "forbid"
+
     conditionType: str = Field(
         ...,
         description="ConditionType refers to a condition in the pod's condition list with matching type.",
@@ -674,6 +827,9 @@ class PodReadinessGate(BaseModel):
 
 
 class PortworxVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     fsType: Optional[str] = Field(
         None,
         description='FSType represents the filesystem type to mount Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs". Implicitly inferred to be "ext4" if unspecified.',
@@ -688,6 +844,9 @@ class PortworxVolumeSource(BaseModel):
 
 
 class PreferredSchedulingTerm(BaseModel):
+    class Config:
+        extra = "forbid"
+
     preference: NodeSelectorTerm = Field(
         ...,
         description="A node selector term, associated with the corresponding weight.",
@@ -699,6 +858,9 @@ class PreferredSchedulingTerm(BaseModel):
 
 
 class QuobyteVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     group: Optional[str] = Field(
         None, description="Group to map volume access to Default is no group"
     )
@@ -724,6 +886,9 @@ class QuobyteVolumeSource(BaseModel):
 
 
 class RBDVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     fsType: Optional[str] = Field(
         None,
         description='Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#rbd',
@@ -759,6 +924,9 @@ class RBDVolumeSource(BaseModel):
 
 
 class ResourceQuotaStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     hard: Optional[Dict[str, Any]] = Field(
         None,
         description="Hard is the set of enforced hard limits for each named resource. More info: https://kubernetes.io/docs/concepts/policy/resource-quotas/",
@@ -770,6 +938,9 @@ class ResourceQuotaStatus(BaseModel):
 
 
 class ResourceRequirements(BaseModel):
+    class Config:
+        extra = "forbid"
+
     limits: Optional[Dict[str, Any]] = Field(
         None,
         description="Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/",
@@ -781,6 +952,9 @@ class ResourceRequirements(BaseModel):
 
 
 class SELinuxOptions(BaseModel):
+    class Config:
+        extra = "forbid"
+
     level: Optional[str] = Field(
         None, description="Level is SELinux level label that applies to the container."
     )
@@ -796,6 +970,9 @@ class SELinuxOptions(BaseModel):
 
 
 class ScaleIOVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     fsType: Optional[str] = Field(
         None,
         description='Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Default is "xfs".',
@@ -837,6 +1014,9 @@ class ScaleIOVolumeSource(BaseModel):
 
 
 class ScopedResourceSelectorRequirement(BaseModel):
+    class Config:
+        extra = "forbid"
+
     operator: str = Field(
         ...,
         description="Represents a scope's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist.",
@@ -851,6 +1031,9 @@ class ScopedResourceSelectorRequirement(BaseModel):
 
 
 class SecretEnvSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     name: Optional[str] = Field(
         None,
         description="Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
@@ -861,6 +1044,9 @@ class SecretEnvSource(BaseModel):
 
 
 class SecretKeySelector(BaseModel):
+    class Config:
+        extra = "forbid"
+
     key: str = Field(
         ...,
         description="The key of the secret to select from.  Must be a valid secret key.",
@@ -875,6 +1061,9 @@ class SecretKeySelector(BaseModel):
 
 
 class SecretProjection(BaseModel):
+    class Config:
+        extra = "forbid"
+
     items: Optional[List[KeyToPath]] = Field(
         None,
         description="If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.",
@@ -889,6 +1078,9 @@ class SecretProjection(BaseModel):
 
 
 class SecretReference(BaseModel):
+    class Config:
+        extra = "forbid"
+
     name: Optional[str] = Field(
         None,
         description="Name is unique within a namespace to reference a secret resource.",
@@ -900,6 +1092,9 @@ class SecretReference(BaseModel):
 
 
 class SecretVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     defaultMode: Optional[int] = Field(
         None,
         description="Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
@@ -918,6 +1113,9 @@ class SecretVolumeSource(BaseModel):
 
 
 class ServiceAccountTokenProjection(BaseModel):
+    class Config:
+        extra = "forbid"
+
     audience: Optional[str] = Field(
         None,
         description="Audience is the intended audience of the token. A recipient of a token must identify itself with an identifier specified in the audience of the token, and otherwise should reject the token. The audience defaults to the identifier of the apiserver.",
@@ -933,6 +1131,9 @@ class ServiceAccountTokenProjection(BaseModel):
 
 
 class ServiceStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     loadBalancer: Optional[LoadBalancerStatus] = Field(
         None,
         description="LoadBalancer contains the current status of the load-balancer, if one is present.",
@@ -940,6 +1141,9 @@ class ServiceStatus(BaseModel):
 
 
 class SessionAffinityConfig(BaseModel):
+    class Config:
+        extra = "forbid"
+
     clientIP: Optional[ClientIPConfig] = Field(
         None,
         description="clientIP contains the configurations of Client IP based session affinity.",
@@ -947,6 +1151,9 @@ class SessionAffinityConfig(BaseModel):
 
 
 class StorageOSPersistentVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     fsType: Optional[str] = Field(
         None,
         description='Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.',
@@ -970,6 +1177,9 @@ class StorageOSPersistentVolumeSource(BaseModel):
 
 
 class StorageOSVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     fsType: Optional[str] = Field(
         None,
         description='Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.',
@@ -993,11 +1203,17 @@ class StorageOSVolumeSource(BaseModel):
 
 
 class Sysctl(BaseModel):
+    class Config:
+        extra = "forbid"
+
     name: str = Field(..., description="Name of a property to set")
     value: str = Field(..., description="Value of a property to set")
 
 
 class Toleration(BaseModel):
+    class Config:
+        extra = "forbid"
+
     effect: Optional[str] = Field(
         None,
         description="Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.",
@@ -1021,6 +1237,9 @@ class Toleration(BaseModel):
 
 
 class TopologySelectorLabelRequirement(BaseModel):
+    class Config:
+        extra = "forbid"
+
     key: str = Field(..., description="The label key that the selector applies to.")
     values: List[str] = Field(
         ...,
@@ -1029,12 +1248,18 @@ class TopologySelectorLabelRequirement(BaseModel):
 
 
 class TopologySelectorTerm(BaseModel):
+    class Config:
+        extra = "forbid"
+
     matchLabelExpressions: Optional[List[TopologySelectorLabelRequirement]] = Field(
         None, description="A list of topology selector requirements by labels."
     )
 
 
 class TypedLocalObjectReference(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiGroup: Optional[str] = Field(
         None,
         description="APIGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required.",
@@ -1044,6 +1269,9 @@ class TypedLocalObjectReference(BaseModel):
 
 
 class VolumeDevice(BaseModel):
+    class Config:
+        extra = "forbid"
+
     devicePath: str = Field(
         ...,
         description="devicePath is the path inside of the container that the device will be mapped to.",
@@ -1055,6 +1283,9 @@ class VolumeDevice(BaseModel):
 
 
 class VolumeMount(BaseModel):
+    class Config:
+        extra = "forbid"
+
     mountPath: str = Field(
         ...,
         description="Path within the container at which the volume should be mounted.  Must not contain ':'.",
@@ -1079,6 +1310,9 @@ class VolumeMount(BaseModel):
 
 
 class VsphereVirtualDiskVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     fsType: Optional[str] = Field(
         None,
         description='Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified.',
@@ -1094,6 +1328,9 @@ class VsphereVirtualDiskVolumeSource(BaseModel):
 
 
 class WindowsSecurityContextOptions(BaseModel):
+    class Config:
+        extra = "forbid"
+
     gmsaCredentialSpec: Optional[str] = Field(
         None,
         description="GMSACredentialSpec is where the GMSA admission webhook (https://github.com/kubernetes-sigs/windows-gmsa) inlines the contents of the GMSA credential spec named by the GMSACredentialSpecName field. This field is alpha-level and is only honored by servers that enable the WindowsGMSA feature flag.",
@@ -1109,6 +1346,9 @@ class WindowsSecurityContextOptions(BaseModel):
 
 
 class CSIPersistentVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     controllerExpandSecretRef: Optional[SecretReference] = Field(
         None,
         description="ControllerExpandSecretRef is a reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI ControllerExpandVolume call. This is an alpha field and requires enabling ExpandCSIVolumes feature gate. This field is optional, and may be empty if no secret is required. If the secret object contains more than one secret, all secrets are passed.",
@@ -1147,6 +1387,9 @@ class CSIPersistentVolumeSource(BaseModel):
 
 
 class CSIVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     driver: str = Field(
         ...,
         description="Driver is the name of the CSI driver that handles this volume. Consult with your admin for the correct name as registered in the cluster.",
@@ -1170,6 +1413,9 @@ class CSIVolumeSource(BaseModel):
 
 
 class CephFSPersistentVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     monitors: List[str] = Field(
         ...,
         description="Required: Monitors is a collection of Ceph monitors More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it",
@@ -1197,6 +1443,9 @@ class CephFSPersistentVolumeSource(BaseModel):
 
 
 class CephFSVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     monitors: List[str] = Field(
         ...,
         description="Required: Monitors is a collection of Ceph monitors More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it",
@@ -1224,6 +1473,9 @@ class CephFSVolumeSource(BaseModel):
 
 
 class CinderPersistentVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     fsType: Optional[str] = Field(
         None,
         description='Filesystem type to mount. Must be a filesystem type supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://examples.k8s.io/mysql-cinder-pd/README.md',
@@ -1243,6 +1495,9 @@ class CinderPersistentVolumeSource(BaseModel):
 
 
 class CinderVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     fsType: Optional[str] = Field(
         None,
         description='Filesystem type to mount. Must be a filesystem type supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://examples.k8s.io/mysql-cinder-pd/README.md',
@@ -1262,6 +1517,9 @@ class CinderVolumeSource(BaseModel):
 
 
 class ConfigMapProjection(BaseModel):
+    class Config:
+        extra = "forbid"
+
     items: Optional[List[KeyToPath]] = Field(
         None,
         description="If unspecified, each key-value pair in the Data field of the referenced ConfigMap will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the ConfigMap, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.",
@@ -1276,6 +1534,9 @@ class ConfigMapProjection(BaseModel):
 
 
 class ConfigMapVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     defaultMode: Optional[int] = Field(
         None,
         description="Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
@@ -1294,12 +1555,18 @@ class ConfigMapVolumeSource(BaseModel):
 
 
 class ContainerStateRunning(BaseModel):
+    class Config:
+        extra = "forbid"
+
     startedAt: Optional[v1.Time] = Field(
         None, description="Time at which the container was last (re-)started"
     )
 
 
 class ContainerStateTerminated(BaseModel):
+    class Config:
+        extra = "forbid"
+
     containerID: Optional[str] = Field(
         None, description="Container's ID in the format 'docker://<container_id>'"
     )
@@ -1324,6 +1591,9 @@ class ContainerStateTerminated(BaseModel):
 
 
 class EmptyDirVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     medium: Optional[str] = Field(
         None,
         description='What type of storage medium should back this directory. The default is "" which means to use the node\'s default medium. Must be an empty string (default) or Memory. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir',
@@ -1335,6 +1605,9 @@ class EmptyDirVolumeSource(BaseModel):
 
 
 class EndpointAddress(BaseModel):
+    class Config:
+        extra = "forbid"
+
     hostname: Optional[str] = Field(None, description="The Hostname of this endpoint")
     ip: str = Field(
         ...,
@@ -1350,6 +1623,9 @@ class EndpointAddress(BaseModel):
 
 
 class EndpointSubset(BaseModel):
+    class Config:
+        extra = "forbid"
+
     addresses: Optional[List[EndpointAddress]] = Field(
         None,
         description="IP addresses which offer the related ports that are marked as ready. These endpoints should be considered safe for load balancers and clients to utilize.",
@@ -1364,6 +1640,9 @@ class EndpointSubset(BaseModel):
 
 
 class EnvFromSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     configMapRef: Optional[ConfigMapEnvSource] = Field(
         None, description="The ConfigMap to select from"
     )
@@ -1377,6 +1656,9 @@ class EnvFromSource(BaseModel):
 
 
 class EventSeries(BaseModel):
+    class Config:
+        extra = "forbid"
+
     count: Optional[int] = Field(
         None,
         description="Number of occurrences in this series up to the last heartbeat time",
@@ -1391,6 +1673,9 @@ class EventSeries(BaseModel):
 
 
 class FlexPersistentVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     driver: str = Field(
         ..., description="Driver is the name of the driver to use for this volume."
     )
@@ -1412,6 +1697,9 @@ class FlexPersistentVolumeSource(BaseModel):
 
 
 class FlexVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     driver: str = Field(
         ..., description="Driver is the name of the driver to use for this volume."
     )
@@ -1433,6 +1721,9 @@ class FlexVolumeSource(BaseModel):
 
 
 class HTTPGetAction(BaseModel):
+    class Config:
+        extra = "forbid"
+
     host: Optional[str] = Field(
         None,
         description='Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.',
@@ -1452,6 +1743,9 @@ class HTTPGetAction(BaseModel):
 
 
 class ISCSIPersistentVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     chapAuthDiscovery: Optional[bool] = Field(
         None, description="whether support iSCSI Discovery CHAP authentication"
     )
@@ -1490,6 +1784,9 @@ class ISCSIPersistentVolumeSource(BaseModel):
 
 
 class ISCSIVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     chapAuthDiscovery: Optional[bool] = Field(
         None, description="whether support iSCSI Discovery CHAP authentication"
     )
@@ -1528,6 +1825,9 @@ class ISCSIVolumeSource(BaseModel):
 
 
 class NamespaceCondition(BaseModel):
+    class Config:
+        extra = "forbid"
+
     lastTransitionTime: Optional[v1.Time] = None
     message: Optional[str] = None
     reason: Optional[str] = None
@@ -1538,6 +1838,9 @@ class NamespaceCondition(BaseModel):
 
 
 class NamespaceStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     conditions: Optional[List[NamespaceCondition]] = Field(
         None,
         description="Represents the latest available observations of a namespace's current state.",
@@ -1549,6 +1852,9 @@ class NamespaceStatus(BaseModel):
 
 
 class NodeCondition(BaseModel):
+    class Config:
+        extra = "forbid"
+
     lastHeartbeatTime: Optional[v1.Time] = Field(
         None, description="Last time we got an update on a given condition."
     )
@@ -1569,12 +1875,18 @@ class NodeCondition(BaseModel):
 
 
 class NodeSelector(BaseModel):
+    class Config:
+        extra = "forbid"
+
     nodeSelectorTerms: List[NodeSelectorTerm] = Field(
         ..., description="Required. A list of node selector terms. The terms are ORed."
     )
 
 
 class NodeStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     addresses: Optional[List[NodeAddress]] = Field(
         None,
         description="List of addresses reachable to the node. Queried from cloud provider, if available. More info: https://kubernetes.io/docs/concepts/nodes/node/#addresses Note: This field is declared as mergeable, but the merge key is not sufficiently unique, which can cause data corruption when it is merged. Callers should instead use a full-replacement patch. See http://pr.k8s.io/79391 for an example.",
@@ -1618,6 +1930,9 @@ class NodeStatus(BaseModel):
 
 
 class PersistentVolumeClaimCondition(BaseModel):
+    class Config:
+        extra = "forbid"
+
     lastProbeTime: Optional[v1.Time] = Field(
         None, description="Last time we probed the condition."
     )
@@ -1638,6 +1953,9 @@ class PersistentVolumeClaimCondition(BaseModel):
 
 
 class PersistentVolumeClaimStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     accessModes: Optional[List[str]] = Field(
         None,
         description="AccessModes contains the actual access modes the volume backing the PVC has. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1",
@@ -1655,6 +1973,9 @@ class PersistentVolumeClaimStatus(BaseModel):
 
 
 class PodCondition(BaseModel):
+    class Config:
+        extra = "forbid"
+
     lastProbeTime: Optional[v1.Time] = Field(
         None, description="Last time we probed the condition."
     )
@@ -1681,6 +2002,9 @@ class PodCondition(BaseModel):
 
 
 class PodDNSConfig(BaseModel):
+    class Config:
+        extra = "forbid"
+
     nameservers: Optional[List[str]] = Field(
         None,
         description="A list of DNS name server IP addresses. This will be appended to the base nameservers generated from DNSPolicy. Duplicated nameservers will be removed.",
@@ -1696,6 +2020,9 @@ class PodDNSConfig(BaseModel):
 
 
 class PodSecurityContext(BaseModel):
+    class Config:
+        extra = "forbid"
+
     fsGroup: Optional[int] = Field(
         None,
         description="A special supplemental group that applies to all containers in a pod. Some volume types allow the Kubelet to change the ownership of that volume to be owned by the pod:\n\n1. The owning GID will be the FSGroup 2. The setgid bit is set (new files created in the volume will be owned by FSGroup) 3. The permission bits are OR'd with rw-rw----\n\nIf unset, the Kubelet will not modify the ownership and permissions of any volume.",
@@ -1731,6 +2058,9 @@ class PodSecurityContext(BaseModel):
 
 
 class RBDPersistentVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     fsType: Optional[str] = Field(
         None,
         description='Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: "ext4", "xfs", "ntfs". Implicitly inferred to be "ext4" if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#rbd',
@@ -1766,6 +2096,9 @@ class RBDPersistentVolumeSource(BaseModel):
 
 
 class ReplicationControllerCondition(BaseModel):
+    class Config:
+        extra = "forbid"
+
     lastTransitionTime: Optional[v1.Time] = Field(
         None,
         description="The last time the condition transitioned from one status to another.",
@@ -1784,6 +2117,9 @@ class ReplicationControllerCondition(BaseModel):
 
 
 class ReplicationControllerStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     availableReplicas: Optional[int] = Field(
         None,
         description="The number of available replicas (ready for at least minReadySeconds) for this replication controller.",
@@ -1811,6 +2147,9 @@ class ReplicationControllerStatus(BaseModel):
 
 
 class ResourceFieldSelector(BaseModel):
+    class Config:
+        extra = "forbid"
+
     containerName: Optional[str] = Field(
         None, description="Container name: required for volumes, optional for env vars"
     )
@@ -1822,6 +2161,9 @@ class ResourceFieldSelector(BaseModel):
 
 
 class ScaleIOPersistentVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     fsType: Optional[str] = Field(
         None,
         description='Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". Default is "xfs"',
@@ -1863,6 +2205,9 @@ class ScaleIOPersistentVolumeSource(BaseModel):
 
 
 class ScopeSelector(BaseModel):
+    class Config:
+        extra = "forbid"
+
     matchExpressions: Optional[List[ScopedResourceSelectorRequirement]] = Field(
         None,
         description="A list of scope selector requirements by scope of the resources.",
@@ -1870,6 +2215,9 @@ class ScopeSelector(BaseModel):
 
 
 class SecurityContext(BaseModel):
+    class Config:
+        extra = "forbid"
+
     allowPrivilegeEscalation: Optional[bool] = Field(
         None,
         description="AllowPrivilegeEscalation controls whether a process can gain more privileges than its parent process. This bool directly controls if the no_new_privs flag will be set on the container process. AllowPrivilegeEscalation is true always when the container is: 1) run as Privileged 2) has CAP_SYS_ADMIN",
@@ -1913,6 +2261,9 @@ class SecurityContext(BaseModel):
 
 
 class ServicePort(BaseModel):
+    class Config:
+        extra = "forbid"
+
     name: Optional[str] = Field(
         None,
         description="The name of this port within the service. This must be a DNS_LABEL. All ports within a ServiceSpec must have unique names. When considering the endpoints for a Service, this must match the 'name' field in the EndpointPort. Optional if only one ServicePort is defined on this service.",
@@ -1933,6 +2284,9 @@ class ServicePort(BaseModel):
 
 
 class ServiceSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     clusterIP: Optional[str] = Field(
         None,
         description='clusterIP is the IP address of the service and is usually assigned randomly by the master. If an address is specified manually and is not in use by others, it will be allocated to the service; otherwise, creation of the service will fail. This field can not be changed through updates. Valid values are "None", empty string (""), or a valid IP address. "None" can be specified for headless services when proxying is not required. Only applies to types ClusterIP, NodePort, and LoadBalancer. Ignored if type is ExternalName. More info: https://kubernetes.io/docs/concepts/services-networking/service/#virtual-ips-and-service-proxies',
@@ -1992,6 +2346,9 @@ class ServiceSpec(BaseModel):
 
 
 class TCPSocketAction(BaseModel):
+    class Config:
+        extra = "forbid"
+
     host: Optional[str] = Field(
         None, description="Optional: Host name to connect to, defaults to the pod IP."
     )
@@ -2002,6 +2359,9 @@ class TCPSocketAction(BaseModel):
 
 
 class Taint(BaseModel):
+    class Config:
+        extra = "forbid"
+
     effect: str = Field(
         ...,
         description="Required. The effect of the taint on pods that do not tolerate the taint. Valid effects are NoSchedule, PreferNoSchedule and NoExecute.",
@@ -2019,12 +2379,18 @@ class Taint(BaseModel):
 
 
 class VolumeNodeAffinity(BaseModel):
+    class Config:
+        extra = "forbid"
+
     required: Optional[NodeSelector] = Field(
         None, description="Required specifies hard node constraints that must be met."
     )
 
 
 class Binding(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -2044,6 +2410,9 @@ class Binding(BaseModel):
 
 
 class ComponentStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -2062,6 +2431,9 @@ class ComponentStatus(BaseModel):
 
 
 class ComponentStatusList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -2080,6 +2452,9 @@ class ComponentStatusList(BaseModel):
 
 
 class ConfigMap(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -2103,6 +2478,9 @@ class ConfigMap(BaseModel):
 
 
 class ConfigMapList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -2119,6 +2497,9 @@ class ConfigMapList(BaseModel):
 
 
 class ContainerState(BaseModel):
+    class Config:
+        extra = "forbid"
+
     running: Optional[ContainerStateRunning] = Field(
         None, description="Details about a running container"
     )
@@ -2131,6 +2512,9 @@ class ContainerState(BaseModel):
 
 
 class ContainerStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     containerID: Optional[str] = Field(
         None, description="Container's ID in the format 'docker://<container_id>'."
     )
@@ -2164,6 +2548,9 @@ class ContainerStatus(BaseModel):
 
 
 class DownwardAPIVolumeFile(BaseModel):
+    class Config:
+        extra = "forbid"
+
     fieldRef: Optional[ObjectFieldSelector] = Field(
         None,
         description="Required: Selects a field of the pod: only annotations, labels, name and namespace are supported.",
@@ -2183,6 +2570,9 @@ class DownwardAPIVolumeFile(BaseModel):
 
 
 class DownwardAPIVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     defaultMode: Optional[int] = Field(
         None,
         description="Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
@@ -2193,6 +2583,9 @@ class DownwardAPIVolumeSource(BaseModel):
 
 
 class Endpoints(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -2212,6 +2605,9 @@ class Endpoints(BaseModel):
 
 
 class EndpointsList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -2228,6 +2624,9 @@ class EndpointsList(BaseModel):
 
 
 class EnvVarSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     configMapKeyRef: Optional[ConfigMapKeySelector] = Field(
         None, description="Selects a key of a ConfigMap."
     )
@@ -2245,6 +2644,9 @@ class EnvVarSource(BaseModel):
 
 
 class Event(BaseModel):
+    class Config:
+        extra = "forbid"
+
     action: Optional[str] = Field(
         None,
         description="What action was taken/failed regarding to the Regarding object.",
@@ -2311,6 +2713,9 @@ class Event(BaseModel):
 
 
 class EventList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -2327,6 +2732,9 @@ class EventList(BaseModel):
 
 
 class Handler(BaseModel):
+    class Config:
+        extra = "forbid"
+
     exec: Optional[ExecAction] = Field(
         None,
         description="One and only one of the following should be specified. Exec specifies the action to take.",
@@ -2341,6 +2749,9 @@ class Handler(BaseModel):
 
 
 class Lifecycle(BaseModel):
+    class Config:
+        extra = "forbid"
+
     postStart: Optional[Handler] = Field(
         None,
         description="PostStart is called immediately after a container is created. If the handler fails, the container is terminated and restarted according to its restart policy. Other management of the container blocks until the hook completes. More info: https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/#container-hooks",
@@ -2352,6 +2763,9 @@ class Lifecycle(BaseModel):
 
 
 class LimitRange(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -2371,6 +2785,9 @@ class LimitRange(BaseModel):
 
 
 class LimitRangeList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -2390,6 +2807,9 @@ class LimitRangeList(BaseModel):
 
 
 class Namespace(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -2413,6 +2833,9 @@ class Namespace(BaseModel):
 
 
 class NamespaceList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -2432,6 +2855,9 @@ class NamespaceList(BaseModel):
 
 
 class NodeAffinity(BaseModel):
+    class Config:
+        extra = "forbid"
+
     preferredDuringSchedulingIgnoredDuringExecution: Optional[
         List[PreferredSchedulingTerm]
     ] = Field(
@@ -2445,6 +2871,9 @@ class NodeAffinity(BaseModel):
 
 
 class NodeSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     configSource: Optional[NodeConfigSource] = Field(
         None,
         description="If specified, the source to get node configuration from The DynamicKubeletConfig feature gate must be enabled for the Kubelet to use this field",
@@ -2474,6 +2903,9 @@ class NodeSpec(BaseModel):
 
 
 class PersistentVolumeClaimSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     accessModes: Optional[List[str]] = Field(
         None,
         description="AccessModes contains the desired access modes the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1",
@@ -2504,6 +2936,9 @@ class PersistentVolumeClaimSpec(BaseModel):
 
 
 class PersistentVolumeSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     accessModes: Optional[List[str]] = Field(
         None,
         description="AccessModes contains all ways the volume can be mounted. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes",
@@ -2627,6 +3062,9 @@ class PersistentVolumeSpec(BaseModel):
 
 
 class PodAffinityTerm(BaseModel):
+    class Config:
+        extra = "forbid"
+
     labelSelector: Optional[v1.LabelSelector] = Field(
         None, description="A label query over a set of resources, in this case pods."
     )
@@ -2641,6 +3079,9 @@ class PodAffinityTerm(BaseModel):
 
 
 class PodStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     conditions: Optional[List[PodCondition]] = Field(
         None,
         description="Current service state of pod. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions",
@@ -2696,6 +3137,9 @@ class PodStatus(BaseModel):
 
 
 class Probe(BaseModel):
+    class Config:
+        extra = "forbid"
+
     exec: Optional[ExecAction] = Field(
         None,
         description="One and only one of the following should be specified. Exec specifies the action to take.",
@@ -2730,6 +3174,9 @@ class Probe(BaseModel):
 
 
 class ResourceQuotaSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     hard: Optional[Dict[str, Any]] = Field(
         None,
         description="hard is the set of desired hard limits for each named resource. More info: https://kubernetes.io/docs/concepts/policy/resource-quotas/",
@@ -2745,6 +3192,9 @@ class ResourceQuotaSpec(BaseModel):
 
 
 class Secret(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -2771,6 +3221,9 @@ class Secret(BaseModel):
 
 
 class SecretList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -2790,6 +3243,9 @@ class SecretList(BaseModel):
 
 
 class Service(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -2813,6 +3269,9 @@ class Service(BaseModel):
 
 
 class ServiceAccount(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -2840,6 +3299,9 @@ class ServiceAccount(BaseModel):
 
 
 class ServiceAccountList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -2859,6 +3321,9 @@ class ServiceAccountList(BaseModel):
 
 
 class ServiceList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -2875,6 +3340,9 @@ class ServiceList(BaseModel):
 
 
 class TopologySpreadConstraint(BaseModel):
+    class Config:
+        extra = "forbid"
+
     labelSelector: Optional[v1.LabelSelector] = Field(
         None,
         description="LabelSelector is used to find matching pods. Pods that match this label selector are counted to determine the number of pods in their corresponding topology domain.",
@@ -2894,6 +3362,9 @@ class TopologySpreadConstraint(BaseModel):
 
 
 class WeightedPodAffinityTerm(BaseModel):
+    class Config:
+        extra = "forbid"
+
     podAffinityTerm: PodAffinityTerm = Field(
         ...,
         description="Required. A pod affinity term, associated with the corresponding weight.",
@@ -2905,12 +3376,18 @@ class WeightedPodAffinityTerm(BaseModel):
 
 
 class DownwardAPIProjection(BaseModel):
+    class Config:
+        extra = "forbid"
+
     items: Optional[List[DownwardAPIVolumeFile]] = Field(
         None, description="Items is a list of DownwardAPIVolume file"
     )
 
 
 class EnvVar(BaseModel):
+    class Config:
+        extra = "forbid"
+
     name: str = Field(
         ..., description="Name of the environment variable. Must be a C_IDENTIFIER."
     )
@@ -2925,6 +3402,9 @@ class EnvVar(BaseModel):
 
 
 class EphemeralContainer(BaseModel):
+    class Config:
+        extra = "forbid"
+
     args: Optional[List[str]] = Field(
         None,
         description="Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell",
@@ -3014,6 +3494,9 @@ class EphemeralContainer(BaseModel):
 
 
 class Node(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -3037,6 +3520,9 @@ class Node(BaseModel):
 
 
 class NodeList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -3053,6 +3539,9 @@ class NodeList(BaseModel):
 
 
 class PersistentVolume(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -3076,6 +3565,9 @@ class PersistentVolume(BaseModel):
 
 
 class PersistentVolumeClaim(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -3099,6 +3591,9 @@ class PersistentVolumeClaim(BaseModel):
 
 
 class PersistentVolumeClaimList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -3118,6 +3613,9 @@ class PersistentVolumeClaimList(BaseModel):
 
 
 class PersistentVolumeList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -3137,6 +3635,9 @@ class PersistentVolumeList(BaseModel):
 
 
 class PodAffinity(BaseModel):
+    class Config:
+        extra = "forbid"
+
     preferredDuringSchedulingIgnoredDuringExecution: Optional[
         List[WeightedPodAffinityTerm]
     ] = Field(
@@ -3152,6 +3653,9 @@ class PodAffinity(BaseModel):
 
 
 class PodAntiAffinity(BaseModel):
+    class Config:
+        extra = "forbid"
+
     preferredDuringSchedulingIgnoredDuringExecution: Optional[
         List[WeightedPodAffinityTerm]
     ] = Field(
@@ -3167,6 +3671,9 @@ class PodAntiAffinity(BaseModel):
 
 
 class ResourceQuota(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -3190,6 +3697,9 @@ class ResourceQuota(BaseModel):
 
 
 class ResourceQuotaList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -3209,6 +3719,9 @@ class ResourceQuotaList(BaseModel):
 
 
 class VolumeProjection(BaseModel):
+    class Config:
+        extra = "forbid"
+
     configMap: Optional[ConfigMapProjection] = Field(
         None, description="information about the configMap data to project"
     )
@@ -3224,6 +3737,9 @@ class VolumeProjection(BaseModel):
 
 
 class Affinity(BaseModel):
+    class Config:
+        extra = "forbid"
+
     nodeAffinity: Optional[NodeAffinity] = Field(
         None, description="Describes node affinity scheduling rules for the pod."
     )
@@ -3238,6 +3754,9 @@ class Affinity(BaseModel):
 
 
 class Container(BaseModel):
+    class Config:
+        extra = "forbid"
+
     args: Optional[List[str]] = Field(
         None,
         description="Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Cannot be updated. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell",
@@ -3329,6 +3848,9 @@ class Container(BaseModel):
 
 
 class ProjectedVolumeSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     defaultMode: Optional[int] = Field(
         None,
         description="Mode bits to use on created files by default. Must be a value between 0 and 0777. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.",
@@ -3339,6 +3861,9 @@ class ProjectedVolumeSource(BaseModel):
 
 
 class Volume(BaseModel):
+    class Config:
+        extra = "forbid"
+
     awsElasticBlockStore: Optional[AWSElasticBlockStoreVolumeSource] = Field(
         None,
         description="AWSElasticBlockStore represents an AWS Disk resource that is attached to a kubelet's host machine and then exposed to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore",
@@ -3458,6 +3983,9 @@ class Volume(BaseModel):
 
 
 class PodSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     activeDeadlineSeconds: Optional[int] = Field(
         None,
         description="Optional duration in seconds the pod may be active on the node relative to StartTime before the system will actively try to mark it failed and kill associated containers. Value must be a positive integer.",
@@ -3593,6 +4121,9 @@ class PodSpec(BaseModel):
 
 
 class PodTemplateSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     metadata: Optional[v1.ObjectMeta] = Field(
         None,
         description="Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
@@ -3604,6 +4135,9 @@ class PodTemplateSpec(BaseModel):
 
 
 class ReplicationControllerSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     minReadySeconds: Optional[int] = Field(
         None,
         description="Minimum number of seconds for which a newly created pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)",
@@ -3623,6 +4157,9 @@ class ReplicationControllerSpec(BaseModel):
 
 
 class Pod(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -3646,6 +4183,9 @@ class Pod(BaseModel):
 
 
 class PodList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -3665,6 +4205,9 @@ class PodList(BaseModel):
 
 
 class PodTemplate(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -3684,6 +4227,9 @@ class PodTemplate(BaseModel):
 
 
 class PodTemplateList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -3700,6 +4246,9 @@ class PodTemplateList(BaseModel):
 
 
 class ReplicationController(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -3723,6 +4272,9 @@ class ReplicationController(BaseModel):
 
 
 class ReplicationControllerList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",

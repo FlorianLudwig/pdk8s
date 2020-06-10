@@ -12,6 +12,9 @@ from ...apimachinery.pkg.apis.meta import v1
 
 
 class CrossVersionObjectReference(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v2beta2", description="API version of the referent"
     )
@@ -26,6 +29,9 @@ class CrossVersionObjectReference(BaseModel):
 
 
 class HorizontalPodAutoscalerCondition(BaseModel):
+    class Config:
+        extra = "forbid"
+
     lastTransitionTime: Optional[v1.Time] = Field(
         None,
         description="lastTransitionTime is the last time the condition transitioned from one status to another",
@@ -44,6 +50,9 @@ class HorizontalPodAutoscalerCondition(BaseModel):
 
 
 class MetricTarget(BaseModel):
+    class Config:
+        extra = "forbid"
+
     averageUtilization: Optional[int] = Field(
         None,
         description="averageUtilization is the target value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods. Currently only valid for Resource metric source type",
@@ -62,6 +71,9 @@ class MetricTarget(BaseModel):
 
 
 class MetricValueStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     averageUtilization: Optional[int] = Field(
         None,
         description="currentAverageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.",
@@ -76,6 +88,9 @@ class MetricValueStatus(BaseModel):
 
 
 class ResourceMetricSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     name: str = Field(..., description="name is the name of the resource in question.")
     target: MetricTarget = Field(
         ..., description="target specifies the target value for the given metric"
@@ -83,6 +98,9 @@ class ResourceMetricSource(BaseModel):
 
 
 class ResourceMetricStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     current: MetricValueStatus = Field(
         ..., description="current contains the current value for the given metric"
     )
@@ -90,6 +108,9 @@ class ResourceMetricStatus(BaseModel):
 
 
 class MetricIdentifier(BaseModel):
+    class Config:
+        extra = "forbid"
+
     name: str = Field(..., description="name is the name of the given metric")
     selector: Optional[v1.LabelSelector] = Field(
         None,
@@ -98,6 +119,9 @@ class MetricIdentifier(BaseModel):
 
 
 class ObjectMetricSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     describedObject: CrossVersionObjectReference
     metric: MetricIdentifier = Field(
         ..., description="metric identifies the target metric by name and selector"
@@ -108,6 +132,9 @@ class ObjectMetricSource(BaseModel):
 
 
 class ObjectMetricStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     current: MetricValueStatus = Field(
         ..., description="current contains the current value for the given metric"
     )
@@ -118,6 +145,9 @@ class ObjectMetricStatus(BaseModel):
 
 
 class PodsMetricSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     metric: MetricIdentifier = Field(
         ..., description="metric identifies the target metric by name and selector"
     )
@@ -127,6 +157,9 @@ class PodsMetricSource(BaseModel):
 
 
 class PodsMetricStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     current: MetricValueStatus = Field(
         ..., description="current contains the current value for the given metric"
     )
@@ -136,6 +169,9 @@ class PodsMetricStatus(BaseModel):
 
 
 class ExternalMetricSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     metric: MetricIdentifier = Field(
         ..., description="metric identifies the target metric by name and selector"
     )
@@ -145,6 +181,9 @@ class ExternalMetricSource(BaseModel):
 
 
 class ExternalMetricStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     current: MetricValueStatus = Field(
         ..., description="current contains the current value for the given metric"
     )
@@ -154,6 +193,9 @@ class ExternalMetricStatus(BaseModel):
 
 
 class MetricSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     external: Optional[ExternalMetricSource] = Field(
         None,
         description="external refers to a global metric that is not associated with any Kubernetes object. It allows autoscaling based on information coming from components running outside of cluster (for example length of queue in cloud messaging service, or QPS from loadbalancer running outside of cluster).",
@@ -177,6 +219,9 @@ class MetricSpec(BaseModel):
 
 
 class MetricStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     external: Optional[ExternalMetricStatus] = Field(
         None,
         description="external refers to a global metric that is not associated with any Kubernetes object. It allows autoscaling based on information coming from components running outside of cluster (for example length of queue in cloud messaging service, or QPS from loadbalancer running outside of cluster).",
@@ -200,6 +245,9 @@ class MetricStatus(BaseModel):
 
 
 class HorizontalPodAutoscalerSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     maxReplicas: int = Field(
         ...,
         description="maxReplicas is the upper limit for the number of replicas to which the autoscaler can scale up. It cannot be less that minReplicas.",
@@ -219,6 +267,9 @@ class HorizontalPodAutoscalerSpec(BaseModel):
 
 
 class HorizontalPodAutoscalerStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     conditions: List[HorizontalPodAutoscalerCondition] = Field(
         ...,
         description="conditions is the set of conditions required for this autoscaler to scale its target, and indicates whether or not those conditions are met.",
@@ -246,6 +297,9 @@ class HorizontalPodAutoscalerStatus(BaseModel):
 
 
 class HorizontalPodAutoscaler(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v2beta2",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -268,6 +322,9 @@ class HorizontalPodAutoscaler(BaseModel):
 
 
 class HorizontalPodAutoscalerList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v2beta2",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",

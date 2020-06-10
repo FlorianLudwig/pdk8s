@@ -12,6 +12,9 @@ from ..core import v1
 
 
 class VolumeError(BaseModel):
+    class Config:
+        extra = "forbid"
+
     message: Optional[str] = Field(
         None,
         description="String detailing the error encountered during Attach or Detach operation. This string may be logged, so it should not contain sensitive information.",
@@ -20,6 +23,9 @@ class VolumeError(BaseModel):
 
 
 class StorageClass(BaseModel):
+    class Config:
+        extra = "forbid"
+
     allowVolumeExpansion: Optional[bool] = Field(
         None,
         description="AllowVolumeExpansion shows whether the storage class allow volume expand",
@@ -62,6 +68,9 @@ class StorageClass(BaseModel):
 
 
 class StorageClassList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -80,6 +89,9 @@ class StorageClassList(BaseModel):
 
 
 class VolumeAttachmentSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     inlineVolumeSpec: Optional[v1.PersistentVolumeSpec] = Field(
         None,
         description="inlineVolumeSpec contains all the information necessary to attach a persistent volume defined by a pod's inline VolumeSource. This field is populated only for the CSIMigration feature. It contains translated fields from a pod's inline VolumeSource to a PersistentVolumeSpec. This field is alpha-level and is only honored by servers that enabled the CSIMigration feature.",
@@ -90,6 +102,9 @@ class VolumeAttachmentSource(BaseModel):
 
 
 class VolumeAttachmentSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     attacher: str = Field(
         ...,
         description="Attacher indicates the name of the volume driver that MUST handle this request. This is the name returned by GetPluginName().",
@@ -103,6 +118,9 @@ class VolumeAttachmentSpec(BaseModel):
 
 
 class VolumeAttachmentStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     attachError: Optional[VolumeError] = Field(
         None,
         description="The last error encountered during attach operation, if any. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.",
@@ -122,6 +140,9 @@ class VolumeAttachmentStatus(BaseModel):
 
 
 class VolumeAttachment(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -145,6 +166,9 @@ class VolumeAttachment(BaseModel):
 
 
 class VolumeAttachmentList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",

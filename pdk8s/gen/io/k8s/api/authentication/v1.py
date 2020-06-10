@@ -11,6 +11,9 @@ from ...apimachinery.pkg.apis.meta import v1
 
 
 class BoundObjectReference(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field("v1", description="API version of the referent.")
     kind: Optional[str] = Field(
         None, description="Kind of the referent. Valid kinds are 'Pod' and 'Secret'."
@@ -20,6 +23,9 @@ class BoundObjectReference(BaseModel):
 
 
 class TokenRequestSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     audiences: List[str] = Field(
         ...,
         description="Audiences are the intendend audiences of the token. A recipient of a token must identitfy themself with an identifier in the list of audiences of the token, and otherwise should reject the token. A token issued for multiple audiences may be used to authenticate against any of the audiences listed but implies a high degree of trust between the target audiences.",
@@ -35,6 +41,9 @@ class TokenRequestSpec(BaseModel):
 
 
 class TokenReviewSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     audiences: Optional[List[str]] = Field(
         None,
         description="Audiences is a list of the identifiers that the resource server presented with the token identifies as. Audience-aware token authenticators will verify that the token was intended for at least one of the audiences in this list. If no audiences are provided, the audience will default to the audience of the Kubernetes apiserver.",
@@ -43,6 +52,9 @@ class TokenReviewSpec(BaseModel):
 
 
 class UserInfo(BaseModel):
+    class Config:
+        extra = "forbid"
+
     extra: Optional[Dict[str, Any]] = Field(
         None, description="Any additional information provided by the authenticator."
     )
@@ -60,6 +72,9 @@ class UserInfo(BaseModel):
 
 
 class TokenRequestStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     expirationTimestamp: v1.Time = Field(
         ...,
         description="ExpirationTimestamp is the time of expiration of the returned token.",
@@ -68,6 +83,9 @@ class TokenRequestStatus(BaseModel):
 
 
 class TokenReviewStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     audiences: Optional[List[str]] = Field(
         None,
         description='Audiences are audience identifiers chosen by the authenticator that are compatible with both the TokenReview and token. An identifier is any identifier in the intersection of the TokenReviewSpec audiences and the token\'s audiences. A client of the TokenReview API that sets the spec.audiences field should validate that a compatible audience identifier is returned in the status.audiences field to ensure that the TokenReview server is audience aware. If a TokenReview returns an empty status.audience field where status.authenticated is "true", the token is valid against the audience of the Kubernetes API server.',
@@ -85,6 +103,9 @@ class TokenReviewStatus(BaseModel):
 
 
 class TokenRequest(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -99,6 +120,9 @@ class TokenRequest(BaseModel):
 
 
 class TokenReview(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",

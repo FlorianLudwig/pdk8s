@@ -11,6 +11,9 @@ from .....apimachinery.pkg.apis.meta import v1
 
 
 class APIServiceCondition(BaseModel):
+    class Config:
+        extra = "forbid"
+
     lastTransitionTime: Optional[v1.Time] = Field(
         None,
         description="Last time the condition transitioned from one status to another.",
@@ -31,12 +34,18 @@ class APIServiceCondition(BaseModel):
 
 
 class APIServiceStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     conditions: Optional[List[APIServiceCondition]] = Field(
         None, description="Current service state of apiService."
     )
 
 
 class ServiceReference(BaseModel):
+    class Config:
+        extra = "forbid"
+
     name: Optional[str] = Field(None, description="Name is the name of the service")
     namespace: Optional[str] = Field(
         None, description="Namespace is the namespace of the service"
@@ -48,6 +57,9 @@ class ServiceReference(BaseModel):
 
 
 class APIServiceSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     caBundle: Optional[str] = Field(
         None,
         description="CABundle is a PEM encoded CA bundle which will be used to validate an API server's serving certificate. If unspecified, system trust roots on the apiserver are used.",
@@ -78,6 +90,9 @@ class APIServiceSpec(BaseModel):
 
 
 class APIService(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -97,6 +112,9 @@ class APIService(BaseModel):
 
 
 class APIServiceList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",

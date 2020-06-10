@@ -11,6 +11,9 @@ from ...apimachinery.pkg.apis.meta import v1
 
 
 class RuleWithOperations(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiGroups: Optional[List[str]] = Field(
         None,
         description="APIGroups is the API groups the resources belong to. '*' is all groups. If '*' is present, the length of the slice must be one. Required.",
@@ -34,6 +37,9 @@ class RuleWithOperations(BaseModel):
 
 
 class ServiceReference(BaseModel):
+    class Config:
+        extra = "forbid"
+
     name: str = Field(..., description="`name` is the name of the service. Required")
     namespace: str = Field(
         ..., description="`namespace` is the namespace of the service. Required"
@@ -49,6 +55,9 @@ class ServiceReference(BaseModel):
 
 
 class WebhookClientConfig(BaseModel):
+    class Config:
+        extra = "forbid"
+
     caBundle: Optional[str] = Field(
         None,
         description="`caBundle` is a PEM encoded CA bundle which will be used to validate the webhook's server certificate. If unspecified, system trust roots on the apiserver are used.",
@@ -64,6 +73,9 @@ class WebhookClientConfig(BaseModel):
 
 
 class MutatingWebhook(BaseModel):
+    class Config:
+        extra = "forbid"
+
     admissionReviewVersions: List[str] = Field(
         ...,
         description="AdmissionReviewVersions is an ordered list of preferred `AdmissionReview` versions the Webhook expects. API server will try to use first version in the list which it supports. If none of the versions specified in this list supported by API server, validation will fail for this object. If a persisted webhook configuration specifies allowed versions and does not include any versions known to the API Server, calls to the webhook will fail and be subject to the failure policy.",
@@ -111,6 +123,9 @@ class MutatingWebhook(BaseModel):
 
 
 class MutatingWebhookConfiguration(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -130,6 +145,9 @@ class MutatingWebhookConfiguration(BaseModel):
 
 
 class MutatingWebhookConfigurationList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -148,6 +166,9 @@ class MutatingWebhookConfigurationList(BaseModel):
 
 
 class ValidatingWebhook(BaseModel):
+    class Config:
+        extra = "forbid"
+
     admissionReviewVersions: List[str] = Field(
         ...,
         description="AdmissionReviewVersions is an ordered list of preferred `AdmissionReview` versions the Webhook expects. API server will try to use first version in the list which it supports. If none of the versions specified in this list supported by API server, validation will fail for this object. If a persisted webhook configuration specifies allowed versions and does not include any versions known to the API Server, calls to the webhook will fail and be subject to the failure policy.",
@@ -191,6 +212,9 @@ class ValidatingWebhook(BaseModel):
 
 
 class ValidatingWebhookConfiguration(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -210,6 +234,9 @@ class ValidatingWebhookConfiguration(BaseModel):
 
 
 class ValidatingWebhookConfigurationList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",

@@ -12,6 +12,9 @@ from ..core import v1
 
 
 class EndpointConditions(BaseModel):
+    class Config:
+        extra = "forbid"
+
     ready: Optional[bool] = Field(
         None,
         description="ready indicates that this endpoint is prepared to receive traffic, according to whatever system is managing the endpoint. A nil value indicates an unknown state. In most cases consumers should interpret this unknown state as ready.",
@@ -19,6 +22,9 @@ class EndpointConditions(BaseModel):
 
 
 class EndpointPort(BaseModel):
+    class Config:
+        extra = "forbid"
+
     name: Optional[str] = Field(
         None,
         description="The name of this port. All ports in an EndpointSlice must have a unique name. If the EndpointSlice is dervied from a Kubernetes service, this corresponds to the Service.ports[].name. Name must either be an empty string or pass IANA_SVC_NAME validation: * must be no more than 15 characters long * may contain only [-a-z0-9] * must contain at least one letter [a-z] * it must not start or end with a hyphen, nor contain adjacent hyphens Default is empty string.",
@@ -34,6 +40,9 @@ class EndpointPort(BaseModel):
 
 
 class Endpoint(BaseModel):
+    class Config:
+        extra = "forbid"
+
     addresses: List[str] = Field(
         ...,
         description="addresses of this endpoint. The contents of this field are interpreted according to the corresponding EndpointSlice addressType field. This allows for cases like dual-stack (IPv4 and IPv6) networking. Consumers (e.g. kube-proxy) must handle different types of addresses in the context of their own capabilities. This must contain at least one address but no more than 100.",
@@ -57,6 +66,9 @@ class Endpoint(BaseModel):
 
 
 class EndpointSlice(BaseModel):
+    class Config:
+        extra = "forbid"
+
     addressType: Optional[str] = Field(
         None,
         description="addressType specifies the type of address carried by this EndpointSlice. All addresses in this slice must be the same type. Default is IP",
@@ -83,6 +95,9 @@ class EndpointSlice(BaseModel):
 
 
 class EndpointSliceList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1alpha1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",

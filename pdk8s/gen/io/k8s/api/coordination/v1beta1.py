@@ -11,6 +11,9 @@ from ...apimachinery.pkg.apis.meta import v1
 
 
 class LeaseSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     acquireTime: Optional[v1.MicroTime] = Field(
         None, description="acquireTime is a time when the current lease was acquired."
     )
@@ -33,6 +36,9 @@ class LeaseSpec(BaseModel):
 
 
 class Lease(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -52,6 +58,9 @@ class Lease(BaseModel):
 
 
 class LeaseList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",

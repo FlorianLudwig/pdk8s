@@ -12,6 +12,9 @@ from ... import runtime
 
 
 class APIResource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     categories: Optional[List[str]] = Field(
         None,
         description="categories is a list of the grouped resources this resource belongs to (e.g. 'all')",
@@ -51,6 +54,9 @@ class APIResource(BaseModel):
 
 
 class APIResourceList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -72,8 +78,14 @@ class APIResourceList(BaseModel):
 class FieldsV1(BaseModel):
     pass
 
+    class Config:
+        extra = "forbid"
+
 
 class GroupVersionForDiscovery(BaseModel):
+    class Config:
+        extra = "forbid"
+
     groupVersion: str = Field(
         ...,
         description='groupVersion specifies the API group and version in the form "group/version"',
@@ -85,6 +97,9 @@ class GroupVersionForDiscovery(BaseModel):
 
 
 class LabelSelectorRequirement(BaseModel):
+    class Config:
+        extra = "forbid"
+
     key: str = Field(
         ..., description="key is the label key that the selector applies to."
     )
@@ -99,6 +114,9 @@ class LabelSelectorRequirement(BaseModel):
 
 
 class ListMeta(BaseModel):
+    class Config:
+        extra = "forbid"
+
     continue_: Optional[str] = Field(
         None,
         alias="continue",
@@ -123,6 +141,9 @@ class MicroTime(BaseModel):
 
 
 class OwnerReference(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: str = Field(..., description="API version of the referent.")
     blockOwnerDeletion: Optional[bool] = Field(
         None,
@@ -148,8 +169,14 @@ class OwnerReference(BaseModel):
 class Patch(BaseModel):
     pass
 
+    class Config:
+        extra = "forbid"
+
 
 class Preconditions(BaseModel):
+    class Config:
+        extra = "forbid"
+
     resourceVersion: Optional[str] = Field(
         None, description="Specifies the target ResourceVersion"
     )
@@ -157,6 +184,9 @@ class Preconditions(BaseModel):
 
 
 class ServerAddressByClientCIDR(BaseModel):
+    class Config:
+        extra = "forbid"
+
     clientCIDR: str = Field(
         ...,
         description="The CIDR with which clients can match their IP to figure out the server address that they should use.",
@@ -168,6 +198,9 @@ class ServerAddressByClientCIDR(BaseModel):
 
 
 class StatusCause(BaseModel):
+    class Config:
+        extra = "forbid"
+
     field: Optional[str] = Field(
         None,
         description='The field of the resource that has caused this error, as named by its JSON serialization. May include dot and postfix notation for nested attributes. Arrays are zero-indexed.  Fields may appear more than once in an array of causes due to fields having multiple errors. Optional.\n\nExamples:\n  "name" - the field "name" on the current resource\n  "items[0].name" - the field "name" on the first array entry in "items"',
@@ -183,6 +216,9 @@ class StatusCause(BaseModel):
 
 
 class StatusDetails(BaseModel):
+    class Config:
+        extra = "forbid"
+
     causes: Optional[List[StatusCause]] = Field(
         None,
         description="The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes.",
@@ -214,6 +250,9 @@ class Time(BaseModel):
 
 
 class APIGroup(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -237,6 +276,9 @@ class APIGroup(BaseModel):
 
 
 class APIGroupList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -249,6 +291,9 @@ class APIGroupList(BaseModel):
 
 
 class APIVersions(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -267,6 +312,9 @@ class APIVersions(BaseModel):
 
 
 class DeleteOptions(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -298,6 +346,9 @@ class DeleteOptions(BaseModel):
 
 
 class LabelSelector(BaseModel):
+    class Config:
+        extra = "forbid"
+
     matchExpressions: Optional[List[LabelSelectorRequirement]] = Field(
         None,
         description="matchExpressions is a list of label selector requirements. The requirements are ANDed.",
@@ -309,6 +360,9 @@ class LabelSelector(BaseModel):
 
 
 class ManagedFieldsEntry(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description='APIVersion defines the version of this resource that this field set applies to. The format is "group/version" just like the top-level APIVersion field. It is necessary to track the version of a field set because it cannot be automatically converted.',
@@ -336,6 +390,9 @@ class ManagedFieldsEntry(BaseModel):
 
 
 class ObjectMeta(BaseModel):
+    class Config:
+        extra = "forbid"
+
     annotations: Optional[Dict[str, Any]] = Field(
         None,
         description="Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations",
@@ -403,6 +460,9 @@ class ObjectMeta(BaseModel):
 
 
 class Status(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -437,6 +497,9 @@ class Status(BaseModel):
 
 
 class WatchEvent(BaseModel):
+    class Config:
+        extra = "forbid"
+
     object: runtime.RawExtension = Field(
         ...,
         description="Object is:\n * If Type is Added or Modified: the new state of the object.\n * If Type is Deleted: the state of the object immediately before deletion.\n * If Type is Error: *Status is recommended; other types may make sense\n   depending on context.",

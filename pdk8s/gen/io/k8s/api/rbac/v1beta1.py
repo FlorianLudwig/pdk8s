@@ -11,6 +11,9 @@ from ...apimachinery.pkg.apis.meta import v1
 
 
 class PolicyRule(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiGroups: Optional[List[str]] = Field(
         None,
         description="APIGroups is the name of the APIGroup that contains the resources.  If multiple API groups are specified, any action requested against one of the enumerated resources in any API group will be allowed.",
@@ -34,6 +37,9 @@ class PolicyRule(BaseModel):
 
 
 class RoleRef(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiGroup: str = Field(
         ..., description="APIGroup is the group for the resource being referenced"
     )
@@ -42,6 +48,9 @@ class RoleRef(BaseModel):
 
 
 class Subject(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiGroup: Optional[str] = Field(
         None,
         description='APIGroup holds the API group of the referenced subject. Defaults to "" for ServiceAccount subjects. Defaults to "rbac.authorization.k8s.io" for User and Group subjects.',
@@ -58,6 +67,9 @@ class Subject(BaseModel):
 
 
 class AggregationRule(BaseModel):
+    class Config:
+        extra = "forbid"
+
     clusterRoleSelectors: Optional[List[v1.LabelSelector]] = Field(
         None,
         description="ClusterRoleSelectors holds a list of selectors which will be used to find ClusterRoles and create the rules. If any of the selectors match, then the ClusterRole's permissions will be added",
@@ -65,6 +77,9 @@ class AggregationRule(BaseModel):
 
 
 class ClusterRole(BaseModel):
+    class Config:
+        extra = "forbid"
+
     aggregationRule: Optional[AggregationRule] = Field(
         None,
         description="AggregationRule is an optional field that describes how to build the Rules for this ClusterRole. If AggregationRule is set, then the Rules are controller managed and direct changes to Rules will be stomped by the controller.",
@@ -86,6 +101,9 @@ class ClusterRole(BaseModel):
 
 
 class ClusterRoleBinding(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -108,6 +126,9 @@ class ClusterRoleBinding(BaseModel):
 
 
 class ClusterRoleBindingList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -125,6 +146,9 @@ class ClusterRoleBindingList(BaseModel):
 
 
 class ClusterRoleList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -140,6 +164,9 @@ class ClusterRoleList(BaseModel):
 
 
 class Role(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -157,6 +184,9 @@ class Role(BaseModel):
 
 
 class RoleBinding(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -179,6 +209,9 @@ class RoleBinding(BaseModel):
 
 
 class RoleBindingList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -194,6 +227,9 @@ class RoleBindingList(BaseModel):
 
 
 class RoleList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",

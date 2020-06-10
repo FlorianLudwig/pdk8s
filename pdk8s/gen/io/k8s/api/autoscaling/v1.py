@@ -11,6 +11,9 @@ from ...apimachinery.pkg.apis.meta import v1
 
 
 class CrossVersionObjectReference(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field("v1", description="API version of the referent")
     kind: str = Field(
         ...,
@@ -23,6 +26,9 @@ class CrossVersionObjectReference(BaseModel):
 
 
 class HorizontalPodAutoscalerSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     maxReplicas: int = Field(
         ...,
         description="upper limit for the number of pods that can be set by the autoscaler; cannot be smaller than MinReplicas.",
@@ -42,12 +48,18 @@ class HorizontalPodAutoscalerSpec(BaseModel):
 
 
 class ScaleSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     replicas: Optional[int] = Field(
         None, description="desired number of instances for the scaled object."
     )
 
 
 class ScaleStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     replicas: int = Field(
         ..., description="actual number of observed instances of the scaled object."
     )
@@ -58,6 +70,9 @@ class ScaleStatus(BaseModel):
 
 
 class HorizontalPodAutoscalerStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     currentCPUUtilizationPercentage: Optional[int] = Field(
         None,
         description="current average CPU utilization over all pods, represented as a percentage of requested CPU, e.g. 70 means that an average pod is using now 70% of its requested CPU.",
@@ -80,6 +95,9 @@ class HorizontalPodAutoscalerStatus(BaseModel):
 
 
 class HorizontalPodAutoscaler(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -102,6 +120,9 @@ class HorizontalPodAutoscaler(BaseModel):
 
 
 class HorizontalPodAutoscalerList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -117,6 +138,9 @@ class HorizontalPodAutoscalerList(BaseModel):
 
 
 class Scale(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",

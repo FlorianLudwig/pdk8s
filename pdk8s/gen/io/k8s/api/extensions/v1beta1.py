@@ -28,14 +28,23 @@ from ..core import v1 as v1_1
 
 
 class AllowedCSIDriver(BaseModel):
+    class Config:
+        extra = "forbid"
+
     name: str = Field(..., description="Name is the registered name of the CSI driver")
 
 
 class AllowedFlexVolume(BaseModel):
+    class Config:
+        extra = "forbid"
+
     driver: str = Field(..., description="driver is the name of the Flexvolume driver.")
 
 
 class AllowedHostPath(BaseModel):
+    class Config:
+        extra = "forbid"
+
     pathPrefix: Optional[str] = Field(
         None,
         description="pathPrefix is the path prefix that the host volume must match. It does not support `*`. Trailing slashes are trimmed when validating the path prefix with a host path.\n\nExamples: `/foo` would allow `/foo`, `/foo/` and `/foo/bar` `/foo` would not allow `/food` or `/etc/foo`",
@@ -47,16 +56,25 @@ class AllowedHostPath(BaseModel):
 
 
 class HostPortRange(BaseModel):
+    class Config:
+        extra = "forbid"
+
     max: int = Field(..., description="max is the end of the range, inclusive.")
     min: int = Field(..., description="min is the start of the range, inclusive.")
 
 
 class IDRange(BaseModel):
+    class Config:
+        extra = "forbid"
+
     max: int = Field(..., description="max is the end of the range, inclusive.")
     min: int = Field(..., description="min is the start of the range, inclusive.")
 
 
 class IPBlock(BaseModel):
+    class Config:
+        extra = "forbid"
+
     cidr: str = Field(
         ...,
         description='CIDR is a string representing the IP Block Valid examples are "192.168.1.1/24"',
@@ -69,6 +87,9 @@ class IPBlock(BaseModel):
 
 
 class IngressStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     loadBalancer: Optional[v1.LoadBalancerStatus] = Field(
         None,
         description="LoadBalancer contains the current status of the load-balancer.",
@@ -76,6 +97,9 @@ class IngressStatus(BaseModel):
 
 
 class IngressTLS(BaseModel):
+    class Config:
+        extra = "forbid"
+
     hosts: Optional[List[str]] = Field(
         None,
         description="Hosts are a list of hosts included in the TLS certificate. The values in this list must match the name/s used in the tlsSecret. Defaults to the wildcard host setting for the loadbalancer controller fulfilling this Ingress, if left unspecified.",
@@ -87,6 +111,9 @@ class IngressTLS(BaseModel):
 
 
 class RollbackConfig(BaseModel):
+    class Config:
+        extra = "forbid"
+
     revision: Optional[int] = Field(
         None,
         description="The revision to rollback to. If set to 0, rollback to the last revision.",
@@ -94,6 +121,9 @@ class RollbackConfig(BaseModel):
 
 
 class RunAsGroupStrategyOptions(BaseModel):
+    class Config:
+        extra = "forbid"
+
     ranges: Optional[List[IDRange]] = Field(
         None,
         description="ranges are the allowed ranges of gids that may be used. If you would like to force a single gid then supply a single range with the same start and end. Required for MustRunAs.",
@@ -105,6 +135,9 @@ class RunAsGroupStrategyOptions(BaseModel):
 
 
 class RunAsUserStrategyOptions(BaseModel):
+    class Config:
+        extra = "forbid"
+
     ranges: Optional[List[IDRange]] = Field(
         None,
         description="ranges are the allowed ranges of uids that may be used. If you would like to force a single uid then supply a single range with the same start and end. Required for MustRunAs.",
@@ -116,6 +149,9 @@ class RunAsUserStrategyOptions(BaseModel):
 
 
 class RuntimeClassStrategyOptions(BaseModel):
+    class Config:
+        extra = "forbid"
+
     allowedRuntimeClassNames: List[str] = Field(
         ...,
         description='allowedRuntimeClassNames is a whitelist of RuntimeClass names that may be specified on a pod. A value of "*" means that any RuntimeClass name is allowed, and must be the only item in the list. An empty list requires the RuntimeClassName field to be unset.',
@@ -127,6 +163,9 @@ class RuntimeClassStrategyOptions(BaseModel):
 
 
 class SELinuxStrategyOptions(BaseModel):
+    class Config:
+        extra = "forbid"
+
     rule: str = Field(
         ...,
         description="rule is the strategy that will dictate the allowable labels that may be set.",
@@ -138,12 +177,18 @@ class SELinuxStrategyOptions(BaseModel):
 
 
 class ScaleSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     replicas: Optional[int] = Field(
         None, description="desired number of instances for the scaled object."
     )
 
 
 class ScaleStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     replicas: int = Field(
         ..., description="actual number of observed instances of the scaled object."
     )
@@ -158,6 +203,9 @@ class ScaleStatus(BaseModel):
 
 
 class SupplementalGroupsStrategyOptions(BaseModel):
+    class Config:
+        extra = "forbid"
+
     ranges: Optional[List[IDRange]] = Field(
         None,
         description="ranges are the allowed ranges of supplemental groups.  If you would like to force a single supplemental group then supply a single range with the same start and end. Required for MustRunAs.",
@@ -169,6 +217,9 @@ class SupplementalGroupsStrategyOptions(BaseModel):
 
 
 class DaemonSetCondition(BaseModel):
+    class Config:
+        extra = "forbid"
+
     lastTransitionTime: Optional[v1.Time] = Field(
         None,
         description="Last time the condition transitioned from one status to another.",
@@ -187,6 +238,9 @@ class DaemonSetCondition(BaseModel):
 
 
 class DaemonSetStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     collisionCount: Optional[int] = Field(
         None,
         description="Count of hash collisions for the DaemonSet. The DaemonSet controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ControllerRevision.",
@@ -230,6 +284,9 @@ class DaemonSetStatus(BaseModel):
 
 
 class DeploymentCondition(BaseModel):
+    class Config:
+        extra = "forbid"
+
     lastTransitionTime: Optional[v1.Time] = Field(
         None,
         description="Last time the condition transitioned from one status to another.",
@@ -251,6 +308,9 @@ class DeploymentCondition(BaseModel):
 
 
 class DeploymentRollback(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -271,6 +331,9 @@ class DeploymentRollback(BaseModel):
 
 
 class DeploymentStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     availableReplicas: Optional[int] = Field(
         None,
         description="Total number of available pods (ready for at least minReadySeconds) targeted by this deployment.",
@@ -304,6 +367,9 @@ class DeploymentStatus(BaseModel):
 
 
 class FSGroupStrategyOptions(BaseModel):
+    class Config:
+        extra = "forbid"
+
     ranges: Optional[List[IDRange]] = Field(
         None,
         description="ranges are the allowed ranges of fs groups.  If you would like to force a single fs group then supply a single range with the same start and end. Required for MustRunAs.",
@@ -315,6 +381,9 @@ class FSGroupStrategyOptions(BaseModel):
 
 
 class IngressBackend(BaseModel):
+    class Config:
+        extra = "forbid"
+
     serviceName: str = Field(
         ..., description="Specifies the name of the referenced service."
     )
@@ -324,6 +393,9 @@ class IngressBackend(BaseModel):
 
 
 class NetworkPolicyPort(BaseModel):
+    class Config:
+        extra = "forbid"
+
     port: Optional[intstr.IntOrString] = Field(
         None,
         description="If specified, the port on the given protocol.  This can either be a numerical or named port on a pod.  If this field is not provided, this matches all port names and numbers. If present, only traffic on the specified protocol AND port will be matched.",
@@ -335,6 +407,9 @@ class NetworkPolicyPort(BaseModel):
 
 
 class PodSecurityPolicySpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     allowPrivilegeEscalation: Optional[bool] = Field(
         None,
         description="allowPrivilegeEscalation determines if a pod can request to allow privilege escalation. If unspecified, defaults to true.",
@@ -434,6 +509,9 @@ class PodSecurityPolicySpec(BaseModel):
 
 
 class ReplicaSetCondition(BaseModel):
+    class Config:
+        extra = "forbid"
+
     lastTransitionTime: Optional[v1.Time] = Field(
         None,
         description="The last time the condition transitioned from one status to another.",
@@ -452,6 +530,9 @@ class ReplicaSetCondition(BaseModel):
 
 
 class ReplicaSetStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     availableReplicas: Optional[int] = Field(
         None,
         description="The number of available replicas (ready for at least minReadySeconds) for this replica set.",
@@ -478,6 +559,9 @@ class ReplicaSetStatus(BaseModel):
 
 
 class RollingUpdateDaemonSet(BaseModel):
+    class Config:
+        extra = "forbid"
+
     maxUnavailable: Optional[intstr.IntOrString] = Field(
         None,
         description="The maximum number of DaemonSet pods that can be unavailable during the update. Value can be an absolute number (ex: 5) or a percentage of total number of DaemonSet pods at the start of the update (ex: 10%). Absolute number is calculated from percentage by rounding up. This cannot be 0. Default value is 1. Example: when this is set to 30%, at most 30% of the total number of nodes that should be running the daemon pod (i.e. status.desiredNumberScheduled) can have their pods stopped for an update at any given time. The update starts by stopping at most 30% of those DaemonSet pods and then brings up new DaemonSet pods in their place. Once the new pods are available, it then proceeds onto other DaemonSet pods, thus ensuring that at least 70% of original number of DaemonSet pods are available at all times during the update.",
@@ -485,6 +569,9 @@ class RollingUpdateDaemonSet(BaseModel):
 
 
 class RollingUpdateDeployment(BaseModel):
+    class Config:
+        extra = "forbid"
+
     maxSurge: Optional[intstr.IntOrString] = Field(
         None,
         description="The maximum number of pods that can be scheduled above the desired number of pods. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). This can not be 0 if MaxUnavailable is 0. Absolute number is calculated from percentage by rounding up. By default, a value of 1 is used. Example: when this is set to 30%, the new RC can be scaled up immediately when the rolling update starts, such that the total number of old and new pods do not exceed 130% of desired pods. Once old pods have been killed, new RC can be scaled up further, ensuring that total number of pods running at any time during the update is at most 130% of desired pods.",
@@ -496,6 +583,9 @@ class RollingUpdateDeployment(BaseModel):
 
 
 class DaemonSetUpdateStrategy(BaseModel):
+    class Config:
+        extra = "forbid"
+
     rollingUpdate: Optional[RollingUpdateDaemonSet] = Field(
         None,
         description='Rolling update config params. Present only if type = "RollingUpdate".',
@@ -507,6 +597,9 @@ class DaemonSetUpdateStrategy(BaseModel):
 
 
 class DeploymentStrategy(BaseModel):
+    class Config:
+        extra = "forbid"
+
     rollingUpdate: Optional[RollingUpdateDeployment] = Field(
         None,
         description="Rolling update config params. Present only if DeploymentStrategyType = RollingUpdate.",
@@ -518,6 +611,9 @@ class DeploymentStrategy(BaseModel):
 
 
 class HTTPIngressPath(BaseModel):
+    class Config:
+        extra = "forbid"
+
     backend: IngressBackend = Field(
         ...,
         description="Backend defines the referenced service endpoint to which the traffic will be forwarded to.",
@@ -529,12 +625,18 @@ class HTTPIngressPath(BaseModel):
 
 
 class HTTPIngressRuleValue(BaseModel):
+    class Config:
+        extra = "forbid"
+
     paths: List[HTTPIngressPath] = Field(
         ..., description="A collection of paths that map requests to backends."
     )
 
 
 class IngressRule(BaseModel):
+    class Config:
+        extra = "forbid"
+
     host: Optional[str] = Field(
         None,
         description='Host is the fully qualified domain name of a network host, as defined by RFC 3986. Note the following deviations from the "host" part of the URI as defined in the RFC: 1. IPs are not allowed. Currently an IngressRuleValue can only apply to the\n\t  IP in the Spec of the parent Ingress.\n2. The `:` delimiter is not respected because ports are not allowed.\n\t  Currently the port of an Ingress is implicitly :80 for http and\n\t  :443 for https.\nBoth these may change in the future. Incoming requests are matched against the host before the IngressRuleValue. If the host is unspecified, the Ingress routes all traffic based on the specified IngressRuleValue.',
@@ -543,6 +645,9 @@ class IngressRule(BaseModel):
 
 
 class IngressSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     backend: Optional[IngressBackend] = Field(
         None,
         description="A default backend capable of servicing requests that don't match any rule. At least one of 'backend' or 'rules' must be specified. This field is optional to allow the loadbalancer controller or defaulting logic to specify a global default.",
@@ -558,6 +663,9 @@ class IngressSpec(BaseModel):
 
 
 class NetworkPolicyPeer(BaseModel):
+    class Config:
+        extra = "forbid"
+
     ipBlock: Optional[IPBlock] = Field(
         None,
         description="IPBlock defines policy on a particular IPBlock. If this field is set then neither of the other fields can be.",
@@ -573,6 +681,9 @@ class NetworkPolicyPeer(BaseModel):
 
 
 class PodSecurityPolicy(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -591,6 +702,9 @@ class PodSecurityPolicy(BaseModel):
 
 
 class PodSecurityPolicyList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -609,6 +723,9 @@ class PodSecurityPolicyList(BaseModel):
 
 
 class Scale(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -632,6 +749,9 @@ class Scale(BaseModel):
 
 
 class Ingress(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -655,6 +775,9 @@ class Ingress(BaseModel):
 
 
 class IngressList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -671,6 +794,9 @@ class IngressList(BaseModel):
 
 
 class NetworkPolicyEgressRule(BaseModel):
+    class Config:
+        extra = "forbid"
+
     ports: Optional[List[NetworkPolicyPort]] = Field(
         None,
         description="List of destination ports for outgoing traffic. Each item in this list is combined using a logical OR. If this field is empty or missing, this rule matches all ports (traffic not restricted by port). If this field is present and contains at least one item, then this rule allows traffic only if the traffic matches at least one port in the list.",
@@ -682,6 +808,9 @@ class NetworkPolicyEgressRule(BaseModel):
 
 
 class NetworkPolicyIngressRule(BaseModel):
+    class Config:
+        extra = "forbid"
+
     from_: Optional[List[NetworkPolicyPeer]] = Field(
         None,
         alias="from",
@@ -694,6 +823,9 @@ class NetworkPolicyIngressRule(BaseModel):
 
 
 class NetworkPolicySpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     egress: Optional[List[NetworkPolicyEgressRule]] = Field(
         None,
         description="List of egress rules to be applied to the selected pods. Outgoing traffic is allowed if there are no NetworkPolicies selecting the pod (and cluster policy otherwise allows the traffic), OR if the traffic matches at least one egress rule across all of the NetworkPolicy objects whose podSelector matches the pod. If this field is empty then this NetworkPolicy limits all outgoing traffic (and serves solely to ensure that the pods it selects are isolated by default). This field is beta-level in 1.8",
@@ -713,6 +845,9 @@ class NetworkPolicySpec(BaseModel):
 
 
 class NetworkPolicy(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -732,6 +867,9 @@ class NetworkPolicy(BaseModel):
 
 
 class NetworkPolicyList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -750,6 +888,9 @@ class NetworkPolicyList(BaseModel):
 
 
 class DaemonSetSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     minReadySeconds: Optional[int] = Field(
         None,
         description="The minimum number of seconds for which a newly created DaemonSet pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready).",
@@ -777,6 +918,9 @@ class DaemonSetSpec(BaseModel):
 
 
 class DeploymentSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     minReadySeconds: Optional[int] = Field(
         None,
         description="Minimum number of seconds for which a newly created pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)",
@@ -815,6 +959,9 @@ class DeploymentSpec(BaseModel):
 
 
 class ReplicaSetSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     minReadySeconds: Optional[int] = Field(
         None,
         description="Minimum number of seconds for which a newly created pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)",
@@ -834,6 +981,9 @@ class ReplicaSetSpec(BaseModel):
 
 
 class DaemonSet(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -857,6 +1007,9 @@ class DaemonSet(BaseModel):
 
 
 class DaemonSetList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -873,6 +1026,9 @@ class DaemonSetList(BaseModel):
 
 
 class Deployment(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -893,6 +1049,9 @@ class Deployment(BaseModel):
 
 
 class DeploymentList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -908,6 +1067,9 @@ class DeploymentList(BaseModel):
 
 
 class ReplicaSet(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -931,6 +1093,9 @@ class ReplicaSet(BaseModel):
 
 
 class ReplicaSetList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",

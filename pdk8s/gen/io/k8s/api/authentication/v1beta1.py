@@ -11,6 +11,9 @@ from ...apimachinery.pkg.apis.meta import v1
 
 
 class TokenReviewSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     audiences: Optional[List[str]] = Field(
         None,
         description="Audiences is a list of the identifiers that the resource server presented with the token identifies as. Audience-aware token authenticators will verify that the token was intended for at least one of the audiences in this list. If no audiences are provided, the audience will default to the audience of the Kubernetes apiserver.",
@@ -19,6 +22,9 @@ class TokenReviewSpec(BaseModel):
 
 
 class UserInfo(BaseModel):
+    class Config:
+        extra = "forbid"
+
     extra: Optional[Dict[str, Any]] = Field(
         None, description="Any additional information provided by the authenticator."
     )
@@ -36,6 +42,9 @@ class UserInfo(BaseModel):
 
 
 class TokenReviewStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     audiences: Optional[List[str]] = Field(
         None,
         description='Audiences are audience identifiers chosen by the authenticator that are compatible with both the TokenReview and token. An identifier is any identifier in the intersection of the TokenReviewSpec audiences and the token\'s audiences. A client of the TokenReview API that sets the spec.audiences field should validate that a compatible audience identifier is returned in the status.audiences field to ensure that the TokenReview server is audience aware. If a TokenReview returns an empty status.audience field where status.authenticated is "true", the token is valid against the audience of the Kubernetes API server.',
@@ -53,6 +62,9 @@ class TokenReviewStatus(BaseModel):
 
 
 class TokenReview(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",

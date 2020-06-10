@@ -13,6 +13,9 @@ from . import v1 as v1_1
 
 
 class CronJobStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     active: Optional[List[v1.ObjectReference]] = Field(
         None, description="A list of pointers to currently running jobs."
     )
@@ -23,6 +26,9 @@ class CronJobStatus(BaseModel):
 
 
 class JobTemplateSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     metadata: Optional[v1.ObjectMeta] = Field(
         None,
         description="Standard object's metadata of the jobs created from this template. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
@@ -34,6 +40,9 @@ class JobTemplateSpec(BaseModel):
 
 
 class CronJobSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     concurrencyPolicy: Optional[str] = Field(
         None,
         description='Specifies how to treat concurrent executions of a Job. Valid values are: - "Allow" (default): allows CronJobs to run concurrently; - "Forbid": forbids concurrent runs, skipping next run if previous run hasn\'t finished yet; - "Replace": cancels currently running job and replaces it with a new one',
@@ -65,6 +74,9 @@ class CronJobSpec(BaseModel):
 
 
 class CronJob(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -88,6 +100,9 @@ class CronJob(BaseModel):
 
 
 class CronJobList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",

@@ -12,6 +12,9 @@ from ...apimachinery.pkg.util import intstr
 
 
 class IPBlock(BaseModel):
+    class Config:
+        extra = "forbid"
+
     cidr: str = Field(
         ...,
         description='CIDR is a string representing the IP Block Valid examples are "192.168.1.1/24"',
@@ -24,6 +27,9 @@ class IPBlock(BaseModel):
 
 
 class NetworkPolicyPort(BaseModel):
+    class Config:
+        extra = "forbid"
+
     port: Optional[intstr.IntOrString] = Field(
         None,
         description="The port on the given protocol. This can either be a numerical or named port on a pod. If this field is not provided, this matches all port names and numbers.",
@@ -35,6 +41,9 @@ class NetworkPolicyPort(BaseModel):
 
 
 class NetworkPolicyPeer(BaseModel):
+    class Config:
+        extra = "forbid"
+
     ipBlock: Optional[IPBlock] = Field(
         None,
         description="IPBlock defines policy on a particular IPBlock. If this field is set then neither of the other fields can be.",
@@ -50,6 +59,9 @@ class NetworkPolicyPeer(BaseModel):
 
 
 class NetworkPolicyEgressRule(BaseModel):
+    class Config:
+        extra = "forbid"
+
     ports: Optional[List[NetworkPolicyPort]] = Field(
         None,
         description="List of destination ports for outgoing traffic. Each item in this list is combined using a logical OR. If this field is empty or missing, this rule matches all ports (traffic not restricted by port). If this field is present and contains at least one item, then this rule allows traffic only if the traffic matches at least one port in the list.",
@@ -61,6 +73,9 @@ class NetworkPolicyEgressRule(BaseModel):
 
 
 class NetworkPolicyIngressRule(BaseModel):
+    class Config:
+        extra = "forbid"
+
     from_: Optional[List[NetworkPolicyPeer]] = Field(
         None,
         alias="from",
@@ -73,6 +88,9 @@ class NetworkPolicyIngressRule(BaseModel):
 
 
 class NetworkPolicySpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     egress: Optional[List[NetworkPolicyEgressRule]] = Field(
         None,
         description="List of egress rules to be applied to the selected pods. Outgoing traffic is allowed if there are no NetworkPolicies selecting the pod (and cluster policy otherwise allows the traffic), OR if the traffic matches at least one egress rule across all of the NetworkPolicy objects whose podSelector matches the pod. If this field is empty then this NetworkPolicy limits all outgoing traffic (and serves solely to ensure that the pods it selects are isolated by default). This field is beta-level in 1.8",
@@ -92,6 +110,9 @@ class NetworkPolicySpec(BaseModel):
 
 
 class NetworkPolicy(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -111,6 +132,9 @@ class NetworkPolicy(BaseModel):
 
 
 class NetworkPolicyList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",

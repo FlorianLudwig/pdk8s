@@ -11,6 +11,9 @@ from .....apimachinery.pkg.apis.meta import v1
 
 
 class CustomResourceColumnDefinition(BaseModel):
+    class Config:
+        extra = "forbid"
+
     JSONPath: str = Field(
         ...,
         description="JSONPath is a simple JSON path (i.e. with array notation) which is evaluated against each custom resource to produce the value for this column.",
@@ -34,6 +37,9 @@ class CustomResourceColumnDefinition(BaseModel):
 
 
 class CustomResourceDefinitionNames(BaseModel):
+    class Config:
+        extra = "forbid"
+
     categories: Optional[List[str]] = Field(
         None,
         description="categories is a list of grouped resources this custom resource belongs to (e.g. 'all'). This is published in API discovery documents, and used by clients to support invocations like `kubectl get all`.",
@@ -61,6 +67,9 @@ class CustomResourceDefinitionNames(BaseModel):
 
 
 class CustomResourceSubresourceScale(BaseModel):
+    class Config:
+        extra = "forbid"
+
     labelSelectorPath: Optional[str] = Field(
         None,
         description="labelSelectorPath defines the JSON path inside of a custom resource that corresponds to Scale `status.selector`. Only JSON paths without the array notation are allowed. Must be a JSON Path under `.status` or `.spec`. Must be set to work with HorizontalPodAutoscaler. The field pointed by this JSON path must be a string field (not a complex selector struct) which contains a serialized label selector in string form. More info: https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions#scale-subresource If there is no value under the given path in the custom resource, the `status.selector` value in the `/scale` subresource will default to the empty string.",
@@ -78,8 +87,14 @@ class CustomResourceSubresourceScale(BaseModel):
 class CustomResourceSubresourceStatus(BaseModel):
     pass
 
+    class Config:
+        extra = "forbid"
+
 
 class CustomResourceSubresources(BaseModel):
+    class Config:
+        extra = "forbid"
+
     scale: Optional[CustomResourceSubresourceScale] = Field(
         None,
         description="scale indicates the custom resource should serve a `/scale` subresource that returns an `autoscaling/v1` Scale object.",
@@ -91,6 +106,9 @@ class CustomResourceSubresources(BaseModel):
 
 
 class ExternalDocumentation(BaseModel):
+    class Config:
+        extra = "forbid"
+
     description: Optional[str] = None
     url: Optional[str] = None
 
@@ -112,6 +130,9 @@ class JSONSchemaPropsOrStringArray(BaseModel):
 
 
 class ServiceReference(BaseModel):
+    class Config:
+        extra = "forbid"
+
     name: str = Field(..., description="name is the name of the service. Required")
     namespace: str = Field(
         ..., description="namespace is the namespace of the service. Required"
@@ -127,6 +148,9 @@ class ServiceReference(BaseModel):
 
 
 class WebhookClientConfig(BaseModel):
+    class Config:
+        extra = "forbid"
+
     caBundle: Optional[str] = Field(
         None,
         description="caBundle is a PEM encoded CA bundle which will be used to validate the webhook's server certificate. If unspecified, system trust roots on the apiserver are used.",
@@ -142,6 +166,9 @@ class WebhookClientConfig(BaseModel):
 
 
 class CustomResourceConversion(BaseModel):
+    class Config:
+        extra = "forbid"
+
     conversionReviewVersions: Optional[List[str]] = Field(
         None,
         description='conversionReviewVersions is an ordered list of preferred `ConversionReview` versions the Webhook expects. The API server will use the first version in the list which it supports. If none of the versions specified in this list are supported by API server, conversion will fail for the custom resource. If a persisted Webhook configuration specifies allowed versions and does not include any versions known to the API Server, calls to the webhook will fail. Defaults to `["v1beta1"]`.',
@@ -157,6 +184,9 @@ class CustomResourceConversion(BaseModel):
 
 
 class CustomResourceDefinitionCondition(BaseModel):
+    class Config:
+        extra = "forbid"
+
     lastTransitionTime: Optional[v1.Time] = Field(
         None,
         description="lastTransitionTime last time the condition transitioned from one status to another.",
@@ -180,6 +210,9 @@ class CustomResourceDefinitionCondition(BaseModel):
 
 
 class CustomResourceDefinitionStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     acceptedNames: CustomResourceDefinitionNames = Field(
         ...,
         description="acceptedNames are the names that are actually being used to serve discovery. They may be different than the names in spec.",
@@ -195,6 +228,9 @@ class CustomResourceDefinitionStatus(BaseModel):
 
 
 class JSONSchemaProps(BaseModel):
+    class Config:
+        extra = "forbid"
+
     _ref: Optional[str] = Field(None, alias="$ref")
     _schema: Optional[str] = Field(None, alias="$schema")
     additionalItems: Optional[JSONSchemaPropsOrBool] = None
@@ -263,6 +299,9 @@ class JSONSchemaProps(BaseModel):
 
 
 class CustomResourceValidation(BaseModel):
+    class Config:
+        extra = "forbid"
+
     openAPIV3Schema: Optional[JSONSchemaProps] = Field(
         None,
         description="openAPIV3Schema is the OpenAPI v3 schema to use for validation and pruning.",
@@ -270,6 +309,9 @@ class CustomResourceValidation(BaseModel):
 
 
 class CustomResourceDefinitionVersion(BaseModel):
+    class Config:
+        extra = "forbid"
+
     additionalPrinterColumns: Optional[List[CustomResourceColumnDefinition]] = Field(
         None,
         description="additionalPrinterColumns specifies additional columns returned in Table output. See https://kubernetes.io/docs/reference/using-api/api-concepts/#receiving-resources-as-tables for details. Top-level and per-version columns are mutually exclusive. Per-version columns must not all be set to identical values (top-level columns should be used instead). If no top-level or per-version columns are specified, a single column displaying the age of the custom resource is used.",
@@ -297,6 +339,9 @@ class CustomResourceDefinitionVersion(BaseModel):
 
 
 class CustomResourceDefinitionSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     additionalPrinterColumns: Optional[List[CustomResourceColumnDefinition]] = Field(
         None,
         description="additionalPrinterColumns specifies additional columns returned in Table output. See https://kubernetes.io/docs/reference/using-api/api-concepts/#receiving-resources-as-tables for details. If present, this field configures columns for all versions. Top-level and per-version columns are mutually exclusive. If no top-level or per-version columns are specified, a single column displaying the age of the custom resource is used.",
@@ -339,6 +384,9 @@ class CustomResourceDefinitionSpec(BaseModel):
 
 
 class CustomResourceDefinition(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -358,6 +406,9 @@ class CustomResourceDefinition(BaseModel):
 
 
 class CustomResourceDefinitionList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",

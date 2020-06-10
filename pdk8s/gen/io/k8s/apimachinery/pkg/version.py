@@ -6,6 +6,9 @@ from pydantic import BaseModel
 
 
 class Info(BaseModel):
+    class Config:
+        extra = "forbid"
+
     buildDate: str
     compiler: str
     gitCommit: str

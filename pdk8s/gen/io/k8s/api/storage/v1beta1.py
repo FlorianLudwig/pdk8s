@@ -12,6 +12,9 @@ from ..core import v1
 
 
 class CSIDriverSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     attachRequired: Optional[bool] = Field(
         None,
         description="attachRequired indicates this CSI volume driver requires an attach operation (because it implements the CSI ControllerPublishVolume() method), and that the Kubernetes attach detach controller should call the attach volume interface which checks the volumeattachment status and waits until the volume is attached before proceeding to mounting. The CSI external-attacher coordinates with CSI volume driver and updates the volumeattachment status when the attach operation is complete. If the CSIDriverRegistry feature gate is enabled and the value is specified to false, the attach operation will be skipped. Otherwise the attach operation will be called.",
@@ -27,6 +30,9 @@ class CSIDriverSpec(BaseModel):
 
 
 class VolumeNodeResources(BaseModel):
+    class Config:
+        extra = "forbid"
+
     count: Optional[int] = Field(
         None,
         description="Maximum number of unique volumes managed by the CSI driver that can be used on a node. A volume that is both attached and mounted on a node is considered to be used once, not twice. The same rule applies for a unique volume that is shared among multiple pods on the same node. If this field is nil, then the supported number of volumes on this node is unbounded.",
@@ -34,6 +40,9 @@ class VolumeNodeResources(BaseModel):
 
 
 class CSINodeDriver(BaseModel):
+    class Config:
+        extra = "forbid"
+
     allocatable: Optional[VolumeNodeResources] = Field(
         None,
         description="allocatable represents the volume resources of a node that are available for scheduling.",
@@ -53,6 +62,9 @@ class CSINodeDriver(BaseModel):
 
 
 class CSINodeSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     drivers: List[CSINodeDriver] = Field(
         ...,
         description="drivers is a list of information of all CSI Drivers existing on a node. If all drivers in the list are uninstalled, this can become empty.",
@@ -60,6 +72,9 @@ class CSINodeSpec(BaseModel):
 
 
 class VolumeError(BaseModel):
+    class Config:
+        extra = "forbid"
+
     message: Optional[str] = Field(
         None,
         description="String detailing the error encountered during Attach or Detach operation. This string may be logged, so it should not contain sensitive information.",
@@ -68,6 +83,9 @@ class VolumeError(BaseModel):
 
 
 class CSIDriver(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -84,6 +102,9 @@ class CSIDriver(BaseModel):
 
 
 class CSIDriverList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -100,6 +121,9 @@ class CSIDriverList(BaseModel):
 
 
 class CSINode(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -115,6 +139,9 @@ class CSINode(BaseModel):
 
 
 class CSINodeList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -131,6 +158,9 @@ class CSINodeList(BaseModel):
 
 
 class StorageClass(BaseModel):
+    class Config:
+        extra = "forbid"
+
     allowVolumeExpansion: Optional[bool] = Field(
         None,
         description="AllowVolumeExpansion shows whether the storage class allow volume expand",
@@ -173,6 +203,9 @@ class StorageClass(BaseModel):
 
 
 class StorageClassList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -191,6 +224,9 @@ class StorageClassList(BaseModel):
 
 
 class VolumeAttachmentSource(BaseModel):
+    class Config:
+        extra = "forbid"
+
     inlineVolumeSpec: Optional[v1.PersistentVolumeSpec] = Field(
         None,
         description="inlineVolumeSpec contains all the information necessary to attach a persistent volume defined by a pod's inline VolumeSource. This field is populated only for the CSIMigration feature. It contains translated fields from a pod's inline VolumeSource to a PersistentVolumeSpec. This field is alpha-level and is only honored by servers that enabled the CSIMigration feature.",
@@ -201,6 +237,9 @@ class VolumeAttachmentSource(BaseModel):
 
 
 class VolumeAttachmentSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     attacher: str = Field(
         ...,
         description="Attacher indicates the name of the volume driver that MUST handle this request. This is the name returned by GetPluginName().",
@@ -214,6 +253,9 @@ class VolumeAttachmentSpec(BaseModel):
 
 
 class VolumeAttachmentStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     attachError: Optional[VolumeError] = Field(
         None,
         description="The last error encountered during attach operation, if any. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.",
@@ -233,6 +275,9 @@ class VolumeAttachmentStatus(BaseModel):
 
 
 class VolumeAttachment(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -256,6 +301,9 @@ class VolumeAttachment(BaseModel):
 
 
 class VolumeAttachmentList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",

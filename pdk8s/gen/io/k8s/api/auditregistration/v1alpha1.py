@@ -11,6 +11,9 @@ from ...apimachinery.pkg.apis.meta import v1
 
 
 class Policy(BaseModel):
+    class Config:
+        extra = "forbid"
+
     level: str = Field(
         ...,
         description="The Level that all requests are recorded at. available options: None, Metadata, Request, RequestResponse required",
@@ -21,6 +24,9 @@ class Policy(BaseModel):
 
 
 class ServiceReference(BaseModel):
+    class Config:
+        extra = "forbid"
+
     name: str = Field(..., description="`name` is the name of the service. Required")
     namespace: str = Field(
         ..., description="`namespace` is the namespace of the service. Required"
@@ -36,6 +42,9 @@ class ServiceReference(BaseModel):
 
 
 class WebhookClientConfig(BaseModel):
+    class Config:
+        extra = "forbid"
+
     caBundle: Optional[str] = Field(
         None,
         description="`caBundle` is a PEM encoded CA bundle which will be used to validate the webhook's server certificate. If unspecified, system trust roots on the apiserver are used.",
@@ -51,6 +60,9 @@ class WebhookClientConfig(BaseModel):
 
 
 class WebhookThrottleConfig(BaseModel):
+    class Config:
+        extra = "forbid"
+
     burst: Optional[int] = Field(
         None,
         description="ThrottleBurst is the maximum number of events sent at the same moment default 15 QPS",
@@ -62,6 +74,9 @@ class WebhookThrottleConfig(BaseModel):
 
 
 class Webhook(BaseModel):
+    class Config:
+        extra = "forbid"
+
     clientConfig: WebhookClientConfig = Field(
         ...,
         description="ClientConfig holds the connection parameters for the webhook required",
@@ -72,6 +87,9 @@ class Webhook(BaseModel):
 
 
 class AuditSinkSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     policy: Policy = Field(
         ...,
         description="Policy defines the policy for selecting which events should be sent to the webhook required",
@@ -80,6 +98,9 @@ class AuditSinkSpec(BaseModel):
 
 
 class AuditSink(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1alpha1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -95,6 +116,9 @@ class AuditSink(BaseModel):
 
 
 class AuditSinkList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1alpha1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",

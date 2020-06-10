@@ -12,6 +12,9 @@ from ..core import v1
 
 
 class Overhead(BaseModel):
+    class Config:
+        extra = "forbid"
+
     podFixed: Optional[Dict[str, Any]] = Field(
         None,
         description="PodFixed represents the fixed resource overhead associated with running a pod.",
@@ -19,6 +22,9 @@ class Overhead(BaseModel):
 
 
 class Scheduling(BaseModel):
+    class Config:
+        extra = "forbid"
+
     nodeSelector: Optional[Dict[str, Any]] = Field(
         None,
         description="nodeSelector lists labels that must be present on nodes that support this RuntimeClass. Pods using this RuntimeClass can only be scheduled to a node matched by this selector. The RuntimeClass nodeSelector is merged with a pod's existing nodeSelector. Any conflicts will cause the pod to be rejected in admission.",
@@ -30,6 +36,9 @@ class Scheduling(BaseModel):
 
 
 class RuntimeClassSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     overhead: Optional[Overhead] = Field(
         None,
         description="Overhead represents the resource overhead associated with running a pod for a given RuntimeClass. For more details, see https://git.k8s.io/enhancements/keps/sig-node/20190226-pod-overhead.md This field is alpha-level as of Kubernetes v1.15, and is only honored by servers that enable the PodOverhead feature.",
@@ -45,6 +54,9 @@ class RuntimeClassSpec(BaseModel):
 
 
 class RuntimeClass(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1alpha1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -64,6 +76,9 @@ class RuntimeClass(BaseModel):
 
 
 class RuntimeClassList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1alpha1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",

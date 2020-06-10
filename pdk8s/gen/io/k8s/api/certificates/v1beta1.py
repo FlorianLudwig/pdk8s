@@ -11,6 +11,9 @@ from ...apimachinery.pkg.apis.meta import v1
 
 
 class CertificateSigningRequestSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     extra: Optional[Dict[str, Any]] = Field(
         None,
         description="Extra information about the requesting user. See user.Info interface for details.",
@@ -35,6 +38,9 @@ class CertificateSigningRequestSpec(BaseModel):
 
 
 class CertificateSigningRequestCondition(BaseModel):
+    class Config:
+        extra = "forbid"
+
     lastUpdateTime: Optional[v1.Time] = Field(
         None, description="timestamp for the last update to this condition"
     )
@@ -50,6 +56,9 @@ class CertificateSigningRequestCondition(BaseModel):
 
 
 class CertificateSigningRequestStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     certificate: Optional[str] = Field(
         None,
         description="If request was approved, the controller will place the issued certificate here.",
@@ -61,6 +70,9 @@ class CertificateSigningRequestStatus(BaseModel):
 
 
 class CertificateSigningRequest(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -80,6 +92,9 @@ class CertificateSigningRequest(BaseModel):
 
 
 class CertificateSigningRequestList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",

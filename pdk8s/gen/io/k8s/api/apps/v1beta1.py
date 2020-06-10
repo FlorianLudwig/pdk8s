@@ -14,6 +14,9 @@ from ..core import v1 as v1_1
 
 
 class RollbackConfig(BaseModel):
+    class Config:
+        extra = "forbid"
+
     revision: Optional[int] = Field(
         None,
         description="The revision to rollback to. If set to 0, rollback to the last revision.",
@@ -21,6 +24,9 @@ class RollbackConfig(BaseModel):
 
 
 class RollingUpdateStatefulSetStrategy(BaseModel):
+    class Config:
+        extra = "forbid"
+
     partition: Optional[int] = Field(
         None,
         description="Partition indicates the ordinal at which the StatefulSet should be partitioned.",
@@ -28,12 +34,18 @@ class RollingUpdateStatefulSetStrategy(BaseModel):
 
 
 class ScaleSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     replicas: Optional[int] = Field(
         None, description="desired number of instances for the scaled object."
     )
 
 
 class ScaleStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     replicas: int = Field(
         ..., description="actual number of observed instances of the scaled object."
     )
@@ -48,6 +60,9 @@ class ScaleStatus(BaseModel):
 
 
 class StatefulSetUpdateStrategy(BaseModel):
+    class Config:
+        extra = "forbid"
+
     rollingUpdate: Optional[RollingUpdateStatefulSetStrategy] = Field(
         None,
         description="RollingUpdate is used to communicate parameters when Type is RollingUpdateStatefulSetStrategyType.",
@@ -58,6 +73,9 @@ class StatefulSetUpdateStrategy(BaseModel):
 
 
 class DeploymentCondition(BaseModel):
+    class Config:
+        extra = "forbid"
+
     lastTransitionTime: Optional[v1.Time] = Field(
         None,
         description="Last time the condition transitioned from one status to another.",
@@ -79,6 +97,9 @@ class DeploymentCondition(BaseModel):
 
 
 class DeploymentRollback(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -99,6 +120,9 @@ class DeploymentRollback(BaseModel):
 
 
 class DeploymentStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     availableReplicas: Optional[int] = Field(
         None,
         description="Total number of available pods (ready for at least minReadySeconds) targeted by this deployment.",
@@ -132,6 +156,9 @@ class DeploymentStatus(BaseModel):
 
 
 class RollingUpdateDeployment(BaseModel):
+    class Config:
+        extra = "forbid"
+
     maxSurge: Optional[intstr.IntOrString] = Field(
         None,
         description="The maximum number of pods that can be scheduled above the desired number of pods. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). This can not be 0 if MaxUnavailable is 0. Absolute number is calculated from percentage by rounding up. Defaults to 25%. Example: when this is set to 30%, the new ReplicaSet can be scaled up immediately when the rolling update starts, such that the total number of old and new pods do not exceed 130% of desired pods. Once old pods have been killed, new ReplicaSet can be scaled up further, ensuring that total number of pods running at any time during the update is at most 130% of desired pods.",
@@ -143,6 +170,9 @@ class RollingUpdateDeployment(BaseModel):
 
 
 class StatefulSetCondition(BaseModel):
+    class Config:
+        extra = "forbid"
+
     lastTransitionTime: Optional[v1.Time] = Field(
         None,
         description="Last time the condition transitioned from one status to another.",
@@ -161,6 +191,9 @@ class StatefulSetCondition(BaseModel):
 
 
 class StatefulSetStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     collisionCount: Optional[int] = Field(
         None,
         description="collisionCount is the count of hash collisions for the StatefulSet. The StatefulSet controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ControllerRevision.",
@@ -200,6 +233,9 @@ class StatefulSetStatus(BaseModel):
 
 
 class ControllerRevision(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -222,6 +258,9 @@ class ControllerRevision(BaseModel):
 
 
 class ControllerRevisionList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -240,6 +279,9 @@ class ControllerRevisionList(BaseModel):
 
 
 class DeploymentStrategy(BaseModel):
+    class Config:
+        extra = "forbid"
+
     rollingUpdate: Optional[RollingUpdateDeployment] = Field(
         None,
         description="Rolling update config params. Present only if DeploymentStrategyType = RollingUpdate.",
@@ -251,6 +293,9 @@ class DeploymentStrategy(BaseModel):
 
 
 class Scale(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -274,6 +319,9 @@ class Scale(BaseModel):
 
 
 class DeploymentSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     minReadySeconds: Optional[int] = Field(
         None,
         description="Minimum number of seconds for which a newly created pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)",
@@ -311,6 +359,9 @@ class DeploymentSpec(BaseModel):
 
 
 class StatefulSetSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     podManagementPolicy: Optional[str] = Field(
         None,
         description="podManagementPolicy controls how pods are created during initial scale up, when replacing pods on nodes, or when scaling down. The default policy is `OrderedReady`, where pods are created in increasing order (pod-0, then pod-1, etc) and the controller will wait until each pod is ready before continuing. When scaling down, the pods are removed in the opposite order. The alternative policy is `Parallel` which will create pods in parallel to match the desired scale without waiting, and on scale down will delete all pods at once.",
@@ -346,6 +397,9 @@ class StatefulSetSpec(BaseModel):
 
 
 class Deployment(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -366,6 +420,9 @@ class Deployment(BaseModel):
 
 
 class DeploymentList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -381,6 +438,9 @@ class DeploymentList(BaseModel):
 
 
 class StatefulSet(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -400,6 +460,9 @@ class StatefulSet(BaseModel):
 
 
 class StatefulSetList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",

@@ -26,6 +26,9 @@ from ..core import v1 as v1_1
 
 
 class RollingUpdateStatefulSetStrategy(BaseModel):
+    class Config:
+        extra = "forbid"
+
     partition: Optional[int] = Field(
         None,
         description="Partition indicates the ordinal at which the StatefulSet should be partitioned. Default value is 0.",
@@ -33,12 +36,18 @@ class RollingUpdateStatefulSetStrategy(BaseModel):
 
 
 class ScaleSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     replicas: Optional[int] = Field(
         None, description="desired number of instances for the scaled object."
     )
 
 
 class ScaleStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     replicas: int = Field(
         ..., description="actual number of observed instances of the scaled object."
     )
@@ -53,6 +62,9 @@ class ScaleStatus(BaseModel):
 
 
 class StatefulSetUpdateStrategy(BaseModel):
+    class Config:
+        extra = "forbid"
+
     rollingUpdate: Optional[RollingUpdateStatefulSetStrategy] = Field(
         None,
         description="RollingUpdate is used to communicate parameters when Type is RollingUpdateStatefulSetStrategyType.",
@@ -64,6 +76,9 @@ class StatefulSetUpdateStrategy(BaseModel):
 
 
 class DaemonSetCondition(BaseModel):
+    class Config:
+        extra = "forbid"
+
     lastTransitionTime: Optional[v1.Time] = Field(
         None,
         description="Last time the condition transitioned from one status to another.",
@@ -82,6 +97,9 @@ class DaemonSetCondition(BaseModel):
 
 
 class DaemonSetStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     collisionCount: Optional[int] = Field(
         None,
         description="Count of hash collisions for the DaemonSet. The DaemonSet controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ControllerRevision.",
@@ -125,6 +143,9 @@ class DaemonSetStatus(BaseModel):
 
 
 class DeploymentCondition(BaseModel):
+    class Config:
+        extra = "forbid"
+
     lastTransitionTime: Optional[v1.Time] = Field(
         None,
         description="Last time the condition transitioned from one status to another.",
@@ -146,6 +167,9 @@ class DeploymentCondition(BaseModel):
 
 
 class DeploymentStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     availableReplicas: Optional[int] = Field(
         None,
         description="Total number of available pods (ready for at least minReadySeconds) targeted by this deployment.",
@@ -179,6 +203,9 @@ class DeploymentStatus(BaseModel):
 
 
 class ReplicaSetCondition(BaseModel):
+    class Config:
+        extra = "forbid"
+
     lastTransitionTime: Optional[v1.Time] = Field(
         None,
         description="The last time the condition transitioned from one status to another.",
@@ -197,6 +224,9 @@ class ReplicaSetCondition(BaseModel):
 
 
 class ReplicaSetStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     availableReplicas: Optional[int] = Field(
         None,
         description="The number of available replicas (ready for at least minReadySeconds) for this replica set.",
@@ -223,6 +253,9 @@ class ReplicaSetStatus(BaseModel):
 
 
 class RollingUpdateDaemonSet(BaseModel):
+    class Config:
+        extra = "forbid"
+
     maxUnavailable: Optional[intstr.IntOrString] = Field(
         None,
         description="The maximum number of DaemonSet pods that can be unavailable during the update. Value can be an absolute number (ex: 5) or a percentage of total number of DaemonSet pods at the start of the update (ex: 10%). Absolute number is calculated from percentage by rounding up. This cannot be 0. Default value is 1. Example: when this is set to 30%, at most 30% of the total number of nodes that should be running the daemon pod (i.e. status.desiredNumberScheduled) can have their pods stopped for an update at any given time. The update starts by stopping at most 30% of those DaemonSet pods and then brings up new DaemonSet pods in their place. Once the new pods are available, it then proceeds onto other DaemonSet pods, thus ensuring that at least 70% of original number of DaemonSet pods are available at all times during the update.",
@@ -230,6 +263,9 @@ class RollingUpdateDaemonSet(BaseModel):
 
 
 class RollingUpdateDeployment(BaseModel):
+    class Config:
+        extra = "forbid"
+
     maxSurge: Optional[intstr.IntOrString] = Field(
         None,
         description="The maximum number of pods that can be scheduled above the desired number of pods. Value can be an absolute number (ex: 5) or a percentage of desired pods (ex: 10%). This can not be 0 if MaxUnavailable is 0. Absolute number is calculated from percentage by rounding up. Defaults to 25%. Example: when this is set to 30%, the new ReplicaSet can be scaled up immediately when the rolling update starts, such that the total number of old and new pods do not exceed 130% of desired pods. Once old pods have been killed, new ReplicaSet can be scaled up further, ensuring that total number of pods running at any time during the update is at most 130% of desired pods.",
@@ -241,6 +277,9 @@ class RollingUpdateDeployment(BaseModel):
 
 
 class StatefulSetCondition(BaseModel):
+    class Config:
+        extra = "forbid"
+
     lastTransitionTime: Optional[v1.Time] = Field(
         None,
         description="Last time the condition transitioned from one status to another.",
@@ -259,6 +298,9 @@ class StatefulSetCondition(BaseModel):
 
 
 class StatefulSetStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     collisionCount: Optional[int] = Field(
         None,
         description="collisionCount is the count of hash collisions for the StatefulSet. The StatefulSet controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ControllerRevision.",
@@ -298,6 +340,9 @@ class StatefulSetStatus(BaseModel):
 
 
 class ControllerRevision(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta2",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -320,6 +365,9 @@ class ControllerRevision(BaseModel):
 
 
 class ControllerRevisionList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta2",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -338,6 +386,9 @@ class ControllerRevisionList(BaseModel):
 
 
 class DaemonSetUpdateStrategy(BaseModel):
+    class Config:
+        extra = "forbid"
+
     rollingUpdate: Optional[RollingUpdateDaemonSet] = Field(
         None,
         description='Rolling update config params. Present only if type = "RollingUpdate".',
@@ -349,6 +400,9 @@ class DaemonSetUpdateStrategy(BaseModel):
 
 
 class DeploymentStrategy(BaseModel):
+    class Config:
+        extra = "forbid"
+
     rollingUpdate: Optional[RollingUpdateDeployment] = Field(
         None,
         description="Rolling update config params. Present only if DeploymentStrategyType = RollingUpdate.",
@@ -360,6 +414,9 @@ class DeploymentStrategy(BaseModel):
 
 
 class Scale(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta2",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -383,6 +440,9 @@ class Scale(BaseModel):
 
 
 class DaemonSetSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     minReadySeconds: Optional[int] = Field(
         None,
         description="The minimum number of seconds for which a newly created DaemonSet pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready).",
@@ -406,6 +466,9 @@ class DaemonSetSpec(BaseModel):
 
 
 class DeploymentSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     minReadySeconds: Optional[int] = Field(
         None,
         description="Minimum number of seconds for which a newly created pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)",
@@ -439,6 +502,9 @@ class DeploymentSpec(BaseModel):
 
 
 class ReplicaSetSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     minReadySeconds: Optional[int] = Field(
         None,
         description="Minimum number of seconds for which a newly created pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)",
@@ -458,6 +524,9 @@ class ReplicaSetSpec(BaseModel):
 
 
 class StatefulSetSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     podManagementPolicy: Optional[str] = Field(
         None,
         description="podManagementPolicy controls how pods are created during initial scale up, when replacing pods on nodes, or when scaling down. The default policy is `OrderedReady`, where pods are created in increasing order (pod-0, then pod-1, etc) and the controller will wait until each pod is ready before continuing. When scaling down, the pods are removed in the opposite order. The alternative policy is `Parallel` which will create pods in parallel to match the desired scale without waiting, and on scale down will delete all pods at once.",
@@ -493,6 +562,9 @@ class StatefulSetSpec(BaseModel):
 
 
 class DaemonSet(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta2",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -516,6 +588,9 @@ class DaemonSet(BaseModel):
 
 
 class DaemonSetList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta2",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -532,6 +607,9 @@ class DaemonSetList(BaseModel):
 
 
 class Deployment(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta2",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -552,6 +630,9 @@ class Deployment(BaseModel):
 
 
 class DeploymentList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta2",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -567,6 +648,9 @@ class DeploymentList(BaseModel):
 
 
 class ReplicaSet(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta2",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -590,6 +674,9 @@ class ReplicaSet(BaseModel):
 
 
 class ReplicaSetList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta2",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -609,6 +696,9 @@ class ReplicaSetList(BaseModel):
 
 
 class StatefulSet(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta2",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -628,6 +718,9 @@ class StatefulSet(BaseModel):
 
 
 class StatefulSetList(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta2",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",

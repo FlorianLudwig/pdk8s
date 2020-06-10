@@ -11,11 +11,17 @@ from ...apimachinery.pkg.apis.meta import v1
 
 
 class NonResourceAttributes(BaseModel):
+    class Config:
+        extra = "forbid"
+
     path: Optional[str] = Field(None, description="Path is the URL path of the request")
     verb: Optional[str] = Field(None, description="Verb is the standard HTTP verb")
 
 
 class NonResourceRule(BaseModel):
+    class Config:
+        extra = "forbid"
+
     nonResourceURLs: Optional[List[str]] = Field(
         None,
         description='NonResourceURLs is a set of partial urls that a user should have access to.  *s are allowed, but only as the full, final step in the path.  "*" means all.',
@@ -27,6 +33,9 @@ class NonResourceRule(BaseModel):
 
 
 class ResourceAttributes(BaseModel):
+    class Config:
+        extra = "forbid"
+
     group: Optional[str] = Field(
         None, description='Group is the API Group of the Resource.  "*" means all.'
     )
@@ -56,6 +65,9 @@ class ResourceAttributes(BaseModel):
 
 
 class ResourceRule(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiGroups: Optional[List[str]] = Field(
         None,
         description='APIGroups is the name of the APIGroup that contains the resources.  If multiple API groups are specified, any action requested against one of the enumerated resources in any API group will be allowed.  "*" means all.',
@@ -75,6 +87,9 @@ class ResourceRule(BaseModel):
 
 
 class SelfSubjectAccessReviewSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     nonResourceAttributes: Optional[NonResourceAttributes] = Field(
         None,
         description="NonResourceAttributes describes information for a non-resource access request",
@@ -86,12 +101,18 @@ class SelfSubjectAccessReviewSpec(BaseModel):
 
 
 class SelfSubjectRulesReviewSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     namespace: Optional[str] = Field(
         None, description="Namespace to evaluate rules for. Required."
     )
 
 
 class SubjectAccessReviewSpec(BaseModel):
+    class Config:
+        extra = "forbid"
+
     extra: Optional[Dict[str, Any]] = Field(
         None,
         description="Extra corresponds to the user.Info.GetExtra() method from the authenticator.  Since that is input to the authorizer it needs a reflection here.",
@@ -117,6 +138,9 @@ class SubjectAccessReviewSpec(BaseModel):
 
 
 class SubjectAccessReviewStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     allowed: bool = Field(
         ...,
         description="Allowed is required. True if the action would be allowed, false otherwise.",
@@ -136,6 +160,9 @@ class SubjectAccessReviewStatus(BaseModel):
 
 
 class SubjectRulesReviewStatus(BaseModel):
+    class Config:
+        extra = "forbid"
+
     evaluationError: Optional[str] = Field(
         None,
         description="EvaluationError can appear in combination with Rules. It indicates an error occurred during rule evaluation, such as an authorizer that doesn't support rule evaluation, and that ResourceRules and/or NonResourceRules may be incomplete.",
@@ -155,6 +182,9 @@ class SubjectRulesReviewStatus(BaseModel):
 
 
 class LocalSubjectAccessReview(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -175,6 +205,9 @@ class LocalSubjectAccessReview(BaseModel):
 
 
 class SelfSubjectAccessReview(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -195,6 +228,9 @@ class SelfSubjectAccessReview(BaseModel):
 
 
 class SelfSubjectRulesReview(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
@@ -214,6 +250,9 @@ class SelfSubjectRulesReview(BaseModel):
 
 
 class SubjectAccessReview(BaseModel):
+    class Config:
+        extra = "forbid"
+
     apiVersion: Optional[str] = Field(
         "v1beta1",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
