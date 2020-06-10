@@ -1,0 +1,16 @@
+{% for decorator in decorators -%}
+{{ decorator }}
+{% endfor -%}
+class {{ class_name }}({{ base_class }}):
+{%- if config %}
+{% include 'Config.jinja2' %}
+{%- endif %}
+{%- if not fields %}
+    pass
+{%- else %}
+    {%- if fields[0].required %}
+    __root__: {{ fields[0].type_hint }}
+    {%- else %}
+    __root__: {{ fields[0].type_hint }} = {{fields[0].default}}
+    {%- endif %}
+{%- endif %}
