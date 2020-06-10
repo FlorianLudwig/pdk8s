@@ -101,10 +101,6 @@ class CustomResourceSubresources(BaseModel):
         None,
         description="scale indicates the custom resource should serve a `/scale` subresource that returns an `autoscaling/v1` Scale object.",
     )
-    status: Optional[CustomResourceSubresourceStatus] = Field(
-        None,
-        description="status indicates the custom resource should serve a `/status` subresource. When enabled: 1. requests to the custom resource primary endpoint ignore changes to the `status` stanza of the object. 2. requests to the custom resource `/status` subresource ignore changes to anything other than the `status` stanza of the object.",
-    )
 
 
 class ExternalDocumentation(BaseModel):
@@ -200,10 +196,6 @@ class CustomResourceDefinitionCondition(BaseModel):
     reason: Optional[str] = Field(
         None,
         description="reason is a unique, one-word, CamelCase reason for the condition's last transition.",
-    )
-    status: str = Field(
-        ...,
-        description="status is the status of the condition. Can be True, False, Unknown.",
     )
     type: str = Field(
         ...,
@@ -400,10 +392,6 @@ class CustomResourceDefinition(pdk8s.model.NamedModel):
     metadata: Optional[v1.ObjectMeta] = None
     spec: CustomResourceDefinitionSpec = Field(
         ..., description="spec describes how the user wants the resources to appear"
-    )
-    status: Optional[CustomResourceDefinitionStatus] = Field(
-        None,
-        description="status indicates the actual state of the CustomResourceDefinition",
     )
 
 

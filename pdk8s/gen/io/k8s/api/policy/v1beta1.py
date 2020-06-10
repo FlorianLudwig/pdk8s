@@ -365,9 +365,6 @@ class PodDisruptionBudget(pdk8s.model.NamedModel):
         None,
         description="Specification of the desired behavior of the PodDisruptionBudget.",
     )
-    status: Optional[PodDisruptionBudgetStatus] = Field(
-        None, description="Most recently observed status of the PodDisruptionBudget."
-    )
 
 
 class PodDisruptionBudgetList(pdk8s.model.NamedModel):

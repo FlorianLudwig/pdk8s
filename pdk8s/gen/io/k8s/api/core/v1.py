@@ -170,10 +170,6 @@ class ComponentCondition(BaseModel):
         None,
         description="Message about the condition for a component. For example, information about a health check.",
     )
-    status: str = Field(
-        ...,
-        description='Status of the condition for a component. Valid values for "Healthy": "True", "False", or "Unknown".',
-    )
     type: str = Field(
         ..., description='Type of condition for a component. Valid value: "Healthy"'
     )
@@ -1833,9 +1829,6 @@ class NamespaceCondition(BaseModel):
     lastTransitionTime: Optional[v1.Time] = None
     message: Optional[str] = None
     reason: Optional[str] = None
-    status: str = Field(
-        ..., description="Status of the condition, one of True, False, Unknown."
-    )
     type: str = Field(..., description="Type of namespace controller condition.")
 
 
@@ -1869,9 +1862,6 @@ class NodeCondition(BaseModel):
     )
     reason: Optional[str] = Field(
         None, description="(brief) reason for the condition's last transition."
-    )
-    status: str = Field(
-        ..., description="Status of the condition, one of True, False, Unknown."
     )
     type: str = Field(..., description="Type of node condition.")
 
@@ -1950,7 +1940,6 @@ class PersistentVolumeClaimCondition(BaseModel):
         None,
         description='Unique, this should be a short, machine understandable string that gives the reason for condition\'s last transition. If it reports "ResizeStarted" that means the underlying persistent volume is being resized.',
     )
-    status: str
     type: str
 
 
@@ -1992,10 +1981,6 @@ class PodCondition(BaseModel):
     reason: Optional[str] = Field(
         None,
         description="Unique, one-word, CamelCase reason for the condition's last transition.",
-    )
-    status: str = Field(
-        ...,
-        description="Status is the status of the condition. Can be True, False, Unknown. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions",
     )
     type: str = Field(
         ...,
@@ -2111,9 +2096,6 @@ class ReplicationControllerCondition(BaseModel):
     )
     reason: Optional[str] = Field(
         None, description="The reason for the condition's last transition."
-    )
-    status: str = Field(
-        ..., description="Status of the condition, one of True, False, Unknown."
     )
     type: str = Field(..., description="Type of replication controller condition.")
 
@@ -2828,10 +2810,6 @@ class Namespace(pdk8s.model.NamedModel):
         None,
         description="Spec defines the behavior of the Namespace. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
     )
-    status: Optional[NamespaceStatus] = Field(
-        None,
-        description="Status describes the current status of a Namespace. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
-    )
 
 
 class NamespaceList(pdk8s.model.NamedModel):
@@ -3264,10 +3242,6 @@ class Service(pdk8s.model.NamedModel):
         None,
         description="Spec defines the behavior of a service. https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
     )
-    status: Optional[ServiceStatus] = Field(
-        None,
-        description="Most recently observed status of the service. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
-    )
 
 
 class ServiceAccount(pdk8s.model.NamedModel):
@@ -3515,10 +3489,6 @@ class Node(pdk8s.model.NamedModel):
         None,
         description="Spec defines the behavior of a node. https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
     )
-    status: Optional[NodeStatus] = Field(
-        None,
-        description="Most recently observed status of the node. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
-    )
 
 
 class NodeList(pdk8s.model.NamedModel):
@@ -3560,10 +3530,6 @@ class PersistentVolume(pdk8s.model.NamedModel):
         None,
         description="Spec defines a specification of a persistent volume owned by the cluster. Provisioned by an administrator. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistent-volumes",
     )
-    status: Optional[PersistentVolumeStatus] = Field(
-        None,
-        description="Status represents the current information/status for the persistent volume. Populated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistent-volumes",
-    )
 
 
 class PersistentVolumeClaim(pdk8s.model.NamedModel):
@@ -3585,10 +3551,6 @@ class PersistentVolumeClaim(pdk8s.model.NamedModel):
     spec: Optional[PersistentVolumeClaimSpec] = Field(
         None,
         description="Spec defines the desired characteristics of a volume requested by a pod author. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims",
-    )
-    status: Optional[PersistentVolumeClaimStatus] = Field(
-        None,
-        description="Status represents the current information/status of a persistent volume claim. Read-only. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims",
     )
 
 
@@ -3691,10 +3653,6 @@ class ResourceQuota(pdk8s.model.NamedModel):
     spec: Optional[ResourceQuotaSpec] = Field(
         None,
         description="Spec defines the desired quota. https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
-    )
-    status: Optional[ResourceQuotaStatus] = Field(
-        None,
-        description="Status defines the actual enforced quota and its current usage. https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
     )
 
 
@@ -4178,10 +4136,6 @@ class Pod(pdk8s.model.NamedModel):
         None,
         description="Specification of the desired behavior of the pod. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
     )
-    status: Optional[PodStatus] = Field(
-        None,
-        description="Most recently observed status of the pod. This data may not be up to date. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
-    )
 
 
 class PodList(pdk8s.model.NamedModel):
@@ -4266,10 +4220,6 @@ class ReplicationController(pdk8s.model.NamedModel):
     spec: Optional[ReplicationControllerSpec] = Field(
         None,
         description="Spec defines the specification of the desired behavior of the replication controller. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
-    )
-    status: Optional[ReplicationControllerStatus] = Field(
-        None,
-        description="Status is the most recently observed status of the replication controller. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
     )
 
 

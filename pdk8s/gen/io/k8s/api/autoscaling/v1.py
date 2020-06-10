@@ -116,9 +116,6 @@ class HorizontalPodAutoscaler(pdk8s.model.NamedModel):
         None,
         description="behaviour of autoscaler. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status.",
     )
-    status: Optional[HorizontalPodAutoscalerStatus] = Field(
-        None, description="current information about the autoscaler."
-    )
 
 
 class HorizontalPodAutoscalerList(pdk8s.model.NamedModel):
@@ -158,8 +155,4 @@ class Scale(pdk8s.model.NamedModel):
     spec: Optional[ScaleSpec] = Field(
         None,
         description="defines the behavior of the scale. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status.",
-    )
-    status: Optional[ScaleStatus] = Field(
-        None,
-        description="current status of the scale. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status. Read-only.",
     )

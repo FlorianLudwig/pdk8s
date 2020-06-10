@@ -200,10 +200,6 @@ class LocalSubjectAccessReview(pdk8s.model.NamedModel):
         ...,
         description="Spec holds information about the request being evaluated.  spec.namespace must be equal to the namespace you made the request against.  If empty, it is defaulted.",
     )
-    status: Optional[SubjectAccessReviewStatus] = Field(
-        None,
-        description="Status is filled in by the server and indicates whether the request is allowed or not",
-    )
 
 
 class SelfSubjectAccessReview(pdk8s.model.NamedModel):
@@ -223,10 +219,6 @@ class SelfSubjectAccessReview(pdk8s.model.NamedModel):
         ...,
         description="Spec holds information about the request being evaluated.  user and groups must be empty",
     )
-    status: Optional[SubjectAccessReviewStatus] = Field(
-        None,
-        description="Status is filled in by the server and indicates whether the request is allowed or not",
-    )
 
 
 class SelfSubjectRulesReview(pdk8s.model.NamedModel):
@@ -245,10 +237,6 @@ class SelfSubjectRulesReview(pdk8s.model.NamedModel):
     spec: SelfSubjectRulesReviewSpec = Field(
         ..., description="Spec holds information about the request being evaluated."
     )
-    status: Optional[SubjectRulesReviewStatus] = Field(
-        None,
-        description="Status is filled in by the server and indicates the set of actions a user can perform.",
-    )
 
 
 class SubjectAccessReview(pdk8s.model.NamedModel):
@@ -266,8 +254,4 @@ class SubjectAccessReview(pdk8s.model.NamedModel):
     metadata: Optional[v1.ObjectMeta] = None
     spec: SubjectAccessReviewSpec = Field(
         ..., description="Spec holds information about the request being evaluated"
-    )
-    status: Optional[SubjectAccessReviewStatus] = Field(
-        None,
-        description="Status is filled in by the server and indicates whether the request is allowed or not",
     )

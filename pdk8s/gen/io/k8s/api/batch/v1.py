@@ -30,9 +30,6 @@ class JobCondition(BaseModel):
     reason: Optional[str] = Field(
         None, description="(brief) reason for the condition's last transition."
     )
-    status: str = Field(
-        ..., description="Status of the condition, one of True, False, Unknown."
-    )
     type: str = Field(..., description="Type of job condition, Complete or Failed.")
 
 
@@ -120,10 +117,6 @@ class Job(pdk8s.model.NamedModel):
     spec: Optional[JobSpec] = Field(
         None,
         description="Specification of the desired behavior of a job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
-    )
-    status: Optional[JobStatus] = Field(
-        None,
-        description="Current status of a job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
     )
 
 

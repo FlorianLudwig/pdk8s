@@ -122,10 +122,6 @@ class Ingress(pdk8s.model.NamedModel):
         None,
         description="Spec is the desired state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
     )
-    status: Optional[IngressStatus] = Field(
-        None,
-        description="Status is the current state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
-    )
 
 
 class IngressList(pdk8s.model.NamedModel):

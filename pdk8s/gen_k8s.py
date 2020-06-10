@@ -23,13 +23,20 @@ VERSION = re.compile("v[0-9]+[a-z0-9]*$")
 def update_schema(schema: dict):
     """Adapt the kubernetes OpenAPI schema to our needs
     """
-    for name, definition in schema["definitions"].items():
+    definitions = schema["definitions"]
+    for name, definition in definitions.items():
+        # TODO: evaluate using x-kubernetes-group-version-kind.version instead
         version = name.split(".")[-2]
 
         if not VERSION.match(version):
             version = None
 
         if "properties" in definition:
+            # remove all fields named status
+            # this might have some false positives, lets see what goes missing :)
+            if "status" in definition["properties"]:
+                definition["properties"].pop("status")
+
             for prop_name, prop in definition["properties"].items():
                 # set the default of properties that are enums
                 # with only one possible value to that value

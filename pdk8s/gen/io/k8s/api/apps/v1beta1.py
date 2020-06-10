@@ -92,9 +92,6 @@ class DeploymentCondition(BaseModel):
     reason: Optional[str] = Field(
         None, description="The reason for the condition's last transition."
     )
-    status: str = Field(
-        ..., description="Status of the condition, one of True, False, Unknown."
-    )
     type: str = Field(..., description="Type of deployment condition.")
 
 
@@ -185,9 +182,6 @@ class StatefulSetCondition(BaseModel):
     )
     reason: Optional[str] = Field(
         None, description="The reason for the condition's last transition."
-    )
-    status: str = Field(
-        ..., description="Status of the condition, one of True, False, Unknown."
     )
     type: str = Field(..., description="Type of statefulset condition.")
 
@@ -314,10 +308,6 @@ class Scale(pdk8s.model.NamedModel):
         None,
         description="defines the behavior of the scale. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status.",
     )
-    status: Optional[ScaleStatus] = Field(
-        None,
-        description="current status of the scale. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status. Read-only.",
-    )
 
 
 class DeploymentSpec(BaseModel):
@@ -416,9 +406,6 @@ class Deployment(pdk8s.model.NamedModel):
     spec: Optional[DeploymentSpec] = Field(
         None, description="Specification of the desired behavior of the Deployment."
     )
-    status: Optional[DeploymentStatus] = Field(
-        None, description="Most recently observed status of the Deployment."
-    )
 
 
 class DeploymentList(pdk8s.model.NamedModel):
@@ -454,10 +441,6 @@ class StatefulSet(pdk8s.model.NamedModel):
     metadata: Optional[v1.ObjectMeta] = None
     spec: Optional[StatefulSetSpec] = Field(
         None, description="Spec defines the desired identities of pods in this set."
-    )
-    status: Optional[StatefulSetStatus] = Field(
-        None,
-        description="Status is the current status of Pods in this StatefulSet. This data may be out of date by some window of time.",
     )
 
 

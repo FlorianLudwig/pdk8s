@@ -95,10 +95,6 @@ class CronJob(pdk8s.model.NamedModel):
         None,
         description="Specification of the desired behavior of a cron job, including the schedule. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
     )
-    status: Optional[CronJobStatus] = Field(
-        None,
-        description="Current status of a cron job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
-    )
 
 
 class CronJobList(pdk8s.model.NamedModel):

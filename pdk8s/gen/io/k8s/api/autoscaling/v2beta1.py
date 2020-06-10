@@ -45,9 +45,6 @@ class HorizontalPodAutoscalerCondition(BaseModel):
     reason: Optional[str] = Field(
         None, description="reason is the reason for the condition's last transition."
     )
-    status: str = Field(
-        ..., description="status is the status of the condition (True, False, Unknown)"
-    )
     type: str = Field(..., description="type describes the current condition")
 
 
@@ -329,9 +326,6 @@ class HorizontalPodAutoscaler(pdk8s.model.NamedModel):
     spec: Optional[HorizontalPodAutoscalerSpec] = Field(
         None,
         description="spec is the specification for the behaviour of the autoscaler. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status.",
-    )
-    status: Optional[HorizontalPodAutoscalerStatus] = Field(
-        None, description="status is the current information about the autoscaler."
     )
 
 

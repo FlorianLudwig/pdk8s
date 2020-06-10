@@ -28,10 +28,6 @@ class APIServiceCondition(BaseModel):
         None,
         description="Unique, one-word, CamelCase reason for the condition's last transition.",
     )
-    status: str = Field(
-        ...,
-        description="Status is the status of the condition. Can be True, False, Unknown.",
-    )
     type: str = Field(..., description="Type is the type of the condition.")
 
 
@@ -107,9 +103,6 @@ class APIService(pdk8s.model.NamedModel):
     spec: Optional[APIServiceSpec] = Field(
         None,
         description="Spec contains information for locating and communicating with a server",
-    )
-    status: Optional[APIServiceStatus] = Field(
-        None, description="Status contains derived information about an API server"
     )
 
 

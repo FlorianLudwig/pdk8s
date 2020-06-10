@@ -233,9 +233,6 @@ class DaemonSetCondition(BaseModel):
     reason: Optional[str] = Field(
         None, description="The reason for the condition's last transition."
     )
-    status: str = Field(
-        ..., description="Status of the condition, one of True, False, Unknown."
-    )
     type: str = Field(..., description="Type of DaemonSet condition.")
 
 
@@ -302,9 +299,6 @@ class DeploymentCondition(BaseModel):
     )
     reason: Optional[str] = Field(
         None, description="The reason for the condition's last transition."
-    )
-    status: str = Field(
-        ..., description="Status of the condition, one of True, False, Unknown."
     )
     type: str = Field(..., description="Type of deployment condition.")
 
@@ -525,9 +519,6 @@ class ReplicaSetCondition(BaseModel):
     reason: Optional[str] = Field(
         None, description="The reason for the condition's last transition."
     )
-    status: str = Field(
-        ..., description="Status of the condition, one of True, False, Unknown."
-    )
     type: str = Field(..., description="Type of replica set condition.")
 
 
@@ -744,10 +735,6 @@ class Scale(pdk8s.model.NamedModel):
         None,
         description="defines the behavior of the scale. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status.",
     )
-    status: Optional[ScaleStatus] = Field(
-        None,
-        description="current status of the scale. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status. Read-only.",
-    )
 
 
 class Ingress(pdk8s.model.NamedModel):
@@ -769,10 +756,6 @@ class Ingress(pdk8s.model.NamedModel):
     spec: Optional[IngressSpec] = Field(
         None,
         description="Spec is the desired state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
-    )
-    status: Optional[IngressStatus] = Field(
-        None,
-        description="Status is the current state of the Ingress. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
     )
 
 
@@ -1002,10 +985,6 @@ class DaemonSet(pdk8s.model.NamedModel):
         None,
         description="The desired behavior of this daemon set. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
     )
-    status: Optional[DaemonSetStatus] = Field(
-        None,
-        description="The current status of this daemon set. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
-    )
 
 
 class DaemonSetList(pdk8s.model.NamedModel):
@@ -1044,9 +1023,6 @@ class Deployment(pdk8s.model.NamedModel):
     )
     spec: Optional[DeploymentSpec] = Field(
         None, description="Specification of the desired behavior of the Deployment."
-    )
-    status: Optional[DeploymentStatus] = Field(
-        None, description="Most recently observed status of the Deployment."
     )
 
 
@@ -1087,10 +1063,6 @@ class ReplicaSet(pdk8s.model.NamedModel):
     spec: Optional[ReplicaSetSpec] = Field(
         None,
         description="Spec defines the specification of the desired behavior of the ReplicaSet. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
-    )
-    status: Optional[ReplicaSetStatus] = Field(
-        None,
-        description="Status is the most recently observed status of the ReplicaSet. This data may be out of date by some window of time. Populated by the system. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
     )
 
 

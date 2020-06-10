@@ -492,10 +492,6 @@ class Status(pdk8s.model.NamedModel):
         None,
         description='A machine-readable description of why this operation is in the "Failure" status. If this value is empty there is no information available. A Reason clarifies an HTTP status code but does not override it.',
     )
-    status: Optional[str] = Field(
-        None,
-        description='Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status',
-    )
 
 
 class WatchEvent(BaseModel):

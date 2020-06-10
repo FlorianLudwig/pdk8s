@@ -95,10 +95,6 @@ class VolumeAttachment(pdk8s.model.NamedModel):
         ...,
         description="Specification of the desired attach/detach volume behavior. Populated by the Kubernetes system.",
     )
-    status: Optional[VolumeAttachmentStatus] = Field(
-        None,
-        description="Status of the VolumeAttachment request. Populated by the entity completing the attach or detach operation, i.e. the external-attacher.",
-    )
 
 
 class VolumeAttachmentList(pdk8s.model.NamedModel):

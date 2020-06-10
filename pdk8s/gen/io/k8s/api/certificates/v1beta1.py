@@ -88,9 +88,6 @@ class CertificateSigningRequest(pdk8s.model.NamedModel):
         None,
         description="The certificate request itself and any additional information.",
     )
-    status: Optional[CertificateSigningRequestStatus] = Field(
-        None, description="Derived information about the request."
-    )
 
 
 class CertificateSigningRequestList(pdk8s.model.NamedModel):

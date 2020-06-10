@@ -79,7 +79,3 @@ class TokenReview(pdk8s.model.NamedModel):
     spec: TokenReviewSpec = Field(
         ..., description="Spec holds information about the request being evaluated"
     )
-    status: Optional[TokenReviewStatus] = Field(
-        None,
-        description="Status is filled in by the server and indicates whether the request can be authenticated.",
-    )
