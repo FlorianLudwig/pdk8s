@@ -52,7 +52,7 @@ class APIResource(BaseModel):
 
 class APIResourceList(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     groupVersion: str = Field(
@@ -215,7 +215,7 @@ class Time(BaseModel):
 
 class APIGroup(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     kind: Optional[Kind183] = Field(
@@ -238,7 +238,7 @@ class APIGroup(BaseModel):
 
 class APIGroupList(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     groups: List[APIGroup] = Field(..., description='groups is a list of APIGroup.')
@@ -250,7 +250,7 @@ class APIGroupList(BaseModel):
 
 class APIVersions(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     kind: Optional[Kind186] = Field(
@@ -268,7 +268,7 @@ class APIVersions(BaseModel):
 
 class DeleteOptions(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     dryRun: Optional[List[str]] = Field(
@@ -310,7 +310,7 @@ class LabelSelector(BaseModel):
 
 class ManagedFieldsEntry(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the version of this resource that this field set applies to. The format is "group/version" just like the top-level APIVersion field. It is necessary to track the version of a field set because it cannot be automatically converted.',
     )
     fieldsType: Optional[str] = Field(
@@ -404,7 +404,7 @@ class ObjectMeta(BaseModel):
 
 class Status(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     code: Optional[int] = Field(

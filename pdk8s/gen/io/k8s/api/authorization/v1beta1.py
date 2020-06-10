@@ -156,7 +156,7 @@ class SubjectRulesReviewStatus(BaseModel):
 
 class LocalSubjectAccessReview(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1beta1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     kind: Optional[Kind46] = Field(
@@ -176,7 +176,7 @@ class LocalSubjectAccessReview(BaseModel):
 
 class SelfSubjectAccessReview(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1beta1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     kind: Optional[Kind47] = Field(
@@ -196,7 +196,7 @@ class SelfSubjectAccessReview(BaseModel):
 
 class SelfSubjectRulesReview(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1beta1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     kind: Optional[Kind48] = Field(
@@ -215,7 +215,7 @@ class SelfSubjectRulesReview(BaseModel):
 
 class SubjectAccessReview(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1beta1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     kind: Optional[Kind49] = Field(

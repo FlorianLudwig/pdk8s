@@ -69,7 +69,7 @@ class VolumeError(BaseModel):
 
 class CSIDriver(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1beta1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     kind: Optional[Kind171] = Field(
@@ -85,7 +85,7 @@ class CSIDriver(BaseModel):
 
 class CSIDriverList(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1beta1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     items: List[CSIDriver] = Field(..., description='items is the list of CSIDriver')
@@ -101,7 +101,7 @@ class CSIDriverList(BaseModel):
 
 class CSINode(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1beta1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     kind: Optional[Kind173] = Field(
@@ -116,7 +116,7 @@ class CSINode(BaseModel):
 
 class CSINodeList(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1beta1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     items: List[CSINode] = Field(..., description='items is the list of CSINode')
@@ -140,7 +140,7 @@ class StorageClass(BaseModel):
         description='Restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature.',
     )
     apiVersion: Optional[str] = Field(
-        None,
+        'v1beta1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     kind: Optional[Kind175] = Field(
@@ -174,7 +174,7 @@ class StorageClass(BaseModel):
 
 class StorageClassList(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1beta1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     items: List[StorageClass] = Field(
@@ -234,7 +234,7 @@ class VolumeAttachmentStatus(BaseModel):
 
 class VolumeAttachment(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1beta1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     kind: Optional[Kind177] = Field(
@@ -257,7 +257,7 @@ class VolumeAttachment(BaseModel):
 
 class VolumeAttachmentList(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1beta1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     items: List[VolumeAttachment] = Field(

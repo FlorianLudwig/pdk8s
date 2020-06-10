@@ -583,7 +583,7 @@ class NodeSystemInfo(BaseModel):
 
 class ObjectFieldSelector(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='Version of the schema the FieldPath is written in terms of, defaults to "v1".',
     )
     fieldPath: str = Field(
@@ -592,7 +592,7 @@ class ObjectFieldSelector(BaseModel):
 
 
 class ObjectReference(BaseModel):
-    apiVersion: Optional[str] = Field(None, description='API version of the referent.')
+    apiVersion: Optional[str] = Field('v1', description='API version of the referent.')
     fieldPath: Optional[str] = Field(
         None,
         description='If referring to a piece of an object instead of an entire object, this string should contain a valid JSON/Go field access statement, such as desiredState.manifest.containers[2]. For example, if the object reference is to a container within a pod, this would take on a value like: "spec.containers{name}" (where "name" refers to the name of the container that triggered the event) or if no container name is specified "spec.containers[2]" (container with index 2 in this pod). This syntax is chosen only to have some well-defined way of referencing a part of an object.',
@@ -2026,7 +2026,7 @@ class VolumeNodeAffinity(BaseModel):
 
 class Binding(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     kind: Optional[Kind69] = Field(
@@ -2045,7 +2045,7 @@ class Binding(BaseModel):
 
 class ComponentStatus(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     conditions: Optional[List[ComponentCondition]] = Field(
@@ -2063,7 +2063,7 @@ class ComponentStatus(BaseModel):
 
 class ComponentStatusList(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     items: List[ComponentStatus] = Field(
@@ -2081,7 +2081,7 @@ class ComponentStatusList(BaseModel):
 
 class ConfigMap(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     binaryData: Optional[Dict[str, Any]] = Field(
@@ -2104,7 +2104,7 @@ class ConfigMap(BaseModel):
 
 class ConfigMapList(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     items: List[ConfigMap] = Field(..., description='Items is the list of ConfigMaps.')
@@ -2194,7 +2194,7 @@ class DownwardAPIVolumeSource(BaseModel):
 
 class Endpoints(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     kind: Optional[Kind74] = Field(
@@ -2213,7 +2213,7 @@ class Endpoints(BaseModel):
 
 class EndpointsList(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     items: List[Endpoints] = Field(..., description='List of endpoints.')
@@ -2250,7 +2250,7 @@ class Event(BaseModel):
         description='What action was taken/failed regarding to the Regarding object.',
     )
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     count: Optional[int] = Field(
@@ -2312,7 +2312,7 @@ class Event(BaseModel):
 
 class EventList(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     items: List[Event] = Field(..., description='List of events')
@@ -2353,7 +2353,7 @@ class Lifecycle(BaseModel):
 
 class LimitRange(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     kind: Optional[Kind78] = Field(
@@ -2372,7 +2372,7 @@ class LimitRange(BaseModel):
 
 class LimitRangeList(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     items: List[LimitRange] = Field(
@@ -2391,7 +2391,7 @@ class LimitRangeList(BaseModel):
 
 class Namespace(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     kind: Optional[Kind80] = Field(
@@ -2414,7 +2414,7 @@ class Namespace(BaseModel):
 
 class NamespaceList(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     items: List[Namespace] = Field(
@@ -2746,7 +2746,7 @@ class ResourceQuotaSpec(BaseModel):
 
 class Secret(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     data: Optional[Dict[str, Any]] = Field(
@@ -2772,7 +2772,7 @@ class Secret(BaseModel):
 
 class SecretList(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     items: List[Secret] = Field(
@@ -2791,7 +2791,7 @@ class SecretList(BaseModel):
 
 class Service(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     kind: Optional[Kind98] = Field(
@@ -2814,7 +2814,7 @@ class Service(BaseModel):
 
 class ServiceAccount(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     automountServiceAccountToken: Optional[bool] = Field(
@@ -2841,7 +2841,7 @@ class ServiceAccount(BaseModel):
 
 class ServiceAccountList(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     items: List[ServiceAccount] = Field(
@@ -2860,7 +2860,7 @@ class ServiceAccountList(BaseModel):
 
 class ServiceList(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     items: List[Service] = Field(..., description='List of services')
@@ -3015,7 +3015,7 @@ class EphemeralContainer(BaseModel):
 
 class Node(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     kind: Optional[Kind82] = Field(
@@ -3038,7 +3038,7 @@ class Node(BaseModel):
 
 class NodeList(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     items: List[Node] = Field(..., description='List of nodes')
@@ -3054,7 +3054,7 @@ class NodeList(BaseModel):
 
 class PersistentVolume(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     kind: Optional[Kind84] = Field(
@@ -3077,7 +3077,7 @@ class PersistentVolume(BaseModel):
 
 class PersistentVolumeClaim(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     kind: Optional[Kind85] = Field(
@@ -3100,7 +3100,7 @@ class PersistentVolumeClaim(BaseModel):
 
 class PersistentVolumeClaimList(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     items: List[PersistentVolumeClaim] = Field(
@@ -3119,7 +3119,7 @@ class PersistentVolumeClaimList(BaseModel):
 
 class PersistentVolumeList(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     items: List[PersistentVolume] = Field(
@@ -3168,7 +3168,7 @@ class PodAntiAffinity(BaseModel):
 
 class ResourceQuota(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     kind: Optional[Kind94] = Field(
@@ -3191,7 +3191,7 @@ class ResourceQuota(BaseModel):
 
 class ResourceQuotaList(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     items: List[ResourceQuota] = Field(
@@ -3624,7 +3624,7 @@ class ReplicationControllerSpec(BaseModel):
 
 class Pod(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     kind: Optional[Kind88] = Field(
@@ -3647,7 +3647,7 @@ class Pod(BaseModel):
 
 class PodList(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     items: List[Pod] = Field(
@@ -3666,7 +3666,7 @@ class PodList(BaseModel):
 
 class PodTemplate(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     kind: Optional[Kind90] = Field(
@@ -3685,7 +3685,7 @@ class PodTemplate(BaseModel):
 
 class PodTemplateList(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     items: List[PodTemplate] = Field(..., description='List of pod templates')
@@ -3701,7 +3701,7 @@ class PodTemplateList(BaseModel):
 
 class ReplicationController(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     kind: Optional[Kind92] = Field(
@@ -3724,7 +3724,7 @@ class ReplicationController(BaseModel):
 
 class ReplicationControllerList(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     items: List[ReplicationController] = Field(

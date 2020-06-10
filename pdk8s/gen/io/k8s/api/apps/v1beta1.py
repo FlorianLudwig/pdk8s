@@ -80,7 +80,7 @@ class DeploymentCondition(BaseModel):
 
 class DeploymentRollback(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1beta1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     kind: Optional[Kind22] = Field(
@@ -201,7 +201,7 @@ class StatefulSetStatus(BaseModel):
 
 class ControllerRevision(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1beta1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     data: Optional[runtime.RawExtension] = Field(
@@ -223,7 +223,7 @@ class ControllerRevision(BaseModel):
 
 class ControllerRevisionList(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1beta1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     items: List[ControllerRevision] = Field(
@@ -252,7 +252,7 @@ class DeploymentStrategy(BaseModel):
 
 class Scale(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1beta1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     kind: Optional[Kind23] = Field(
@@ -347,7 +347,7 @@ class StatefulSetSpec(BaseModel):
 
 class Deployment(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1beta1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     kind: Optional[Kind20] = Field(
@@ -367,7 +367,7 @@ class Deployment(BaseModel):
 
 class DeploymentList(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1beta1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     items: List[Deployment] = Field(
@@ -382,7 +382,7 @@ class DeploymentList(BaseModel):
 
 class StatefulSet(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1beta1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     kind: Optional[Kind24] = Field(
@@ -401,7 +401,7 @@ class StatefulSet(BaseModel):
 
 class StatefulSetList(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1beta1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     items: List[StatefulSet]

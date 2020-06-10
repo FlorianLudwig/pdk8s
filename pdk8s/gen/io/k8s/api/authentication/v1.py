@@ -11,7 +11,7 @@ from ...apimachinery.pkg.apis.meta import v1
 
 
 class BoundObjectReference(BaseModel):
-    apiVersion: Optional[str] = Field(None, description='API version of the referent.')
+    apiVersion: Optional[str] = Field('v1', description='API version of the referent.')
     kind: Optional[str] = Field(
         None, description="Kind of the referent. Valid kinds are 'Pod' and 'Secret'."
     )
@@ -86,7 +86,7 @@ class TokenReviewStatus(BaseModel):
 
 class TokenRequest(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     kind: Optional[Kind39] = Field(
@@ -100,7 +100,7 @@ class TokenRequest(BaseModel):
 
 class TokenReview(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     kind: Optional[Kind40] = Field(

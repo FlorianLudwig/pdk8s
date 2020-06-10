@@ -229,7 +229,7 @@ class PodSecurityPolicySpec(BaseModel):
 
 class Eviction(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1beta1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     deleteOptions: Optional[v1.DeleteOptions] = Field(
@@ -261,7 +261,7 @@ class PodDisruptionBudgetSpec(BaseModel):
 
 class PodSecurityPolicy(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1beta1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     kind: Optional[Kind131] = Field(
@@ -279,7 +279,7 @@ class PodSecurityPolicy(BaseModel):
 
 class PodSecurityPolicyList(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1beta1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     items: List[PodSecurityPolicy] = Field(
@@ -297,7 +297,7 @@ class PodSecurityPolicyList(BaseModel):
 
 class PodDisruptionBudget(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1beta1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     kind: Optional[Kind129] = Field(
@@ -316,7 +316,7 @@ class PodDisruptionBudget(BaseModel):
 
 class PodDisruptionBudgetList(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1beta1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     items: List[PodDisruptionBudget]

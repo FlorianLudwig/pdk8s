@@ -112,7 +112,7 @@ class MutatingWebhook(BaseModel):
 
 class MutatingWebhookConfiguration(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1beta1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     kind: Optional[Kind4] = Field(
@@ -131,7 +131,7 @@ class MutatingWebhookConfiguration(BaseModel):
 
 class MutatingWebhookConfigurationList(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1beta1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     items: List[MutatingWebhookConfiguration] = Field(
@@ -192,7 +192,7 @@ class ValidatingWebhook(BaseModel):
 
 class ValidatingWebhookConfiguration(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1beta1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     kind: Optional[Kind6] = Field(
@@ -211,7 +211,7 @@ class ValidatingWebhookConfiguration(BaseModel):
 
 class ValidatingWebhookConfigurationList(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1beta1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     items: List[ValidatingWebhookConfiguration] = Field(

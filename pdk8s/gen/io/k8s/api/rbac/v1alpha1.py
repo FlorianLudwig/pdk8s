@@ -43,7 +43,7 @@ class RoleRef(BaseModel):
 
 class Subject(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1alpha1',
         description='APIVersion holds the API group and version of the referenced subject. Defaults to "v1" for ServiceAccount subjects. Defaults to "rbac.authorization.k8s.io/v1alpha1" for User and Group subjects.',
     )
     kind: str = Field(
@@ -70,7 +70,7 @@ class ClusterRole(BaseModel):
         description='AggregationRule is an optional field that describes how to build the Rules for this ClusterRole. If AggregationRule is set, then the Rules are controller managed and direct changes to Rules will be stomped by the controller.',
     )
     apiVersion: Optional[str] = Field(
-        None,
+        'v1alpha1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     kind: Optional[Kind141] = Field(
@@ -87,7 +87,7 @@ class ClusterRole(BaseModel):
 
 class ClusterRoleBinding(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1alpha1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     kind: Optional[Kind142] = Field(
@@ -109,7 +109,7 @@ class ClusterRoleBinding(BaseModel):
 
 class ClusterRoleBindingList(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1alpha1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     items: List[ClusterRoleBinding] = Field(
@@ -126,7 +126,7 @@ class ClusterRoleBindingList(BaseModel):
 
 class ClusterRoleList(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1alpha1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     items: List[ClusterRole] = Field(..., description='Items is a list of ClusterRoles')
@@ -141,7 +141,7 @@ class ClusterRoleList(BaseModel):
 
 class Role(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1alpha1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     kind: Optional[Kind145] = Field(
@@ -158,7 +158,7 @@ class Role(BaseModel):
 
 class RoleBinding(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1alpha1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     kind: Optional[Kind146] = Field(
@@ -180,7 +180,7 @@ class RoleBinding(BaseModel):
 
 class RoleBindingList(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1alpha1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     items: List[RoleBinding] = Field(..., description='Items is a list of RoleBindings')
@@ -195,7 +195,7 @@ class RoleBindingList(BaseModel):
 
 class RoleList(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1alpha1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     items: List[Role] = Field(..., description='Items is a list of Roles')

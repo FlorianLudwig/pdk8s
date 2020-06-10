@@ -62,7 +62,7 @@ class EndpointSlice(BaseModel):
         description='addressType specifies the type of address carried by this EndpointSlice. All addresses in this slice must be the same type. Default is IP',
     )
     apiVersion: Optional[str] = Field(
-        None,
+        'v1alpha1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     endpoints: List[Endpoint] = Field(
@@ -84,7 +84,7 @@ class EndpointSlice(BaseModel):
 
 class EndpointSliceList(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1alpha1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     items: List[EndpointSlice] = Field(..., description='List of endpoint slices')

@@ -12,7 +12,9 @@ from ...apimachinery.pkg.apis.meta import v1
 
 
 class CrossVersionObjectReference(BaseModel):
-    apiVersion: Optional[str] = Field(None, description='API version of the referent')
+    apiVersion: Optional[str] = Field(
+        'v2beta2', description='API version of the referent'
+    )
     kind: str = Field(
         ...,
         description='Kind of the referent; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"',
@@ -245,7 +247,7 @@ class HorizontalPodAutoscalerStatus(BaseModel):
 
 class HorizontalPodAutoscaler(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v2beta2',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     kind: Optional[Kind55] = Field(
@@ -267,7 +269,7 @@ class HorizontalPodAutoscaler(BaseModel):
 
 class HorizontalPodAutoscalerList(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v2beta2',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     items: List[HorizontalPodAutoscaler] = Field(

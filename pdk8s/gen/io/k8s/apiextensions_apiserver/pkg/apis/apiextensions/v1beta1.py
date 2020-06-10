@@ -340,7 +340,7 @@ class CustomResourceDefinitionSpec(BaseModel):
 
 class CustomResourceDefinition(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1beta1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     kind: Optional[Kind181] = Field(
@@ -359,7 +359,7 @@ class CustomResourceDefinition(BaseModel):
 
 class CustomResourceDefinitionList(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1beta1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     items: List[CustomResourceDefinition] = Field(
@@ -372,4 +372,4 @@ class CustomResourceDefinitionList(BaseModel):
     metadata: Optional[v1.ListMeta] = None
 
 
-# io.k8s.apiextensions_apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps.update_forward_refs()
+io.k8s.apiextensions_apiserver.pkg.apis.apiextensions.v1beta1.JSONSchemaProps.update_forward_refs()

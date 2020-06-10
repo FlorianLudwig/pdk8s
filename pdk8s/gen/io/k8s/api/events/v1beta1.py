@@ -32,7 +32,7 @@ class Event(BaseModel):
         description='What action was taken/failed regarding to the regarding object.',
     )
     apiVersion: Optional[str] = Field(
-        None,
+        'v1beta1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     deprecatedCount: Optional[int] = Field(
@@ -91,7 +91,7 @@ class Event(BaseModel):
 
 class EventList(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1beta1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     items: List[Event] = Field(..., description='Items is a list of schema objects.')

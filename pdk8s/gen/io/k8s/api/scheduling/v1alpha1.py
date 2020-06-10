@@ -12,7 +12,7 @@ from ...apimachinery.pkg.apis.meta import v1
 
 class PriorityClass(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1alpha1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     description: Optional[str] = Field(
@@ -43,7 +43,7 @@ class PriorityClass(BaseModel):
 
 class PriorityClassList(BaseModel):
     apiVersion: Optional[str] = Field(
-        None,
+        'v1alpha1',
         description='APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources',
     )
     items: List[PriorityClass] = Field(
