@@ -37,16 +37,17 @@ from datamodel_code_generator.model.pydantic import (
 )
 
 
-_underscorer1 = re.compile(r'(.)([A-Z][a-z]+)')
-_underscorer2 = re.compile('([a-z0-9])([A-Z])')
+_underscorer1 = re.compile(r"(.)([A-Z][a-z]+)")
+_underscorer2 = re.compile("([a-z0-9])([A-Z])")
 
 
 def camel_to_snake(string):
-    subbed = _underscorer1.sub(r'\1_\2', string)
-    return _underscorer2.sub(r'\1_\2', subbed).lower()
+    subbed = _underscorer1.sub(r"\1_\2", string)
+    return _underscorer2.sub(r"\1_\2", subbed).lower()
 
 
 VERSION = re.compile("v[0-9]+[a-z0-9]*$")
+
 
 def make_named_class(model: BaseModel):
     model.base_class = "pdk8s.model.NamedModel"
@@ -62,35 +63,42 @@ def snakify_field(field: datamodel_code_generator.model.pydantic.DataModelField)
         field.alias = original_name
 
 
-def remove_int_or_str(model, field: datamodel_code_generator.model.pydantic.DataModelField):
+def remove_int_or_str(
+    model, field: datamodel_code_generator.model.pydantic.DataModelField
+):
     # the type_hint is cached and not recalculated - in the case
     # luckily as the data structure does not support the needed type hint
     # see also https://github.com/koxudaxi/datamodel-code-generator/issues/142
 
-    union_import = datamodel_code_generator.imports.Import(from_='typing', import_='Union')
-    optional_import = datamodel_code_generator.imports.Import(from_='typing', import_='Optional')
+    union_import = datamodel_code_generator.imports.Import(
+        from_="typing", import_="Union"
+    )
+    optional_import = datamodel_code_generator.imports.Import(
+        from_="typing", import_="Optional"
+    )
     if field.required:
         field.type_hint = "Union[str, int]"
-        field.imports=[union_import]
+        field.imports = [union_import]
     else:
         field.type_hint = "Optional[Union[str, int]]"
-        field.imports=[union_import, optional_import]
+        field.imports = [union_import, optional_import]
 
     # cleanup model imports
     to_remove = []
     for import_ in model.imports:
         if "IntOrString" in import_.import_:
             to_remove.append(import_)
-    
+
     for import_ in to_remove:
         model.imports.remove(import_)
-    
+
     model.imports.extend(field.imports)
-        
+
 
 # TODO
 # Config:
 #   validate_assignment to all
+
 
 class K8SParser(JsonSchemaParser):
     def parse_raw(self):
@@ -145,14 +153,18 @@ class K8SParser(JsonSchemaParser):
                 extra = '"allow"'
                 make_named_class(model)
 
-            if len(field.data_types) == 1 and field.data_types[0].type == "io.k8s.apimachinery.pkg.util.intstr.IntOrString":
+            if (
+                len(field.data_types) == 1
+                and field.data_types[0].type
+                == "io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+            ):
                 remove_int_or_str(model, field)
-                
-        #     elif field.name == "status":
-        #         pass # TODO
+
+            #     elif field.name == "status":
+            #         pass # TODO
 
             snakify_field(field)
-                
+
         #     update_field(field)
         model.extra_template_data["config"] = {"extra": extra}
 
@@ -187,7 +199,7 @@ def generate_models(output, input_text) -> None:
 
     validation = True
     base_class = "pydantic.BaseModel"
-    custom_template_dir = None # TODO seems not tot work
+    custom_template_dir = None  # TODO seems not tot work
     extra_template_data = None
 
     parser_class = JsonSchemaParser
@@ -269,23 +281,20 @@ def update_schema(schema: dict):
                     assert version is not None, f"Unkown api version for {name}"
                     prop.setdefault("default", version)
 
-
-                
                 # inline IntOrString, avoids creation of IntOrString class
                 # this allows assigning int or string directly, instead of this
                 # ref_int_or_string = "#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
                 # if "$ref" in prop:
                 #     ref = prop["$ref"]
-                    
+
                 #     if ref == ref_int_or_string:
                 #         prop.pop("$ref")
-                    
+
                 #         prop.update(definitions[ref.split('/')[-1]])
-                    
+
                 #         print(prop)
 
-
-    # "$ref": 
+    # "$ref":
     #   "oneOf": [
     #     {
     #       "type": "string"

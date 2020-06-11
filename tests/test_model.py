@@ -6,6 +6,7 @@ class Awesome(pdk8s.model.NamedModel):
     class Config:
         extra = "allow"
         validate_assignment = True
+
     metadata: pdk8s.k8s.ObjectMeta
 
 
