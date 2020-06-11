@@ -34,7 +34,7 @@ class NetworkPolicyPort(BaseModel):
         allow_population_by_field_name = True
         extra = "forbid"
 
-    port: Optional[Union[str, int]] = Field(
+    port: Optional[Union[int, str]] = Field(
         None,
         description="The port on the given protocol. This can either be a numerical or named port on a pod. If this field is not provided, this matches all port names and numbers.",
     )

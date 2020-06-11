@@ -52,7 +52,7 @@ class IngressBackend(BaseModel):
         alias="serviceName",
         description="Specifies the name of the referenced service.",
     )
-    service_port: Union[str, int] = Field(
+    service_port: Union[int, str] = Field(
         ...,
         alias="servicePort",
         description="Specifies the port of the referenced service.",

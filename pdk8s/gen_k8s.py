@@ -77,10 +77,10 @@ def remove_int_or_str(
         from_="typing", import_="Optional"
     )
     if field.required:
-        field.type_hint = "Union[str, int]"
+        field.type_hint = "Union[int, str]"
         field.imports = [union_import]
     else:
-        field.type_hint = "Optional[Union[str, int]]"
+        field.type_hint = "Optional[Union[int, str]]"
         field.imports = [union_import, optional_import]
 
     # cleanup model imports
