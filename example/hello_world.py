@@ -2,9 +2,6 @@
 Example from https://github.com/awslabs/cdk8s/blob/master/docs/getting-started/python.md
 
 reinvisioned with slightly differnt API
-
-THIS IS A PLAYGROUND (to imagine what the API could look like)
-NOT (yet) A WORKING IMPLEMENTATION
 """
 import pdk8s
 from pdk8s import k8s
@@ -31,6 +28,5 @@ my_chart = [
                             image='paulbouwer/hello-kubernetes:1.7',
                             ports=[k8s.ContainerPort(container_port=8080)])]))))
 ]
-        
 
-pdk8s.synth()
+pdk8s.synth(my_chart)
