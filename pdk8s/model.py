@@ -6,12 +6,12 @@ import pydantic
 def _set_name(metadata, value):
     if metadata is None:
         return {"name": value}
-    
+
     if isinstance(metadata, dict):
         metadata["name"] = value
     else:
         metadata.name = value
-    
+
     return metadata
 
 
@@ -20,7 +20,7 @@ class NamedModel(pydantic.BaseModel):
         if not self.metadata:
             return None
         return self.metadata.name
-    
+
     name = property(_get_name)
 
     def __setattr__(self, name, value):
@@ -31,7 +31,6 @@ class NamedModel(pydantic.BaseModel):
 
     @pydantic.root_validator(pre=True)
     def extract_name(cls, values):
-        print("Validator!!!", values)
         if "name" in values:
             values["metadata"] = _set_name(values.get("metadata"), values["name"])
             del values["name"]
