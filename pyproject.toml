@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pdk8s"
-version = "0.1.0"
+version = "0.1.1"
 description = ""
 authors = ["Florian Ludwig <f.ludwig@greyrook.com>"]
 license = "Apache-2.0"
@@ -10,6 +10,7 @@ readme = "README.md"
 python = "^3.7"
 pydantic = "1.5.1"
 pyyaml = "5.3.1"
+click = "7.1.2"
 
 [tool.poetry.dev-dependencies]
 pytest = "5.4.3"
@@ -19,7 +20,7 @@ black = "19.10b0"
 pytest-cov = "2.9.0"
 
 [tool.poetry.scripts]
-poetry = 'pdk8s.cli:main'
+pdk8s = 'pdk8s.cli:main'
 
 [tool.black]
 skip-string-normalization = 0
