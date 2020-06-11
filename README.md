@@ -68,7 +68,7 @@ Which you can turn into a running helm chart with:
 $ pdk8s synth
 ```
 
-You will find your generated shart under `dist`:
+You will find your generated chart under `dist`:
 
 <pre>
 ├── chart.py
@@ -79,21 +79,23 @@ You will find your generated shart under `dist`:
     └── values.yaml
 </pre>
 
-## Creating
+## Creating Ressources
 
 Creating a service:
 
 ```python
 from pdk8s import k8s
 
-k8s.Service(name="service",
+service = k8s.Service(name="service",
             spec=k8s.ServiceSpec(
                 type="LoadBalancer",
                 ports=[k8s.ServicePort(port=80, target_port=8080)],
                 selector={"app": "hello-k8s"}))
+
+chart = [service]
 ```
 
-All `pdk8s` classes are [pydantic](https://pydantic-docs.helpmanual.io/) data classes.  Which provides among other things is used for automatic conversion, so you can just as well write:
+All `pdk8s` classes are [pydantic](https://pydantic-docs.helpmanual.io/) data classes.  Which provides - among other things - automatic conversion for parameters, so you can just as well write:
 
 ```python
 from pdk8s import k8s
@@ -118,7 +120,10 @@ deployment = k8s.Deployment(name='deployment',
 deployment.spec.replicas = math.randint(0, 666)
 ```
 
-Note: Automatic casting is only available on creation.  `deployment.spec = {"replicas": 2}` would not work.
+Note 1: Automatic casting is only available on creation.  `deployment.spec = {"replicas": 2}` would not work.
+
+Note 2: Currently all required parameters must be provided at creation time.  You cannot create an empty `k8s.Deployment()`.  This might change.
+
 
 ## CamelCase names
 
@@ -238,6 +243,21 @@ k8s.ServicePort(port=80, target_port=8080)
 # Why
 
 TODO explain why this exists (NIH syndrom)
+## Design Decisions
+
+### Generate at build time
+
+Generate everything at build time and not runtime as it makes it easier for linters and other dev tools, like IDEs.
+
+### Attribute case
+
+CamelCase?
+
+### Naming
+
+
+### Versioning
+
 # Development and building
 
 Currently generating the code of `pdk8s` depends on a patched version of `datamodel-code-generator`.  I am working on upstreaming changes to not depend on local patches anymore.
