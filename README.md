@@ -164,8 +164,10 @@ k8s.ServicePort(port=80, target_port=8080)
 ```
 
 
+# Why
 
+TODO explain why this exists (NIH syndrom)
 ## Sources
 
- * https://github.com/kubernetes/kubernetes/tree/master/api/openapi-spec openapi definition.
+ * https://github.com/kubernetes/kubernetes/tree/master/api/openapi-spec - openapi definition.
  * https://github.com/instrumenta/kubernetes-json-schema - JSON Schema of kubernetes API, generated from official openapi definitions.  Used by cdk8s.
