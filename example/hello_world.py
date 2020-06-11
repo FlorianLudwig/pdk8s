@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 """
 Example from https://github.com/awslabs/cdk8s/blob/master/docs/getting-started/python.md
 
@@ -46,4 +47,4 @@ chart = [
 
 
 if __name__ == "__main__":
-    pdk8s.chart_cli.main(locals())
+     pdk8s.chart_cli.main(obj=locals())
