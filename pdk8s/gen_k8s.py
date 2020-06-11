@@ -95,11 +95,6 @@ def remove_int_or_str(
     model.imports.extend(field.imports)
 
 
-# TODO
-# Config:
-#   validate_assignment to all
-
-
 class K8SParser(JsonSchemaParser):
     def parse_raw(self):
         super(K8SParser, self).parse_raw()
@@ -121,9 +116,6 @@ class K8SParser(JsonSchemaParser):
         new_results = []
         for result in self.results:
             self._mutate_class(result)
-            # if result.class_name.endswith("Status"):
-            #     # filter out all objects ending on "Status"
-            #     pass
             new_results.append(result)
 
         self.results = new_results
@@ -160,15 +152,9 @@ class K8SParser(JsonSchemaParser):
             ):
                 remove_int_or_str(model, field)
 
-            #     elif field.name == "status":
-            #         pass # TODO
-
             snakify_field(field)
 
-        #     update_field(field)
         model.extra_template_data["config"] = {"extra": extra}
-
-        # model.fields = new_fields
 
 
 def update_field(field):
@@ -199,10 +185,9 @@ def generate_models(output, input_text) -> None:
 
     validation = True
     base_class = "pydantic.BaseModel"
-    custom_template_dir = None  # TODO seems not tot work
+    custom_template_dir = None  # TODO seems not tot work, see https://github.com/koxudaxi/datamodel-code-generator/issues/144
     extra_template_data = None
 
-    parser_class = JsonSchemaParser
     parser_class = K8SParser
 
     parser = parser_class(
@@ -282,11 +267,13 @@ def update_schema(schema: dict):
                 # set api version
                 if prop_name == "apiVersion":
                     if version:
-                    prop.setdefault("default", version)
+                        prop.setdefault("default", version)
 
                 # inline IntOrString, avoids creation of IntOrString class
                 # this allows assigning int or string directly, instead of this
                 # ref_int_or_string = "#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+                # TODO using "oneOf" in properties is not supported by datamode-code-generator
+                #      see https://github.com/koxudaxi/datamodel-code-generator/issues/139
                 # if "$ref" in prop:
                 #     ref = prop["$ref"]
 
@@ -296,16 +283,15 @@ def update_schema(schema: dict):
                 #         prop.update(definitions[ref.split('/')[-1]])
 
                 #         print(prop)
-
-    # "$ref":
-    #   "oneOf": [
-    #     {
-    #       "type": "string"
-    #     },
-    #     {
-    #       "type": "integer"
-    #     }
-    #   ]
+                # "$ref":
+                #   "oneOf": [
+                #     {
+                #       "type": "string"
+                #     },
+                #     {
+                #       "type": "integer"
+                #     }
+                #   ]
 
 
 def download():
@@ -315,7 +301,6 @@ def download():
 
 def main():
     input_name = "k8s_1.16.4.json"
-    # input_name = "small.json"
     schema = json.load(open(input_name))
 
     update_schema(schema)
