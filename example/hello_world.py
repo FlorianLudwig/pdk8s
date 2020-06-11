@@ -4,12 +4,27 @@ Example from https://github.com/awslabs/cdk8s/blob/master/docs/getting-started/p
 reinvisioned with slightly differnt API
 """
 import pdk8s
+import pdk8s.chart_cli
 from pdk8s import k8s
 
 
+# Name of the chart
+name = "hello_world"
+
+# This is the chart version. This version number should be incremented each time you make changes
+# to the chart and its templates, including the app version.
+# Versions are expected to follow Semantic Versioning (https://semver.org/)
+chart_version = "0.1.0"
+
+# This is the version number of the application being deployed. This version number should be
+# incremented each time you make changes to the application. Versions are not expected to
+# follow Semantic Versioning. They should reflect the version the application is using.
+app_version = "0.1.0"
+
 label = {"app": "hello-k8s"}
 
-my_chart = [
+# this is your chart
+chart = [
     k8s.Service(name='service',
                 spec=k8s.ServiceSpec(
                     type='LoadBalancer',
@@ -29,4 +44,6 @@ my_chart = [
                             ports=[k8s.ContainerPort(container_port=8080)])]))))
 ]
 
-pdk8s.synth(my_chart)
+
+if __name__ == "__main__":
+    pdk8s.chart_cli.main(locals())
