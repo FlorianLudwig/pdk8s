@@ -40,10 +40,11 @@ def add_subcommands(main, with_input):
 
     @main.command()
     def init():
-        # Call cookiecutter
-        print("not yet implemented")
-        return 99
+        import pkg_resources
+        import cookiecutter.main
 
+        path = pkg_resources.resource_filename("pdk8s", "cookiecutter")
+        cookiecutter.main.cookiecutter(path)
 
     @main.command()
     def watch():
