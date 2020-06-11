@@ -6,6 +6,12 @@ from .gen.io.k8s.api.apps.v1 import *  # pylint: disable=unused-wildcard-import
 from .gen.io.k8s.api.core.v1 import *  # pylint: disable=unused-wildcard-import
 from .gen.io.k8s.apimachinery.pkg.apis.meta.v1 import *  # pylint: disable=unused-wildcard-import
 
+API_VERSION = "1.16.4"
+
+
+class Chart(list):
+    pass
+
 
 def _parse_object(obj):
     kind = obj["kind"]
