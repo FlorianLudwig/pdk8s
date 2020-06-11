@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import List, Optional, Union
 
 from pydantic import BaseModel, Field
 
@@ -34,7 +34,7 @@ class NetworkPolicyPort(BaseModel):
         allow_population_by_field_name = True
         extra = "forbid"
 
-    port: Optional[intstr.IntOrString] = Field(
+    port: Optional[Union[str, int]] = Field(
         None,
         description="The port on the given protocol. This can either be a numerical or named port on a pod. If this field is not provided, this matches all port names and numbers.",
     )

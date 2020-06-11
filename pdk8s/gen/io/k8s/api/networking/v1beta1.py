@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import List, Optional, Union
 
 from pydantic import BaseModel, Field
 
@@ -52,7 +52,7 @@ class IngressBackend(BaseModel):
         alias="serviceName",
         description="Specifies the name of the referenced service.",
     )
-    service_port: intstr.IntOrString = Field(
+    service_port: Union[str, int] = Field(
         ...,
         alias="servicePort",
         description="Specifies the port of the referenced service.",

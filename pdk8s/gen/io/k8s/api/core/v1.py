@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Union
 
 from pydantic import BaseModel, Field
 
@@ -2005,7 +2005,7 @@ class HTTPGetAction(BaseModel):
         description="Custom headers to set in the request. HTTP allows repeated headers.",
     )
     path: Optional[str] = Field(None, description="Path to access on the HTTP server.")
-    port: intstr.IntOrString = Field(
+    port: Union[str, int] = Field(
         ...,
         description="Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.",
     )
@@ -2628,7 +2628,7 @@ class ServicePort(BaseModel):
         None,
         description='The IP protocol for this port. Supports "TCP", "UDP", and "SCTP". Default is TCP.',
     )
-    target_port: Optional[intstr.IntOrString] = Field(
+    target_port: Optional[Union[str, int]] = Field(
         None,
         alias="targetPort",
         description="Number or name of the port to access on the pods targeted by the service. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. If this is a string, it will be looked up as a named port in the target Pod's container ports. If this is not specified, the value of the 'port' field is used (an identity map). This field is ignored for services with clusterIP=None, and should be omitted or set equal to the 'port' field. More info: https://kubernetes.io/docs/concepts/services-networking/service/#defining-a-service",
@@ -2717,7 +2717,7 @@ class TCPSocketAction(BaseModel):
     host: Optional[str] = Field(
         None, description="Optional: Host name to connect to, defaults to the pod IP."
     )
-    port: intstr.IntOrString = Field(
+    port: Union[str, int] = Field(
         ...,
         description="Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.",
     )

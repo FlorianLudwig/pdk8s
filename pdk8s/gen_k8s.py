@@ -62,6 +62,32 @@ def snakify_field(field: datamodel_code_generator.model.pydantic.DataModelField)
         field.alias = original_name
 
 
+def remove_int_or_str(model, field: datamodel_code_generator.model.pydantic.DataModelField):
+    # the type_hint is cached and not recalculated - in the case
+    # luckily as the data structure does not support the needed type hint
+    # see also https://github.com/koxudaxi/datamodel-code-generator/issues/142
+
+    union_import = datamodel_code_generator.imports.Import(from_='typing', import_='Union')
+    optional_import = datamodel_code_generator.imports.Import(from_='typing', import_='Optional')
+    if field.required:
+        field.type_hint = "Union[str, int]"
+        field.imports=[union_import]
+    else:
+        field.type_hint = "Optional[Union[str, int]]"
+        field.imports=[union_import, optional_import]
+
+    # cleanup model imports
+    to_remove = []
+    for import_ in model.imports:
+        if "IntOrString" in import_.import_:
+            to_remove.append(import_)
+    
+    for import_ in to_remove:
+        model.imports.remove(import_)
+    
+    model.imports.extend(field.imports)
+        
+
 # TODO
 # Config:
 #   validate_assignment to all
@@ -118,6 +144,10 @@ class K8SParser(JsonSchemaParser):
                 # even with no actual field "name" existing.
                 extra = '"allow"'
                 make_named_class(model)
+
+            if len(field.data_types) == 1 and field.data_types[0].type == "io.k8s.apimachinery.pkg.util.intstr.IntOrString":
+                remove_int_or_str(model, field)
+                
         #     elif field.name == "status":
         #         pass # TODO
 
