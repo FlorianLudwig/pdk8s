@@ -34,6 +34,51 @@ The format of `pdk8s` charts is simular to helm charts, just that they are pytho
 
 If you had a déjà vu while reading - that is because the description for `chart_version` and `app_version` are copied straight from Helm ;)
 
+## Getting started
+
+```bash
+$ pdk8s init
+chart_name [awesome chart]: Webserver Example
+slug [webserver_example]: 
+chart_version [0.1.0]: 
+app_version [0.1.0]: 
+```
+
+You will find a new folder and files named: `webserver_example/chart.py`.  Inside this file you will find a hello world example:
+
+```python
+chart = [
+    k8s.Deployment(name='deployment',
+                    spec=k8s.DeploymentSpec(
+                        replicas=2,
+                        selector=k8s.LabelSelector(match_labels=label),
+                        template=k8s.PodTemplateSpec(
+                        metadata=k8s.ObjectMeta(labels=label),
+                        spec=k8s.PodSpec(containers=[
+                            k8s.Container(
+                            name='hello-kubernetes',
+                            image='paulbouwer/hello-kubernetes:1.7',
+                            ports=[k8s.ContainerPort(container_port=8080)])]))))
+]
+```
+
+Which you can turn into a running helm chart with:
+
+```bash
+$ pdk8s synth
+```
+
+You will find your generated shart under `dist`:
+
+<pre>
+├── chart.py
+└── <font color="#0087FF">dist</font>
+    ├── Chart.yaml
+    ├── <font color="#0087FF">templates</font>
+    │   └── generated.yaml
+    └── values.yaml
+</pre>
+
 ## Creating
 
 Creating a service:
