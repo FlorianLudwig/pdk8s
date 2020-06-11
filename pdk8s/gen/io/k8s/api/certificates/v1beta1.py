@@ -15,6 +15,7 @@ from ...apimachinery.pkg.apis.meta import v1
 class CertificateSigningRequestSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     extra: Optional[Dict[str, Any]] = Field(
@@ -43,6 +44,7 @@ class CertificateSigningRequestSpec(BaseModel):
 class CertificateSigningRequestCondition(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     last_update_time: Optional[v1.Time] = Field(
@@ -64,6 +66,7 @@ class CertificateSigningRequestCondition(BaseModel):
 class CertificateSigningRequestStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     certificate: Optional[str] = Field(
@@ -79,6 +82,7 @@ class CertificateSigningRequestStatus(BaseModel):
 class CertificateSigningRequest(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -100,6 +104,7 @@ class CertificateSigningRequest(pdk8s.model.NamedModel):
 class CertificateSigningRequestList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(

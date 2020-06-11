@@ -15,6 +15,7 @@ from ...apimachinery.pkg.apis.meta import v1
 class LeaseSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     acquire_time: Optional[v1.MicroTime] = Field(
@@ -47,6 +48,7 @@ class LeaseSpec(BaseModel):
 class Lease(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -71,6 +73,7 @@ class Lease(pdk8s.model.NamedModel):
 class LeaseList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(

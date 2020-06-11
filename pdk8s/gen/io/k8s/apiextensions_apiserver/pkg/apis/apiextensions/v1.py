@@ -15,6 +15,7 @@ from .....apimachinery.pkg.apis.meta import v1
 class CustomResourceColumnDefinition(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     description: Optional[str] = Field(
@@ -43,6 +44,7 @@ class CustomResourceColumnDefinition(BaseModel):
 class CustomResourceDefinitionNames(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     categories: Optional[List[str]] = Field(
@@ -76,6 +78,7 @@ class CustomResourceDefinitionNames(BaseModel):
 class CustomResourceSubresourceScale(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     label_selector_path: Optional[str] = Field(
@@ -100,12 +103,14 @@ class CustomResourceSubresourceStatus(BaseModel):
 
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
 
 class CustomResourceSubresources(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     scale: Optional[CustomResourceSubresourceScale] = Field(
@@ -117,6 +122,7 @@ class CustomResourceSubresources(BaseModel):
 class ExternalDocumentation(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     description: Optional[str] = None
@@ -142,6 +148,7 @@ class JSONSchemaPropsOrStringArray(BaseModel):
 class ServiceReference(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     name: str = Field(..., description="name is the name of the service. Required")
@@ -161,6 +168,7 @@ class ServiceReference(BaseModel):
 class WebhookClientConfig(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     ca_bundle: Optional[str] = Field(
@@ -181,6 +189,7 @@ class WebhookClientConfig(BaseModel):
 class WebhookConversion(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     client_config: Optional[WebhookClientConfig] = Field(
@@ -198,6 +207,7 @@ class WebhookConversion(BaseModel):
 class CustomResourceConversion(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     strategy: str = Field(
@@ -213,6 +223,7 @@ class CustomResourceConversion(BaseModel):
 class CustomResourceDefinitionCondition(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     last_transition_time: Optional[v1.Time] = Field(
@@ -237,6 +248,7 @@ class CustomResourceDefinitionCondition(BaseModel):
 class CustomResourceDefinitionStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     accepted_names: CustomResourceDefinitionNames = Field(
@@ -258,6 +270,7 @@ class CustomResourceDefinitionStatus(BaseModel):
 class JSONSchemaProps(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     _ref: Optional[str] = Field(None, alias="$ref")
@@ -336,6 +349,7 @@ class JSONSchemaProps(BaseModel):
 class CustomResourceValidation(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     open_apiv3_schema: Optional[JSONSchemaProps] = Field(
@@ -348,6 +362,7 @@ class CustomResourceValidation(BaseModel):
 class CustomResourceDefinitionVersion(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     additional_printer_columns: Optional[List[CustomResourceColumnDefinition]] = Field(
@@ -380,6 +395,7 @@ class CustomResourceDefinitionVersion(BaseModel):
 class CustomResourceDefinitionSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     conversion: Optional[CustomResourceConversion] = Field(
@@ -411,6 +427,7 @@ class CustomResourceDefinitionSpec(BaseModel):
 class CustomResourceDefinition(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -431,6 +448,7 @@ class CustomResourceDefinition(pdk8s.model.NamedModel):
 class CustomResourceDefinitionList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(

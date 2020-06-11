@@ -15,6 +15,7 @@ from ...apimachinery.pkg.apis.meta import v1
 class PolicyRule(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     api_groups: Optional[List[str]] = Field(
@@ -45,6 +46,7 @@ class PolicyRule(BaseModel):
 class RoleRef(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     api_group: str = Field(
@@ -59,6 +61,7 @@ class RoleRef(BaseModel):
 class Subject(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     api_group: Optional[str] = Field(
@@ -80,6 +83,7 @@ class Subject(BaseModel):
 class AggregationRule(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     cluster_role_selectors: Optional[List[v1.LabelSelector]] = Field(
@@ -92,6 +96,7 @@ class AggregationRule(BaseModel):
 class ClusterRole(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     aggregation_rule: Optional[AggregationRule] = Field(
@@ -119,6 +124,7 @@ class ClusterRole(pdk8s.model.NamedModel):
 class ClusterRoleBinding(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -147,6 +153,7 @@ class ClusterRoleBinding(pdk8s.model.NamedModel):
 class ClusterRoleBindingList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -169,6 +176,7 @@ class ClusterRoleBindingList(pdk8s.model.NamedModel):
 class ClusterRoleList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -189,6 +197,7 @@ class ClusterRoleList(pdk8s.model.NamedModel):
 class Role(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -211,6 +220,7 @@ class Role(pdk8s.model.NamedModel):
 class RoleBinding(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -239,6 +249,7 @@ class RoleBinding(pdk8s.model.NamedModel):
 class RoleBindingList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -259,6 +270,7 @@ class RoleBindingList(pdk8s.model.NamedModel):
 class RoleList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(

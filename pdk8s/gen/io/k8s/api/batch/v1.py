@@ -16,6 +16,7 @@ from ..core import v1 as v1_1
 class JobCondition(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     last_probe_time: Optional[v1.Time] = Field(
@@ -39,6 +40,7 @@ class JobCondition(BaseModel):
 class JobStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     active: Optional[int] = Field(
@@ -69,6 +71,7 @@ class JobStatus(BaseModel):
 class JobSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     active_deadline_seconds: Optional[int] = Field(
@@ -112,6 +115,7 @@ class JobSpec(BaseModel):
 class Job(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -136,6 +140,7 @@ class Job(pdk8s.model.NamedModel):
 class JobList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(

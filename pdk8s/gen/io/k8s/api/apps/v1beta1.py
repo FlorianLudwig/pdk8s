@@ -18,6 +18,7 @@ from ..core import v1 as v1_1
 class RollbackConfig(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     revision: Optional[int] = Field(
@@ -29,6 +30,7 @@ class RollbackConfig(BaseModel):
 class RollingUpdateStatefulSetStrategy(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     partition: Optional[int] = Field(
@@ -40,6 +42,7 @@ class RollingUpdateStatefulSetStrategy(BaseModel):
 class ScaleSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     replicas: Optional[int] = Field(
@@ -50,6 +53,7 @@ class ScaleSpec(BaseModel):
 class ScaleStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     replicas: int = Field(
@@ -69,6 +73,7 @@ class ScaleStatus(BaseModel):
 class StatefulSetUpdateStrategy(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     rolling_update: Optional[RollingUpdateStatefulSetStrategy] = Field(
@@ -84,6 +89,7 @@ class StatefulSetUpdateStrategy(BaseModel):
 class DeploymentCondition(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     last_transition_time: Optional[v1.Time] = Field(
@@ -109,6 +115,7 @@ class DeploymentCondition(BaseModel):
 class DeploymentRollback(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     api_version: Optional[str] = Field(
@@ -136,6 +143,7 @@ class DeploymentRollback(BaseModel):
 class DeploymentStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     available_replicas: Optional[int] = Field(
@@ -181,6 +189,7 @@ class DeploymentStatus(BaseModel):
 class RollingUpdateDeployment(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     max_surge: Optional[Union[int, str]] = Field(
@@ -198,6 +207,7 @@ class RollingUpdateDeployment(BaseModel):
 class StatefulSetCondition(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     last_transition_time: Optional[v1.Time] = Field(
@@ -218,6 +228,7 @@ class StatefulSetCondition(BaseModel):
 class StatefulSetStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     collision_count: Optional[int] = Field(
@@ -268,6 +279,7 @@ class StatefulSetStatus(BaseModel):
 class ControllerRevision(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -295,6 +307,7 @@ class ControllerRevision(pdk8s.model.NamedModel):
 class ControllerRevisionList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -318,6 +331,7 @@ class ControllerRevisionList(pdk8s.model.NamedModel):
 class DeploymentStrategy(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     rolling_update: Optional[RollingUpdateDeployment] = Field(
@@ -334,6 +348,7 @@ class DeploymentStrategy(BaseModel):
 class Scale(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -358,6 +373,7 @@ class Scale(pdk8s.model.NamedModel):
 class DeploymentSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     min_ready_seconds: Optional[int] = Field(
@@ -403,6 +419,7 @@ class DeploymentSpec(BaseModel):
 class StatefulSetSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     pod_management_policy: Optional[str] = Field(
@@ -447,6 +464,7 @@ class StatefulSetSpec(BaseModel):
 class Deployment(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -469,6 +487,7 @@ class Deployment(pdk8s.model.NamedModel):
 class DeploymentList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -489,6 +508,7 @@ class DeploymentList(pdk8s.model.NamedModel):
 class StatefulSet(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -509,6 +529,7 @@ class StatefulSet(pdk8s.model.NamedModel):
 class StatefulSetList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(

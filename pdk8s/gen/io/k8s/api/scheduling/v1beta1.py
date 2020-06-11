@@ -15,6 +15,7 @@ from ...apimachinery.pkg.apis.meta import v1
 class PriorityClass(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -53,6 +54,7 @@ class PriorityClass(pdk8s.model.NamedModel):
 class PriorityClassList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(

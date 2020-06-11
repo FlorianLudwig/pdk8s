@@ -15,6 +15,7 @@ from .....apimachinery.pkg.apis.meta import v1
 class APIServiceCondition(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     last_transition_time: Optional[v1.Time] = Field(
@@ -36,6 +37,7 @@ class APIServiceCondition(BaseModel):
 class APIServiceStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     conditions: Optional[List[APIServiceCondition]] = Field(
@@ -46,6 +48,7 @@ class APIServiceStatus(BaseModel):
 class ServiceReference(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     name: Optional[str] = Field(None, description="Name is the name of the service")
@@ -61,6 +64,7 @@ class ServiceReference(BaseModel):
 class APIServiceSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     ca_bundle: Optional[str] = Field(
@@ -99,6 +103,7 @@ class APIServiceSpec(BaseModel):
 class APIService(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -120,6 +125,7 @@ class APIService(pdk8s.model.NamedModel):
 class APIServiceList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(

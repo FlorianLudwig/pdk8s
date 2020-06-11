@@ -17,6 +17,7 @@ from . import v1 as v1_1
 class CronJobStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     active: Optional[List[v1.ObjectReference]] = Field(
@@ -32,6 +33,7 @@ class CronJobStatus(BaseModel):
 class JobTemplateSpec(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     metadata: Optional[v1.ObjectMeta] = Field(
@@ -47,6 +49,7 @@ class JobTemplateSpec(pdk8s.model.NamedModel):
 class CronJobSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     concurrency_policy: Optional[str] = Field(
@@ -87,6 +90,7 @@ class CronJobSpec(BaseModel):
 class CronJob(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -111,6 +115,7 @@ class CronJob(pdk8s.model.NamedModel):
 class CronJobList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(

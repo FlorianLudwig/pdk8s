@@ -51,6 +51,7 @@ from ...apimachinery.pkg.util import intstr
 class AWSElasticBlockStoreVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     fs_type: Optional[str] = Field(
@@ -77,6 +78,7 @@ class AWSElasticBlockStoreVolumeSource(BaseModel):
 class AttachedVolume(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     device_path: str = Field(
@@ -90,6 +92,7 @@ class AttachedVolume(BaseModel):
 class AzureDiskVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     caching_mode: Optional[str] = Field(
@@ -124,6 +127,7 @@ class AzureDiskVolumeSource(BaseModel):
 class AzureFilePersistentVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     read_only: Optional[bool] = Field(
@@ -147,6 +151,7 @@ class AzureFilePersistentVolumeSource(BaseModel):
 class AzureFileVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     read_only: Optional[bool] = Field(
@@ -165,6 +170,7 @@ class AzureFileVolumeSource(BaseModel):
 class Capabilities(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     add: Optional[List[str]] = Field(None, description="Added capabilities")
@@ -174,6 +180,7 @@ class Capabilities(BaseModel):
 class ClientIPConfig(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     timeout_seconds: Optional[int] = Field(
@@ -186,6 +193,7 @@ class ClientIPConfig(BaseModel):
 class ComponentCondition(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     error: Optional[str] = Field(
@@ -204,6 +212,7 @@ class ComponentCondition(BaseModel):
 class ConfigMapEnvSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     name: Optional[str] = Field(
@@ -218,6 +227,7 @@ class ConfigMapEnvSource(BaseModel):
 class ConfigMapKeySelector(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     key: str = Field(..., description="The key to select.")
@@ -233,6 +243,7 @@ class ConfigMapKeySelector(BaseModel):
 class ConfigMapNodeConfigSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     kubelet_config_key: str = Field(
@@ -262,6 +273,7 @@ class ConfigMapNodeConfigSource(BaseModel):
 class ContainerImage(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     names: List[str] = Field(
@@ -276,6 +288,7 @@ class ContainerImage(BaseModel):
 class ContainerPort(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     container_port: int = Field(
@@ -304,6 +317,7 @@ class ContainerPort(BaseModel):
 class ContainerStateWaiting(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     message: Optional[str] = Field(
@@ -317,6 +331,7 @@ class ContainerStateWaiting(BaseModel):
 class DaemonEndpoint(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     port: int = Field(
@@ -327,6 +342,7 @@ class DaemonEndpoint(BaseModel):
 class EndpointPort(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     name: Optional[str] = Field(
@@ -343,6 +359,7 @@ class EndpointPort(BaseModel):
 class EventSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     component: Optional[str] = Field(
@@ -356,6 +373,7 @@ class EventSource(BaseModel):
 class ExecAction(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     command: Optional[List[str]] = Field(
@@ -367,6 +385,7 @@ class ExecAction(BaseModel):
 class FCVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     fs_type: Optional[str] = Field(
@@ -394,6 +413,7 @@ class FCVolumeSource(BaseModel):
 class FlockerVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     dataset_name: Optional[str] = Field(
@@ -411,6 +431,7 @@ class FlockerVolumeSource(BaseModel):
 class GCEPersistentDiskVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     fs_type: Optional[str] = Field(
@@ -437,6 +458,7 @@ class GCEPersistentDiskVolumeSource(BaseModel):
 class GitRepoVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     directory: Optional[str] = Field(
@@ -452,6 +474,7 @@ class GitRepoVolumeSource(BaseModel):
 class GlusterfsPersistentVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     endpoints: str = Field(
@@ -477,6 +500,7 @@ class GlusterfsPersistentVolumeSource(BaseModel):
 class GlusterfsVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     endpoints: str = Field(
@@ -497,6 +521,7 @@ class GlusterfsVolumeSource(BaseModel):
 class HTTPHeader(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     name: str = Field(..., description="The header field name")
@@ -506,6 +531,7 @@ class HTTPHeader(BaseModel):
 class HostAlias(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     hostnames: Optional[List[str]] = Field(
@@ -517,6 +543,7 @@ class HostAlias(BaseModel):
 class HostPathVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     path: str = Field(
@@ -532,6 +559,7 @@ class HostPathVolumeSource(BaseModel):
 class KeyToPath(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     key: str = Field(..., description="The key to project.")
@@ -548,6 +576,7 @@ class KeyToPath(BaseModel):
 class LimitRangeItem(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     default: Optional[Dict[str, Any]] = Field(
@@ -578,6 +607,7 @@ class LimitRangeItem(BaseModel):
 class LimitRangeSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     limits: List[LimitRangeItem] = Field(
@@ -589,6 +619,7 @@ class LimitRangeSpec(BaseModel):
 class LoadBalancerIngress(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     hostname: Optional[str] = Field(
@@ -604,6 +635,7 @@ class LoadBalancerIngress(BaseModel):
 class LoadBalancerStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     ingress: Optional[List[LoadBalancerIngress]] = Field(
@@ -615,6 +647,7 @@ class LoadBalancerStatus(BaseModel):
 class LocalObjectReference(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     name: Optional[str] = Field(
@@ -626,6 +659,7 @@ class LocalObjectReference(BaseModel):
 class LocalVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     fs_type: Optional[str] = Field(
@@ -642,6 +676,7 @@ class LocalVolumeSource(BaseModel):
 class NFSVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     path: str = Field(
@@ -662,6 +697,7 @@ class NFSVolumeSource(BaseModel):
 class NamespaceSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     finalizers: Optional[List[str]] = Field(
@@ -673,6 +709,7 @@ class NamespaceSpec(BaseModel):
 class NodeAddress(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     address: str = Field(..., description="The node address.")
@@ -684,6 +721,7 @@ class NodeAddress(BaseModel):
 class NodeConfigSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     config_map: Optional[ConfigMapNodeConfigSource] = Field(
@@ -696,6 +734,7 @@ class NodeConfigSource(BaseModel):
 class NodeConfigStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     active: Optional[NodeConfigSource] = Field(
@@ -720,6 +759,7 @@ class NodeConfigStatus(BaseModel):
 class NodeDaemonEndpoints(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     kubelet_endpoint: Optional[DaemonEndpoint] = Field(
@@ -732,6 +772,7 @@ class NodeDaemonEndpoints(BaseModel):
 class NodeSelectorRequirement(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     key: str = Field(..., description="The label key that the selector applies to.")
@@ -748,6 +789,7 @@ class NodeSelectorRequirement(BaseModel):
 class NodeSelectorTerm(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     match_expressions: Optional[List[NodeSelectorRequirement]] = Field(
@@ -765,6 +807,7 @@ class NodeSelectorTerm(BaseModel):
 class NodeSystemInfo(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     architecture: str = Field(..., description="The Architecture reported by the node")
@@ -814,6 +857,7 @@ class NodeSystemInfo(BaseModel):
 class ObjectFieldSelector(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     api_version: Optional[str] = Field(
@@ -831,6 +875,7 @@ class ObjectFieldSelector(BaseModel):
 class ObjectReference(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     api_version: Optional[str] = Field(
@@ -867,6 +912,7 @@ class ObjectReference(BaseModel):
 class PersistentVolumeClaimVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     claim_name: str = Field(
@@ -884,6 +930,7 @@ class PersistentVolumeClaimVolumeSource(BaseModel):
 class PersistentVolumeStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     message: Optional[str] = Field(
@@ -903,6 +950,7 @@ class PersistentVolumeStatus(BaseModel):
 class PhotonPersistentDiskVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     fs_type: Optional[str] = Field(
@@ -920,6 +968,7 @@ class PhotonPersistentDiskVolumeSource(BaseModel):
 class PodDNSConfigOption(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     name: Optional[str] = Field(None, description="Required.")
@@ -929,6 +978,7 @@ class PodDNSConfigOption(BaseModel):
 class PodIP(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     ip: Optional[str] = Field(
@@ -939,6 +989,7 @@ class PodIP(BaseModel):
 class PodReadinessGate(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     condition_type: str = Field(
@@ -951,6 +1002,7 @@ class PodReadinessGate(BaseModel):
 class PortworxVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     fs_type: Optional[str] = Field(
@@ -973,6 +1025,7 @@ class PortworxVolumeSource(BaseModel):
 class PreferredSchedulingTerm(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     preference: NodeSelectorTerm = Field(
@@ -988,6 +1041,7 @@ class PreferredSchedulingTerm(BaseModel):
 class QuobyteVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     group: Optional[str] = Field(
@@ -1018,6 +1072,7 @@ class QuobyteVolumeSource(BaseModel):
 class RBDVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     fs_type: Optional[str] = Field(
@@ -1060,6 +1115,7 @@ class RBDVolumeSource(BaseModel):
 class ResourceQuotaStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     hard: Optional[Dict[str, Any]] = Field(
@@ -1075,6 +1131,7 @@ class ResourceQuotaStatus(BaseModel):
 class ResourceRequirements(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     limits: Optional[Dict[str, Any]] = Field(
@@ -1090,6 +1147,7 @@ class ResourceRequirements(BaseModel):
 class SELinuxOptions(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     level: Optional[str] = Field(
@@ -1109,6 +1167,7 @@ class SELinuxOptions(BaseModel):
 class ScaleIOVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     fs_type: Optional[str] = Field(
@@ -1162,6 +1221,7 @@ class ScaleIOVolumeSource(BaseModel):
 class ScopedResourceSelectorRequirement(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     operator: str = Field(
@@ -1182,6 +1242,7 @@ class ScopedResourceSelectorRequirement(BaseModel):
 class SecretEnvSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     name: Optional[str] = Field(
@@ -1196,6 +1257,7 @@ class SecretEnvSource(BaseModel):
 class SecretKeySelector(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     key: str = Field(
@@ -1214,6 +1276,7 @@ class SecretKeySelector(BaseModel):
 class SecretProjection(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     items: Optional[List[KeyToPath]] = Field(
@@ -1232,6 +1295,7 @@ class SecretProjection(BaseModel):
 class SecretReference(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     name: Optional[str] = Field(
@@ -1247,6 +1311,7 @@ class SecretReference(BaseModel):
 class SecretVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     default_mode: Optional[int] = Field(
@@ -1271,6 +1336,7 @@ class SecretVolumeSource(BaseModel):
 class ServiceAccountTokenProjection(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     audience: Optional[str] = Field(
@@ -1291,6 +1357,7 @@ class ServiceAccountTokenProjection(BaseModel):
 class ServiceStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     load_balancer: Optional[LoadBalancerStatus] = Field(
@@ -1303,6 +1370,7 @@ class ServiceStatus(BaseModel):
 class SessionAffinityConfig(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     client_ip: Optional[ClientIPConfig] = Field(
@@ -1315,6 +1383,7 @@ class SessionAffinityConfig(BaseModel):
 class StorageOSPersistentVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     fs_type: Optional[str] = Field(
@@ -1347,6 +1416,7 @@ class StorageOSPersistentVolumeSource(BaseModel):
 class StorageOSVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     fs_type: Optional[str] = Field(
@@ -1379,6 +1449,7 @@ class StorageOSVolumeSource(BaseModel):
 class Sysctl(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     name: str = Field(..., description="Name of a property to set")
@@ -1388,6 +1459,7 @@ class Sysctl(BaseModel):
 class Toleration(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     effect: Optional[str] = Field(
@@ -1416,6 +1488,7 @@ class Toleration(BaseModel):
 class TopologySelectorLabelRequirement(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     key: str = Field(..., description="The label key that the selector applies to.")
@@ -1428,6 +1501,7 @@ class TopologySelectorLabelRequirement(BaseModel):
 class TopologySelectorTerm(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     match_label_expressions: Optional[List[TopologySelectorLabelRequirement]] = Field(
@@ -1440,6 +1514,7 @@ class TopologySelectorTerm(BaseModel):
 class TypedLocalObjectReference(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     api_group: Optional[str] = Field(
@@ -1454,6 +1529,7 @@ class TypedLocalObjectReference(BaseModel):
 class VolumeDevice(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     device_path: str = Field(
@@ -1470,6 +1546,7 @@ class VolumeDevice(BaseModel):
 class VolumeMount(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     mount_path: str = Field(
@@ -1503,6 +1580,7 @@ class VolumeMount(BaseModel):
 class VsphereVirtualDiskVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     fs_type: Optional[str] = Field(
@@ -1528,6 +1606,7 @@ class VsphereVirtualDiskVolumeSource(BaseModel):
 class WindowsSecurityContextOptions(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     gmsa_credential_spec: Optional[str] = Field(
@@ -1550,6 +1629,7 @@ class WindowsSecurityContextOptions(BaseModel):
 class CSIPersistentVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     controller_expand_secret_ref: Optional[SecretReference] = Field(
@@ -1601,6 +1681,7 @@ class CSIPersistentVolumeSource(BaseModel):
 class CSIVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     driver: str = Field(
@@ -1632,6 +1713,7 @@ class CSIVolumeSource(BaseModel):
 class CephFSPersistentVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     monitors: List[str] = Field(
@@ -1666,6 +1748,7 @@ class CephFSPersistentVolumeSource(BaseModel):
 class CephFSVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     monitors: List[str] = Field(
@@ -1700,6 +1783,7 @@ class CephFSVolumeSource(BaseModel):
 class CinderPersistentVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     fs_type: Optional[str] = Field(
@@ -1727,6 +1811,7 @@ class CinderPersistentVolumeSource(BaseModel):
 class CinderVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     fs_type: Optional[str] = Field(
@@ -1754,6 +1839,7 @@ class CinderVolumeSource(BaseModel):
 class ConfigMapProjection(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     items: Optional[List[KeyToPath]] = Field(
@@ -1772,6 +1858,7 @@ class ConfigMapProjection(BaseModel):
 class ConfigMapVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     default_mode: Optional[int] = Field(
@@ -1795,6 +1882,7 @@ class ConfigMapVolumeSource(BaseModel):
 class ContainerStateRunning(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     started_at: Optional[v1.Time] = Field(
@@ -1807,6 +1895,7 @@ class ContainerStateRunning(BaseModel):
 class ContainerStateTerminated(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     container_id: Optional[str] = Field(
@@ -1843,6 +1932,7 @@ class ContainerStateTerminated(BaseModel):
 class EmptyDirVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     medium: Optional[str] = Field(
@@ -1859,6 +1949,7 @@ class EmptyDirVolumeSource(BaseModel):
 class EndpointAddress(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     hostname: Optional[str] = Field(None, description="The Hostname of this endpoint")
@@ -1881,6 +1972,7 @@ class EndpointAddress(BaseModel):
 class EndpointSubset(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     addresses: Optional[List[EndpointAddress]] = Field(
@@ -1900,6 +1992,7 @@ class EndpointSubset(BaseModel):
 class EnvFromSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     config_map_ref: Optional[ConfigMapEnvSource] = Field(
@@ -1917,6 +2010,7 @@ class EnvFromSource(BaseModel):
 class EventSeries(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     count: Optional[int] = Field(
@@ -1937,6 +2031,7 @@ class EventSeries(BaseModel):
 class FlexPersistentVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     driver: str = Field(
@@ -1965,6 +2060,7 @@ class FlexPersistentVolumeSource(BaseModel):
 class FlexVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     driver: str = Field(
@@ -1993,6 +2089,7 @@ class FlexVolumeSource(BaseModel):
 class HTTPGetAction(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     host: Optional[str] = Field(
@@ -2017,6 +2114,7 @@ class HTTPGetAction(BaseModel):
 class ISCSIPersistentVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     chap_auth_discovery: Optional[bool] = Field(
@@ -2070,6 +2168,7 @@ class ISCSIPersistentVolumeSource(BaseModel):
 class ISCSIVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     chap_auth_discovery: Optional[bool] = Field(
@@ -2123,6 +2222,7 @@ class ISCSIVolumeSource(BaseModel):
 class NamespaceCondition(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     last_transition_time: Optional[v1.Time] = Field(None, alias="lastTransitionTime")
@@ -2134,6 +2234,7 @@ class NamespaceCondition(BaseModel):
 class NamespaceStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     conditions: Optional[List[NamespaceCondition]] = Field(
@@ -2149,6 +2250,7 @@ class NamespaceStatus(BaseModel):
 class NodeCondition(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     last_heartbeat_time: Optional[v1.Time] = Field(
@@ -2174,6 +2276,7 @@ class NodeCondition(BaseModel):
 class NodeSelector(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     node_selector_terms: List[NodeSelectorTerm] = Field(
@@ -2186,6 +2289,7 @@ class NodeSelector(BaseModel):
 class NodeStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     addresses: Optional[List[NodeAddress]] = Field(
@@ -2240,6 +2344,7 @@ class NodeStatus(BaseModel):
 class PersistentVolumeClaimCondition(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     last_probe_time: Optional[v1.Time] = Field(
@@ -2264,6 +2369,7 @@ class PersistentVolumeClaimCondition(BaseModel):
 class PersistentVolumeClaimStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     access_modes: Optional[List[str]] = Field(
@@ -2286,6 +2392,7 @@ class PersistentVolumeClaimStatus(BaseModel):
 class PodCondition(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     last_probe_time: Optional[v1.Time] = Field(
@@ -2313,6 +2420,7 @@ class PodCondition(BaseModel):
 class PodDNSConfig(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     nameservers: Optional[List[str]] = Field(
@@ -2332,6 +2440,7 @@ class PodDNSConfig(BaseModel):
 class PodSecurityContext(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     fs_group: Optional[int] = Field(
@@ -2378,6 +2487,7 @@ class PodSecurityContext(BaseModel):
 class RBDPersistentVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     fs_type: Optional[str] = Field(
@@ -2420,6 +2530,7 @@ class RBDPersistentVolumeSource(BaseModel):
 class ReplicationControllerCondition(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     last_transition_time: Optional[v1.Time] = Field(
@@ -2440,6 +2551,7 @@ class ReplicationControllerCondition(BaseModel):
 class ReplicationControllerStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     available_replicas: Optional[int] = Field(
@@ -2475,6 +2587,7 @@ class ReplicationControllerStatus(BaseModel):
 class ResourceFieldSelector(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     container_name: Optional[str] = Field(
@@ -2492,6 +2605,7 @@ class ResourceFieldSelector(BaseModel):
 class ScaleIOPersistentVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     fs_type: Optional[str] = Field(
@@ -2545,6 +2659,7 @@ class ScaleIOPersistentVolumeSource(BaseModel):
 class ScopeSelector(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     match_expressions: Optional[List[ScopedResourceSelectorRequirement]] = Field(
@@ -2557,6 +2672,7 @@ class ScopeSelector(BaseModel):
 class SecurityContext(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     allow_privilege_escalation: Optional[bool] = Field(
@@ -2612,6 +2728,7 @@ class SecurityContext(BaseModel):
 class ServicePort(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     name: Optional[str] = Field(
@@ -2638,6 +2755,7 @@ class ServicePort(BaseModel):
 class ServiceSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     cluster_ip: Optional[str] = Field(
@@ -2712,6 +2830,7 @@ class ServiceSpec(BaseModel):
 class TCPSocketAction(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     host: Optional[str] = Field(
@@ -2726,6 +2845,7 @@ class TCPSocketAction(BaseModel):
 class Taint(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     effect: str = Field(
@@ -2748,6 +2868,7 @@ class Taint(BaseModel):
 class VolumeNodeAffinity(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     required: Optional[NodeSelector] = Field(
@@ -2758,6 +2879,7 @@ class VolumeNodeAffinity(BaseModel):
 class Binding(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -2782,6 +2904,7 @@ class Binding(pdk8s.model.NamedModel):
 class ComponentStatus(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -2805,6 +2928,7 @@ class ComponentStatus(pdk8s.model.NamedModel):
 class ComponentStatusList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -2828,6 +2952,7 @@ class ComponentStatusList(pdk8s.model.NamedModel):
 class ConfigMap(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -2857,6 +2982,7 @@ class ConfigMap(pdk8s.model.NamedModel):
 class ConfigMapList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -2878,6 +3004,7 @@ class ConfigMapList(pdk8s.model.NamedModel):
 class ContainerState(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     running: Optional[ContainerStateRunning] = Field(
@@ -2894,6 +3021,7 @@ class ContainerState(BaseModel):
 class ContainerStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     container_id: Optional[str] = Field(
@@ -2938,6 +3066,7 @@ class ContainerStatus(BaseModel):
 class DownwardAPIVolumeFile(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     field_ref: Optional[ObjectFieldSelector] = Field(
@@ -2963,6 +3092,7 @@ class DownwardAPIVolumeFile(BaseModel):
 class DownwardAPIVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     default_mode: Optional[int] = Field(
@@ -2978,6 +3108,7 @@ class DownwardAPIVolumeSource(BaseModel):
 class Endpoints(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -3002,6 +3133,7 @@ class Endpoints(pdk8s.model.NamedModel):
 class EndpointsList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -3023,6 +3155,7 @@ class EndpointsList(pdk8s.model.NamedModel):
 class EnvVarSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     config_map_key_ref: Optional[ConfigMapKeySelector] = Field(
@@ -3048,6 +3181,7 @@ class EnvVarSource(BaseModel):
 class Event(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     action: Optional[str] = Field(
@@ -3124,6 +3258,7 @@ class Event(pdk8s.model.NamedModel):
 class EventList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -3145,6 +3280,7 @@ class EventList(pdk8s.model.NamedModel):
 class Handler(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     exec: Optional[ExecAction] = Field(
@@ -3166,6 +3302,7 @@ class Handler(BaseModel):
 class Lifecycle(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     post_start: Optional[Handler] = Field(
@@ -3183,6 +3320,7 @@ class Lifecycle(BaseModel):
 class LimitRange(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -3207,6 +3345,7 @@ class LimitRange(pdk8s.model.NamedModel):
 class LimitRangeList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -3231,6 +3370,7 @@ class LimitRangeList(pdk8s.model.NamedModel):
 class Namespace(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -3255,6 +3395,7 @@ class Namespace(pdk8s.model.NamedModel):
 class NamespaceList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -3279,6 +3420,7 @@ class NamespaceList(pdk8s.model.NamedModel):
 class NodeAffinity(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     preferred_during_scheduling_ignored_during_execution: Optional[
@@ -3298,6 +3440,7 @@ class NodeAffinity(BaseModel):
 class NodeSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     config_source: Optional[NodeConfigSource] = Field(
@@ -3337,6 +3480,7 @@ class NodeSpec(BaseModel):
 class PersistentVolumeClaimSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     access_modes: Optional[List[str]] = Field(
@@ -3376,6 +3520,7 @@ class PersistentVolumeClaimSpec(BaseModel):
 class PersistentVolumeSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     access_modes: Optional[List[str]] = Field(
@@ -3520,6 +3665,7 @@ class PersistentVolumeSpec(BaseModel):
 class PodAffinityTerm(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     label_selector: Optional[v1.LabelSelector] = Field(
@@ -3541,6 +3687,7 @@ class PodAffinityTerm(BaseModel):
 class PodStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     conditions: Optional[List[PodCondition]] = Field(
@@ -3609,6 +3756,7 @@ class PodStatus(BaseModel):
 class Probe(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     exec: Optional[ExecAction] = Field(
@@ -3655,6 +3803,7 @@ class Probe(BaseModel):
 class ResourceQuotaSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     hard: Optional[Dict[str, Any]] = Field(
@@ -3675,6 +3824,7 @@ class ResourceQuotaSpec(BaseModel):
 class Secret(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -3707,6 +3857,7 @@ class Secret(pdk8s.model.NamedModel):
 class SecretList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -3731,6 +3882,7 @@ class SecretList(pdk8s.model.NamedModel):
 class Service(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -3755,6 +3907,7 @@ class Service(pdk8s.model.NamedModel):
 class ServiceAccount(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -3789,6 +3942,7 @@ class ServiceAccount(pdk8s.model.NamedModel):
 class ServiceAccountList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -3813,6 +3967,7 @@ class ServiceAccountList(pdk8s.model.NamedModel):
 class ServiceList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -3834,6 +3989,7 @@ class ServiceList(pdk8s.model.NamedModel):
 class TopologySpreadConstraint(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     label_selector: Optional[v1.LabelSelector] = Field(
@@ -3861,6 +4017,7 @@ class TopologySpreadConstraint(BaseModel):
 class WeightedPodAffinityTerm(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     pod_affinity_term: PodAffinityTerm = Field(
@@ -3877,6 +4034,7 @@ class WeightedPodAffinityTerm(BaseModel):
 class DownwardAPIProjection(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     items: Optional[List[DownwardAPIVolumeFile]] = Field(
@@ -3887,6 +4045,7 @@ class DownwardAPIProjection(BaseModel):
 class EnvVar(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     name: str = Field(
@@ -3906,6 +4065,7 @@ class EnvVar(BaseModel):
 class EphemeralContainer(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     args: Optional[List[str]] = Field(
@@ -4016,6 +4176,7 @@ class EphemeralContainer(BaseModel):
 class Node(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -4040,6 +4201,7 @@ class Node(pdk8s.model.NamedModel):
 class NodeList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -4061,6 +4223,7 @@ class NodeList(pdk8s.model.NamedModel):
 class PersistentVolume(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -4085,6 +4248,7 @@ class PersistentVolume(pdk8s.model.NamedModel):
 class PersistentVolumeClaim(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -4109,6 +4273,7 @@ class PersistentVolumeClaim(pdk8s.model.NamedModel):
 class PersistentVolumeClaimList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -4133,6 +4298,7 @@ class PersistentVolumeClaimList(pdk8s.model.NamedModel):
 class PersistentVolumeList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -4157,6 +4323,7 @@ class PersistentVolumeList(pdk8s.model.NamedModel):
 class PodAffinity(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     preferred_during_scheduling_ignored_during_execution: Optional[
@@ -4178,6 +4345,7 @@ class PodAffinity(BaseModel):
 class PodAntiAffinity(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     preferred_during_scheduling_ignored_during_execution: Optional[
@@ -4199,6 +4367,7 @@ class PodAntiAffinity(BaseModel):
 class ResourceQuota(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -4223,6 +4392,7 @@ class ResourceQuota(pdk8s.model.NamedModel):
 class ResourceQuotaList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -4247,6 +4417,7 @@ class ResourceQuotaList(pdk8s.model.NamedModel):
 class VolumeProjection(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     config_map: Optional[ConfigMapProjection] = Field(
@@ -4272,6 +4443,7 @@ class VolumeProjection(BaseModel):
 class Affinity(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     node_affinity: Optional[NodeAffinity] = Field(
@@ -4294,6 +4466,7 @@ class Affinity(BaseModel):
 class Container(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     args: Optional[List[str]] = Field(
@@ -4401,6 +4574,7 @@ class Container(BaseModel):
 class ProjectedVolumeSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     default_mode: Optional[int] = Field(
@@ -4416,6 +4590,7 @@ class ProjectedVolumeSource(BaseModel):
 class Volume(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     aws_elastic_block_store: Optional[AWSElasticBlockStoreVolumeSource] = Field(
@@ -4554,6 +4729,7 @@ class Volume(BaseModel):
 class PodSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     active_deadline_seconds: Optional[int] = Field(
@@ -4721,6 +4897,7 @@ class PodSpec(BaseModel):
 class PodTemplateSpec(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     metadata: Optional[v1.ObjectMeta] = Field(
@@ -4736,6 +4913,7 @@ class PodTemplateSpec(pdk8s.model.NamedModel):
 class ReplicationControllerSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     min_ready_seconds: Optional[int] = Field(
@@ -4760,6 +4938,7 @@ class ReplicationControllerSpec(BaseModel):
 class Pod(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -4784,6 +4963,7 @@ class Pod(pdk8s.model.NamedModel):
 class PodList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -4808,6 +4988,7 @@ class PodList(pdk8s.model.NamedModel):
 class PodTemplate(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -4832,6 +5013,7 @@ class PodTemplate(pdk8s.model.NamedModel):
 class PodTemplateList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -4853,6 +5035,7 @@ class PodTemplateList(pdk8s.model.NamedModel):
 class ReplicationController(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -4877,6 +5060,7 @@ class ReplicationController(pdk8s.model.NamedModel):
 class ReplicationControllerList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(

@@ -16,6 +16,7 @@ from ..core import v1
 class EndpointConditions(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     ready: Optional[bool] = Field(
@@ -27,6 +28,7 @@ class EndpointConditions(BaseModel):
 class EndpointPort(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     name: Optional[str] = Field(
@@ -46,6 +48,7 @@ class EndpointPort(BaseModel):
 class Endpoint(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     addresses: List[str] = Field(
@@ -74,6 +77,7 @@ class Endpoint(BaseModel):
 class EndpointSlice(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     address_type: Optional[str] = Field(
@@ -106,6 +110,7 @@ class EndpointSlice(pdk8s.model.NamedModel):
 class EndpointSliceList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(

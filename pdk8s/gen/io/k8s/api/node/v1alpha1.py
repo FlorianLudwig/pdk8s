@@ -16,6 +16,7 @@ from ..core import v1
 class Overhead(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     pod_fixed: Optional[Dict[str, Any]] = Field(
@@ -28,6 +29,7 @@ class Overhead(BaseModel):
 class Scheduling(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     node_selector: Optional[Dict[str, Any]] = Field(
@@ -44,6 +46,7 @@ class Scheduling(BaseModel):
 class RuntimeClassSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     overhead: Optional[Overhead] = Field(
@@ -64,6 +67,7 @@ class RuntimeClassSpec(BaseModel):
 class RuntimeClass(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -88,6 +92,7 @@ class RuntimeClass(pdk8s.model.NamedModel):
 class RuntimeClassList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(

@@ -32,6 +32,7 @@ from ..core import v1 as v1_1
 class AllowedCSIDriver(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     name: str = Field(..., description="Name is the registered name of the CSI driver")
@@ -40,6 +41,7 @@ class AllowedCSIDriver(BaseModel):
 class AllowedFlexVolume(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     driver: str = Field(..., description="driver is the name of the Flexvolume driver.")
@@ -48,6 +50,7 @@ class AllowedFlexVolume(BaseModel):
 class AllowedHostPath(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     path_prefix: Optional[str] = Field(
@@ -65,6 +68,7 @@ class AllowedHostPath(BaseModel):
 class HostPortRange(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     max: int = Field(..., description="max is the end of the range, inclusive.")
@@ -74,6 +78,7 @@ class HostPortRange(BaseModel):
 class IDRange(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     max: int = Field(..., description="max is the end of the range, inclusive.")
@@ -83,6 +88,7 @@ class IDRange(BaseModel):
 class IPBlock(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     cidr: str = Field(
@@ -99,6 +105,7 @@ class IPBlock(BaseModel):
 class IngressStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     load_balancer: Optional[v1.LoadBalancerStatus] = Field(
@@ -111,6 +118,7 @@ class IngressStatus(BaseModel):
 class IngressTLS(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     hosts: Optional[List[str]] = Field(
@@ -127,6 +135,7 @@ class IngressTLS(BaseModel):
 class RollbackConfig(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     revision: Optional[int] = Field(
@@ -138,6 +147,7 @@ class RollbackConfig(BaseModel):
 class RunAsGroupStrategyOptions(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     ranges: Optional[List[IDRange]] = Field(
@@ -153,6 +163,7 @@ class RunAsGroupStrategyOptions(BaseModel):
 class RunAsUserStrategyOptions(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     ranges: Optional[List[IDRange]] = Field(
@@ -168,6 +179,7 @@ class RunAsUserStrategyOptions(BaseModel):
 class RuntimeClassStrategyOptions(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     allowed_runtime_class_names: List[str] = Field(
@@ -185,6 +197,7 @@ class RuntimeClassStrategyOptions(BaseModel):
 class SELinuxStrategyOptions(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     rule: str = Field(
@@ -201,6 +214,7 @@ class SELinuxStrategyOptions(BaseModel):
 class ScaleSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     replicas: Optional[int] = Field(
@@ -211,6 +225,7 @@ class ScaleSpec(BaseModel):
 class ScaleStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     replicas: int = Field(
@@ -230,6 +245,7 @@ class ScaleStatus(BaseModel):
 class SupplementalGroupsStrategyOptions(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     ranges: Optional[List[IDRange]] = Field(
@@ -245,6 +261,7 @@ class SupplementalGroupsStrategyOptions(BaseModel):
 class DaemonSetCondition(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     last_transition_time: Optional[v1.Time] = Field(
@@ -265,6 +282,7 @@ class DaemonSetCondition(BaseModel):
 class DaemonSetStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     collision_count: Optional[int] = Field(
@@ -321,6 +339,7 @@ class DaemonSetStatus(BaseModel):
 class DeploymentCondition(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     last_transition_time: Optional[v1.Time] = Field(
@@ -346,6 +365,7 @@ class DeploymentCondition(BaseModel):
 class DeploymentRollback(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     api_version: Optional[str] = Field(
@@ -373,6 +393,7 @@ class DeploymentRollback(BaseModel):
 class DeploymentStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     available_replicas: Optional[int] = Field(
@@ -418,6 +439,7 @@ class DeploymentStatus(BaseModel):
 class FSGroupStrategyOptions(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     ranges: Optional[List[IDRange]] = Field(
@@ -433,6 +455,7 @@ class FSGroupStrategyOptions(BaseModel):
 class IngressBackend(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     service_name: str = Field(
@@ -450,6 +473,7 @@ class IngressBackend(BaseModel):
 class NetworkPolicyPort(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     port: Optional[Union[int, str]] = Field(
@@ -465,6 +489,7 @@ class NetworkPolicyPort(BaseModel):
 class PodSecurityPolicySpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     allow_privilege_escalation: Optional[bool] = Field(
@@ -590,6 +615,7 @@ class PodSecurityPolicySpec(BaseModel):
 class ReplicaSetCondition(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     last_transition_time: Optional[v1.Time] = Field(
@@ -610,6 +636,7 @@ class ReplicaSetCondition(BaseModel):
 class ReplicaSetStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     available_replicas: Optional[int] = Field(
@@ -645,6 +672,7 @@ class ReplicaSetStatus(BaseModel):
 class RollingUpdateDaemonSet(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     max_unavailable: Optional[Union[int, str]] = Field(
@@ -657,6 +685,7 @@ class RollingUpdateDaemonSet(BaseModel):
 class RollingUpdateDeployment(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     max_surge: Optional[Union[int, str]] = Field(
@@ -674,6 +703,7 @@ class RollingUpdateDeployment(BaseModel):
 class DaemonSetUpdateStrategy(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     rolling_update: Optional[RollingUpdateDaemonSet] = Field(
@@ -690,6 +720,7 @@ class DaemonSetUpdateStrategy(BaseModel):
 class DeploymentStrategy(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     rolling_update: Optional[RollingUpdateDeployment] = Field(
@@ -706,6 +737,7 @@ class DeploymentStrategy(BaseModel):
 class HTTPIngressPath(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     backend: IngressBackend = Field(
@@ -721,6 +753,7 @@ class HTTPIngressPath(BaseModel):
 class HTTPIngressRuleValue(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     paths: List[HTTPIngressPath] = Field(
@@ -731,6 +764,7 @@ class HTTPIngressRuleValue(BaseModel):
 class IngressRule(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     host: Optional[str] = Field(
@@ -743,6 +777,7 @@ class IngressRule(BaseModel):
 class IngressSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     backend: Optional[IngressBackend] = Field(
@@ -762,6 +797,7 @@ class IngressSpec(BaseModel):
 class NetworkPolicyPeer(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     ip_block: Optional[IPBlock] = Field(
@@ -784,6 +820,7 @@ class NetworkPolicyPeer(BaseModel):
 class PodSecurityPolicy(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -807,6 +844,7 @@ class PodSecurityPolicy(pdk8s.model.NamedModel):
 class PodSecurityPolicyList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -830,6 +868,7 @@ class PodSecurityPolicyList(pdk8s.model.NamedModel):
 class Scale(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -854,6 +893,7 @@ class Scale(pdk8s.model.NamedModel):
 class Ingress(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -878,6 +918,7 @@ class Ingress(pdk8s.model.NamedModel):
 class IngressList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -899,6 +940,7 @@ class IngressList(pdk8s.model.NamedModel):
 class NetworkPolicyEgressRule(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     ports: Optional[List[NetworkPolicyPort]] = Field(
@@ -914,6 +956,7 @@ class NetworkPolicyEgressRule(BaseModel):
 class NetworkPolicyIngressRule(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     from_: Optional[List[NetworkPolicyPeer]] = Field(
@@ -930,6 +973,7 @@ class NetworkPolicyIngressRule(BaseModel):
 class NetworkPolicySpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     egress: Optional[List[NetworkPolicyEgressRule]] = Field(
@@ -955,6 +999,7 @@ class NetworkPolicySpec(BaseModel):
 class NetworkPolicy(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -979,6 +1024,7 @@ class NetworkPolicy(pdk8s.model.NamedModel):
 class NetworkPolicyList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -1002,6 +1048,7 @@ class NetworkPolicyList(pdk8s.model.NamedModel):
 class DaemonSetSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     min_ready_seconds: Optional[int] = Field(
@@ -1037,6 +1084,7 @@ class DaemonSetSpec(BaseModel):
 class DeploymentSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     min_ready_seconds: Optional[int] = Field(
@@ -1083,6 +1131,7 @@ class DeploymentSpec(BaseModel):
 class ReplicaSetSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     min_ready_seconds: Optional[int] = Field(
@@ -1107,6 +1156,7 @@ class ReplicaSetSpec(BaseModel):
 class DaemonSet(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -1131,6 +1181,7 @@ class DaemonSet(pdk8s.model.NamedModel):
 class DaemonSetList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -1152,6 +1203,7 @@ class DaemonSetList(pdk8s.model.NamedModel):
 class Deployment(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -1174,6 +1226,7 @@ class Deployment(pdk8s.model.NamedModel):
 class DeploymentList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -1194,6 +1247,7 @@ class DeploymentList(pdk8s.model.NamedModel):
 class ReplicaSet(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -1218,6 +1272,7 @@ class ReplicaSet(pdk8s.model.NamedModel):
 class ReplicaSetList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(

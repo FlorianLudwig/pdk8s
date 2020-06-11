@@ -16,6 +16,7 @@ from ..core import v1
 class VolumeError(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     message: Optional[str] = Field(
@@ -28,6 +29,7 @@ class VolumeError(BaseModel):
 class VolumeAttachmentSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     inline_volume_spec: Optional[v1.PersistentVolumeSpec] = Field(
@@ -45,6 +47,7 @@ class VolumeAttachmentSource(BaseModel):
 class VolumeAttachmentSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     attacher: str = Field(
@@ -64,6 +67,7 @@ class VolumeAttachmentSpec(BaseModel):
 class VolumeAttachmentStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     attach_error: Optional[VolumeError] = Field(
@@ -90,6 +94,7 @@ class VolumeAttachmentStatus(BaseModel):
 class VolumeAttachment(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -114,6 +119,7 @@ class VolumeAttachment(pdk8s.model.NamedModel):
 class VolumeAttachmentList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(

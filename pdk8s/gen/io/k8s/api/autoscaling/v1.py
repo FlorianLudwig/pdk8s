@@ -15,6 +15,7 @@ from ...apimachinery.pkg.apis.meta import v1
 class CrossVersionObjectReference(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     api_version: Optional[str] = Field(
@@ -33,6 +34,7 @@ class CrossVersionObjectReference(BaseModel):
 class HorizontalPodAutoscalerSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     max_replicas: int = Field(
@@ -60,6 +62,7 @@ class HorizontalPodAutoscalerSpec(BaseModel):
 class ScaleSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     replicas: Optional[int] = Field(
@@ -70,6 +73,7 @@ class ScaleSpec(BaseModel):
 class ScaleStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     replicas: int = Field(
@@ -84,6 +88,7 @@ class ScaleStatus(BaseModel):
 class HorizontalPodAutoscalerStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     current_cpu_utilization_percentage: Optional[int] = Field(
@@ -116,6 +121,7 @@ class HorizontalPodAutoscalerStatus(BaseModel):
 class HorizontalPodAutoscaler(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -140,6 +146,7 @@ class HorizontalPodAutoscaler(pdk8s.model.NamedModel):
 class HorizontalPodAutoscalerList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -160,6 +167,7 @@ class HorizontalPodAutoscalerList(pdk8s.model.NamedModel):
 class Scale(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(

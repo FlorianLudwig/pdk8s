@@ -16,6 +16,7 @@ from ...apimachinery.pkg.util import intstr
 class IPBlock(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     cidr: str = Field(
@@ -32,6 +33,7 @@ class IPBlock(BaseModel):
 class NetworkPolicyPort(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     port: Optional[Union[int, str]] = Field(
@@ -47,6 +49,7 @@ class NetworkPolicyPort(BaseModel):
 class NetworkPolicyPeer(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     ip_block: Optional[IPBlock] = Field(
@@ -69,6 +72,7 @@ class NetworkPolicyPeer(BaseModel):
 class NetworkPolicyEgressRule(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     ports: Optional[List[NetworkPolicyPort]] = Field(
@@ -84,6 +88,7 @@ class NetworkPolicyEgressRule(BaseModel):
 class NetworkPolicyIngressRule(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     from_: Optional[List[NetworkPolicyPeer]] = Field(
@@ -100,6 +105,7 @@ class NetworkPolicyIngressRule(BaseModel):
 class NetworkPolicySpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     egress: Optional[List[NetworkPolicyEgressRule]] = Field(
@@ -125,6 +131,7 @@ class NetworkPolicySpec(BaseModel):
 class NetworkPolicy(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -149,6 +156,7 @@ class NetworkPolicy(pdk8s.model.NamedModel):
 class NetworkPolicyList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(

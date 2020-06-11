@@ -15,6 +15,7 @@ from ...apimachinery.pkg.apis.meta import v1
 class BoundObjectReference(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     api_version: Optional[str] = Field(
@@ -30,6 +31,7 @@ class BoundObjectReference(BaseModel):
 class TokenRequestSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     audiences: List[str] = Field(
@@ -51,6 +53,7 @@ class TokenRequestSpec(BaseModel):
 class TokenReviewSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     audiences: Optional[List[str]] = Field(
@@ -63,6 +66,7 @@ class TokenReviewSpec(BaseModel):
 class UserInfo(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     extra: Optional[Dict[str, Any]] = Field(
@@ -84,6 +88,7 @@ class UserInfo(BaseModel):
 class TokenRequestStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     expiration_timestamp: v1.Time = Field(
@@ -97,6 +102,7 @@ class TokenRequestStatus(BaseModel):
 class TokenReviewStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     audiences: Optional[List[str]] = Field(
@@ -118,6 +124,7 @@ class TokenReviewStatus(BaseModel):
 class TokenRequest(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -136,6 +143,7 @@ class TokenRequest(pdk8s.model.NamedModel):
 class TokenReview(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(

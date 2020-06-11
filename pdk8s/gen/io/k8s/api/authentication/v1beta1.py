@@ -15,6 +15,7 @@ from ...apimachinery.pkg.apis.meta import v1
 class TokenReviewSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     audiences: Optional[List[str]] = Field(
@@ -27,6 +28,7 @@ class TokenReviewSpec(BaseModel):
 class UserInfo(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     extra: Optional[Dict[str, Any]] = Field(
@@ -48,6 +50,7 @@ class UserInfo(BaseModel):
 class TokenReviewStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     audiences: Optional[List[str]] = Field(
@@ -69,6 +72,7 @@ class TokenReviewStatus(BaseModel):
 class TokenReview(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(

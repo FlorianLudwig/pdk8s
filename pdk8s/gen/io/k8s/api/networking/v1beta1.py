@@ -17,6 +17,7 @@ from ..core import v1
 class IngressStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     load_balancer: Optional[v1.LoadBalancerStatus] = Field(
@@ -29,6 +30,7 @@ class IngressStatus(BaseModel):
 class IngressTLS(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     hosts: Optional[List[str]] = Field(
@@ -45,6 +47,7 @@ class IngressTLS(BaseModel):
 class IngressBackend(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     service_name: str = Field(
@@ -62,6 +65,7 @@ class IngressBackend(BaseModel):
 class HTTPIngressPath(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     backend: IngressBackend = Field(
@@ -77,6 +81,7 @@ class HTTPIngressPath(BaseModel):
 class HTTPIngressRuleValue(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     paths: List[HTTPIngressPath] = Field(
@@ -87,6 +92,7 @@ class HTTPIngressRuleValue(BaseModel):
 class IngressRule(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     host: Optional[str] = Field(
@@ -99,6 +105,7 @@ class IngressRule(BaseModel):
 class IngressSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     backend: Optional[IngressBackend] = Field(
@@ -118,6 +125,7 @@ class IngressSpec(BaseModel):
 class Ingress(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -142,6 +150,7 @@ class Ingress(pdk8s.model.NamedModel):
 class IngressList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(

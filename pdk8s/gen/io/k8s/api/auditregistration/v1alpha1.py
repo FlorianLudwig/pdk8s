@@ -15,6 +15,7 @@ from ...apimachinery.pkg.apis.meta import v1
 class Policy(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     level: str = Field(
@@ -29,6 +30,7 @@ class Policy(BaseModel):
 class ServiceReference(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     name: str = Field(..., description="`name` is the name of the service. Required")
@@ -48,6 +50,7 @@ class ServiceReference(BaseModel):
 class WebhookClientConfig(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     ca_bundle: Optional[str] = Field(
@@ -68,6 +71,7 @@ class WebhookClientConfig(BaseModel):
 class WebhookThrottleConfig(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     burst: Optional[int] = Field(
@@ -83,6 +87,7 @@ class WebhookThrottleConfig(BaseModel):
 class Webhook(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     client_config: WebhookClientConfig = Field(
@@ -98,6 +103,7 @@ class Webhook(BaseModel):
 class AuditSinkSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     policy: Policy = Field(
@@ -110,6 +116,7 @@ class AuditSinkSpec(BaseModel):
 class AuditSink(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -130,6 +137,7 @@ class AuditSink(pdk8s.model.NamedModel):
 class AuditSinkList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(

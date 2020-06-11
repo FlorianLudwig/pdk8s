@@ -16,6 +16,7 @@ from ..core import v1
 class PodPresetSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     env: Optional[List[v1.EnvVar]] = Field(
@@ -45,6 +46,7 @@ class PodPresetSpec(BaseModel):
 class PodPreset(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -63,6 +65,7 @@ class PodPreset(pdk8s.model.NamedModel):
 class PodPresetList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(

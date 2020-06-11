@@ -8,6 +8,7 @@ from pydantic import BaseModel
 class Info(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     build_date: str = Field(..., alias="buildDate")

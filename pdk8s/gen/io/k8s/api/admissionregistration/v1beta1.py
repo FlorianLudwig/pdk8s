@@ -15,6 +15,7 @@ from ...apimachinery.pkg.apis.meta import v1
 class RuleWithOperations(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     api_groups: Optional[List[str]] = Field(
@@ -44,6 +45,7 @@ class RuleWithOperations(BaseModel):
 class ServiceReference(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     name: str = Field(..., description="`name` is the name of the service. Required")
@@ -63,6 +65,7 @@ class ServiceReference(BaseModel):
 class WebhookClientConfig(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     ca_bundle: Optional[str] = Field(
@@ -83,6 +86,7 @@ class WebhookClientConfig(BaseModel):
 class MutatingWebhook(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     admission_review_versions: Optional[List[str]] = Field(
@@ -143,6 +147,7 @@ class MutatingWebhook(BaseModel):
 class MutatingWebhookConfiguration(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -167,6 +172,7 @@ class MutatingWebhookConfiguration(pdk8s.model.NamedModel):
 class MutatingWebhookConfigurationList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -190,6 +196,7 @@ class MutatingWebhookConfigurationList(pdk8s.model.NamedModel):
 class ValidatingWebhook(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     admission_review_versions: Optional[List[str]] = Field(
@@ -245,6 +252,7 @@ class ValidatingWebhook(BaseModel):
 class ValidatingWebhookConfiguration(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -269,6 +277,7 @@ class ValidatingWebhookConfiguration(pdk8s.model.NamedModel):
 class ValidatingWebhookConfigurationList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(

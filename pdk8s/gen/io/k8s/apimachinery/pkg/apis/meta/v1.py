@@ -16,6 +16,7 @@ from ... import runtime
 class APIResource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     categories: Optional[List[str]] = Field(
@@ -62,6 +63,7 @@ class APIResource(BaseModel):
 class APIResourceList(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     api_version: Optional[str] = Field(
@@ -89,12 +91,14 @@ class FieldsV1(BaseModel):
 
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
 
 class GroupVersionForDiscovery(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     group_version: str = Field(
@@ -111,6 +115,7 @@ class GroupVersionForDiscovery(BaseModel):
 class LabelSelectorRequirement(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     key: str = Field(
@@ -129,6 +134,7 @@ class LabelSelectorRequirement(BaseModel):
 class ListMeta(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     continue_: Optional[str] = Field(
@@ -160,6 +166,7 @@ class MicroTime(BaseModel):
 class OwnerReference(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     api_version: str = Field(
@@ -192,12 +199,14 @@ class Patch(BaseModel):
 
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
 
 class Preconditions(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     resource_version: Optional[str] = Field(
@@ -211,6 +220,7 @@ class Preconditions(BaseModel):
 class ServerAddressByClientCIDR(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     client_cidr: str = Field(
@@ -228,6 +238,7 @@ class ServerAddressByClientCIDR(BaseModel):
 class StatusCause(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     field: Optional[str] = Field(
@@ -247,6 +258,7 @@ class StatusCause(BaseModel):
 class StatusDetails(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     causes: Optional[List[StatusCause]] = Field(
@@ -283,6 +295,7 @@ class Time(BaseModel):
 class APIGroup(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     api_version: Optional[str] = Field(
@@ -313,6 +326,7 @@ class APIGroup(BaseModel):
 class APIGroupList(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     api_version: Optional[str] = Field(
@@ -330,6 +344,7 @@ class APIGroupList(BaseModel):
 class APIVersions(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     api_version: Optional[str] = Field(
@@ -354,6 +369,7 @@ class APIVersions(BaseModel):
 class DeleteOptions(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     api_version: Optional[str] = Field(
@@ -394,6 +410,7 @@ class DeleteOptions(BaseModel):
 class LabelSelector(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     match_expressions: Optional[List[LabelSelectorRequirement]] = Field(
@@ -411,6 +428,7 @@ class LabelSelector(BaseModel):
 class ManagedFieldsEntry(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     api_version: Optional[str] = Field(
@@ -445,6 +463,7 @@ class ManagedFieldsEntry(BaseModel):
 class ObjectMeta(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     annotations: Optional[Dict[str, Any]] = Field(
@@ -525,6 +544,7 @@ class ObjectMeta(BaseModel):
 class Status(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -560,6 +580,7 @@ class Status(pdk8s.model.NamedModel):
 class WatchEvent(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     object: runtime.RawExtension = Field(

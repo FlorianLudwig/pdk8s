@@ -16,6 +16,7 @@ from ..core import v1 as v1_1
 class EventSeries(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     count: int = Field(
@@ -36,6 +37,7 @@ class EventSeries(BaseModel):
 class Event(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     action: Optional[str] = Field(
@@ -113,6 +115,7 @@ class Event(pdk8s.model.NamedModel):
 class EventList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(

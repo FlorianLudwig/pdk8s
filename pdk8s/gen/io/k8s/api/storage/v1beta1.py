@@ -16,6 +16,7 @@ from ..core import v1
 class CSIDriverSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     attach_required: Optional[bool] = Field(
@@ -38,6 +39,7 @@ class CSIDriverSpec(BaseModel):
 class VolumeNodeResources(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     count: Optional[int] = Field(
@@ -49,6 +51,7 @@ class VolumeNodeResources(BaseModel):
 class CSINodeDriver(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     allocatable: Optional[VolumeNodeResources] = Field(
@@ -74,6 +77,7 @@ class CSINodeDriver(BaseModel):
 class CSINodeSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     drivers: List[CSINodeDriver] = Field(
@@ -85,6 +89,7 @@ class CSINodeSpec(BaseModel):
 class VolumeError(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     message: Optional[str] = Field(
@@ -97,6 +102,7 @@ class VolumeError(BaseModel):
 class CSIDriver(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -118,6 +124,7 @@ class CSIDriver(pdk8s.model.NamedModel):
 class CSIDriverList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -139,6 +146,7 @@ class CSIDriverList(pdk8s.model.NamedModel):
 class CSINode(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -159,6 +167,7 @@ class CSINode(pdk8s.model.NamedModel):
 class CSINodeList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -180,6 +189,7 @@ class CSINodeList(pdk8s.model.NamedModel):
 class StorageClass(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     allow_volume_expansion: Optional[bool] = Field(
@@ -232,6 +242,7 @@ class StorageClass(pdk8s.model.NamedModel):
 class StorageClassList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -255,6 +266,7 @@ class StorageClassList(pdk8s.model.NamedModel):
 class VolumeAttachmentSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     inline_volume_spec: Optional[v1.PersistentVolumeSpec] = Field(
@@ -272,6 +284,7 @@ class VolumeAttachmentSource(BaseModel):
 class VolumeAttachmentSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     attacher: str = Field(
@@ -291,6 +304,7 @@ class VolumeAttachmentSpec(BaseModel):
 class VolumeAttachmentStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     attach_error: Optional[VolumeError] = Field(
@@ -317,6 +331,7 @@ class VolumeAttachmentStatus(BaseModel):
 class VolumeAttachment(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -341,6 +356,7 @@ class VolumeAttachment(pdk8s.model.NamedModel):
 class VolumeAttachmentList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(

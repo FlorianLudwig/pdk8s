@@ -17,6 +17,7 @@ from ..core import v1
 class AllowedCSIDriver(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     name: str = Field(..., description="Name is the registered name of the CSI driver")
@@ -25,6 +26,7 @@ class AllowedCSIDriver(BaseModel):
 class AllowedFlexVolume(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     driver: str = Field(..., description="driver is the name of the Flexvolume driver.")
@@ -33,6 +35,7 @@ class AllowedFlexVolume(BaseModel):
 class AllowedHostPath(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     path_prefix: Optional[str] = Field(
@@ -50,6 +53,7 @@ class AllowedHostPath(BaseModel):
 class HostPortRange(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     max: int = Field(..., description="max is the end of the range, inclusive.")
@@ -59,6 +63,7 @@ class HostPortRange(BaseModel):
 class IDRange(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     max: int = Field(..., description="max is the end of the range, inclusive.")
@@ -68,6 +73,7 @@ class IDRange(BaseModel):
 class PodDisruptionBudgetStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     current_healthy: int = Field(
@@ -103,6 +109,7 @@ class PodDisruptionBudgetStatus(BaseModel):
 class RunAsGroupStrategyOptions(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     ranges: Optional[List[IDRange]] = Field(
@@ -118,6 +125,7 @@ class RunAsGroupStrategyOptions(BaseModel):
 class RunAsUserStrategyOptions(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     ranges: Optional[List[IDRange]] = Field(
@@ -133,6 +141,7 @@ class RunAsUserStrategyOptions(BaseModel):
 class RuntimeClassStrategyOptions(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     allowed_runtime_class_names: List[str] = Field(
@@ -150,6 +159,7 @@ class RuntimeClassStrategyOptions(BaseModel):
 class SELinuxStrategyOptions(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     rule: str = Field(
@@ -166,6 +176,7 @@ class SELinuxStrategyOptions(BaseModel):
 class SupplementalGroupsStrategyOptions(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     ranges: Optional[List[IDRange]] = Field(
@@ -181,6 +192,7 @@ class SupplementalGroupsStrategyOptions(BaseModel):
 class FSGroupStrategyOptions(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     ranges: Optional[List[IDRange]] = Field(
@@ -196,6 +208,7 @@ class FSGroupStrategyOptions(BaseModel):
 class PodSecurityPolicySpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     allow_privilege_escalation: Optional[bool] = Field(
@@ -321,6 +334,7 @@ class PodSecurityPolicySpec(BaseModel):
 class Eviction(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -343,6 +357,7 @@ class Eviction(pdk8s.model.NamedModel):
 class PodDisruptionBudgetSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     max_unavailable: Optional[Union[int, str]] = Field(
@@ -364,6 +379,7 @@ class PodDisruptionBudgetSpec(BaseModel):
 class PodSecurityPolicy(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -387,6 +403,7 @@ class PodSecurityPolicy(pdk8s.model.NamedModel):
 class PodSecurityPolicyList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -410,6 +427,7 @@ class PodSecurityPolicyList(pdk8s.model.NamedModel):
 class PodDisruptionBudget(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -431,6 +449,7 @@ class PodDisruptionBudget(pdk8s.model.NamedModel):
 class PodDisruptionBudgetList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(

@@ -15,6 +15,7 @@ from ...apimachinery.pkg.apis.meta import v1
 class NonResourceAttributes(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     path: Optional[str] = Field(None, description="Path is the URL path of the request")
@@ -24,6 +25,7 @@ class NonResourceAttributes(BaseModel):
 class NonResourceRule(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     non_resource_ur_ls: Optional[List[str]] = Field(
@@ -40,6 +42,7 @@ class NonResourceRule(BaseModel):
 class ResourceAttributes(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     group: Optional[str] = Field(
@@ -73,6 +76,7 @@ class ResourceAttributes(BaseModel):
 class ResourceRule(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     api_groups: Optional[List[str]] = Field(
@@ -98,6 +102,7 @@ class ResourceRule(BaseModel):
 class SelfSubjectAccessReviewSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     non_resource_attributes: Optional[NonResourceAttributes] = Field(
@@ -115,6 +120,7 @@ class SelfSubjectAccessReviewSpec(BaseModel):
 class SelfSubjectRulesReviewSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     namespace: Optional[str] = Field(
@@ -125,6 +131,7 @@ class SelfSubjectRulesReviewSpec(BaseModel):
 class SubjectAccessReviewSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     extra: Optional[Dict[str, Any]] = Field(
@@ -156,6 +163,7 @@ class SubjectAccessReviewSpec(BaseModel):
 class SubjectAccessReviewStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     allowed: bool = Field(
@@ -180,6 +188,7 @@ class SubjectAccessReviewStatus(BaseModel):
 class SubjectRulesReviewStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     evaluation_error: Optional[str] = Field(
@@ -206,6 +215,7 @@ class SubjectRulesReviewStatus(BaseModel):
 class LocalSubjectAccessReview(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -227,6 +237,7 @@ class LocalSubjectAccessReview(pdk8s.model.NamedModel):
 class SelfSubjectAccessReview(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -248,6 +259,7 @@ class SelfSubjectAccessReview(pdk8s.model.NamedModel):
 class SelfSubjectRulesReview(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -268,6 +280,7 @@ class SelfSubjectRulesReview(pdk8s.model.NamedModel):
 class SubjectAccessReview(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(

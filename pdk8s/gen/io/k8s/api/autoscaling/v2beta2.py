@@ -16,6 +16,7 @@ from ...apimachinery.pkg.apis.meta import v1
 class CrossVersionObjectReference(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     api_version: Optional[str] = Field(
@@ -34,6 +35,7 @@ class CrossVersionObjectReference(BaseModel):
 class HorizontalPodAutoscalerCondition(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     last_transition_time: Optional[v1.Time] = Field(
@@ -54,6 +56,7 @@ class HorizontalPodAutoscalerCondition(BaseModel):
 class MetricTarget(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     average_utilization: Optional[int] = Field(
@@ -78,6 +81,7 @@ class MetricTarget(BaseModel):
 class MetricValueStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     average_utilization: Optional[int] = Field(
@@ -98,6 +102,7 @@ class MetricValueStatus(BaseModel):
 class ResourceMetricSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     name: str = Field(..., description="name is the name of the resource in question.")
@@ -109,6 +114,7 @@ class ResourceMetricSource(BaseModel):
 class ResourceMetricStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     current: MetricValueStatus = Field(
@@ -120,6 +126,7 @@ class ResourceMetricStatus(BaseModel):
 class MetricIdentifier(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     name: str = Field(..., description="name is the name of the given metric")
@@ -132,6 +139,7 @@ class MetricIdentifier(BaseModel):
 class ObjectMetricSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     described_object: CrossVersionObjectReference = Field(..., alias="describedObject")
@@ -146,6 +154,7 @@ class ObjectMetricSource(BaseModel):
 class ObjectMetricStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     current: MetricValueStatus = Field(
@@ -160,6 +169,7 @@ class ObjectMetricStatus(BaseModel):
 class PodsMetricSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     metric: MetricIdentifier = Field(
@@ -173,6 +183,7 @@ class PodsMetricSource(BaseModel):
 class PodsMetricStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     current: MetricValueStatus = Field(
@@ -186,6 +197,7 @@ class PodsMetricStatus(BaseModel):
 class ExternalMetricSource(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     metric: MetricIdentifier = Field(
@@ -199,6 +211,7 @@ class ExternalMetricSource(BaseModel):
 class ExternalMetricStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     current: MetricValueStatus = Field(
@@ -212,6 +225,7 @@ class ExternalMetricStatus(BaseModel):
 class MetricSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     external: Optional[ExternalMetricSource] = Field(
@@ -239,6 +253,7 @@ class MetricSpec(BaseModel):
 class MetricStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     external: Optional[ExternalMetricStatus] = Field(
@@ -266,6 +281,7 @@ class MetricStatus(BaseModel):
 class HorizontalPodAutoscalerSpec(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     max_replicas: int = Field(
@@ -292,6 +308,7 @@ class HorizontalPodAutoscalerSpec(BaseModel):
 class HorizontalPodAutoscalerStatus(BaseModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "forbid"
 
     conditions: List[HorizontalPodAutoscalerCondition] = Field(
@@ -328,6 +345,7 @@ class HorizontalPodAutoscalerStatus(BaseModel):
 class HorizontalPodAutoscaler(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
@@ -352,6 +370,7 @@ class HorizontalPodAutoscaler(pdk8s.model.NamedModel):
 class HorizontalPodAutoscalerList(pdk8s.model.NamedModel):
     class Config:
         allow_population_by_field_name = True
+        validate_assignment = True
         extra = "allow"
 
     api_version: Optional[str] = Field(
