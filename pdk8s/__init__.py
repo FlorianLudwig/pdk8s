@@ -2,7 +2,7 @@ import yaml
 
 def cleanup(data):
     if isinstance(data, dict):
-        return cleanup_dict(dict)
+        return cleanup_dict(data)
     elif isinstance(data, list):
         return [cleanup(item) for item in data]
     else:
@@ -32,4 +32,5 @@ def definition_to_string(k8s_obj) -> str:
 
 
 def chart_to_string(chart) -> str:
-    return "---".join(map(definition_to_string, chart))
+    return "---\n".join(map(definition_to_string, chart))
+

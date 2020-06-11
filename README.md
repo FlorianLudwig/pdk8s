@@ -1,6 +1,8 @@
 # pdk8s
 
-Experiments inspired by [sdk8s](https://github.com/awslabs/cdk8s).
+Generating kubernetes defintions (yaml) with python, inspired by [cdk8s](https://github.com/awslabs/cdk8s).
+
+
 
 
 ## Sources
