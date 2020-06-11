@@ -1,12 +1,38 @@
 # pdk8s
 
-Generating kubernetes defintions (yaml) with python, inspired by [cdk8s](https://github.com/awslabs/cdk8s).
-
+Generating Kubernetes defintions (yaml) with python, inspired by [cdk8s](https://github.com/awslabs/cdk8s).  The main use case is to use those defintions with helm.  This means cdk8s does replace all the templating that helm does - but helm still takes care of rolling out your changes to your cluster.
 
 
 # Getting started
 
 <!-- add nice video here -->
+
+## Installing pdk8s
+
+### Prerequisites
+
+* Python >= 3.7.
+* Python knowledge
+
+
+### Installation via pypi
+
+pdk8s is available on pypi, you can install it with your preferred python package manage, `pip`, `pipenv`, etc:
+
+```
+pip install pdk8s
+```
+
+## Intro
+
+The format of `pdk8s` charts is simular to helm charts, just that they are python instead of yaml.  Your "python chart" must define the following variables:
+
+ * `name`: Name of your chart
+ * `chart_version`: This is the chart version. This version number should be incremented each time you make changes to the chart and its templates, including the app version. Versions are expected to follow [Semantic Versioning](https://semver.org/).
+ * `app_version`: This is the version number of the application being deployed. This version number should be incremented each time you make changes to the application. Versions are not expected to follow Semantic Versioning. They should reflect the version the application is using.
+ * `chart`: Your chart. A list or `pdk8s.k8s.Chart` (or actually any iterable python object) of k8s ressources.
+
+If you had a déjà vu while reading - that is because the description for `chart_version` and `app_version` are copied straight from Helm ;)
 
 ## Creating
 
@@ -60,7 +86,7 @@ k8s.ServicePort(port=80, target_port=8080)
 k8s.ServicePort(port=80, targetPort=8080)
 ```
 
-Both work and result in the same result.  This is for compatibility when importing from other sources.
+Both work and result in the same result.  This is for compatibility when importing from other sources (and makes `pdk8s.k8s.parse` possible).
 
 ## Importing existing charts
 
@@ -167,6 +193,10 @@ k8s.ServicePort(port=80, target_port=8080)
 # Why
 
 TODO explain why this exists (NIH syndrom)
+# Development and building
+
+Currently generating the code of `pdk8s` depends on a patched version of `datamodel-code-generator`.  I am working on upstreaming changes to not depend on local patches anymore.
+
 ## Sources
 
  * https://github.com/kubernetes/kubernetes/tree/master/api/openapi-spec - openapi definition.
