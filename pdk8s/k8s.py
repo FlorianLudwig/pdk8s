@@ -1,4 +1,24 @@
-# TODO: generate this file
+import yaml
+import pydantic
+
+# TODO: generate imports
 from .gen.io.k8s.api.apps.v1 import *  # pylint: disable=unused-wildcard-import
 from .gen.io.k8s.api.core.v1 import *  # pylint: disable=unused-wildcard-import
 from .gen.io.k8s.apimachinery.pkg.apis.meta.v1 import *  # pylint: disable=unused-wildcard-import
+
+
+def _parse_object(obj):
+    kind = obj["kind"]
+    del obj["kind"]  # TODO
+
+    cls = globals()[kind]
+
+    if not issubclass(cls, pydantic.BaseModel):
+        raise AttributeError(f"unknown kind {kind}")
+
+    return cls(**obj)
+
+
+def parse(name):
+    docs = yaml.safe_load_all(open(name))
+    return [_parse_object(doc) for doc in docs]
