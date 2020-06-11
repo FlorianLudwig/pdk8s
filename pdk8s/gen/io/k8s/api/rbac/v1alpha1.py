@@ -65,7 +65,7 @@ class Subject(BaseModel):
         extra = "forbid"
 
     api_version: Optional[str] = Field(
-        "v1alpha1",
+        None,
         alias="apiVersion",
         description='APIVersion holds the API group and version of the referenced subject. Defaults to "v1" for ServiceAccount subjects. Defaults to "rbac.authorization.k8s.io/v1alpha1" for User and Group subjects.',
     )
@@ -105,7 +105,7 @@ class ClusterRole(pdk8s.model.NamedModel):
         description="AggregationRule is an optional field that describes how to build the Rules for this ClusterRole. If AggregationRule is set, then the Rules are controller managed and direct changes to Rules will be stomped by the controller.",
     )
     api_version: Optional[str] = Field(
-        "v1alpha1",
+        "rbac.authorization.k8s.io/v1alpha1",
         alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
@@ -128,7 +128,7 @@ class ClusterRoleBinding(pdk8s.model.NamedModel):
         extra = "allow"
 
     api_version: Optional[str] = Field(
-        "v1alpha1",
+        "rbac.authorization.k8s.io/v1alpha1",
         alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
@@ -157,7 +157,7 @@ class ClusterRoleBindingList(pdk8s.model.NamedModel):
         extra = "allow"
 
     api_version: Optional[str] = Field(
-        "v1alpha1",
+        "rbac.authorization.k8s.io/v1alpha1",
         alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
@@ -180,7 +180,7 @@ class ClusterRoleList(pdk8s.model.NamedModel):
         extra = "allow"
 
     api_version: Optional[str] = Field(
-        "v1alpha1",
+        "rbac.authorization.k8s.io/v1alpha1",
         alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
@@ -201,7 +201,7 @@ class Role(pdk8s.model.NamedModel):
         extra = "allow"
 
     api_version: Optional[str] = Field(
-        "v1alpha1",
+        "rbac.authorization.k8s.io/v1alpha1",
         alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
@@ -224,7 +224,7 @@ class RoleBinding(pdk8s.model.NamedModel):
         extra = "allow"
 
     api_version: Optional[str] = Field(
-        "v1alpha1",
+        "rbac.authorization.k8s.io/v1alpha1",
         alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
@@ -253,7 +253,7 @@ class RoleBindingList(pdk8s.model.NamedModel):
         extra = "allow"
 
     api_version: Optional[str] = Field(
-        "v1alpha1",
+        "rbac.authorization.k8s.io/v1alpha1",
         alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
@@ -274,7 +274,7 @@ class RoleList(pdk8s.model.NamedModel):
         extra = "allow"
 
     api_version: Optional[str] = Field(
-        "v1alpha1",
+        "rbac.authorization.k8s.io/v1alpha1",
         alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )

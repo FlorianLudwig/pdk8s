@@ -43,7 +43,7 @@ class StorageClass(pdk8s.model.NamedModel):
         description="Restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature.",
     )
     api_version: Optional[str] = Field(
-        "v1",
+        "storage.k8s.io/v1",
         alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
@@ -86,7 +86,7 @@ class StorageClassList(pdk8s.model.NamedModel):
         extra = "allow"
 
     api_version: Optional[str] = Field(
-        "v1",
+        "storage.k8s.io/v1",
         alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
@@ -175,7 +175,7 @@ class VolumeAttachment(pdk8s.model.NamedModel):
         extra = "allow"
 
     api_version: Optional[str] = Field(
-        "v1",
+        "storage.k8s.io/v1",
         alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
@@ -200,7 +200,7 @@ class VolumeAttachmentList(pdk8s.model.NamedModel):
         extra = "allow"
 
     api_version: Optional[str] = Field(
-        "v1",
+        "storage.k8s.io/v1",
         alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )

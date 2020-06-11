@@ -432,7 +432,7 @@ class ManagedFieldsEntry(BaseModel):
         extra = "forbid"
 
     api_version: Optional[str] = Field(
-        "v1",
+        None,
         alias="apiVersion",
         description='APIVersion defines the version of this resource that this field set applies to. The format is "group/version" just like the top-level APIVersion field. It is necessary to track the version of a field set because it cannot be automatically converted.',
     )

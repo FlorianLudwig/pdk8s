@@ -369,7 +369,7 @@ class DeploymentRollback(BaseModel):
         extra = "forbid"
 
     api_version: Optional[str] = Field(
-        "v1beta1",
+        "extensions/v1beta1",
         alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
@@ -824,7 +824,7 @@ class PodSecurityPolicy(pdk8s.model.NamedModel):
         extra = "allow"
 
     api_version: Optional[str] = Field(
-        "v1beta1",
+        "extensions/v1beta1",
         alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
@@ -848,7 +848,7 @@ class PodSecurityPolicyList(pdk8s.model.NamedModel):
         extra = "allow"
 
     api_version: Optional[str] = Field(
-        "v1beta1",
+        "extensions/v1beta1",
         alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
@@ -872,7 +872,7 @@ class Scale(pdk8s.model.NamedModel):
         extra = "allow"
 
     api_version: Optional[str] = Field(
-        "v1beta1",
+        "extensions/v1beta1",
         alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
@@ -897,7 +897,7 @@ class Ingress(pdk8s.model.NamedModel):
         extra = "allow"
 
     api_version: Optional[str] = Field(
-        "v1beta1",
+        "extensions/v1beta1",
         alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
@@ -922,7 +922,7 @@ class IngressList(pdk8s.model.NamedModel):
         extra = "allow"
 
     api_version: Optional[str] = Field(
-        "v1beta1",
+        "extensions/v1beta1",
         alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
@@ -1003,7 +1003,7 @@ class NetworkPolicy(pdk8s.model.NamedModel):
         extra = "allow"
 
     api_version: Optional[str] = Field(
-        "v1beta1",
+        "extensions/v1beta1",
         alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
@@ -1028,7 +1028,7 @@ class NetworkPolicyList(pdk8s.model.NamedModel):
         extra = "allow"
 
     api_version: Optional[str] = Field(
-        "v1beta1",
+        "extensions/v1beta1",
         alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
@@ -1160,7 +1160,7 @@ class DaemonSet(pdk8s.model.NamedModel):
         extra = "allow"
 
     api_version: Optional[str] = Field(
-        "v1beta1",
+        "extensions/v1beta1",
         alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
@@ -1185,7 +1185,7 @@ class DaemonSetList(pdk8s.model.NamedModel):
         extra = "allow"
 
     api_version: Optional[str] = Field(
-        "v1beta1",
+        "extensions/v1beta1",
         alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
@@ -1207,7 +1207,7 @@ class Deployment(pdk8s.model.NamedModel):
         extra = "allow"
 
     api_version: Optional[str] = Field(
-        "v1beta1",
+        "extensions/v1beta1",
         alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
@@ -1230,7 +1230,7 @@ class DeploymentList(pdk8s.model.NamedModel):
         extra = "allow"
 
     api_version: Optional[str] = Field(
-        "v1beta1",
+        "extensions/v1beta1",
         alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
@@ -1251,7 +1251,7 @@ class ReplicaSet(pdk8s.model.NamedModel):
         extra = "allow"
 
     api_version: Optional[str] = Field(
-        "v1beta1",
+        "extensions/v1beta1",
         alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
@@ -1276,7 +1276,7 @@ class ReplicaSetList(pdk8s.model.NamedModel):
         extra = "allow"
 
     api_version: Optional[str] = Field(
-        "v1beta1",
+        "extensions/v1beta1",
         alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )

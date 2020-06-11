@@ -861,7 +861,7 @@ class ObjectFieldSelector(BaseModel):
         extra = "forbid"
 
     api_version: Optional[str] = Field(
-        "v1",
+        None,
         alias="apiVersion",
         description='Version of the schema the FieldPath is written in terms of, defaults to "v1".',
     )
@@ -879,7 +879,7 @@ class ObjectReference(BaseModel):
         extra = "forbid"
 
     api_version: Optional[str] = Field(
-        "v1", alias="apiVersion", description="API version of the referent."
+        None, alias="apiVersion", description="API version of the referent."
     )
     field_path: Optional[str] = Field(
         None,

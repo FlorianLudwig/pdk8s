@@ -19,7 +19,7 @@ class BoundObjectReference(BaseModel):
         extra = "forbid"
 
     api_version: Optional[str] = Field(
-        "v1", alias="apiVersion", description="API version of the referent."
+        None, alias="apiVersion", description="API version of the referent."
     )
     kind: Optional[str] = Field(
         None, description="Kind of the referent. Valid kinds are 'Pod' and 'Secret'."
@@ -128,7 +128,7 @@ class TokenRequest(pdk8s.model.NamedModel):
         extra = "allow"
 
     api_version: Optional[str] = Field(
-        "v1",
+        "authentication.k8s.io/v1",
         alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
@@ -147,7 +147,7 @@ class TokenReview(pdk8s.model.NamedModel):
         extra = "allow"
 
     api_version: Optional[str] = Field(
-        "v1",
+        "authentication.k8s.io/v1",
         alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )

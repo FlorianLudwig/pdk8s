@@ -86,7 +86,7 @@ class EndpointSlice(pdk8s.model.NamedModel):
         description="addressType specifies the type of address carried by this EndpointSlice. All addresses in this slice must be the same type. Default is IP",
     )
     api_version: Optional[str] = Field(
-        "v1alpha1",
+        "discovery.k8s.io/v1alpha1",
         alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
@@ -114,7 +114,7 @@ class EndpointSliceList(pdk8s.model.NamedModel):
         extra = "allow"
 
     api_version: Optional[str] = Field(
-        "v1alpha1",
+        "discovery.k8s.io/v1alpha1",
         alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )

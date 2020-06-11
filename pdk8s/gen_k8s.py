@@ -257,11 +257,14 @@ def update_schema(schema: dict):
     """
     definitions = schema["definitions"]
     for name, definition in definitions.items():
-        # TODO: evaluate using x-kubernetes-group-version-kind.version instead
-        version = name.split(".")[-2]
+        version = None
+        if "x-kubernetes-group-version-kind" in definition:
+            k8s_versions = definition["x-kubernetes-group-version-kind"]
+            if len(k8s_versions) != 1:
+                print("warning, not correctly handling", name)
 
-        if not VERSION.match(version):
-            version = None
+            k8s_version = k8s_versions[0]
+            version = os.path.join(k8s_version["group"], k8s_version["version"])
 
         if "properties" in definition:
             # remove all fields named status
@@ -278,7 +281,7 @@ def update_schema(schema: dict):
 
                 # set api version
                 if prop_name == "apiVersion":
-                    assert version is not None, f"Unkown api version for {name}"
+                    if version:
                     prop.setdefault("default", version)
 
                 # inline IntOrString, avoids creation of IntOrString class

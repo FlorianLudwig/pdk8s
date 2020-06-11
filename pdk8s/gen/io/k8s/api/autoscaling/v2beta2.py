@@ -20,7 +20,7 @@ class CrossVersionObjectReference(BaseModel):
         extra = "forbid"
 
     api_version: Optional[str] = Field(
-        "v2beta2", alias="apiVersion", description="API version of the referent"
+        None, alias="apiVersion", description="API version of the referent"
     )
     kind: str = Field(
         ...,
@@ -349,7 +349,7 @@ class HorizontalPodAutoscaler(pdk8s.model.NamedModel):
         extra = "allow"
 
     api_version: Optional[str] = Field(
-        "v2beta2",
+        "autoscaling/v2beta2",
         alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
@@ -374,7 +374,7 @@ class HorizontalPodAutoscalerList(pdk8s.model.NamedModel):
         extra = "allow"
 
     api_version: Optional[str] = Field(
-        "v2beta2",
+        "autoscaling/v2beta2",
         alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
