@@ -16,8 +16,198 @@ from typing import (
 )
 
 
+import datamodel_code_generator
+import datamodel_code_generator.format
+import datamodel_code_generator.imports
+
+from datamodel_code_generator.parser.jsonschema import JsonSchemaParser
+from datamodel_code_generator.parser.openapi import OpenAPIParser
+from datamodel_code_generator import (
+    DEFAULT_BASE_CLASS,
+    Error,
+    InputFileType,
+    enable_debug_message,
+)
+
+from datamodel_code_generator.model.pydantic import (
+    BaseModel,
+    CustomRootType,
+    DataModelField,
+    dump_resolve_reference_action,
+)
+
+
+_underscorer1 = re.compile(r'(.)([A-Z][a-z]+)')
+_underscorer2 = re.compile('([a-z0-9])([A-Z])')
+
+
+def camel_to_snake(string):
+    subbed = _underscorer1.sub(r'\1_\2', string)
+    return _underscorer2.sub(r'\1_\2', subbed).lower()
+
 
 VERSION = re.compile("v[0-9]+[a-z0-9]*$")
+
+def make_named_class(model: BaseModel):
+    model.base_class = "pdk8s.model.NamedModel"
+    model.BASE_CLASS = "pdk8s.model.NamedModel"
+    cls_import = datamodel_code_generator.imports.Import(import_="pdk8s.model")
+    model.imports.append(cls_import)
+
+
+def snakify_field(field: datamodel_code_generator.model.pydantic.DataModelField):
+    original_name = field.name
+    field.name = camel_to_snake(original_name)
+    if field.name != original_name:
+        field.alias = original_name
+
+
+# TODO
+# Config:
+#   validate_assignment to all
+
+class K8SParser(JsonSchemaParser):
+    def parse_raw(self):
+        super(K8SParser, self).parse_raw()
+
+        # self._classes_by_name = {}
+        # self._single_value_enum = {}
+        # for result in self.results:
+        #     if result.base_class == "Enum":
+        #         if len(result.fields) == 1:
+        #             name = result.class_name
+        #             assert name not in self._single_value_enum
+        #             self._single_value_enum[name] = result.fields[0].name
+        #         else:
+        #             breakpoint
+        # name = result.class_name
+        # assert name not in self._classes_by_name
+        # self._classes_by_name[name] = result
+
+        new_results = []
+        for result in self.results:
+            self._mutate_class(result)
+            # if result.class_name.endswith("Status"):
+            #     # filter out all objects ending on "Status"
+            #     pass
+            new_results.append(result)
+
+        self.results = new_results
+
+    # top level objects:
+    # x-kubernetes-group-version-kind
+
+    def _mutate_class(self, model: datamodel_code_generator.model.DataModel):
+        if model.class_name == "Model":
+            return
+
+        if len(model.fields) == 1 and model.fields[0].name is None:
+            # defintion of a basic type, skip
+            return
+
+        if model.class_name == "IntOrString":
+            # TODO
+            return
+
+        extra = '"forbid"'
+
+        for field in model.fields:
+            if field.name == "metadata":
+                # For named classes we allow extra fields
+                # so we have a nicer API with cls(name="Foo")
+                # even with no actual field "name" existing.
+                extra = '"allow"'
+                make_named_class(model)
+        #     elif field.name == "status":
+        #         pass # TODO
+
+            snakify_field(field)
+                
+        #     update_field(field)
+        model.extra_template_data["config"] = {"extra": extra}
+
+        # model.fields = new_fields
+
+
+def update_field(field):
+    field_arguments = [
+        f"{k}={field.get_valid_argument(v)}"
+        for k, v in field.dict(include=field._FIELDS_KEYS).items()
+        if v is not None
+    ]
+    field.field = f'Field({"..." if field.required else field.get_valid_argument(field.default)}, {",".join(field_arguments)})'
+
+
+def add_init_py(path):
+    for dirname, sub_dirs, filenames in os.walk(path):
+        if "./" in dirname:
+            # ignore hidden directories
+            continue
+
+        if "__init__.py" in filenames:
+            continue
+
+        open(os.path.join(dirname, "__init__.py"), "w").close()
+
+
+def generate_models(output, input_text) -> None:
+    """based on datamodel_code_generator.generate"""
+    py37 = datamodel_code_generator.format.PythonVersion.PY_37
+    target_python_version = py37
+
+    validation = True
+    base_class = "pydantic.BaseModel"
+    custom_template_dir = None # TODO seems not tot work
+    extra_template_data = None
+
+    parser_class = JsonSchemaParser
+    parser_class = K8SParser
+
+    parser = parser_class(
+        BaseModel,
+        CustomRootType,
+        DataModelField,
+        base_class=base_class,
+        custom_template_dir=custom_template_dir,
+        extra_template_data=extra_template_data,
+        target_python_version=target_python_version,
+        text=input_text,
+        dump_resolve_reference_action=dump_resolve_reference_action,
+        validation=validation,
+    )
+
+    with datamodel_code_generator.chdir(output):
+        result = parser.parse()
+
+    if isinstance(result, str):
+        modules = {output: result}
+    else:
+        if output is None:
+            raise Error("Modular references require an output directory")
+        if output.suffix:
+            raise Error("Modular references require an output directory, not a file")
+        modules = {
+            output.joinpath(*name): body for name, body in sorted(result.items())
+        }
+
+    header = "# automatically generated file. DO NOT CHANGE MANUALLY"
+
+    file: Optional[IO[Any]]
+    for path, body in modules.items():
+        if path is not None:
+            if not path.parent.exists():
+                path.parent.mkdir(parents=True)
+            file = path.open("wt")
+        else:
+            file = None
+
+        print(header, file=file)
+        if body:
+            print("", file=file)
+            print(body.rstrip(), file=file)
+
+        if file is not None:
+            file.close()
 
 
 def update_schema(schema: dict):
@@ -43,8 +233,56 @@ def update_schema(schema: dict):
                 # This sets the `kind` property on all objects.
                 if "enum" in prop and len(prop["enum"]) == 1:
                     prop.setdefault("default", prop["enum"][0])
-                
+
                 # set api version
                 if prop_name == "apiVersion":
                     assert version is not None, f"Unkown api version for {name}"
                     prop.setdefault("default", version)
+
+
+                
+                # inline IntOrString, avoids creation of IntOrString class
+                # this allows assigning int or string directly, instead of this
+                # ref_int_or_string = "#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+                # if "$ref" in prop:
+                #     ref = prop["$ref"]
+                    
+                #     if ref == ref_int_or_string:
+                #         prop.pop("$ref")
+                    
+                #         prop.update(definitions[ref.split('/')[-1]])
+                    
+                #         print(prop)
+
+
+    # "$ref": 
+    #   "oneOf": [
+    #     {
+    #       "type": "string"
+    #     },
+    #     {
+    #       "type": "integer"
+    #     }
+    #   ]
+
+
+def download():
+    tag = "v1.16.4"
+    url = f"https://raw.githubusercontent.com/kubernetes/kubernetes/{tag}/api/openapi-spec/swagger.json"
+
+
+def main():
+    input_name = "k8s_1.16.4.json"
+    # input_name = "small.json"
+    schema = json.load(open(input_name))
+
+    update_schema(schema)
+
+    output = pathlib.Path(__file__).parent / pathlib.Path("gen")
+    generate_models(output, json.dumps(schema))
+    add_init_py(output)
+    # run_mypy()
+
+
+if __name__ == "__main__":
+    main()
