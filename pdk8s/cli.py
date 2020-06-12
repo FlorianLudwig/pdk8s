@@ -20,16 +20,21 @@ def main():
     """Console script for pdk8s."""
 
 
+def load_chart_from_file(path):
+    chart_variables = {}
+    exec(open(path).read(), {}, chart_variables)
+    return chart_variables
+
+
 def add_subcommands(main, with_input):
     @main.command()
 
     @option_output
     @option_format
     @click.pass_context
-    def synth(ctx, output, output_format, input=None):
-        if input:
-            chart_variables = {}
-            exec(open("hello_world.py").read(), {}, chart_variables)
+    def synth(ctx, output, output_format, input_path=None):
+        if input_path:
+            chart_variables = load_chart_from_file(input_path)
         else:
             chart_variables = ctx.obj
 
