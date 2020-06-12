@@ -2,6 +2,7 @@ import yaml
 import pydantic
 
 # TODO: generate imports
+from .gen.io.k8s.api.extensions.v1beta1 import *  # pylint: disable=unused-wildcard-import
 from .gen.io.k8s.api.apps.v1 import *  # pylint: disable=unused-wildcard-import
 from .gen.io.k8s.api.core.v1 import *  # pylint: disable=unused-wildcard-import
 from .gen.io.k8s.apimachinery.pkg.apis.meta.v1 import *  # pylint: disable=unused-wildcard-import
