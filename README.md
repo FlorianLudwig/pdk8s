@@ -1,6 +1,6 @@
 # pdk8s
 
-Generating Kubernetes defintions (yaml) with python, inspired by [cdk8s](https://github.com/awslabs/cdk8s).  The main use case is to use those defintions with helm.  This means cdk8s does replace all the templating that helm does - but helm still takes care of rolling out your changes to your cluster.
+Generating Kubernetes definitions (yaml) with python, inspired by [cdk8s](https://github.com/awslabs/cdk8s).  The main use case is to use those definitions with helm.  This means cdk8s does replace all the templating that helm does - but helm still takes care of rolling out your changes to your cluster.
 
 
 # Getting started
@@ -15,9 +15,9 @@ Generating Kubernetes defintions (yaml) with python, inspired by [cdk8s](https:/
 * Python knowledge
 
 
-### Installation via pypi
+### Installation via PyPi
 
-pdk8s is available on pypi, you can install it with your preferred python package manage, `pip`, `pipenv`, etc:
+pdk8s is available on PyPi, you can install it with your preferred python package manage, `pip`, `pipenv`, etc:
 
 ```
 pip install pdk8s
@@ -25,12 +25,12 @@ pip install pdk8s
 
 ## Intro
 
-The format of `pdk8s` charts is simular to helm charts, just that they are python instead of yaml.  Your "python chart" must define the following variables:
+The format of `pdk8s` charts is similar to helm charts, just that they are python instead of yaml.  Your “python chart" must define the following variables:
 
  * `name`: Name of your chart
  * `chart_version`: This is the chart version. This version number should be incremented each time you make changes to the chart and its templates, including the app version. Versions are expected to follow [Semantic Versioning](https://semver.org/).
  * `app_version`: This is the version number of the application being deployed. This version number should be incremented each time you make changes to the application. Versions are not expected to follow Semantic Versioning. They should reflect the version the application is using.
- * `chart`: Your chart. A list or `pdk8s.k8s.Chart` (or actually any iterable python object) of k8s ressources.
+ * `chart`: Your chart. A list or `pdk8s.k8s.Chart` (or actually any iterable python object) of k8s resources.
 
 If you had a déjà vu while reading - that is because the description for `chart_version` and `app_version` are copied straight from Helm ;)
 
@@ -127,7 +127,7 @@ Note 2: Currently all required parameters must be provided at creation time.  Yo
 
 ## CamelCase names
 
-The kubernetes APIs use camelCase for naming attributes, while python usually uses snake_case.  `pdk8s` also follows the snake_case convention, same as `cdk8s`.
+The Kubernetes APIs use camelCase for naming attributes, while python usually uses snake_case.  `pdk8s` also follows the snake_case convention, same as `cdk8s`.
 
 `pdk8s` provides aliases for all arguments:
 
@@ -140,7 +140,7 @@ Both work and result in the same result.  This is for compatibility when importi
 
 ## Importing existing charts
 
-You might already have templates you want to build upon, you can easily import them using `pdk8s.k8s.parse`. Let's assume you have the follwoing `chart.yaml`:
+You might already have templates you want to build upon, you can easily import them using `pdk8s.k8s.parse`. Let's assume you have the following `chart.yaml`:
 
 ```yaml
 apiVersion: v1
@@ -192,15 +192,15 @@ There are a few differences that make code between the `cdk8s` and `pdk8s` incom
 
 ### Pure python
 
-`cdk8s` is written in TypeScript and with the power of jsii usable from other languages, as python.  `pdk8s` is written in pure python with no bridge to other languages.  This means you are limited to python and cannot reuse charts written in other languages.  Therefore a `pdk8s` is focused on providing an awesome experience writing charts in python:  Readable tracebacks, happy IDE and linters, ... 
+`cdk8s` is written in TypeScript and with the power of jsii usable from other languages, as python.  `pdk8s` is written in pure python with no bridge to other languages.  This means you are limited to python and cannot reuse charts written in other languages.  Therefore, a `pdk8s` is focused on providing an awesome experience writing charts in python: Readable tracebacks, happy IDE and linters, ... 
 
 ### Context / Constructs
 
-Currently there is no equivalent of "constructs" in `pdk8s`.  In `cdk8s` highlevel objects (e.g. `Service`) are special:  They have an extra argument (the first one) which is the context in which they are defined, e.g. `k8s.Service(self, ...)` where `self` is the context.
+Currently, there is no equivalent of "constructs" in `pdk8s`.  In `cdk8s` highlevel objects (e.g. `Service`) are special: They have an extra argument (the first one) which is the context in which they are defined, e.g. `k8s.Service(self, ...)` where `self` is the context.
 
 In `pdk8s` there is no special treatment of these types.  There might be later on, but they would be added and not replaced.
 
-This allows for more flexiblity on how to construct your chart generator.
+This allows for more flexibility on how to construct your chart generator.
 
 
 ### Names
@@ -260,9 +260,9 @@ CamelCase?
 
 # Development and building
 
-Currently generating the code of `pdk8s` depends on a patched version of `datamodel-code-generator`.  I am working on upstreaming changes to not depend on local patches anymore.
+Currently, generating the code of `pdk8s` depends on a patched version of `datamodel-code-generator`.  I am working on upstreaming changes to not depend on local patches anymore.
 
 ## Sources
 
  * https://github.com/kubernetes/kubernetes/tree/master/api/openapi-spec - openapi definition.
- * https://github.com/instrumenta/kubernetes-json-schema - JSON Schema of kubernetes API, generated from official openapi definitions.  Used by cdk8s.
+ * https://github.com/instrumenta/kubernetes-json-schema - JSON Schema of Kubernetes API, generated from official openapi definitions.  Used by cdk8s.
