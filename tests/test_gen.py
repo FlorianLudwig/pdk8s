@@ -32,5 +32,5 @@ def test_update_schema():
     pdk8s.gen_k8s.update_schema(schema)
 
     cluster_role = schema["definitions"]["io.k8s.api.rbac.v1.ClusterRole"]
-    assert cluster_role["properties"]["apiVersion"]["default"] == "v1"
+    assert cluster_role["properties"]["apiVersion"]["default"] == "rbac.authorization.k8s.io/v1"
     assert cluster_role["properties"]["kind"]["default"] == "ClusterRole"
