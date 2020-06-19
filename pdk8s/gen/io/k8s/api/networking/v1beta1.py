@@ -20,7 +20,7 @@ class IngressStatus(BaseModel):
         validate_assignment = True
         extra = "forbid"
 
-    load_balancer: Optional[v1.LoadBalancerStatus] = Field(
+    load_balancer: Optional[v1_1.LoadBalancerStatus] = Field(
         None,
         alias="loadBalancer",
         description="LoadBalancer contains the current status of the load-balancer.",

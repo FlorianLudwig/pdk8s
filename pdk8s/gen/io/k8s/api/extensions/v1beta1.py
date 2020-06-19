@@ -108,7 +108,7 @@ class IngressStatus(BaseModel):
         validate_assignment = True
         extra = "forbid"
 
-    load_balancer: Optional[v1.LoadBalancerStatus] = Field(
+    load_balancer: Optional[v1_1.LoadBalancerStatus] = Field(
         None,
         alias="loadBalancer",
         description="LoadBalancer contains the current status of the load-balancer.",
@@ -204,7 +204,7 @@ class SELinuxStrategyOptions(BaseModel):
         ...,
         description="rule is the strategy that will dictate the allowable labels that may be set.",
     )
-    se_linux_options: Optional[v1.SELinuxOptions] = Field(
+    se_linux_options: Optional[v1_1.SELinuxOptions] = Field(
         None,
         alias="seLinuxOptions",
         description="seLinuxOptions required to run as; required for MustRunAs More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/",
