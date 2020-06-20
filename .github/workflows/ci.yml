@@ -1,0 +1,19 @@
+name: CI
+# This workflow is triggered on pushes to the repository.
+on: [push]
+
+jobs:
+  build:
+    name: Linting
+    runs-on: ubuntu-latest
+
+    container: docker.io/greyrook/cde-dev-py37:cbfa6f05455445fbdc86acc3c7d7945c42c61829
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: install poetry
+        run: "curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python3"
+      - name: poetry
+        run: "$HOME/.poetry/bin/poetry install"
+      - name: poetry
+        run: "$HOME/.poetry/bin/poetry run pytest tests/"
