@@ -1,3 +1,7 @@
+![CI](https://github.com/FlorianLudwig/pdk8s/workflows/CI/badge.svg)
+![license](https://img.shields.io/github/license/FlorianLudwig/pdk8s.svg)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
 # pdk8s
 
 Generating Kubernetes definitions (yaml) with python, inspired by [cdk8s](https://github.com/awslabs/cdk8s).  The main use case is to use those definitions with helm.  This means cdk8s does replace all the templating that helm does - but helm still takes care of rolling out your changes to your cluster.
