@@ -5,6 +5,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+
+ * CLI Option shorthands (-i for --input and -o for --output)
+
+### Fixed
+ 
+ * CLI direct usage of pdk8s instead of through chart
 
 
 ## [0.2.1] - 2020-06-20
