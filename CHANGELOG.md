@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
  * CLI Option shorthands (-i for --input and -o for --output)
+ * Allow dicts inside of chart lists
 
 ### Fixed
  

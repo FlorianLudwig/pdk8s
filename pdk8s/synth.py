@@ -32,7 +32,14 @@ def cleanup_dict(data):
 
 
 def definition_to_string(k8s_obj) -> str:
-    k8s_def = cleanup_dict(k8s_obj.dict(by_alias=True))
+    if hasattr(k8s_obj, "dict"):
+        k8s_dict = k8s_obj.dict(by_alias=True)
+    elif isinstance(k8s_obj, dict):
+        k8s_dict = k8s_obj
+    else:
+        raise AttributeError("cannot handle k8s_obj " + repr(k8s_obj))
+
+    k8s_def = cleanup_dict(k8s_dict)
     return yaml.safe_dump(k8s_def)
 
 
