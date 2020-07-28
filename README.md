@@ -235,7 +235,3 @@ Generate everything at build time and not runtime as it makes it easier for lint
 
 Currently, generating the code of `pdk8s` depends on a patched version of `datamodel-code-generator`.  I am working on upstreaming changes to not depend on local patches anymore.
 
-## Sources
-
- * https://github.com/kubernetes/kubernetes/tree/master/api/openapi-spec - openapi definition.
- * https://github.com/instrumenta/kubernetes-json-schema - JSON Schema of Kubernetes API, generated from official openapi definitions.  Used by cdk8s.
