@@ -167,7 +167,7 @@ def update_field(field):
 
 
 def add_init_py(path):
-    for dirname, sub_dirs, filenames in os.walk(path):
+    for dirname, _, filenames in os.walk(path):
         if "./" in dirname:
             # ignore hidden directories
             continue
