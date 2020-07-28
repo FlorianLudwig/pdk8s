@@ -37,6 +37,7 @@ from datamodel_code_generator.model.pydantic import (
 )
 
 
+BASE = pathlib.Path(__file__).parent
 _underscorer1 = re.compile(r"(.)([A-Z][a-z]+)")
 _underscorer2 = re.compile("([a-z0-9])([A-Z])")
 
@@ -185,7 +186,7 @@ def generate_models(output, input_text) -> None:
 
     validation = True
     base_class = "pydantic.BaseModel"
-    custom_template_dir = None  # TODO seems not tot work, see https://github.com/koxudaxi/datamodel-code-generator/issues/144
+    custom_template_dir = BASE / pathlib.Path("template/pydantic")
     extra_template_data = None
 
     parser_class = K8SParser
