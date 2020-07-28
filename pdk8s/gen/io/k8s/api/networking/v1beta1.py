@@ -9,7 +9,7 @@ from pydantic import BaseModel, Field
 import pdk8s.model
 
 from ..... import Kind122, Kind123
-from ...apimachinery.pkg.apis.meta import v1
+from ...apimachinery.pkg.apis.meta import v1 as v1_1
 from ...apimachinery.pkg.util import intstr
 from ..core import v1
 
@@ -20,7 +20,7 @@ class IngressStatus(BaseModel):
         validate_assignment = True
         extra = "forbid"
 
-    load_balancer: Optional[v1_1.LoadBalancerStatus] = Field(
+    load_balancer: Optional[v1.LoadBalancerStatus] = Field(
         None,
         alias="loadBalancer",
         description="LoadBalancer contains the current status of the load-balancer.",
@@ -137,7 +137,7 @@ class Ingress(pdk8s.model.NamedModel):
         "Ingress",
         description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
-    metadata: Optional[v1.ObjectMeta] = Field(
+    metadata: Optional[v1_1.ObjectMeta] = Field(
         None,
         description="Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
     )
@@ -163,7 +163,7 @@ class IngressList(pdk8s.model.NamedModel):
         "IngressList",
         description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
-    metadata: Optional[v1.ListMeta] = Field(
+    metadata: Optional[v1_1.ListMeta] = Field(
         None,
         description="Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
     )

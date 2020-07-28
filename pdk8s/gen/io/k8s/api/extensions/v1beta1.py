@@ -24,9 +24,9 @@ from ..... import (
     Kind118,
     Kind119,
 )
-from ...apimachinery.pkg.apis.meta import v1
+from ...apimachinery.pkg.apis.meta import v1 as v1_1
 from ...apimachinery.pkg.util import intstr
-from ..core import v1 as v1_1
+from ..core import v1
 
 
 class AllowedCSIDriver(BaseModel):
@@ -108,7 +108,7 @@ class IngressStatus(BaseModel):
         validate_assignment = True
         extra = "forbid"
 
-    load_balancer: Optional[v1_1.LoadBalancerStatus] = Field(
+    load_balancer: Optional[v1.LoadBalancerStatus] = Field(
         None,
         alias="loadBalancer",
         description="LoadBalancer contains the current status of the load-balancer.",
@@ -204,7 +204,7 @@ class SELinuxStrategyOptions(BaseModel):
         ...,
         description="rule is the strategy that will dictate the allowable labels that may be set.",
     )
-    se_linux_options: Optional[v1_1.SELinuxOptions] = Field(
+    se_linux_options: Optional[v1.SELinuxOptions] = Field(
         None,
         alias="seLinuxOptions",
         description="seLinuxOptions required to run as; required for MustRunAs More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/",
@@ -264,7 +264,7 @@ class DaemonSetCondition(BaseModel):
         validate_assignment = True
         extra = "forbid"
 
-    last_transition_time: Optional[v1.Time] = Field(
+    last_transition_time: Optional[v1_1.Time] = Field(
         None,
         alias="lastTransitionTime",
         description="Last time the condition transitioned from one status to another.",
@@ -342,12 +342,12 @@ class DeploymentCondition(BaseModel):
         validate_assignment = True
         extra = "forbid"
 
-    last_transition_time: Optional[v1.Time] = Field(
+    last_transition_time: Optional[v1_1.Time] = Field(
         None,
         alias="lastTransitionTime",
         description="Last time the condition transitioned from one status to another.",
     )
-    last_update_time: Optional[v1.Time] = Field(
+    last_update_time: Optional[v1_1.Time] = Field(
         None,
         alias="lastUpdateTime",
         description="The last time this condition was updated.",
@@ -618,7 +618,7 @@ class ReplicaSetCondition(BaseModel):
         validate_assignment = True
         extra = "forbid"
 
-    last_transition_time: Optional[v1.Time] = Field(
+    last_transition_time: Optional[v1_1.Time] = Field(
         None,
         alias="lastTransitionTime",
         description="The last time the condition transitioned from one status to another.",
@@ -805,12 +805,12 @@ class NetworkPolicyPeer(BaseModel):
         alias="ipBlock",
         description="IPBlock defines policy on a particular IPBlock. If this field is set then neither of the other fields can be.",
     )
-    namespace_selector: Optional[v1.LabelSelector] = Field(
+    namespace_selector: Optional[v1_1.LabelSelector] = Field(
         None,
         alias="namespaceSelector",
         description="Selects Namespaces using cluster-scoped labels. This field follows standard label selector semantics; if present but empty, it selects all namespaces.\n\nIf PodSelector is also set, then the NetworkPolicyPeer as a whole selects the Pods matching PodSelector in the Namespaces selected by NamespaceSelector. Otherwise it selects all Pods in the Namespaces selected by NamespaceSelector.",
     )
-    pod_selector: Optional[v1.LabelSelector] = Field(
+    pod_selector: Optional[v1_1.LabelSelector] = Field(
         None,
         alias="podSelector",
         description="This is a label selector which selects Pods. This field follows standard label selector semantics; if present but empty, it selects all pods.\n\nIf NamespaceSelector is also set, then the NetworkPolicyPeer as a whole selects the Pods matching PodSelector in the Namespaces selected by NamespaceSelector. Otherwise it selects the Pods matching PodSelector in the policy's own Namespace.",
@@ -832,7 +832,7 @@ class PodSecurityPolicy(pdk8s.model.NamedModel):
         "PodSecurityPolicy",
         description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
-    metadata: Optional[v1.ObjectMeta] = Field(
+    metadata: Optional[v1_1.ObjectMeta] = Field(
         None,
         description="Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
     )
@@ -859,7 +859,7 @@ class PodSecurityPolicyList(pdk8s.model.NamedModel):
         "PodSecurityPolicyList",
         description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
-    metadata: Optional[v1.ListMeta] = Field(
+    metadata: Optional[v1_1.ListMeta] = Field(
         None,
         description="Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
     )
@@ -880,7 +880,7 @@ class Scale(pdk8s.model.NamedModel):
         "Scale",
         description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
-    metadata: Optional[v1.ObjectMeta] = Field(
+    metadata: Optional[v1_1.ObjectMeta] = Field(
         None,
         description="Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.",
     )
@@ -905,7 +905,7 @@ class Ingress(pdk8s.model.NamedModel):
         "Ingress",
         description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
-    metadata: Optional[v1.ObjectMeta] = Field(
+    metadata: Optional[v1_1.ObjectMeta] = Field(
         None,
         description="Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
     )
@@ -931,7 +931,7 @@ class IngressList(pdk8s.model.NamedModel):
         "IngressList",
         description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
-    metadata: Optional[v1.ListMeta] = Field(
+    metadata: Optional[v1_1.ListMeta] = Field(
         None,
         description="Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
     )
@@ -984,7 +984,7 @@ class NetworkPolicySpec(BaseModel):
         None,
         description="List of ingress rules to be applied to the selected pods. Traffic is allowed to a pod if there are no NetworkPolicies selecting the pod OR if the traffic source is the pod's local node, OR if the traffic matches at least one ingress rule across all of the NetworkPolicy objects whose podSelector matches the pod. If this field is empty then this NetworkPolicy does not allow any traffic (and serves solely to ensure that the pods it selects are isolated by default).",
     )
-    pod_selector: v1.LabelSelector = Field(
+    pod_selector: v1_1.LabelSelector = Field(
         ...,
         alias="podSelector",
         description="Selects the pods to which this NetworkPolicy object applies.  The array of ingress rules is applied to any pods selected by this field. Multiple network policies can select the same set of pods.  In this case, the ingress rules for each are combined additively. This field is NOT optional and follows standard label selector semantics. An empty podSelector matches all pods in this namespace.",
@@ -1011,7 +1011,7 @@ class NetworkPolicy(pdk8s.model.NamedModel):
         "NetworkPolicy",
         description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
-    metadata: Optional[v1.ObjectMeta] = Field(
+    metadata: Optional[v1_1.ObjectMeta] = Field(
         None,
         description="Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
     )
@@ -1039,7 +1039,7 @@ class NetworkPolicyList(pdk8s.model.NamedModel):
         "NetworkPolicyList",
         description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
-    metadata: Optional[v1.ListMeta] = Field(
+    metadata: Optional[v1_1.ListMeta] = Field(
         None,
         description="Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
     )
@@ -1061,11 +1061,11 @@ class DaemonSetSpec(BaseModel):
         alias="revisionHistoryLimit",
         description="The number of old history to retain to allow rollback. This is a pointer to distinguish between explicit zero and not specified. Defaults to 10.",
     )
-    selector: Optional[v1.LabelSelector] = Field(
+    selector: Optional[v1_1.LabelSelector] = Field(
         None,
         description="A label query over pods that are managed by the daemon set. Must match in order to be controlled. If empty, defaulted to labels on Pod template. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors",
     )
-    template: v1_1.PodTemplateSpec = Field(
+    template: v1.PodTemplateSpec = Field(
         ...,
         description="An object that describes the pod that will be created. The DaemonSet will create exactly one copy of this pod on every node that matches the template's node selector (or on every node if no node selector is specified). More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#pod-template",
     )
@@ -1115,7 +1115,7 @@ class DeploymentSpec(BaseModel):
         alias="rollbackTo",
         description="DEPRECATED. The config this deployment is rolling back to. Will be cleared after rollback is done.",
     )
-    selector: Optional[v1.LabelSelector] = Field(
+    selector: Optional[v1_1.LabelSelector] = Field(
         None,
         description="Label selector for pods. Existing ReplicaSets whose pods are selected by this will be the ones affected by this deployment.",
     )
@@ -1123,7 +1123,7 @@ class DeploymentSpec(BaseModel):
         None,
         description="The deployment strategy to use to replace existing pods with new ones.",
     )
-    template: v1_1.PodTemplateSpec = Field(
+    template: v1.PodTemplateSpec = Field(
         ..., description="Template describes the pods that will be created."
     )
 
@@ -1143,11 +1143,11 @@ class ReplicaSetSpec(BaseModel):
         None,
         description="Replicas is the number of desired replicas. This is a pointer to distinguish between explicit zero and unspecified. Defaults to 1. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller/#what-is-a-replicationcontroller",
     )
-    selector: Optional[v1.LabelSelector] = Field(
+    selector: Optional[v1_1.LabelSelector] = Field(
         None,
         description="Selector is a label query over pods that should match the replica count. If the selector is empty, it is defaulted to the labels present on the pod template. Label keys and values that must match in order to be controlled by this replica set. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors",
     )
-    template: Optional[v1_1.PodTemplateSpec] = Field(
+    template: Optional[v1.PodTemplateSpec] = Field(
         None,
         description="Template is the object that describes the pod that will be created if insufficient replicas are detected. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#pod-template",
     )
@@ -1168,7 +1168,7 @@ class DaemonSet(pdk8s.model.NamedModel):
         "DaemonSet",
         description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
-    metadata: Optional[v1.ObjectMeta] = Field(
+    metadata: Optional[v1_1.ObjectMeta] = Field(
         None,
         description="Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
     )
@@ -1194,7 +1194,7 @@ class DaemonSetList(pdk8s.model.NamedModel):
         "DaemonSetList",
         description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
-    metadata: Optional[v1.ListMeta] = Field(
+    metadata: Optional[v1_1.ListMeta] = Field(
         None,
         description="Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
     )
@@ -1215,7 +1215,7 @@ class Deployment(pdk8s.model.NamedModel):
         "Deployment",
         description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
-    metadata: Optional[v1.ObjectMeta] = Field(
+    metadata: Optional[v1_1.ObjectMeta] = Field(
         None, description="Standard object metadata."
     )
     spec: Optional[DeploymentSpec] = Field(
@@ -1241,7 +1241,9 @@ class DeploymentList(pdk8s.model.NamedModel):
         "DeploymentList",
         description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
-    metadata: Optional[v1.ListMeta] = Field(None, description="Standard list metadata.")
+    metadata: Optional[v1_1.ListMeta] = Field(
+        None, description="Standard list metadata."
+    )
 
 
 class ReplicaSet(pdk8s.model.NamedModel):
@@ -1259,7 +1261,7 @@ class ReplicaSet(pdk8s.model.NamedModel):
         "ReplicaSet",
         description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
-    metadata: Optional[v1.ObjectMeta] = Field(
+    metadata: Optional[v1_1.ObjectMeta] = Field(
         None,
         description="If the Labels of a ReplicaSet are empty, they are defaulted to be the same as the Pod(s) that the ReplicaSet manages. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
     )
@@ -1288,7 +1290,7 @@ class ReplicaSetList(pdk8s.model.NamedModel):
         "ReplicaSetList",
         description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
-    metadata: Optional[v1.ListMeta] = Field(
+    metadata: Optional[v1_1.ListMeta] = Field(
         None,
         description="Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )

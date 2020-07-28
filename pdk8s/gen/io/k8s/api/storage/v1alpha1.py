@@ -10,7 +10,7 @@ import pdk8s.model
 
 from ..... import Kind169, Kind170
 from ...apimachinery.pkg.apis.meta import v1
-from ..core import v1
+from ..core import v1 as v1_1
 
 
 class VolumeError(BaseModel):
@@ -32,7 +32,7 @@ class VolumeAttachmentSource(BaseModel):
         validate_assignment = True
         extra = "forbid"
 
-    inline_volume_spec: Optional[v1.PersistentVolumeSpec] = Field(
+    inline_volume_spec: Optional[v1_1.PersistentVolumeSpec] = Field(
         None,
         alias="inlineVolumeSpec",
         description="inlineVolumeSpec contains all the information necessary to attach a persistent volume defined by a pod's inline VolumeSource. This field is populated only for the CSIMigration feature. It contains translated fields from a pod's inline VolumeSource to a PersistentVolumeSpec. This field is alpha-level and is only honored by servers that enabled the CSIMigration feature.",

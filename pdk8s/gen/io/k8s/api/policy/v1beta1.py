@@ -9,7 +9,7 @@ from pydantic import BaseModel, Field
 import pdk8s.model
 
 from ..... import Kind128, Kind129, Kind130, Kind131, Kind132
-from ...apimachinery.pkg.apis.meta import v1
+from ...apimachinery.pkg.apis.meta import v1 as v1_1
 from ...apimachinery.pkg.util import intstr
 from ..core import v1
 
@@ -166,7 +166,7 @@ class SELinuxStrategyOptions(BaseModel):
         ...,
         description="rule is the strategy that will dictate the allowable labels that may be set.",
     )
-    se_linux_options: Optional[v1_1.SELinuxOptions] = Field(
+    se_linux_options: Optional[v1.SELinuxOptions] = Field(
         None,
         alias="seLinuxOptions",
         description="seLinuxOptions required to run as; required for MustRunAs More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/",
@@ -342,14 +342,14 @@ class Eviction(pdk8s.model.NamedModel):
         alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
-    delete_options: Optional[v1.DeleteOptions] = Field(
+    delete_options: Optional[v1_1.DeleteOptions] = Field(
         None, alias="deleteOptions", description="DeleteOptions may be provided"
     )
     kind: Optional[Kind128] = Field(
         "Eviction",
         description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
-    metadata: Optional[v1.ObjectMeta] = Field(
+    metadata: Optional[v1_1.ObjectMeta] = Field(
         None, description="ObjectMeta describes the pod that is being evicted."
     )
 
@@ -370,7 +370,7 @@ class PodDisruptionBudgetSpec(BaseModel):
         alias="minAvailable",
         description='An eviction is allowed if at least "minAvailable" pods selected by "selector" will still be available after the eviction, i.e. even in the absence of the evicted pod.  So for example you can prevent all voluntary evictions by specifying "100%".',
     )
-    selector: Optional[v1.LabelSelector] = Field(
+    selector: Optional[v1_1.LabelSelector] = Field(
         None,
         description="Label query over pods whose evictions are managed by the disruption budget.",
     )
@@ -391,7 +391,7 @@ class PodSecurityPolicy(pdk8s.model.NamedModel):
         "PodSecurityPolicy",
         description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
-    metadata: Optional[v1.ObjectMeta] = Field(
+    metadata: Optional[v1_1.ObjectMeta] = Field(
         None,
         description="Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
     )
@@ -418,7 +418,7 @@ class PodSecurityPolicyList(pdk8s.model.NamedModel):
         "PodSecurityPolicyList",
         description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
-    metadata: Optional[v1.ListMeta] = Field(
+    metadata: Optional[v1_1.ListMeta] = Field(
         None,
         description="Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
     )
@@ -439,7 +439,7 @@ class PodDisruptionBudget(pdk8s.model.NamedModel):
         "PodDisruptionBudget",
         description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
-    metadata: Optional[v1.ObjectMeta] = None
+    metadata: Optional[v1_1.ObjectMeta] = None
     spec: Optional[PodDisruptionBudgetSpec] = Field(
         None,
         description="Specification of the desired behavior of the PodDisruptionBudget.",
@@ -462,4 +462,4 @@ class PodDisruptionBudgetList(pdk8s.model.NamedModel):
         "PodDisruptionBudgetList",
         description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
-    metadata: Optional[v1.ListMeta] = None
+    metadata: Optional[v1_1.ListMeta] = None

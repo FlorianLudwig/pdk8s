@@ -11,7 +11,7 @@ import pdk8s.model
 from ..... import Kind61, Kind62
 from ...apimachinery.pkg.apis.meta import v1 as v1_1
 from ..core import v1
-from . import v1 as v1_1
+from . import v1 as v1_2
 
 
 class CronJobStatus(BaseModel):
@@ -36,11 +36,11 @@ class JobTemplateSpec(pdk8s.model.NamedModel):
         validate_assignment = True
         extra = "allow"
 
-    metadata: Optional[v1.ObjectMeta] = Field(
+    metadata: Optional[v1_1.ObjectMeta] = Field(
         None,
         description="Standard object's metadata of the jobs created from this template. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
     )
-    spec: Optional[v1_1.JobSpec] = Field(
+    spec: Optional[v1_2.JobSpec] = Field(
         None,
         description="Specification of the desired behavior of the job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
     )
@@ -102,7 +102,7 @@ class CronJob(pdk8s.model.NamedModel):
         "CronJob",
         description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
-    metadata: Optional[v1.ObjectMeta] = Field(
+    metadata: Optional[v1_1.ObjectMeta] = Field(
         None,
         description="Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
     )
@@ -128,7 +128,7 @@ class CronJobList(pdk8s.model.NamedModel):
         "CronJobList",
         description="Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
     )
-    metadata: Optional[v1.ListMeta] = Field(
+    metadata: Optional[v1_1.ListMeta] = Field(
         None,
         description="Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
     )
