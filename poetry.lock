@@ -692,6 +692,14 @@ version = "1.12.1"
 
 [[package]]
 category = "main"
+description = "Variables defined by the XDG Base Directory Specification"
+name = "xdg"
+optional = false
+python-versions = ">=3.6,<4.0"
+version = "4.0.1"
+
+[[package]]
+category = "main"
 description = "Backport of pathlib-compatible object wrapper for zip files"
 marker = "python_version < \"3.8\""
 name = "zipp"
@@ -704,7 +712,7 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "c044c4204a68c5b4a4a7090903d3ebc04b0710d0b950907f52e102a626c764d6"
+content-hash = "40b0a61248b52db5d225eb75aafdb5e05fd880c07353b05812ed23de6ba4b464"
 python-versions = "^3.7"
 
 [metadata.files]
@@ -1089,6 +1097,10 @@ wcwidth = [
 ]
 wrapt = [
     {file = "wrapt-1.12.1.tar.gz", hash = "sha256:b62ffa81fb85f4332a4f609cab4ac40709470da05643a082ec1eb88e6d9b97d7"},
+]
+xdg = [
+    {file = "xdg-4.0.1-py3-none-any.whl", hash = "sha256:bf9032b027e3061d38c362a21b14dcf057a5b5a4906956f8e8278cefdf73f38b"},
+    {file = "xdg-4.0.1.tar.gz", hash = "sha256:c939c99def394cbaf765a3ee55efd6ea7e4c5eaed8d9ebc2d03af84ba35dec57"},
 ]
 zipp = [
     {file = "zipp-3.1.0-py3-none-any.whl", hash = "sha256:aa36550ff0c0b7ef7fa639055d797116ee891440eac1a56f378e2d3179e0320b"},
