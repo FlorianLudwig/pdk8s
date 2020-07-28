@@ -21,7 +21,7 @@ Know cdk8s? [See our overview of the differences between `pdk8s` and `cdk8s`.](d
 
 ### Installation via PyPi
 
-pdk8s is available on PyPi, you can install it with your preferred python package manage, `pip`, `pipenv`, etc:
+`pdk8s` is available on PyPi, you can install it with your preferred python package manage, `pip`, `pipenv`, `poetry`, etc:
 
 ```
 pip install pdk8s
