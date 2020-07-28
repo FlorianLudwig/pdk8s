@@ -2,6 +2,7 @@
 import os
 import sys
 import collections.abc
+import pathlib
 
 import yaml
 import click
@@ -11,7 +12,7 @@ from . import k8s
 
 
 option_input = click.option("-i", "--input", "input_path", default="chart.py", type=click.Path(exists=True, dir_okay=False), help="Python file that generates your chart")
-option_output = click.option("-o", "--output", "output_path", default="dist", type=click.Path(file_okay=False), help="Folder in which to store generated chart")
+option_output = click.option("-o", "--output", "output_path", type=click.Path(file_okay=False), help="Folder in which to store generated chart")
 option_format = click.option("--format", "output_format", default="helm", type=click.Choice(['helm', 'kubernetes'], case_sensitive=False), help="Format of output")
 
 
@@ -32,11 +33,14 @@ def add_subcommands(main, with_input):
     @option_output
     @option_format
     @click.pass_context
-    def synth(ctx, output_path, output_format, input_path=None):
+    def synth(ctx, output_path, input_path=None, output_format=None):
         if input_path:
             chart_variables = load_chart_from_file(input_path)
         else:
             chart_variables = ctx.obj
+
+        if output_path is None:
+            output_path = pathlib.Path(input_path).parent / pathlib.Path("dist")
 
         return pdk8s.synth.synth(chart_variables, output_format, output_path)
 

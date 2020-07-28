@@ -89,6 +89,9 @@ Per default `pdk8s synth` loads the `chart.py` in the current directory.  You ca
 $ ./chart.py synth
 ```
 
+`pdk8s` also can generate the helm chart to a different directoy using `-o`.
+Per default it generated a folder called `dist` in the same folder as your input `chart.py`.
+
 ## Creating Ressources
 
 Creating a service:
