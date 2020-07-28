@@ -3,6 +3,7 @@ import datetime
 import os
 import json
 import re
+import urllib.request
 from typing import (
     IO,
     Any,
@@ -15,7 +16,7 @@ from typing import (
     TypeVar,
 )
 
-
+import xdg
 import datamodel_code_generator
 import datamodel_code_generator.format
 import datamodel_code_generator.imports
@@ -295,22 +296,36 @@ def update_schema(schema: dict):
                 #   ]
 
 
-def download():
-    tag = "v1.16.4"
-    url = f"https://raw.githubusercontent.com/kubernetes/kubernetes/{tag}/api/openapi-spec/swagger.json"
+def download_kubernets_jsonschema(version, dst):
+    url = f"https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/v{version}/_definitions.json"
+    urllib.request.urlretrieve(url, dst)
 
 
-def main():
-    input_name = "k8s_1.16.4.json"
+def _cache_folder():
+    path = xdg.XDG_CACHE_HOME / pathlib.Path("pdk8s")
+    if not path.exists():
+        os.makedirs(path)
+    return path
+
+
+def generate_kubernets(version):
+    cache_folder = _cache_folder()
+    cache_path = cache_folder / pathlib.Path(f"k8s_{version}.json")
+    
+    if not cache_path.exists():
+        download_kubernets_jsonschema(version, cache_path)
+    
+    output = pathlib.Path(__file__).parent / pathlib.Path("gen")
+    generate(cache_path, output)
+
+
+def generate(input_name, output):
     schema = json.load(open(input_name))
-
     update_schema(schema)
 
-    output = pathlib.Path(__file__).parent / pathlib.Path("gen")
     generate_models(output, json.dumps(schema))
     add_init_py(output)
-    # run_mypy()
 
 
 if __name__ == "__main__":
-    main()
+    generate_kubernets("1.16.4")
