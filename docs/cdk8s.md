@@ -25,23 +25,23 @@ k8s.ServicePort(port=80, target_port=8080)
 
 ```
 
-Actually there is a little more to it. Everything that can be an `int`, will be treatet like an `int` by `pdk8s`.  So `target_port="8080"` would also specify port number `8080` instead of a port named `"8080"`.
+Actually there is a little more to it. Everything that can be an `int`, will be treated like an `int` by `pdk8s`.  So `target_port="8080"` would also specify port number `8080` instead of a port named `"8080"`.
 
 
 
 ### Compatibility to cdk8s
 
-There are a few differences that make code between the `cdk8s` and `pdk8s` incompatible. A good overview can be archived by comparing the following to examples:
+There are a few differences that make code between the `cdk8s` and `pdk8s` projects incompatible. A good overview can be achieved by comparing the following two examples:
 
 * [cdk8s example](https://github.com/awslabs/cdk8s/blob/master/docs/getting-started/python.md#importing-constructs-for-the-kubernetes-api)
 
 * [pdk8s example](https://github.com/FlorianLudwig/pdk8s/blob/master/example/hello_world.py)
 
-I worked on a compatible API at the binging of the project but that was abandoned since the design of `pdk8s` started to head into a different direction than `cdk8s`.
+I worked on a compatible API at the beginning of the project but that was abandoned since the design of `pdk8s` started to head into a different direction than `cdk8s`.
 
-### Language support & Magic
+### Language Support & Magic
 
-`cdk8s` is written in TypeScript and with the power of jsii usable from other languages, as python. `pdk8s` is written in pure python with no bridge to other languages. This means you are limited to python and cannot reuse charts written in other languages. This brings a certain focus to `pdk8s` and fewer compromises. Also, abstinence of using any magic (import hooks, code bridges, ...) helps our focus on providing an awesome experience writing charts in python: Readable tracebacks, happy IDE and linters, ...
+`cdk8s` is written in TypeScript and with the power of jsii usable from other languages, as python. `pdk8s` is written in pure python with no bridge to other languages. This means you are limited to python and cannot reuse charts written in other languages. This brings a certain focus to `pdk8s` and fewer compromises. Also, not using any magic (import hooks, code bridges, ...) helps us focus on providing an awesome experience writing charts in python: readable tracebacks, happy IDE and linters, ...
 
 ### Design: Context / Constructs
 
