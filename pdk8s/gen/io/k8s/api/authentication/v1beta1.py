@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional
+from typing import Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
 import pdk8s.model
 
-from ..... import Kind41
+from ..... import Extra, Kind41
 from ...apimachinery.pkg.apis.meta import v1
 
 
@@ -31,7 +31,7 @@ class UserInfo(BaseModel):
         validate_assignment = True
         extra = "forbid"
 
-    extra: Optional[Dict[str, Any]] = Field(
+    extra: Optional[Dict[str, Extra]] = Field(
         None, description="Any additional information provided by the authenticator."
     )
     groups: Optional[List[str]] = Field(

@@ -2,13 +2,20 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional, Union
+from typing import Dict, List, Optional, Union
 
 from pydantic import BaseModel, Field
 
 import pdk8s.model
 
 from ..... import (
+    Allocatable,
+    BinaryData,
+    Capacity,
+    Data,
+    Default,
+    DefaultRequest,
+    Hard,
     Kind69,
     Kind70,
     Kind71,
@@ -42,6 +49,18 @@ from ..... import (
     Kind99,
     Kind100,
     Kind101,
+    Limits,
+    Max,
+    MaxLimitRequestRatio,
+    Min,
+    NodeSelector,
+    Options,
+    Overhead,
+    Requests,
+    Selector,
+    StringData,
+    Used,
+    VolumeAttributes,
 )
 from ...apimachinery.pkg.api import resource
 from ...apimachinery.pkg.apis.meta import v1
@@ -579,24 +598,24 @@ class LimitRangeItem(BaseModel):
         validate_assignment = True
         extra = "forbid"
 
-    default: Optional[Dict[str, Any]] = Field(
+    default: Optional[Dict[str, Default]] = Field(
         None,
         description="Default resource requirement limit value by resource name if resource limit is omitted.",
     )
-    default_request: Optional[Dict[str, Any]] = Field(
+    default_request: Optional[Dict[str, DefaultRequest]] = Field(
         None,
         alias="defaultRequest",
         description="DefaultRequest is the default resource requirement request value by resource name if resource request is omitted.",
     )
-    max: Optional[Dict[str, Any]] = Field(
+    max: Optional[Dict[str, Max]] = Field(
         None, description="Max usage constraints on this kind by resource name."
     )
-    max_limit_request_ratio: Optional[Dict[str, Any]] = Field(
+    max_limit_request_ratio: Optional[Dict[str, MaxLimitRequestRatio]] = Field(
         None,
         alias="maxLimitRequestRatio",
         description="MaxLimitRequestRatio if specified, the named resource must have a request and limit that are both non-zero where limit divided by request is less than or equal to the enumerated value; this represents the max burst for the named resource.",
     )
-    min: Optional[Dict[str, Any]] = Field(
+    min: Optional[Dict[str, Min]] = Field(
         None, description="Min usage constraints on this kind by resource name."
     )
     type: Optional[str] = Field(
@@ -1118,11 +1137,11 @@ class ResourceQuotaStatus(BaseModel):
         validate_assignment = True
         extra = "forbid"
 
-    hard: Optional[Dict[str, Any]] = Field(
+    hard: Optional[Dict[str, Hard]] = Field(
         None,
         description="Hard is the set of enforced hard limits for each named resource. More info: https://kubernetes.io/docs/concepts/policy/resource-quotas/",
     )
-    used: Optional[Dict[str, Any]] = Field(
+    used: Optional[Dict[str, Used]] = Field(
         None,
         description="Used is the current observed total usage of the resource in the namespace.",
     )
@@ -1134,11 +1153,11 @@ class ResourceRequirements(BaseModel):
         validate_assignment = True
         extra = "forbid"
 
-    limits: Optional[Dict[str, Any]] = Field(
+    limits: Optional[Dict[str, Limits]] = Field(
         None,
         description="Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/",
     )
-    requests: Optional[Dict[str, Any]] = Field(
+    requests: Optional[Dict[str, Requests]] = Field(
         None,
         description="Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/",
     )
@@ -1666,7 +1685,7 @@ class CSIPersistentVolumeSource(BaseModel):
         alias="readOnly",
         description="Optional: The value to pass to ControllerPublishVolumeRequest. Defaults to false (read/write).",
     )
-    volume_attributes: Optional[Dict[str, Any]] = Field(
+    volume_attributes: Optional[Dict[str, VolumeAttributes]] = Field(
         None,
         alias="volumeAttributes",
         description="Attributes of the volume to publish.",
@@ -1703,7 +1722,7 @@ class CSIVolumeSource(BaseModel):
         alias="readOnly",
         description="Specifies a read-only configuration for the volume. Defaults to false (read/write).",
     )
-    volume_attributes: Optional[Dict[str, Any]] = Field(
+    volume_attributes: Optional[Dict[str, VolumeAttributes]] = Field(
         None,
         alias="volumeAttributes",
         description="VolumeAttributes stores driver-specific properties that are passed to the CSI driver. Consult your driver's documentation for supported values.",
@@ -2042,7 +2061,7 @@ class FlexPersistentVolumeSource(BaseModel):
         alias="fsType",
         description='Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". The default filesystem depends on FlexVolume script.',
     )
-    options: Optional[Dict[str, Any]] = Field(
+    options: Optional[Dict[str, Options]] = Field(
         None, description="Optional: Extra command options if any."
     )
     read_only: Optional[bool] = Field(
@@ -2071,7 +2090,7 @@ class FlexVolumeSource(BaseModel):
         alias="fsType",
         description='Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. "ext4", "xfs", "ntfs". The default filesystem depends on FlexVolume script.',
     )
-    options: Optional[Dict[str, Any]] = Field(
+    options: Optional[Dict[str, Options]] = Field(
         None, description="Optional: Extra command options if any."
     )
     read_only: Optional[bool] = Field(
@@ -2296,11 +2315,11 @@ class NodeStatus(BaseModel):
         None,
         description="List of addresses reachable to the node. Queried from cloud provider, if available. More info: https://kubernetes.io/docs/concepts/nodes/node/#addresses Note: This field is declared as mergeable, but the merge key is not sufficiently unique, which can cause data corruption when it is merged. Callers should instead use a full-replacement patch. See http://pr.k8s.io/79391 for an example.",
     )
-    allocatable: Optional[Dict[str, Any]] = Field(
+    allocatable: Optional[Dict[str, Allocatable]] = Field(
         None,
         description="Allocatable represents the resources of a node that are available for scheduling. Defaults to Capacity.",
     )
-    capacity: Optional[Dict[str, Any]] = Field(
+    capacity: Optional[Dict[str, Capacity]] = Field(
         None,
         description="Capacity represents the total resources of a node. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#capacity",
     )
@@ -2377,7 +2396,7 @@ class PersistentVolumeClaimStatus(BaseModel):
         alias="accessModes",
         description="AccessModes contains the actual access modes the volume backing the PVC has. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1",
     )
-    capacity: Optional[Dict[str, Any]] = Field(
+    capacity: Optional[Dict[str, Capacity]] = Field(
         None, description="Represents the actual resources of the underlying volume."
     )
     conditions: Optional[List[PersistentVolumeClaimCondition]] = Field(
@@ -2807,7 +2826,7 @@ class ServiceSpec(BaseModel):
         alias="publishNotReadyAddresses",
         description="publishNotReadyAddresses, when set to true, indicates that DNS implementations must publish the notReadyAddresses of subsets for the Endpoints associated with the Service. The default value is false. The primary use case for setting this field is to use a StatefulSet's Headless Service to propagate SRV records for its Pods without respect to their readiness for purpose of peer discovery.",
     )
-    selector: Optional[Dict[str, Any]] = Field(
+    selector: Optional[Dict[str, Selector]] = Field(
         None,
         description="Route service traffic to pods with label keys and values matching this selector. If empty or not present, the service is assumed to have an external process managing its endpoints, which Kubernetes will not modify. Only applies to types ClusterIP, NodePort, and LoadBalancer. Ignored if type is ExternalName. More info: https://kubernetes.io/docs/concepts/services-networking/service/",
     )
@@ -2960,12 +2979,12 @@ class ConfigMap(pdk8s.model.NamedModel):
         alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
-    binary_data: Optional[Dict[str, Any]] = Field(
+    binary_data: Optional[Dict[str, BinaryData]] = Field(
         None,
         alias="binaryData",
         description="BinaryData contains the binary data. Each key must consist of alphanumeric characters, '-', '_' or '.'. BinaryData can contain byte sequences that are not in the UTF-8 range. The keys stored in BinaryData must not overlap with the ones in the Data field, this is enforced during validation process. Using this field will require 1.10+ apiserver and kubelet.",
     )
-    data: Optional[Dict[str, Any]] = Field(
+    data: Optional[Dict[str, Data]] = Field(
         None,
         description="Data contains the configuration data. Each key must consist of alphanumeric characters, '-', '_' or '.'. Values with non-UTF-8 byte sequences must use the BinaryData field. The keys stored in Data must not overlap with the keys in the BinaryData field, this is enforced during validation process.",
     )
@@ -3543,7 +3562,7 @@ class PersistentVolumeSpec(BaseModel):
         alias="azureFile",
         description="AzureFile represents an Azure File Service mount on the host and bind mount to the pod.",
     )
-    capacity: Optional[Dict[str, Any]] = Field(
+    capacity: Optional[Dict[str, Capacity]] = Field(
         None,
         description="A description of the persistent volume's resources and capacity. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#capacity",
     )
@@ -3806,7 +3825,7 @@ class ResourceQuotaSpec(BaseModel):
         validate_assignment = True
         extra = "forbid"
 
-    hard: Optional[Dict[str, Any]] = Field(
+    hard: Optional[Dict[str, Hard]] = Field(
         None,
         description="hard is the set of desired hard limits for each named resource. More info: https://kubernetes.io/docs/concepts/policy/resource-quotas/",
     )
@@ -3832,7 +3851,7 @@ class Secret(pdk8s.model.NamedModel):
         alias="apiVersion",
         description="APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
     )
-    data: Optional[Dict[str, Any]] = Field(
+    data: Optional[Dict[str, Data]] = Field(
         None,
         description="Data contains the secret data. Each key must consist of alphanumeric characters, '-', '_' or '.'. The serialized form of the secret data is a base64 encoded string, representing the arbitrary (possibly non-string) data value here. Described in https://tools.ietf.org/html/rfc4648#section-4",
     )
@@ -3844,7 +3863,7 @@ class Secret(pdk8s.model.NamedModel):
         None,
         description="Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
     )
-    string_data: Optional[Dict[str, Any]] = Field(
+    string_data: Optional[Dict[str, StringData]] = Field(
         None,
         alias="stringData",
         description="stringData allows specifying non-binary secret data in string form. It is provided as a write-only convenience method. All keys and values are merged into the data field on write, overwriting any existing values. It is never output when reading from the API.",
@@ -4808,12 +4827,12 @@ class PodSpec(BaseModel):
         alias="nodeName",
         description="NodeName is a request to schedule this pod onto a specific node. If it is non-empty, the scheduler simply schedules this pod onto that node, assuming that it fits resource requirements.",
     )
-    node_selector: Optional[Dict[str, Any]] = Field(
+    node_selector: Optional[Dict[str, NodeSelector]] = Field(
         None,
         alias="nodeSelector",
         description="NodeSelector is a selector which must be true for the pod to fit on a node. Selector which must match a node's labels for the pod to be scheduled on that node. More info: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/",
     )
-    overhead: Optional[Dict[str, Any]] = Field(
+    overhead: Optional[Dict[str, Overhead]] = Field(
         None,
         description="Overhead represents the resource overhead associated with running a pod for a given RuntimeClass. This field will be autopopulated at admission time by the RuntimeClass admission controller. If the RuntimeClass admission controller is enabled, overhead must not be set in Pod create requests. The RuntimeClass admission controller will reject Pod create requests which have the overhead already set. If RuntimeClass is configured and selected in the PodSpec, Overhead will be set to the value defined in the corresponding RuntimeClass, otherwise it will remain unset and treated as zero. More info: https://git.k8s.io/enhancements/keps/sig-node/20190226-pod-overhead.md This field is alpha-level as of Kubernetes v1.16, and is only honored by servers that enable the PodOverhead feature.",
     )
@@ -4925,7 +4944,7 @@ class ReplicationControllerSpec(BaseModel):
         None,
         description="Replicas is the number of desired replicas. This is a pointer to distinguish between explicit zero and unspecified. Defaults to 1. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#what-is-a-replicationcontroller",
     )
-    selector: Optional[Dict[str, Any]] = Field(
+    selector: Optional[Dict[str, Selector]] = Field(
         None,
         description="Selector is a label query over pods that should match the Replicas count. If Selector is empty, it is defaulted to the labels present on the Pod template. Label keys and values that must match in order to be controlled by this replication controller, if empty defaulted to labels on Pod template. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors",
     )

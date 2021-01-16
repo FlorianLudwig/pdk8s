@@ -3,13 +3,23 @@
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any, Dict, List, Optional
+from typing import Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
 import pdk8s.model
 
-from ....... import Kind183, Kind184, Kind185, Kind186, Kind187, Kind188
+from ....... import (
+    Annotations,
+    Kind183,
+    Kind184,
+    Kind185,
+    Kind186,
+    Kind187,
+    Kind188,
+    Labels,
+    MatchLabels,
+)
 from ... import runtime
 
 
@@ -418,7 +428,7 @@ class LabelSelector(BaseModel):
         alias="matchExpressions",
         description="matchExpressions is a list of label selector requirements. The requirements are ANDed.",
     )
-    match_labels: Optional[Dict[str, Any]] = Field(
+    match_labels: Optional[Dict[str, MatchLabels]] = Field(
         None,
         alias="matchLabels",
         description='matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed.',
@@ -466,7 +476,7 @@ class ObjectMeta(BaseModel):
         validate_assignment = True
         extra = "forbid"
 
-    annotations: Optional[Dict[str, Any]] = Field(
+    annotations: Optional[Dict[str, Annotations]] = Field(
         None,
         description="Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations",
     )
@@ -503,7 +513,7 @@ class ObjectMeta(BaseModel):
         None,
         description="A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.",
     )
-    labels: Optional[Dict[str, Any]] = Field(
+    labels: Optional[Dict[str, Labels]] = Field(
         None,
         description="Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels",
     )

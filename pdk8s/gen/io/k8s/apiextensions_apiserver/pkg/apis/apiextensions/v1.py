@@ -8,7 +8,14 @@ from pydantic import BaseModel, Field
 
 import pdk8s.model
 
-from ....... import Kind179, Kind180
+from ....... import (
+    Definitions,
+    Dependencies,
+    Kind179,
+    Kind180,
+    PatternProperties,
+    Properties,
+)
 from .....apimachinery.pkg.apis.meta import v1
 
 
@@ -287,8 +294,8 @@ class JSONSchemaProps(BaseModel):
         None,
         description="default is a default value for undefined object fields. Defaulting is a beta feature under the CustomResourceDefaulting feature gate. Defaulting requires spec.preserveUnknownFields to be false.",
     )
-    definitions: Optional[Dict[str, Any]] = None
-    dependencies: Optional[Dict[str, Any]] = None
+    definitions: Optional[Dict[str, Definitions]] = None
+    dependencies: Optional[Dict[str, Dependencies]] = None
     description: Optional[str] = None
     enum: Optional[List[JSON]] = None
     example: Optional[JSON] = None
@@ -311,10 +318,10 @@ class JSONSchemaProps(BaseModel):
     nullable: Optional[bool] = None
     one_of: Optional[List[JSONSchemaProps]] = Field(None, alias="oneOf")
     pattern: Optional[str] = None
-    pattern_properties: Optional[Dict[str, Any]] = Field(
+    pattern_properties: Optional[Dict[str, PatternProperties]] = Field(
         None, alias="patternProperties"
     )
-    properties: Optional[Dict[str, Any]] = None
+    properties: Optional[Dict[str, Properties]] = None
     required: Optional[List[str]] = None
     title: Optional[str] = None
     type: Optional[str] = None

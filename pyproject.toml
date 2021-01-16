@@ -8,12 +8,12 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.7"
-pydantic = "1.5.1"
+pydantic = "^1.7.3"
 pyyaml = "5.3.1"
 click = "7.1.2"
 cookiecutter = "1.7.2"
 setuptools = "47.1.1"
-datamodel-code-generator = "0.5.20"
+datamodel-code-generator = "^0.5.20"
 xdg = "^4.0.1"
 
 [tool.poetry.dev-dependencies]

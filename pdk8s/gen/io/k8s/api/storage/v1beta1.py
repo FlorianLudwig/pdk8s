@@ -2,13 +2,24 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional
+from typing import Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
 import pdk8s.model
 
-from ..... import Kind171, Kind172, Kind173, Kind174, Kind175, Kind176, Kind177, Kind178
+from ..... import (
+    AttachmentMetadata,
+    Kind171,
+    Kind172,
+    Kind173,
+    Kind174,
+    Kind175,
+    Kind176,
+    Kind177,
+    Kind178,
+    Parameters,
+)
 from ...apimachinery.pkg.apis.meta import v1
 from ..core import v1 as v1_1
 
@@ -220,7 +231,7 @@ class StorageClass(pdk8s.model.NamedModel):
         alias="mountOptions",
         description='Dynamically provisioned PersistentVolumes of this storage class are created with these mountOptions, e.g. ["ro", "soft"]. Not validated - mount of the PVs will simply fail if one is invalid.',
     )
-    parameters: Optional[Dict[str, Any]] = Field(
+    parameters: Optional[Dict[str, Parameters]] = Field(
         None,
         description="Parameters holds the parameters for the provisioner that should create volumes of this storage class.",
     )
@@ -316,7 +327,7 @@ class VolumeAttachmentStatus(BaseModel):
         ...,
         description="Indicates the volume is successfully attached. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.",
     )
-    attachment_metadata: Optional[Dict[str, Any]] = Field(
+    attachment_metadata: Optional[Dict[str, AttachmentMetadata]] = Field(
         None,
         alias="attachmentMetadata",
         description="Upon successful attach, this field is populated with any information returned by the attach operation that must be passed into subsequent WaitForAttach or Mount calls. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.",

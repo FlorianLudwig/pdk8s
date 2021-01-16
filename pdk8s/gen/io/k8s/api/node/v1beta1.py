@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional
+from typing import Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
 import pdk8s.model
 
-from ..... import Kind126, Kind127
+from ..... import Kind126, Kind127, NodeSelector, PodFixed
 from ...apimachinery.pkg.apis.meta import v1 as v1_1
 from ..core import v1
 
@@ -19,7 +19,7 @@ class Overhead(BaseModel):
         validate_assignment = True
         extra = "forbid"
 
-    pod_fixed: Optional[Dict[str, Any]] = Field(
+    pod_fixed: Optional[Dict[str, PodFixed]] = Field(
         None,
         alias="podFixed",
         description="PodFixed represents the fixed resource overhead associated with running a pod.",
@@ -32,7 +32,7 @@ class Scheduling(BaseModel):
         validate_assignment = True
         extra = "forbid"
 
-    node_selector: Optional[Dict[str, Any]] = Field(
+    node_selector: Optional[Dict[str, NodeSelector]] = Field(
         None,
         alias="nodeSelector",
         description="nodeSelector lists labels that must be present on nodes that support this RuntimeClass. Pods using this RuntimeClass can only be scheduled to a node matched by this selector. The RuntimeClass nodeSelector is merged with a pod's existing nodeSelector. Any conflicts will cause the pod to be rejected in admission.",

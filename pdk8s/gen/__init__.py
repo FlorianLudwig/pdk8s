@@ -3,9 +3,9 @@
 from __future__ import annotations
 
 from enum import Enum
-from typing import Any
+from typing import Any, List
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Extra
 
 
 class Model(BaseModel):
@@ -104,8 +104,26 @@ class Kind22(Enum):
     deployment_rollback = "DeploymentRollback"
 
 
+class UpdatedAnnotations(BaseModel):
+    pass
+
+    class Config:
+        allow_population_by_field_name = True
+        validate_assignment = True
+        extra = "forbid"
+
+
 class Kind23(Enum):
     scale = "Scale"
+
+
+class Selector(BaseModel):
+    pass
+
+    class Config:
+        allow_population_by_field_name = True
+        validate_assignment = True
+        extra = "forbid"
 
 
 class Kind24(Enum):
@@ -174,6 +192,10 @@ class Kind39(Enum):
 
 class Kind40(Enum):
     token_review = "TokenReview"
+
+
+class Extra(BaseModel):
+    __root__: List[str]
 
 
 class Kind41(Enum):
@@ -292,12 +314,39 @@ class Kind69(Enum):
     binding = "Binding"
 
 
+class VolumeAttributes(BaseModel):
+    pass
+
+    class Config:
+        allow_population_by_field_name = True
+        validate_assignment = True
+        extra = "forbid"
+
+
 class Kind70(Enum):
     component_status = "ComponentStatus"
 
 
 class Kind71(Enum):
     component_status_list = "ComponentStatusList"
+
+
+class BinaryData(BaseModel):
+    pass
+
+    class Config:
+        allow_population_by_field_name = True
+        validate_assignment = True
+        extra = "forbid"
+
+
+class Data(BaseModel):
+    pass
+
+    class Config:
+        allow_population_by_field_name = True
+        validate_assignment = True
+        extra = "forbid"
 
 
 class Kind72(Enum):
@@ -324,8 +373,62 @@ class Kind77(Enum):
     event_list = "EventList"
 
 
+class Options(BaseModel):
+    pass
+
+    class Config:
+        allow_population_by_field_name = True
+        validate_assignment = True
+        extra = "forbid"
+
+
 class Kind78(Enum):
     limit_range = "LimitRange"
+
+
+class Default(BaseModel):
+    pass
+
+    class Config:
+        allow_population_by_field_name = True
+        validate_assignment = True
+        extra = "forbid"
+
+
+class DefaultRequest(BaseModel):
+    pass
+
+    class Config:
+        allow_population_by_field_name = True
+        validate_assignment = True
+        extra = "forbid"
+
+
+class Max(BaseModel):
+    pass
+
+    class Config:
+        allow_population_by_field_name = True
+        validate_assignment = True
+        extra = "forbid"
+
+
+class MaxLimitRequestRatio(BaseModel):
+    pass
+
+    class Config:
+        allow_population_by_field_name = True
+        validate_assignment = True
+        extra = "forbid"
+
+
+class Min(BaseModel):
+    pass
+
+    class Config:
+        allow_population_by_field_name = True
+        validate_assignment = True
+        extra = "forbid"
 
 
 class Kind79(Enum):
@@ -346,6 +449,24 @@ class Kind82(Enum):
 
 class Kind83(Enum):
     node_list = "NodeList"
+
+
+class Allocatable(BaseModel):
+    pass
+
+    class Config:
+        allow_population_by_field_name = True
+        validate_assignment = True
+        extra = "forbid"
+
+
+class Capacity(BaseModel):
+    pass
+
+    class Config:
+        allow_population_by_field_name = True
+        validate_assignment = True
+        extra = "forbid"
 
 
 class Kind84(Enum):
@@ -372,6 +493,24 @@ class Kind89(Enum):
     pod_list = "PodList"
 
 
+class NodeSelector(BaseModel):
+    pass
+
+    class Config:
+        allow_population_by_field_name = True
+        validate_assignment = True
+        extra = "forbid"
+
+
+class Overhead(BaseModel):
+    pass
+
+    class Config:
+        allow_population_by_field_name = True
+        validate_assignment = True
+        extra = "forbid"
+
+
 class Kind90(Enum):
     pod_template = "PodTemplate"
 
@@ -396,8 +535,53 @@ class Kind95(Enum):
     resource_quota_list = "ResourceQuotaList"
 
 
+class Hard(BaseModel):
+    pass
+
+    class Config:
+        allow_population_by_field_name = True
+        validate_assignment = True
+        extra = "forbid"
+
+
+class Used(BaseModel):
+    pass
+
+    class Config:
+        allow_population_by_field_name = True
+        validate_assignment = True
+        extra = "forbid"
+
+
+class Limits(BaseModel):
+    pass
+
+    class Config:
+        allow_population_by_field_name = True
+        validate_assignment = True
+        extra = "forbid"
+
+
+class Requests(BaseModel):
+    pass
+
+    class Config:
+        allow_population_by_field_name = True
+        validate_assignment = True
+        extra = "forbid"
+
+
 class Kind96(Enum):
     secret = "Secret"
+
+
+class StringData(BaseModel):
+    pass
+
+    class Config:
+        allow_population_by_field_name = True
+        validate_assignment = True
+        extra = "forbid"
 
 
 class Kind97(Enum):
@@ -418,6 +602,15 @@ class Kind100(Enum):
 
 class Kind101(Enum):
     service_list = "ServiceList"
+
+
+class Topology(BaseModel):
+    pass
+
+    class Config:
+        allow_population_by_field_name = True
+        validate_assignment = True
+        extra = "forbid"
 
 
 class Kind102(Enum):
@@ -508,6 +701,15 @@ class Kind123(Enum):
     ingress_list = "IngressList"
 
 
+class PodFixed(BaseModel):
+    pass
+
+    class Config:
+        allow_population_by_field_name = True
+        validate_assignment = True
+        extra = "forbid"
+
+
 class Kind124(Enum):
     runtime_class = "RuntimeClass"
 
@@ -534,6 +736,15 @@ class Kind129(Enum):
 
 class Kind130(Enum):
     pod_disruption_budget_list = "PodDisruptionBudgetList"
+
+
+class DisruptedPods(BaseModel):
+    pass
+
+    class Config:
+        allow_population_by_field_name = True
+        validate_assignment = True
+        extra = "forbid"
 
 
 class Kind131(Enum):
@@ -676,6 +887,15 @@ class Kind165(Enum):
     storage_class = "StorageClass"
 
 
+class Parameters(BaseModel):
+    pass
+
+    class Config:
+        allow_population_by_field_name = True
+        validate_assignment = True
+        extra = "forbid"
+
+
 class Kind166(Enum):
     storage_class_list = "StorageClassList"
 
@@ -686,6 +906,15 @@ class Kind167(Enum):
 
 class Kind168(Enum):
     volume_attachment_list = "VolumeAttachmentList"
+
+
+class AttachmentMetadata(BaseModel):
+    pass
+
+    class Config:
+        allow_population_by_field_name = True
+        validate_assignment = True
+        extra = "forbid"
 
 
 class Kind169(Enum):
@@ -736,6 +965,42 @@ class Kind180(Enum):
     custom_resource_definition_list = "CustomResourceDefinitionList"
 
 
+class Definitions(BaseModel):
+    pass
+
+    class Config:
+        allow_population_by_field_name = True
+        validate_assignment = True
+        extra = "forbid"
+
+
+class Dependencies(BaseModel):
+    pass
+
+    class Config:
+        allow_population_by_field_name = True
+        validate_assignment = True
+        extra = "forbid"
+
+
+class PatternProperties(BaseModel):
+    pass
+
+    class Config:
+        allow_population_by_field_name = True
+        validate_assignment = True
+        extra = "forbid"
+
+
+class Properties(BaseModel):
+    pass
+
+    class Config:
+        allow_population_by_field_name = True
+        validate_assignment = True
+        extra = "forbid"
+
+
 class Kind181(Enum):
     custom_resource_definition = "CustomResourceDefinition"
 
@@ -762,6 +1027,33 @@ class Kind186(Enum):
 
 class Kind187(Enum):
     delete_options = "DeleteOptions"
+
+
+class MatchLabels(BaseModel):
+    pass
+
+    class Config:
+        allow_population_by_field_name = True
+        validate_assignment = True
+        extra = "forbid"
+
+
+class Annotations(BaseModel):
+    pass
+
+    class Config:
+        allow_population_by_field_name = True
+        validate_assignment = True
+        extra = "forbid"
+
+
+class Labels(BaseModel):
+    pass
+
+    class Config:
+        allow_population_by_field_name = True
+        validate_assignment = True
+        extra = "forbid"
 
 
 class Kind188(Enum):

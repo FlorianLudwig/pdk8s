@@ -2,13 +2,24 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional, Union
+from typing import Dict, List, Optional, Union
 
 from pydantic import BaseModel, Field
 
 import pdk8s.model
 
-from ..... import Kind18, Kind19, Kind20, Kind21, Kind22, Kind23, Kind24, Kind25
+from ..... import (
+    Kind18,
+    Kind19,
+    Kind20,
+    Kind21,
+    Kind22,
+    Kind23,
+    Kind24,
+    Kind25,
+    Selector,
+    UpdatedAnnotations,
+)
 from ...apimachinery.pkg import runtime
 from ...apimachinery.pkg.apis.meta import v1
 from ...apimachinery.pkg.util import intstr
@@ -59,7 +70,7 @@ class ScaleStatus(BaseModel):
     replicas: int = Field(
         ..., description="actual number of observed instances of the scaled object."
     )
-    selector: Optional[Dict[str, Any]] = Field(
+    selector: Optional[Dict[str, Selector]] = Field(
         None,
         description="label query over pods that should match the replicas count. More info: http://kubernetes.io/docs/user-guide/labels#label-selectors",
     )
@@ -133,7 +144,7 @@ class DeploymentRollback(BaseModel):
     rollback_to: RollbackConfig = Field(
         ..., alias="rollbackTo", description="The config of this deployment rollback."
     )
-    updated_annotations: Optional[Dict[str, Any]] = Field(
+    updated_annotations: Optional[Dict[str, UpdatedAnnotations]] = Field(
         None,
         alias="updatedAnnotations",
         description="The annotations to be updated to a deployment",

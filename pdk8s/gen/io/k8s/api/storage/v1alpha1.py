@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional
+from typing import Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
 import pdk8s.model
 
-from ..... import Kind169, Kind170
+from ..... import AttachmentMetadata, Kind169, Kind170
 from ...apimachinery.pkg.apis.meta import v1
 from ..core import v1 as v1_1
 
@@ -79,7 +79,7 @@ class VolumeAttachmentStatus(BaseModel):
         ...,
         description="Indicates the volume is successfully attached. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.",
     )
-    attachment_metadata: Optional[Dict[str, Any]] = Field(
+    attachment_metadata: Optional[Dict[str, AttachmentMetadata]] = Field(
         None,
         alias="attachmentMetadata",
         description="Upon successful attach, this field is populated with any information returned by the attach operation that must be passed into subsequent WaitForAttach or Mount calls. This field must only be set by the entity completing the attach operation, i.e. the external-attacher.",

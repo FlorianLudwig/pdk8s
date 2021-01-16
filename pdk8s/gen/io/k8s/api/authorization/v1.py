@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional
+from typing import Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
 import pdk8s.model
 
-from ..... import Kind42, Kind43, Kind44, Kind45
+from ..... import Extra, Kind42, Kind43, Kind44, Kind45
 from ...apimachinery.pkg.apis.meta import v1
 
 
@@ -134,7 +134,7 @@ class SubjectAccessReviewSpec(BaseModel):
         validate_assignment = True
         extra = "forbid"
 
-    extra: Optional[Dict[str, Any]] = Field(
+    extra: Optional[Dict[str, Extra]] = Field(
         None,
         description="Extra corresponds to the user.Info.GetExtra() method from the authenticator.  Since that is input to the authorizer it needs a reflection here.",
     )

@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional
+from typing import Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
 import pdk8s.model
 
-from ..... import Kind63, Kind64
+from ..... import Extra, Kind63, Kind64
 from ...apimachinery.pkg.apis.meta import v1
 
 
@@ -18,7 +18,7 @@ class CertificateSigningRequestSpec(BaseModel):
         validate_assignment = True
         extra = "forbid"
 
-    extra: Optional[Dict[str, Any]] = Field(
+    extra: Optional[Dict[str, Extra]] = Field(
         None,
         description="Extra information about the requesting user. See user.Info interface for details.",
     )

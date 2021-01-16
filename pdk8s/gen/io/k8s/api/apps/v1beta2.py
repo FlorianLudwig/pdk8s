@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional, Union
+from typing import Dict, List, Optional, Union
 
 from pydantic import BaseModel, Field
 
@@ -20,6 +20,7 @@ from ..... import (
     Kind34,
     Kind35,
     Kind36,
+    Selector,
 )
 from ...apimachinery.pkg import runtime
 from ...apimachinery.pkg.apis.meta import v1
@@ -59,7 +60,7 @@ class ScaleStatus(BaseModel):
     replicas: int = Field(
         ..., description="actual number of observed instances of the scaled object."
     )
-    selector: Optional[Dict[str, Any]] = Field(
+    selector: Optional[Dict[str, Selector]] = Field(
         None,
         description="label query over pods that should match the replicas count. More info: http://kubernetes.io/docs/user-guide/labels#label-selectors",
     )
